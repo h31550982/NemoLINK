@@ -242,7 +242,7 @@ function fileIcon(doc: PortCallDocument): string {
 .attachment-file__remove:focus-visible { outline: 2px solid var(--blue-800); outline-offset: 0; }
 .attachments-empty { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px 12px; color: var(--text-100); text-align: center; font-size: 14px; }
 .attachments-empty p { margin: 0; font-size: 12px; line-height: 18px; }
-.report-attachments--page { position: sticky; top: 80px; align-self: flex-start; margin-block-start: 20px; height: calc(100dvh - 100px - var(--module-action-height, 0px)); }
+.report-attachments--page { position: sticky; top: calc(var(--nl-header-safe-height) + 14px); align-self: flex-start; margin-block-start: 20px; height: calc(100dvh - var(--nl-header-safe-height) - 34px - var(--module-action-height, 0px)); }
 .report-attachments--page .attachments-head { padding-block-start: 0; }
 .report-attachments--page { overflow-x: clip; overflow-y: visible; }
 .report-attachments--page .attachments-icon-button { inset-block-start: -9.5px; }

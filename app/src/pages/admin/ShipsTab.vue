@@ -175,7 +175,90 @@
             </span>
           </div>
         </div>
-        <div class="ledger ledger--ids">
+        <!-- Desktop: the standard table (StandardTable, user 2026-11-13) —
+             Field · To NEMO · From. Tap a value to override or fill it right
+             in its cell; the NEMO code on a hover on the field's name.
+             Phones keep the ledger below. -->
+        <StandardTable
+          v-if="wideLedger"
+          class="ship-table"
+          fixed
+          row-head="Field"
+          :row-head-width="290"
+          :columns="SHIP_TABLE_COLUMNS"
+          :rows="shipTableRows"
+        >
+          <template #row-head="{ row }">
+            <div class="ship-head">
+              <span class="ship-head__text" :data-cut="`row:${row.key}`">{{ row.label }}</span>
+              <HelpTip v-if="row.key === 'iceClass'" topic="ships.iceClass" />
+            </div>
+          </template>
+          <template #cell="{ row, column }">
+            <template v-if="column.key === 'toNemo'">
+              <StandardCell
+                :state="dataRowOf(row.key).missing ? 'missing' : dataRowOf(row.key).problem ? 'error' : null"
+                :interactive="!dataRowOf(row.key).locked"
+                :editing="editingKey === row.key"
+                :label="`${dataRowOf(row.key).missing ? 'Fill' : 'Edit'} ${row.label}`"
+                @open="openShipEdit(row.key)"
+              >
+                <div v-if="dataRowOf(row.key).missing" class="st-line ship-value ship-value--missing">missing</div>
+                <div v-else class="st-line tnum ship-value">{{ dataRowOf(row.key).resolved || '—' }}</div>
+                <div v-if="dataRowOf(row.key).problem" class="st-line ship-note ship-note--error">{{ dataRowOf(row.key).problem }}</div>
+                <template #editor>
+                  <div class="ledger-edit ship-edit" :data-edit-key="row.key" @keydown.esc.stop.prevent="cancelShipEdit">
+                    <q-input
+                      v-if="dataRowOf(row.key).kind === 'text' || dataRowOf(row.key).kind === 'number'"
+                      v-model="drafts[row.key]"
+                      dense
+                      outlined
+                      autofocus
+                      :type="dataRowOf(row.key).kind === 'number' ? 'number' : 'text'"
+                      :placeholder="dataRowOf(row.key).external?.text ?? 'Add value'"
+                      :disable="busy === row.key"
+                      class="ledger-input"
+                      @blur="finishField(dataRowOf(row.key))"
+                      @keyup.enter="(e: KeyboardEvent) => (e.target as HTMLElement).blur()"
+                    />
+                    <DateField
+                      v-else-if="dataRowOf(row.key).kind === 'date'"
+                      :model-value="String(drafts[row.key] ?? '')"
+                      label=""
+                      class="ledger-input"
+                      @update:model-value="(v) => { drafts[row.key] = v; void finishField(dataRowOf(row.key)); }"
+                    />
+                    <q-select
+                      v-else
+                      v-model="drafts[row.key]"
+                      :options="optionsFor(dataRowOf(row.key).kind)"
+                      emit-value
+                      map-options
+                      dense
+                      outlined
+                      options-dense
+                      :use-input="SEARCHED_KINDS.includes(dataRowOf(row.key).kind)"
+                      :fill-input="SEARCHED_KINDS.includes(dataRowOf(row.key).kind)"
+                      :hide-selected="SEARCHED_KINDS.includes(dataRowOf(row.key).kind)"
+                      input-debounce="0"
+                      :placeholder="dataRowOf(row.key).external?.text ?? 'Add value'"
+                      :disable="busy === row.key"
+                      class="ledger-input"
+                      @filter="filterHandlers[dataRowOf(row.key).kind]"
+                      @update:model-value="finishField(dataRowOf(row.key))"
+                    />
+                  </div>
+                </template>
+              </StandardCell>
+              <q-tooltip v-if="dataRowOf(row.key).locked">{{ dataRowOf(row.key).lockedWords }}</q-tooltip>
+            </template>
+            <template v-else>
+              <div class="st-line ship-from">{{ shipFromWords(dataRowOf(row.key)) }}</div>
+              <q-tooltip v-if="shipFromWords(dataRowOf(row.key)).length > 44" anchor="top middle" self="bottom middle" :offset="[0, 6]">{{ shipFromWords(dataRowOf(row.key)) }}</q-tooltip>
+            </template>
+          </template>
+        </StandardTable>
+        <div v-else class="ledger ledger--ids">
           <div class="ledger-head">
             <span>Field</span>
             <span class="prov-head prov-head--ext">External</span>
@@ -392,6 +475,130 @@
         </div>
         <input ref="certFileInput" type="file" accept=".pdf,.xml,.jpg,.jpeg,.png,application/pdf,application/xml,text/xml,image/jpeg,image/png" class="hidden" @change="onCertFilePicked" />
         <div v-if="certRows.length === 0" class="text-grey-6 text-body2">None on file.</div>
+        <!-- Desktop: the standard table (user 2026-11-13) — the certificate,
+             its expiry To NEMO (tap to change it in the cell), where it comes
+             from; opened, every field the CRT sends under its row -->
+        <StandardTable
+          v-else-if="wideLedger"
+          class="ship-table"
+          fixed
+          row-head="Certificate"
+          :row-head-width="420"
+          :columns="CERT_TABLE_COLUMNS"
+          :rows="certTableRows"
+        >
+          <template #row-head="{ row }">
+            <div class="cert-head">
+              <div class="row items-center no-wrap">
+                <q-btn
+                  flat round dense size="xs" color="grey-7" class="q-mr-xs"
+                  :icon="openCertKey === row.key ? 'expand_less' : 'expand_more'"
+                  :aria-label="`${openCertKey === row.key ? 'Close' : 'Open'} certificate ${certRowOf(row.key).typeCode}`"
+                  @click="toggleCert(certRowOf(row.key))"
+                >
+                  <q-tooltip>{{ openCertKey === row.key ? 'Close' : 'Every field the CRT sends, with its NEMO code — edit or delete here' }}</q-tooltip>
+                </q-btn>
+                <span class="cert-head__name">{{ row.label }}</span>
+              </div>
+              <span v-if="certRowOf(row.key).detail" class="ledger-meta">{{ certRowOf(row.key).detail }}</span>
+              <span v-if="certGapsOf(certRowOf(row.key)).length" class="cert-gaps">NEMO needs: {{ certGapsOf(certRowOf(row.key)).join(', ') }}</span>
+              <span class="cert-files">
+                <span v-for="f in certFiles[certKeyOfRow(certRowOf(row.key))] ?? []" :key="f.id" class="cert-file">
+                  <a :href="auth.certificateFileUrl(detailsTarget!.id, f.id)" class="cert-file__link">{{ f.fileName }}</a>
+                  <q-btn flat round dense size="xs" icon="close" color="grey-6" :aria-label="`Remove ${f.fileName}`" :loading="busy === `file:${f.id}`" @click="removeCertFile(f.id)">
+                    <q-tooltip>Remove the file</q-tooltip>
+                  </q-btn>
+                </span>
+                <q-btn flat dense no-caps size="12px" color="primary" icon="attach_file" label="Attach file" :loading="busy === `attach:${certKeyOfRow(certRowOf(row.key))}`" @click="pickCertFile(certRowOf(row.key))">
+                  <q-tooltip>The certificate as PDF, XML, JPG or PNG, up to 10 MB — NEMO requires it with the CRT</q-tooltip>
+                </q-btn>
+              </span>
+            </div>
+          </template>
+          <template #cell="{ row, column }">
+            <template v-if="column.key === 'toNemo'">
+              <StandardCell
+                :state="certRowOf(row.key).expiry.tone === 'expired' ? 'error' : certRowOf(row.key).expiry.tone === 'soon' ? 'warning' : null"
+                :editing="editingKey === row.key"
+                :label="`Change the expiry of ${certRowOf(row.key).typeCode}`"
+                @open="openShipEdit(row.key)"
+              >
+                <div class="st-line tnum ship-value" :class="`cert-expiry--${certRowOf(row.key).expiry.tone}`">{{ certRowOf(row.key).expiry.words }}</div>
+                <template #editor>
+                  <div class="ledger-edit ship-edit" :data-edit-key="row.key" @keydown.esc.stop.prevent="cancelShipEdit">
+                    <DateField
+                      :model-value="String(drafts[row.key] ?? '')"
+                      label=""
+                      class="ledger-input"
+                      @update:model-value="(v) => { drafts[row.key] = v; void commitCert(certRowOf(row.key)).then(() => (editingKey = null)); }"
+                    />
+                  </div>
+                </template>
+              </StandardCell>
+            </template>
+            <template v-else>
+              <div class="st-line ship-from">{{ certFromWords(certRowOf(row.key)) }}</div>
+              <q-tooltip v-if="certFromWords(certRowOf(row.key)).length > 44" anchor="top middle" self="bottom middle" :offset="[0, 6]">{{ certFromWords(certRowOf(row.key)) }}</q-tooltip>
+            </template>
+          </template>
+          <!-- Opened (spec 0086 amendment): every field the CRT carries, one row each -->
+          <template #detail="{ row }">
+            <div class="cert-fields cert-fields--table">
+              <StandardTable
+                fixed
+                row-head="Field"
+                :row-head-width="290"
+                :columns="CERT_FIELD_COLUMNS"
+                :rows="certFieldsOf(certRowOf(row.key).cert).map((x) => ({ key: x.de, label: x.label, code: x.de }))"
+              >
+                <template #cell="{ row: field, column }">
+                  <template v-for="x in [certFieldsOf(certRowOf(row.key).cert).find((f) => f.de === field.key)!]" :key="x.de">
+                    <template v-if="column.key === 'edit'">
+                      <q-input v-if="x.edit === 'description'" v-model="certForm.description" dense outlined class="ledger-input" />
+                      <q-select v-else-if="x.edit === 'issuerType'" v-model="certForm.issuerTypeCode" :options="issuerTypeOptions" emit-value map-options dense outlined options-dense class="ledger-input" />
+                      <q-select
+                        v-else-if="x.edit === 'issuerCountry'" v-model="certForm.issuerCountry" :options="countryOptions"
+                        emit-value map-options dense outlined options-dense use-input fill-input hide-selected input-debounce="0"
+                        class="ledger-input" @filter="filterCountries"
+                      />
+                      <q-select
+                        v-else-if="x.edit === 'issuerId'" v-model="certForm.issuerId" :options="issuerOptions"
+                        emit-value map-options dense outlined options-dense use-input fill-input hide-selected input-debounce="0"
+                        class="ledger-input" @filter="filterIssuers"
+                      />
+                      <q-input v-else-if="x.edit === 'issuer'" v-model="certForm.issuer" dense outlined class="ledger-input" />
+                      <DateField v-else-if="x.edit === 'issueDate'" v-model="certForm.issueDate" label="" class="ledger-input" :max-date="todayIso()" />
+                      <DateField v-else-if="x.edit === 'expiryDate'" v-model="certForm.expiryDate" label="" class="ledger-input" :min-date="certForm.issueDate || undefined" />
+                      <div v-else class="st-line ship-from">{{ x.fixed }}</div>
+                      <div v-if="x.edit === 'issueDate' && issueDateProblem" class="ship-note ship-note--error">{{ issueDateProblem }}</div>
+                      <div v-if="x.edit === 'expiryDate' && expiryDateProblem" class="ship-note ship-note--error">{{ expiryDateProblem }}</div>
+                    </template>
+                    <template v-else>
+                      <div class="st-line ship-value" :class="{ 'ship-value--none': !x.value }">{{ x.value || '—' }}</div>
+                      <div v-if="x.note" class="st-line ship-note">{{ x.note }}</div>
+                    </template>
+                  </template>
+                </template>
+              </StandardTable>
+              <!-- House order: the destructive action alone on the left, Cancel then Save on the right -->
+              <div class="cert-actions">
+                <q-btn
+                  flat dense no-caps color="negative" icon="delete_outline" label="Delete certificate"
+                  :disable="busy === 'cert-add'"
+                  @click="removeCert(certRowOf(row.key))"
+                />
+                <q-space />
+                <q-btn flat dense no-caps label="Cancel" :disable="busy === 'cert-add'" @click="closeOpenCert" />
+                <q-btn
+                  unelevated dense no-caps color="primary" label="Save" class="q-ml-sm q-px-md"
+                  :loading="busy === 'cert-add'"
+                  :disable="!!issueDateProblem || !!expiryDateProblem"
+                  @click="saveNewCert"
+                />
+              </div>
+            </div>
+          </template>
+        </StandardTable>
         <div v-else class="ledger ledger--ids">
           <div class="ledger-head">
             <span>Certificate</span>
@@ -564,9 +771,10 @@
         autofocus
         :loading="searching"
         class="q-mb-sm"
-        hint="Searches the master list shared by every organisation using NEMOLink"
+        hint="Searches the master list shared by every organisation — Enter adds the only match"
+        @keydown.enter.prevent="onAddEnter"
       />
-      <q-list v-if="hits.length" bordered separator class="rounded-borders">
+      <q-list v-if="hits.length" ref="hitList" bordered separator class="rounded-borders">
         <q-item v-for="h in hits" :key="h.id">
           <q-item-section>
             <q-item-label class="text-weight-semibold">{{ h.name ?? '—' }}</q-item-label>
@@ -611,12 +819,14 @@
       :main-disable="!form.name.trim()"
       @main="save"
     >
-      <q-form @submit.prevent="save">
+      <!-- Enter in any field creates it, as the Create button does (user 2026-11-13) -->
+      <q-form @submit.prevent="save" @keydown.enter.exact.prevent="save">
         <q-input
           v-model="form.name"
           label="Name"
           outlined
           dense
+          autofocus
           class="q-mb-sm"
           :disable="saving"
         />
@@ -657,7 +867,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useQuasar, type QTableColumn } from 'quasar';
 import {
@@ -680,6 +890,8 @@ import { NAVIGATION_TYPES, navigationTypeName } from '../../generated/navigation
 import { SHIP_TYPES, shipTypeName } from '../../generated/ship-types';
 import DateField from '../../components/DateField.vue';
 import HelpTip from '../../components/HelpTip.vue';
+import StandardTable, { type StandardTableColumn, type StandardTableRow } from '../../components/StandardTable.vue';
+import StandardCell from '../../components/StandardCell.vue';
 import { imoValid, imoWords } from '../../lib/imo';
 import { fmtDay, fmtWhen } from '../../lib/time';
 import type { ShipOverride } from '../../auth/auth';
@@ -766,11 +978,18 @@ watch(addQuery, (q) => {
   searchTimer = setTimeout(() => void runSearch(q.trim()), 300);
 });
 
+/** The query the hits on show answer — Enter must not act on an older list. */
+const hitsFor = ref('');
+const hitList = ref<{ $el: HTMLElement } | null>(null);
+
 async function runSearch(q: string): Promise<void> {
   searching.value = true;
   try {
     const found = await auth.searchShips(q);
-    if (addQuery.value.trim() === q) hits.value = found;
+    if (addQuery.value.trim() === q) {
+      hits.value = found;
+      hitsFor.value = q;
+    }
   } catch {
     $q.notify({ type: 'negative', message: 'Could not search the master list.' });
   } finally {
@@ -785,8 +1004,41 @@ function openAdd(): void {
 }
 
 function createFromAdd(): void {
+  const typed = addQuery.value.trim();
   addDialog.value = false;
   openCreate();
+  // What was searched for starts the new ship: an IMO number or a name
+  if (/^\d{7}$/.test(typed)) form.imoNumber = typed;
+  else form.name = typed;
+}
+
+/**
+ * Enter in the search (user 2026-11-13): searches at once instead of waiting
+ * for the pause, then adds the only match; with none, it goes on to Create a
+ * new ship with what was typed; with several, to the first Add to fleet.
+ */
+let entering = false;
+async function onAddEnter(): Promise<void> {
+  const q = addQuery.value.trim();
+  if (q.length < 2 || entering || adding.value) return;
+  entering = true;
+  try {
+    if (searchTimer) {
+      clearTimeout(searchTimer);
+      searchTimer = null;
+    }
+    if (hitsFor.value !== q || searching.value) await runSearch(q);
+    if (addQuery.value.trim() !== q || hitsFor.value !== q) return;
+    const addable = hits.value.filter((h) => !h.inFleet);
+    if (hits.value.length === 0) createFromAdd();
+    else if (hits.value.length === 1 && addable.length === 1) await addHit(addable[0]!);
+    else if (addable.length > 0) {
+      await nextTick();
+      hitList.value?.$el.querySelector<HTMLElement>('.q-btn')?.focus();
+    }
+  } finally {
+    entering = false;
+  }
 }
 
 function inNemoWords(state: ShipSearchHit['inNemo']): string {
@@ -1782,6 +2034,101 @@ function draftCertDate(r: CertRow, v: string): void {
   void commitCert(r);
 }
 
+// ---- the standard table on desktop (user 2026-11-13) ------------------------
+
+/** Wider than a phone: the standard table; phones keep the ledger. */
+const wideLedger = computed(() => $q.screen.width > 640);
+/** Field · To NEMO · From, as every field table (Figma 500:7424). */
+const SHIP_TABLE_COLUMNS: StandardTableColumn[] = [
+  { key: 'toNemo', label: 'To NEMO', width: 290 },
+  { key: 'from', label: 'From' },
+];
+const CERT_TABLE_COLUMNS: StandardTableColumn[] = [
+  { key: 'toNemo', label: 'To NEMO', width: 220 },
+  { key: 'from', label: 'From' },
+];
+const CERT_FIELD_COLUMNS: StandardTableColumn[] = [
+  { key: 'edit', label: 'NEMOLink', width: 300 },
+  { key: 'value', label: 'To NEMO' },
+];
+const SEARCHED_KINDS: LedgerKind[] = ['type', 'country', 'registry', 'port'];
+/** The NEMO code and the report that carries it, on a hover on the name. */
+const shipTableRows = computed<StandardTableRow[]>(() =>
+  ledgerRows.value.map((r) => ({
+    key: r.key,
+    label: r.required ? `${r.label} *` : r.label,
+    code: r.nemoId && r.nemoId !== '—' ? [r.nemoId, r.nemoHome].filter(Boolean).join(' · ') : null,
+  })),
+);
+const certTableRows = computed<StandardTableRow[]>(() =>
+  certRows.value.map((r) => ({
+    key: r.key,
+    label: `${r.typeCode} — ${certificateName(r.typeCode)}`,
+    code: 'DE-006-11 · CRT',
+    expanded: openCertKey.value === r.key,
+  })),
+);
+const dataRowOf = (key: string): LedgerRow => ledgerRows.value.find((r) => r.key === key)!;
+const certRowOf = (key: string): CertRow => certRows.value.find((r) => r.key === key)!;
+
+/** Where the value that goes comes from: the override, the source, or here. */
+function shipFromWords(r: LedgerRow): string {
+  if (r.hasOverride) {
+    const by = r.overrideMeta ? ` · ${r.overrideMeta.author} · ${r.overrideMeta.when}` : '';
+    return r.external ? `your override${by} — ${r.external.source} says ${r.external.text}` : `entered here${by}`;
+  }
+  if (r.external) return `${r.external.source} · ${r.external.when}`;
+  if (r.missing) return 'enter it here';
+  return r.originWords || '—';
+}
+function certFromWords(r: CertRow): string {
+  if (r.superseded) return `${r.external?.source} has a newer date — your override is disregarded`;
+  if (r.hasOverride) {
+    const by = r.overrideMeta ? ` · ${r.overrideMeta.author} · ${r.overrideMeta.when}` : '';
+    return r.external ? `your override${by} — ${r.external.source} says ${r.external.text}` : `entered here${by}`;
+  }
+  if (r.external) return `${r.external.source} · ${r.external.when}`;
+  return r.originWords || '—';
+}
+
+/** The one value being typed right in its cell. */
+const editingKey = ref<string | null>(null);
+watch(detailsDialog, (open) => {
+  if (!open) editingKey.value = null;
+});
+async function openShipEdit(key: string): Promise<void> {
+  if (busy.value) return;
+  editingKey.value = key;
+  await nextTick();
+  // A dropdown opens at once; a typed field takes the focus
+  const cell = document.querySelector<HTMLElement>(`[data-edit-key="${CSS.escape(key)}"]`);
+  const select = cell?.querySelector<HTMLElement>('.q-select .q-field__control');
+  if (select) select.click();
+  else cell?.querySelector<HTMLElement>('input')?.focus();
+}
+/** Esc, or a tap elsewhere on a dropdown or date: the cell as it was. */
+function cancelShipEdit(): void {
+  resetDrafts();
+  editingKey.value = null;
+}
+async function finishField(r: LedgerRow): Promise<void> {
+  await commitField(r);
+  if (editingKey.value === r.key) editingKey.value = null;
+}
+function leaveShipEdit(event: Event): void {
+  const key = editingKey.value;
+  if (!key || !(event.target instanceof Element)) return;
+  if (event.target.closest('.q-menu, .q-date')) return;
+  const cell = document.querySelector(`[data-edit-key="${CSS.escape(key)}"]`);
+  if (cell?.contains(event.target)) return;
+  // A typed field saves on its blur; dropdowns and dates are put back
+  const row = ledgerRows.value.find((r) => r.key === key);
+  if (row && (row.kind === 'text' || row.kind === 'number')) return;
+  cancelShipEdit();
+}
+onMounted(() => document.addEventListener('pointerdown', leaveShipEdit));
+onBeforeUnmount(() => document.removeEventListener('pointerdown', leaveShipEdit));
+
 function fmtDate(iso: string): string {
   return fmtDay(iso);
 }
@@ -1994,7 +2341,7 @@ function imoRule(value: string | null | undefined): true | string {
 }
 
 async function save(): Promise<void> {
-  if (!form.name.trim()) return;
+  if (saving.value || !form.name.trim()) return;
   if (form.imoNumber.trim() && !imoValid(form.imoNumber.trim())) {
     $q.notify({ type: 'negative', message: imoWords(form.imoNumber.trim()) });
     return;
@@ -2068,6 +2415,78 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/* The ship dialog's Data and Certificates on desktop: the standard table
+   (StandardTable, user 2026-11-13). Values Text/200 Medium, a missing one
+   says "missing" in the missing-field orange, the field typed in its cell
+   is the app's own white field. */
+.ship-table {
+  margin-bottom: 8px;
+}
+.ship-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.ship-head__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ship-value {
+  font-weight: 500;
+  color: var(--text-200);
+}
+.ship-value--missing {
+  color: var(--orange-500);
+}
+.ship-value--none {
+  color: var(--text-100);
+}
+.ship-note {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--orange-500);
+}
+.ship-note--error {
+  color: var(--red-300);
+}
+.ship-from {
+  font-weight: 500;
+  color: var(--text-200);
+}
+.ship-edit :deep(.q-field__control) {
+  background: var(--nl-g-white);
+  box-shadow: none;
+}
+.ship-edit :deep(.q-field__control:before) {
+  border-style: solid;
+  border-color: var(--nl-g-field-line);
+}
+/* A certificate's name with its details, files and Attach under it */
+.cert-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 4px 0;
+  white-space: normal;
+}
+.cert-head__name {
+  font-weight: 600;
+  color: var(--text-300);
+}
+/* Opened: every field the CRT sends, its own standard table, then the actions */
+.cert-fields.cert-fields--table {
+  display: block;
+  margin: 0;
+  padding: 8px 0 0 24px;
+  border-top: 0;
+}
+.cert-fields--table .cert-actions {
+  margin-top: 12px;
+}
 .ships-table {
   background: white;
 }

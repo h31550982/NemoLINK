@@ -40,11 +40,12 @@ import { buildDuePayload } from '../canonical/due-formality';
 import { buildAtaPayload } from '../canonical/ata-formality';
 import { DEPARTURE_CONFIRMATION, buildNodPayload, nodNextPort } from '../canonical/nod-formality';
 import { buildAtdPayload } from '../canonical/atd-formality';
-import { noaLedger, type LedgerRow, type ShipCells } from '../canonical/noa-ledger';
+import { declarantEoriRow, noaLedger, type LedgerRow, type ShipCells } from '../canonical/noa-ledger';
 import { refreshFormFacts } from '../canonical/form-facts';
 import { FORMALITY_TITLES, obligationsOf, type ObligationItem, type ObligationSnapshot } from '../canonical/obligations';
 import { readBackOf, type ReadBack } from '../nemo-client/read-back';
 import { mayUpdate } from '../canonical/formality-rules';
+import { firstScheduleProblem } from '../canonical/schedule-rules';
 import {
   fingerprintOf,
   PRE_ARRIVAL_REPORTS,
@@ -127,6 +128,22 @@ export interface FormalityPreview {
   lrn?: string;
   /** NOA only (spec 0088): the statement it carries, ST-FI-01 when the arrival is confirmed. */
   statement?: string;
+}
+
+/**
+ * A Data missing notice in the wizard stops the send (user 2026-11-13): a
+ * row with no value, or a ticked report whose data is not complete. Null
+ * when nothing is missing.
+ */
+export function dataMissingReason(
+  rows: readonly Pick<LedgerRow, 'label' | 'ok'>[],
+  choices: readonly Pick<ReportChoice, 'code' | 'built' | 'on' | 'missing'>[],
+): string | null {
+  const gaps = rows.filter((r) => !r.ok).map((r) => r.label);
+  if (gaps.length > 0) return `Still missing: ${gaps.join(', ')}`;
+  const waiting = choices.filter((c) => c.built && c.on && c.missing.length > 0).map((c) => c.code);
+  if (waiting.length > 0) return `Data missing in ${waiting.join(', ')} — fill it in or untick the report`;
+  return null;
 }
 
 /** Where a formality's fact lives on the call: its type, or CRT:<certificate> (one CRT per certificate). */
@@ -455,7 +472,12 @@ export class ShipNemoService {
 
   // ---- the send --------------------------------------------------------------
 
-  async send(viewer: SessionUser, shipId: string, portCallId: string): Promise<ShipSendReceipt> {
+  async send(
+    viewer: SessionUser,
+    shipId: string,
+    portCallId: string,
+    types?: readonly ('SID' | 'SHP' | 'CRT')[],
+  ): Promise<ShipSendReceipt> {
     assertMaySubmit(viewer); // invariant 4: an org-member act
     const preview = await this.preview(viewer, shipId, portCallId);
     const call = preview.portCall;
@@ -464,10 +486,23 @@ export class ShipNemoService {
     if (!preview.declarant) {
       throw new BadRequestException('Set the EORI in NEMO declarant details first');
     }
-    const toSend = preview.formalities.filter((f) => f.willSend && f.envelope);
+    // One report at a time when asked (user 2026-11-13): SID, SHP and CRT each have their own step
+    const asked = types ? preview.formalities.filter((f) => types.includes(f.type as 'SID' | 'SHP' | 'CRT')) : preview.formalities;
+    // Data missing in any of them stops the whole send (user 2026-11-13)
+    const gapped = asked.filter((f) => !f.willSend && (f.gaps?.length || f.problems.length));
+    if (gapped.length > 0) {
+      throw new BadRequestException(
+        `Data missing — nothing was sent: ${gapped
+          .map((f) => `${f.type === 'CRT' ? `CRT ${f.certKey?.split(':')[0] ?? ''}`.trim() : f.type}: ${f.gaps?.join(', ') || f.reason || 'MIG check'}`)
+          .join('; ')}`,
+      );
+    }
+    const toSend = asked.filter((f) => f.willSend && f.envelope);
     if (toSend.length === 0) {
       throw new BadRequestException(
-        preview.formalities.map((f) => `${f.type}: ${f.reason ?? 'nothing to send'}`).join('; '),
+        asked.length > 0
+          ? asked.map((f) => `${f.type}: ${f.reason ?? 'nothing to send'}`).join('; ')
+          : `Nothing to send for ${types?.join(', ') ?? 'this ship'}`,
       );
     }
     return this.sendEach(viewer, call, shipId, toSend);
@@ -840,6 +875,9 @@ export class ShipNemoService {
     // Fintraffic: confirm only once the other arrival reports are in (DUE among them)
     const waitingForConfirm = ['DUE'].filter((code) => !snapshot.submitted.includes(code));
     const { declarant } = await this.declarantOf(viewer.orgSlug);
+    // No EORI yet: typed in as a row of its own, saved to the organisation (user 2026-11-13)
+    if (!declarant) rows.push(declarantEoriRow());
+    const { choices } = await this.preArrivalOf(viewer, call, snapshot);
     let reason: string | null = null;
     if (!call.visitId) reason = 'Create the port call in NEMO first (VID)';
     else if (call.formalities['ATA']?.accepted) reason = 'The arrival is reported (ATA): NEMO takes no more changes to the NOA';
@@ -860,7 +898,6 @@ export class ShipNemoService {
       if (!reason && dueProblems.length > 0) reason = 'The DUE does not pass the MIG schema check';
       due = { envelope: dueEnvelope, problems: dueProblems, lrn };
     }
-    const { choices } = await this.preArrivalOf(viewer, call, snapshot);
     return {
       portCallId,
       visitId: call.visitId,
@@ -1070,6 +1107,12 @@ export class ShipNemoService {
       }
     }
 
+    // Data missing stops the send, even when some part of it could go (user 2026-11-13)
+    if (missing.length > 0 && toSend.length > 0) {
+      blocked = [...blocked, ...toSend.map((f) => ({ ...f, willSend: false, reason: 'Data missing' }))];
+      toSend = [];
+      reason = `Still missing: ${missing.join('; ')}`;
+    }
     const label = (f: FormalityPreview) => (f.type === 'CRT' ? `CRT ${f.certKey?.split(':')[0] ?? ''}`.trim() : f.type);
     const refused = Object.entries(call.formalities).some(([k, f]) => k.split(':')[0] === code && f && !f.accepted);
     return {
@@ -1154,6 +1197,9 @@ export class ShipNemoService {
     if (!preview.willSend || !preview.envelope) {
       throw new BadRequestException(preview.reason ?? 'The NOA cannot be sent');
     }
+    // A ticked report short of data shows Data missing in the wizard: nothing goes (user 2026-11-13)
+    const held = dataMissingReason([], preview.reports);
+    if (held) throw new BadRequestException(held);
     const call = await this.callOf(viewer, portCallId);
     if (!call.shipId) throw new BadRequestException('The port call has no ship');
     const statement = confirm || preview.confirmed ? ARRIVAL_CONFIRMATION : undefined;
@@ -1212,6 +1258,50 @@ export class ShipNemoService {
     );
   }
 
+  // ---- a new ETA / ETD (user 2026-11-13) ----------------------------------------
+
+  /**
+   * Sends the call's new times to NEMO: the notices NEMO already has that
+   * carry them go again as updates — the NOA until the arrival is reported,
+   * the NOD until the departure is. Each keeps its confirmation, and each
+   * passes its own checks first (a gap or an ETD before the ETA stops it).
+   * Before any notice is in NEMO there is nothing to update: the times go
+   * with the NOA.
+   */
+  async sendScheduleUpdate(viewer: SessionUser, portCallId: string): Promise<ShipSendReceipt> {
+    assertMaySubmit(viewer); // invariant 4: an org-member act
+    const call = await this.callOf(viewer, portCallId);
+    if (!call.visitId) throw new BadRequestException('The port call is not in NEMO yet — the times go with the VID');
+    if (!call.shipId) throw new BadRequestException('The port call has no ship');
+    // NEMO has it: accepted once (its id is not always read back, spec 0089)
+    const inNemo = (fact: { accepted?: boolean; formalityId?: string | null } | undefined): boolean => !!fact?.accepted || !!fact?.formalityId;
+    const toSend: FormalityPreview[] = [];
+    const stopped: string[] = [];
+    if (inNemo(call.formalities['NOA']) && !call.formalities['ATA']?.accepted) {
+      const noa = await this.noaPreview(viewer, portCallId, false);
+      if (noa.willSend && noa.envelope) {
+        toSend.push({
+          type: 'NOA', willSend: true, reason: null, envelope: noa.envelope, problems: [], previously: noa.previously,
+          ...(noa.confirmed ? { statement: ARRIVAL_CONFIRMATION } : {}),
+        });
+      } else stopped.push(`NOA: ${noa.reason ?? 'it cannot be sent'}`);
+    }
+    if (inNemo(call.formalities['NOD']) && !call.formalities['ATD']?.accepted) {
+      const nod = await this.nodPreview(viewer, portCallId);
+      if (nod.willSend && nod.envelope) {
+        toSend.push({
+          type: 'NOD', willSend: true, reason: null, envelope: nod.envelope, problems: [], previously: nod.previously,
+          ...(nod.confirmed ? { statement: DEPARTURE_CONFIRMATION } : {}),
+        });
+      } else stopped.push(`NOD: ${nod.reason ?? 'it cannot be sent'}`);
+    }
+    if (stopped.length > 0) throw new BadRequestException(stopped.join('; '));
+    if (toSend.length === 0) {
+      throw new BadRequestException('NEMO has no notice to update yet — the new times go with the NOA');
+    }
+    return this.sendEach(viewer, call, call.shipId, toSend);
+  }
+
   // ---- the pre-departure notice (the NOD, spec 0092) ---------------------------
 
   /**
@@ -1239,11 +1329,13 @@ export class ShipNemoService {
     const previously = call.formalities['NOD'] ?? null;
     const confirmed = !!previously?.accepted && previously.statement === DEPARTURE_CONFIRMATION;
     const { declarant } = await this.declarantOf(viewer.orgSlug);
+    if (!declarant) rows.push(declarantEoriRow());
     let reason: string | null = null;
     if (!call.visitId) reason = 'Create the port call in NEMO first (VID)';
     else if (call.formalities['ATD']?.accepted) reason = 'The departure is reported (ATD): NEMO takes no more changes to the NOD';
     else if (!declarant) reason = 'Set the EORI in NEMO declarant details first — it names your organisation on every report';
     else if (nod.missing.length > 0) reason = `Still missing: ${nod.missing.join(', ')}`;
+    else reason = dataMissingReason(rows, []);
     const envelope = !reason
       ? buildMaiEnvelope({ formalityType: 'NOD', declarant: declarant!, visitId: call.visitId!, payload: buildNodPayload(snapshot, confirmed) })
       : null;
@@ -1671,7 +1763,13 @@ export class ShipNemoService {
     if (!call.shipId) throw new BadRequestException('The port call has no ship');
     const ship = await this.ships.get(viewer, call.shipId);
     if (!ship.imoNumber) throw new BadRequestException('The ship needs an IMO number before NEMO can identify it');
-    if (!call.portLocode || !call.eta) throw new BadRequestException('The port call needs a port and an ETA');
+    // The same bar as the VID's checklist (user 2026-11-13): port, ETA and ETD, and times that can be right
+    if (!call.portLocode) throw new BadRequestException('The port call needs a port');
+    if (!call.eta || !call.etd) {
+      throw new BadRequestException(`The port call needs ${!call.eta && !call.etd ? 'an ETA and an ETD' : !call.eta ? 'an ETA' : 'an ETD'}`);
+    }
+    const timeProblem = firstScheduleProblem({ eta: call.eta, etd: call.etd });
+    if (timeProblem) throw new BadRequestException(timeProblem);
 
     // The VID carries the bare minimum (spec 0082): the ship by name and IMO,
     // the port and the times. The ship's full data follows as SID + SHP.
@@ -1679,7 +1777,7 @@ export class ShipNemoService {
       shipName: nemoShipName(ship.name ?? ''),
       shipImoNumber: ship.imoNumber,
       eta: call.eta,
-      ...(call.etd ? { etd: call.etd } : {}),
+      etd: call.etd,
       portLocationCode: call.portLocode,
     };
     const org = viewer.orgSlug;

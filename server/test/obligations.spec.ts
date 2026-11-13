@@ -399,3 +399,29 @@ describe('the reports sent with the NOA (spec 0098)', () => {
     expect(obs.find((o) => o.code === 'WAS')).toBeUndefined();
   });
 });
+
+// User 2026-11-13: a notice never goes without its times, nor with times
+// that cannot be right — the VID too needs both, and an ETD before the ETA
+// is a gap with its reason.
+describe('the times every notice carries', () => {
+  it('the VID needs the ETD as well as the ETA', () => {
+    const vid = byCode(full({ etd: null }))('VID');
+    expect(vid.state).toBe('missing');
+    expect(vid.missing).toEqual(['Estimated departure (DE-022-05)']);
+  });
+
+  it('an ETD before the ETA stops the VID, the NOA and the NOD, and says why', () => {
+    const at = byCode(full({ etd: '2026-08-26T09:00:00Z' }));
+    for (const code of ['VID', 'NOA', 'NOD']) {
+      const o = at(code);
+      expect(o.state).not.toBe('ready');
+      expect(o.missing).toContain('Estimated departure (DE-022-05) — ETD must be after the ETA');
+      expect(o.items.find((i) => i.de === 'DE-022-05')?.problem).toBe('ETD must be after the ETA');
+    }
+  });
+
+  it('a mistyped year is caught', () => {
+    const noa = byCode(full({ eta: '2062-08-26T10:00:00Z', etd: '2062-08-27T18:00:00Z' }))('NOA');
+    expect(noa.missing).toContain('Estimated arrival (DE-022-02) — The ETA is more than a year ahead — check the year');
+  });
+});

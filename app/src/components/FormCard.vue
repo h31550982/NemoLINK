@@ -30,6 +30,8 @@
         />
         <div class="fcard__hint" aria-hidden="true">{{ shortcut }}</div>
       </div>
+      <!-- Why the main button is off (user 2026-11-13): the gaps in words -->
+      <p v-if="mainNote" class="fcard__note" role="status">{{ mainNote }}</p>
     </footer>
   </section>
 </template>
@@ -37,12 +39,15 @@
 <script setup lang="ts">
 import { computed, nextTick, useId } from 'vue';
 import { useQuasar } from 'quasar';
+import { isMainShortcut, useMainShortcut } from '../lib/main-shortcut';
 
 const props = defineProps<{
   title: string;
   mainLabel: string;
   mainLoading?: boolean | undefined;
   mainDisable?: boolean | undefined;
+  /** Beside the main button: what still stops it, in words. */
+  mainNote?: string | null | undefined;
 }>();
 const emit = defineEmits<{ (e: 'close'): void; (e: 'main'): void }>();
 
@@ -52,8 +57,10 @@ const shortcut = computed(() => ($q.platform.is.mac ? '⌘ + Enter' : 'Ctrl + En
 
 /** Ctrl/⌘+Enter: commit the field being typed in first (blur), then run
     the main button if it is live — the same shortcut as HouseDialog. */
+// Also when focus has dropped out of the card (a click on its blank space)
+useMainShortcut(() => true, (e) => void onKeydown(e));
 async function onKeydown(e: KeyboardEvent): Promise<void> {
-  if (e.key !== 'Enter' || !(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey) return;
+  if (!isMainShortcut(e)) return;
   e.preventDefault();
   e.stopPropagation();
   const focused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -138,6 +145,20 @@ async function onKeydown(e: KeyboardEvent): Promise<void> {
 }
 .fcard__main.disabled {
   opacity: 0.7 !important;
+}
+/* What still stops the main button: Body/14 Medium in Text/200, centred on it */
+.fcard__note {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0 0 0 16px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--text-200);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.14px;
 }
 /* Body text/12 in Text/100 */
 .fcard__hint {

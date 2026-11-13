@@ -1,7 +1,7 @@
 import { defineConfig } from '#q-app/wrappers';
 
 export default defineConfig(() => ({
-  boot: [],
+  boot: ['clearable-fields'],
 
   css: ['app.scss'],
 

@@ -168,7 +168,7 @@ export class ShipsController {
     if (!parsed.success) {
       throw new BadRequestException(parsed.error.issues[0]?.message ?? 'Invalid request');
     }
-    return { receipt: await this.shipNemo.send(req.user, id, parsed.data.portCallId) };
+    return { receipt: await this.shipNemo.send(req.user, id, parsed.data.portCallId, parsed.data.types) };
   }
 }
 
@@ -234,14 +234,18 @@ export class PortCallNemoController {
       if (!facts.success) throw invalid(facts.error.issues);
       await this.portCalls.setNotice(req.user, id, facts.data);
     } else if (owner === 'ship') {
+      // Saved to the ship's own data (user 2026-11-13): the next call has it too
       const { row } = await this.portCalls.snapshotFor(req.user, id);
       if (!row.shipId) throw new BadRequestException('The port call has no ship');
-      const update = shipUpdateSchema.safeParse({ particulars: { [field]: value } });
+      const update = shipUpdateSchema.safeParse(shipFieldUpdate(field, value));
       if (!update.success) throw invalid(update.error.issues);
       await this.ships.update(req.user, row.shipId, update.data);
     } else if (owner === 'org') {
-      // The business id is the organisation's own column; the rest is the agent block
-      const update = orgUpdateSchema.safeParse(field === 'businessId' ? { businessId: value } : { agent: { [field]: value } });
+      // Saved to the organisation settings (user 2026-11-13). The business id
+      // and the EORI are the organisation's own columns; the rest is the agent block
+      const update = orgUpdateSchema.safeParse(
+        field === 'businessId' || field === 'eori' ? { [field]: value } : { agent: { [field]: value } },
+      );
       if (!update.success) throw invalid(update.error.issues);
       await this.org.update(req.user, update.data);
     } else if (owner === 'callCore' && (field === 'portArea' || field === 'berth')) {
@@ -274,7 +278,9 @@ export class PortCallNemoController {
       const area = areas.find((a) => a.code === code);
       if (!area) throw new BadRequestException(`${code} is not a port area of ${row.portLocode}`);
       const keepBerth = !!row.berth && area.berths.some((b) => b.code === row.berth);
-      await this.portCalls.updateManual(user, id, keepBerth ? { portAreaCode: code } : { portAreaCode: code, berth: null });
+      // An area with one berth brings that berth (user 2026-11-13)
+      const onlyBerth = area.berths.length === 1 ? area.berths[0]!.code : null;
+      await this.portCalls.updateManual(user, id, keepBerth ? { portAreaCode: code } : { portAreaCode: code, berth: onlyBerth });
       return;
     }
     const area = areas.find((a) => a.berths.some((b) => b.code === code));
@@ -391,6 +397,17 @@ export class PortCallNemoController {
     return { receipt: await this.shipNemo.sendAtd(req.user, id, parseAt(parsed.data.at)) };
   }
 
+  /**
+   * The new ETA / ETD to NEMO (user 2026-11-13): the notices NEMO already
+   * has that carry them — the NOA until the arrival, the NOD until the
+   * departure — go again as updates.
+   */
+  @Post(':id/schedule/send')
+  @HttpCode(200)
+  async scheduleSend(@Req() req: AuthedRequest, @Param('id', ParseUUIDPipe) id: string): Promise<{ receipt: ShipSendReceipt }> {
+    return { receipt: await this.shipNemo.sendScheduleUpdate(req.user, id) };
+  }
+
   @Post(':id/nemo-create')
   @HttpCode(200)
   async create(
@@ -465,6 +482,45 @@ function parseAt(at: string | undefined): string {
   const ms = Date.parse(at);
   if (!Number.isFinite(ms)) throw new BadRequestException('The time is not a date and time');
   return new Date(Math.floor(ms / 60_000) * 60_000).toISOString();
+}
+
+/** The ship's identity sits beside its particulars, not in them. */
+const SHIP_IDENTITY_FIELDS = new Set(['name', 'imoNumber', 'mmsi', 'callSign']);
+/** Particulars NEMO takes as yes / no. */
+const SHIP_YES_NO_FIELDS = new Set(['inertGasSystem', 'mainEngineAvailabilityIndicator']);
+/** Particulars that are measures. */
+const SHIP_NUMBER_FIELDS = new Set([
+  'length', 'width', 'grossWeight', 'netWeight', 'dwt', 'summerDeadweight', 'summerDraught',
+  'betweenPerpendicularsLength', 'openWaterSpeedMeasure', 'reducedGrossTonnage', 'bowThrusterPower',
+  'sternThrusterPower', 'mainEnginePower',
+]);
+
+/**
+ * A ship field typed into a report's list (user 2026-11-13), as the ship
+ * update takes it: identity fields at the top, the rest as particulars in
+ * their own types — a measure as a number, yes / no as a boolean, the ice
+ * class as its code record. Anything else the schema checks as it is.
+ */
+export function shipFieldUpdate(field: string, value: string | number | null): Record<string, unknown> {
+  let v: unknown = typeof value === 'string' ? value.trim() : value;
+  if (v === '') v = null;
+  if (SHIP_IDENTITY_FIELDS.has(field)) {
+    if (typeof v === 'number') v = String(v);
+    if (field === 'callSign' && typeof v === 'string') v = v.toUpperCase();
+    if (field === 'imoNumber' && typeof v === 'string') v = v.replace(/^IMO\s*/i, '');
+    return { [field]: v };
+  }
+  if (v !== null && SHIP_NUMBER_FIELDS.has(field) && typeof v === 'string') {
+    const n = Number(v.replace(',', '.'));
+    v = Number.isFinite(n) ? n : v;
+  }
+  if (v !== null && SHIP_YES_NO_FIELDS.has(field) && typeof v === 'string') {
+    const yes = ['yes', 'true', '1'].includes(v.toLowerCase());
+    const no = ['no', 'false', '0'].includes(v.toLowerCase());
+    v = yes ? true : no ? false : v;
+  }
+  if (v !== null && field === 'iceClass' && typeof v === 'string') v = { code: v };
+  return { particulars: { [field]: v } };
 }
 
 /** One ledger row's new value (spec 0090): owner:field and the value, null clears. */

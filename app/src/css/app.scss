@@ -12,8 +12,11 @@
   --nl-page-gutter: 16px;
   --nl-page-padding-left: calc(var(--nl-page-gutter) + env(safe-area-inset-left, 0px));
   --nl-page-padding-right: calc(var(--nl-page-gutter) + env(safe-area-inset-right, 0px));
-  --nl-header-height: 66px;
+  // The 66px top bar is phones only; from 600px up the navigation is the
+  // vertical rail on the left (user 2026-11-13), and pages step in by it.
+  --nl-header-height: 0px;
   --nl-header-safe-height: calc(var(--nl-header-height) + env(safe-area-inset-top, 0px));
+  --nl-rail-width: 72px;
 
   // ---- Figma variables, named as in Figma (Blue/100 → --blue-100) ----
   --blue-100: #ffffff; // the base surface; text and icons on saturated fills
@@ -149,7 +152,7 @@
 }
 
 @media (max-width: 599.98px) {
-  :root { --nl-page-gutter: 20px; }
+  :root { --nl-page-gutter: 20px; --nl-header-height: 66px; --nl-rail-width: 0px; }
 }
 
 html {
@@ -261,28 +264,40 @@ strong,
 .nl-body-12,
 .text-caption { font-size: 12px; line-height: 16px; letter-spacing: 0; }
 
-// Tables (guide p. 6, 13): cells in body colour, never black; headers in
-// the overline style, secondary colour (clean-up list #4)
+// Tables: every q-table (admin, platform) looks like the standard table,
+// components/StandardTable.vue (user 2026-11-13, see DESIGN_RULES.md
+// "Standard table"): no frame and no head surface, heads 12px SemiBold
+// uppercase Text/100, values Text/200, a dashed Blue/700 line under every
+// row, rows 59px like a Ship forms Crew details row, text centred vertically.
 .q-table {
-  color: var(--nl-g-body);
+  color: var(--text-200);
 }
 .q-table thead th {
-  color: var(--nl-g-secondary);
+  color: var(--text-100);
   font-size: 12px;
   line-height: 16px;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.72px;
   text-transform: uppercase;
+  vertical-align: bottom;
 }
 .q-table thead tr,
 .q-table thead th {
-  background: var(--nl-g-subtle);
+  background: transparent;
 }
 .q-table--bordered,
 .q-table__card {
-  border-color: var(--nl-g-line-white);
+  border: 0;
+  box-shadow: none;
+}
+.q-table thead th,
+.q-table tbody td {
+  border-style: dashed;
+  border-color: var(--blue-700);
+  border-width: 0 0 1px;
 }
 .q-table tbody td {
-  border-color: var(--nl-g-line-row); // rows of the same kind: the lightest stroke
+  height: 59px;
+  vertical-align: middle;
 }
 .q-item {
   color: var(--nl-g-body);
@@ -975,3 +990,16 @@ body .q-field__marginal .q-icon[class*='text-grey'] {
 }
 
 // Missing-data states are informational StatusPill components (user redesign).
+
+// Clearable fields (user 2026-11-13): every editable field has an × on its
+// right that empties it (boot/clearable-fields.ts), shown while the pointer
+// is over the field, or while the field or the × has the focus (keyboard,
+// touch). Read-only and disabled fields have none.
+.q-field .q-field__focusable-action {
+  opacity: 0;
+}
+.q-field:hover .q-field__focusable-action,
+.q-field--focused .q-field__focusable-action,
+.q-field .q-field__focusable-action:focus-visible {
+  opacity: 1;
+}

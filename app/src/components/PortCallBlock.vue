@@ -31,16 +31,32 @@
             <div class="chead__port-name">{{ call.portName ?? call.portLocode ?? '—' }}</div>
             <div class="chead__route tnum">{{ placeLine }}</div>
           </div>
-          <div class="chead__time chead__time--eta tnum">
+          <!-- The ETA and ETD open their own pop-up (user 2026-11-13): changed
+               there and sent to NEMO without opening the port call -->
+          <component
+            :is="timeEditable('eta') ? 'button' : 'div'"
+            class="chead__time chead__time--eta tnum"
+            :class="{ 'chead__time--edit': timeEditable('eta') }"
+            v-bind="timeEditable('eta') ? timeButtonAttrs('eta') : {}"
+            v-on="timeEditable('eta') ? timeButtonEvents('eta') : {}"
+          >
             <span class="chead__time-tag">{{ call.ata ? 'ATA' : 'ETA' }}</span>
-            <div>{{ datePart(call.ata ?? call.eta) }}</div>
-            <div>{{ timePart(call.ata ?? call.eta) }}<span v-if="call.ata" class="chead__actual"> actual</span></div>
-          </div>
-          <div class="chead__time chead__time--etd tnum">
+            <div><span class="chead__time-value">{{ datePart(call.ata ?? call.eta) }}</span></div>
+            <div><span class="chead__time-value">{{ timePart(call.ata ?? call.eta) }}</span><span v-if="call.ata" class="chead__actual"> actual</span></div>
+            <q-tooltip v-if="timeEditable('eta')">Change the ETA</q-tooltip>
+          </component>
+          <component
+            :is="timeEditable('etd') ? 'button' : 'div'"
+            class="chead__time chead__time--etd tnum"
+            :class="{ 'chead__time--edit': timeEditable('etd') }"
+            v-bind="timeEditable('etd') ? timeButtonAttrs('etd') : {}"
+            v-on="timeEditable('etd') ? timeButtonEvents('etd') : {}"
+          >
             <span class="chead__time-tag">{{ call.atd ? 'ATD' : 'ETD' }}</span>
-            <div>{{ datePart(call.atd ?? call.etd) }}</div>
-            <div>{{ timePart(call.atd ?? call.etd) }}<span v-if="call.atd" class="chead__actual"> actual</span></div>
-          </div>
+            <div><span class="chead__time-value">{{ datePart(call.atd ?? call.etd) }}</span></div>
+            <div><span class="chead__time-value">{{ timePart(call.atd ?? call.etd) }}</span><span v-if="call.atd" class="chead__actual"> actual</span></div>
+            <q-tooltip v-if="timeEditable('etd')">Change the ETD</q-tooltip>
+          </component>
           <!-- The reports, in flow order; a chip with a wizard opens it -->
           <div class="chead__reports">
             <!-- Not in NEMO yet: the VID alone, yellow — the next thing to do,
@@ -166,13 +182,21 @@
             <div class="chead__fact">
               <dt>{{ call.ata ? 'ATA' : 'ETA' }}</dt>
               <dd class="chead__fact-time tnum">
-                <span>{{ datePart(call.ata ?? call.eta) }}</span><span>{{ timePart(call.ata ?? call.eta) }}</span>
+                <button v-if="timeEditable('eta')" class="chead__fact-edit" v-bind="timeButtonAttrs('eta')" v-on="timeButtonEvents('eta')">
+                  <span>{{ datePart(call.eta) }}</span><span>{{ timePart(call.eta) }}</span>
+                  <q-tooltip>Change the ETA</q-tooltip>
+                </button>
+                <template v-else><span>{{ datePart(call.ata ?? call.eta) }}</span><span>{{ timePart(call.ata ?? call.eta) }}</span></template>
               </dd>
             </div>
             <div class="chead__fact">
               <dt>{{ call.atd ? 'ATD' : 'ETD' }}</dt>
               <dd class="chead__fact-time tnum">
-                <span>{{ datePart(call.atd ?? call.etd) }}</span><span>{{ timePart(call.atd ?? call.etd) }}</span>
+                <button v-if="timeEditable('etd')" class="chead__fact-edit" v-bind="timeButtonAttrs('etd')" v-on="timeButtonEvents('etd')">
+                  <span>{{ datePart(call.etd) }}</span><span>{{ timePart(call.etd) }}</span>
+                  <q-tooltip>Change the ETD</q-tooltip>
+                </button>
+                <template v-else><span>{{ datePart(call.atd ?? call.etd) }}</span><span>{{ timePart(call.atd ?? call.etd) }}</span></template>
               </dd>
             </div>
           </dl>
@@ -233,6 +257,7 @@
     @upload="openFormsWizard"
     @remove="askRemoveDoc"
     @edit="emit('edit', call)"
+    @schedule="openSchedule"
     @cancel="emit('cancel', call)"
   >
     <template #badges>
@@ -453,31 +478,20 @@
                 (list cut off — the full file is kept)
               </template>
             </div>
-            <div class="doc-table-wrap">
-              <table class="doc-table">
-                <thead>
-                  <tr>
-                    <th v-for="col in detailColumns" :key="col">
-                      {{ fieldWords(col) }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(row, i) in docDetail.parsed.form.rows" :key="i">
-                    <td v-for="col in detailColumns" :key="col" class="tnum">
-                      <span
-                        v-if="marked(`rows.${i}.${col}`)"
-                        :class="markClasses(`rows.${i}.${col}`)"
-                        role="button"
-                        tabindex="0"
-                        @click="openAnn(`rows.${i}.${col}`, fieldWords(col), row[col] ?? '')"
-                      >{{ displayVal(`rows.${i}.${col}`, row[col] ?? '') }}</span>
-                      <template v-else>{{ row[col] ?? '' }}</template>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <!-- The form's rows in the standard table (user 2026-11-13) -->
+            <StandardTable :columns="docTableColumns" :rows="docTableRows">
+              <template #cell="{ column, index }">
+                <StandardCell
+                  v-if="marked(`rows.${index}.${column.key}`)"
+                  :state="annState(`rows.${index}.${column.key}`)"
+                  :label="`Check ${column.label}`"
+                  @open="openAnn(`rows.${index}.${column.key}`, column.label, docRow(index)[column.key] ?? '')"
+                >
+                  <div class="st-line tnum">{{ displayVal(`rows.${index}.${column.key}`, docRow(index)[column.key] ?? '') }}</div>
+                </StandardCell>
+                <div v-else class="st-line tnum doc-table-value">{{ docRow(index)[column.key] ?? '' }}</div>
+              </template>
+            </StandardTable>
           </template>
         </template>
         <div v-else class="text-body2 text-grey-8">
@@ -524,6 +538,7 @@
     @sent="emit('changed')"
     @completed="completeSection($event === 'ship' ? 'ship-data' : 'nemo')"
     @edit-call="emit('edit', call)"
+    @edit-schedule="openSchedule('eta')"
   />
   <!-- The NOA wizard (spec 0088): the facts, then the confirmation and the send -->
   <NoaWizardDialog
@@ -625,6 +640,14 @@
     @completed="completeSection($event)"
     @open="openFirstStep"
   />
+  <!-- The ETA and ETD on their own (user 2026-11-13) -->
+  <ScheduleEditDialog
+    v-if="scheduleOpen"
+    v-model="scheduleOpen"
+    :call="call"
+    :focus="scheduleFocus"
+    @changed="emit('changed')"
+  />
   </div>
 </template>
 
@@ -689,11 +712,14 @@ import CorrectionDialog, { type CorrectionTarget } from './CorrectionDialog.vue'
 import FormalityItems from './FormalityItems.vue';
 import ReportChip from './ReportChip.vue';
 import StatusPill, { type PillTone } from './StatusPill.vue';
+import StandardTable, { type StandardTableColumn, type StandardTableRow } from './StandardTable.vue';
+import StandardCell, { type StandardCellState } from './StandardCell.vue';
 import NemoWizardDialog from './NemoWizardDialog.vue';
 import NoaWizardDialog from './NoaWizardDialog.vue';
 import ReportDialog from './ReportDialog.vue';
 import FormsWizardDialog from './FormsWizardDialog.vue';
 import ActualSheet from './ActualSheet.vue';
+import ScheduleEditDialog from './ScheduleEditDialog.vue';
 import processExpandMore from '../assets/figma/process-expand-more.svg';
 import NodDialog from './NodDialog.vue';
 
@@ -1225,6 +1251,39 @@ async function loadAreaName(): Promise<void> {
   }
 }
 
+// ---- the ETA / ETD pop-up (user 2026-11-13) ----------------------------------
+
+const scheduleOpen = ref(false);
+const scheduleFocus = ref<'eta' | 'etd'>('eta');
+function openSchedule(which: 'eta' | 'etd' = 'eta'): void {
+  scheduleFocus.value = which;
+  scheduleOpen.value = true;
+}
+/** A planned time an admin may change: not after it happened, not on a cancelled call. */
+function timeEditable(which: 'eta' | 'etd'): boolean {
+  if (!props.canEdit || props.captain || props.call.status === 'cancelled') return false;
+  return which === 'eta' ? !props.call.ata : !props.call.atd;
+}
+/** The time as a button inside the row button: its own click, not the row's. */
+function timeButtonAttrs(which: 'eta' | 'etd'): Record<string, string> {
+  const value = which === 'eta' ? props.call.eta : props.call.etd;
+  return {
+    type: 'button',
+    'aria-label': `${which.toUpperCase()} ${value ? fmtSchedule(isoToLocalInput(value)) : 'not set'} — change it`,
+  };
+}
+function timeButtonEvents(which: 'eta' | 'etd'): Record<string, (e: Event) => void> {
+  const stop = (e: Event) => e.stopPropagation();
+  return {
+    click: (e: Event) => {
+      e.stopPropagation();
+      openSchedule(which);
+    },
+    keydown: stop,
+    keyup: stop,
+  };
+}
+
 // ---- times in place --------------------------------------------------------
 
 interface Draft {
@@ -1623,6 +1682,19 @@ function onCorrected(result: Awaited<ReturnType<typeof auth.correctCallDocument>
   }
 }
 
+/** The form's rows as the standard table: its columns in words, one row per line. */
+const docTableColumns = computed<StandardTableColumn[]>(() =>
+  detailColumns.value.map((col) => ({ key: col, label: fieldWords(col) })),
+);
+const docTableRows = computed<StandardTableRow[]>(() =>
+  (docDetail.value?.parsed?.form?.rows ?? []).map((_, i) => ({ key: String(i), label: '' })),
+);
+const docRow = (i: number): Record<string, string | undefined> =>
+  (docDetail.value?.parsed?.form?.rows?.[i] ?? {}) as Record<string, string | undefined>;
+function annState(path: string): StandardCellState {
+  const severity = annOf(path)?.severity;
+  return severity === 'error' ? 'error' : severity === 'warning' ? 'warning' : null;
+}
 const detailColumns = computed<string[]>(() => {
   const rows = docDetail.value?.parsed?.form?.rows ?? [];
   const cols: string[] = [];
@@ -2030,6 +2102,37 @@ function onShow(): void {
 }
 .chead__time--etd {
   grid-area: etd;
+}
+/* A planned time that opens its pop-up (user 2026-11-13): the cell as it
+   was, its date and time underlined as the app's other links; no hover
+   change (the hover states are designed later) */
+.chead__time--edit,
+.chead__fact-edit {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+.chead__fact-edit {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
+}
+.chead__time--edit .chead__time-value,
+.chead__fact-edit > span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.chead__time--edit:focus-visible,
+.chead__fact-edit:focus-visible {
+  outline: 2px solid var(--nl-g-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 /* The column head says ETA/ETD; the tag shows only when the heads are gone */
 .chead__time-tag {
@@ -2759,28 +2862,9 @@ function onShow(): void {
   font-size: 14px;
   overflow-wrap: anywhere;
 }
-.doc-table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--nl-line);
-  border-radius: 8px;
-}
-.doc-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 12px;
-}
-.doc-table th {
-  text-align: left;
-  font-weight: 600;
-  color: var(--nl-ink-2);
-  background: var(--nl-gray-bg);
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-.doc-table td {
-  padding: 5px 10px;
-  border-top: 1px solid var(--nl-line);
-  white-space: nowrap;
+/* Document rows: the standard table's values, Text/200 */
+.doc-table-value {
+  color: var(--text-200);
 }
 /* Fintraffic's guide beside the report title (spec 0087) */
 .rep-guide {

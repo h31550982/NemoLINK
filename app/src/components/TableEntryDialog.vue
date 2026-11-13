@@ -148,7 +148,9 @@ let firstPage: { label: string; value: string }[] = [];
 const externals = computed(() => {
   const c = props.target?.cell;
   if (!c) return [];
-  const own = c.source && !c.entered && c.value ? [{ value: c.value, source: `${c.source.formName} · ${c.source.fileName}` }] : [];
+  const own = c.source && !c.entered && c.value
+    ? [{ value: c.value, source: `${c.source.formName} · ${c.source.fileName}` }]
+    : c.origin && !c.entered && c.value ? [{ value: c.value, source: c.origin }] : [];
   return [...own, ...(c.others ?? []).map((o) => ({ value: o.value, source: o.fileName }))];
 });
 
@@ -176,7 +178,7 @@ const problem = computed(() => tableValueProblem(props.target?.column.kind, edit
 const choices = computed(() => {
   const c = props.target?.cell;
   if (!c?.others?.length) return [];
-  const own = c.value ? [{ value: c.value, from: c.entered ? 'typed' : (c.source?.fileName ?? '') }] : [];
+  const own = c.value ? [{ value: c.value, from: c.entered ? 'typed' : (c.source?.fileName ?? c.origin ?? '') }] : [];
   return [...own, ...c.others.map((o) => ({ value: o.value, from: o.fileName }))];
 });
 

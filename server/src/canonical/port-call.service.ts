@@ -42,6 +42,8 @@ import { TenantDb } from '../tenancy/tenant-db';
 import { agentFromData } from '../admin/org.service';
 import { resolveShip } from './ship-resolve';
 import { nemoSnapshotOf } from './ship-nemo';
+import { firstScheduleProblem, scheduleProblems } from './schedule-rules';
+import { onlyPlace, type Place } from './only-place';
 import { aliasFor } from '../refdata/location-aliases';
 import {
   nemoStatus,
@@ -430,6 +432,8 @@ export class PortCallService {
           envelope.sourceSystem,
         ],
       );
+      // A plan does not name the place: the port's only area and berth are taken
+      await this.fillOnlyPlace(client, inserted.rows[0]!.id);
       return {
         action: 'created',
         portCallId: inserted.rows[0]!.id,
@@ -491,6 +495,7 @@ export class PortCallService {
         JSON.stringify(purposes),
       ],
     );
+    await this.fillOnlyPlace(client, row.id);
     return {
       action: 'plan_updated',
       portCallId: row.id,
@@ -706,6 +711,43 @@ export class PortCallService {
     };
   }
 
+  /** The port's published areas with their berths (0048); none for an unknown port. */
+  private async areasOf(client: PoolClient, locode: string | null | undefined): Promise<PortAreaOption[]> {
+    if (!locode) return [];
+    const row = await client.query(
+      `SELECT data->'portAreas' AS areas FROM platform.location
+        WHERE locode = $1 AND is_active LIMIT 1`,
+      [locode],
+    );
+    return mapPortAreas(row?.rows?.[0]?.areas);
+  }
+
+  /** The area and berth with their only choice filled in (user 2026-11-13); a set value stands. */
+  private async placeFor(client: PoolClient, locode: string | null | undefined, place: Place): Promise<Place> {
+    if (place.portAreaCode && place.berth) return place;
+    return onlyPlace(await this.areasOf(client, locode), place);
+  }
+
+  /**
+   * After a write that does not name the place (a source's plan): an empty
+   * area or berth with one choice is filled. A value already there stands.
+   */
+  private async fillOnlyPlace(client: PoolClient, portCallId: string): Promise<void> {
+    const found = await client.query<{ port_locode: string | null; port_area_code: string | null; berth: string | null }>(
+      `SELECT port_locode, port_area_code, berth FROM port_call WHERE id = $1`,
+      [portCallId],
+    );
+    const row = found?.rows?.[0];
+    if (!row || (row.port_area_code && row.berth)) return;
+    const place = await this.placeFor(client, row.port_locode, { portAreaCode: row.port_area_code, berth: row.berth });
+    if (place.portAreaCode === row.port_area_code && place.berth === row.berth) return;
+    await client.query(`UPDATE port_call SET port_area_code = $2, berth = $3 WHERE id = $1`, [
+      portCallId,
+      place.portAreaCode,
+      place.berth,
+    ]);
+  }
+
   // ---- reads ---------------------------------------------------------------
 
   /**
@@ -907,10 +949,17 @@ export class PortCallService {
         [input.shipId],
       );
       if (ship.rowCount === 0) throw new NotFoundException('Unknown ship');
+      const timeProblem = firstScheduleProblem({ eta: input.eta ?? null, etd: input.etd ?? null });
+      if (timeProblem) throw new BadRequestException(timeProblem);
       const itinerary: Itinerary = {
         ...(input.prevPorts ? { prev: input.prevPorts } : {}),
         ...(input.nextPorts ? { next: input.nextPorts } : {}),
       };
+      // Only one area, or one berth in the area: it is picked (user 2026-11-13)
+      const place = await this.placeFor(client, input.portLocode, {
+        portAreaCode: input.portAreaCode ?? null,
+        berth: input.berth ?? null,
+      });
       const data = {
         ...(input.prevPorts || input.nextPorts ? { itinerary } : {}),
         ...(input.cargoItems && input.cargoItems.length > 0
@@ -932,8 +981,8 @@ export class PortCallService {
           input.cargoDescription ?? null,
           JSON.stringify(data),
           user.username,
-          input.portAreaCode ?? null,
-          input.berth ?? null,
+          place.portAreaCode,
+          place.berth,
         ],
       );
       const id = inserted.rows[0]!.id;
@@ -947,8 +996,8 @@ export class PortCallService {
             manual: true,
             shipId: input.shipId,
             portLocode: input.portLocode,
-            portAreaCode: input.portAreaCode ?? null,
-            berth: input.berth ?? null,
+            portAreaCode: place.portAreaCode,
+            berth: place.berth,
             eta: input.eta ?? null,
             etd: input.etd ?? null,
             voyageNumber: input.voyageNumber ?? null,
@@ -999,6 +1048,48 @@ export class PortCallService {
            FROM port_call WHERE id = $1`,
         [portCallId],
       );
+      // The times as they would be after the edit, checked as every send checks
+      // them (user 2026-11-13) — only the ones this edit touches, so an older
+      // call's other fields stay editable
+      {
+        const was = beforeRow.rows[0] as Record<string, Date | null> | undefined;
+        const iso = (d: Date | null | undefined): string | null => (d ? d.toISOString() : null);
+        const after = {
+          eta: 'eta' in input ? (input.eta ?? null) : iso(was?.['eta']),
+          etd: 'etd' in input ? (input.etd ?? null) : iso(was?.['etd']),
+          ata: 'ata' in input ? (input.ata ?? null) : iso(was?.['ata']),
+          atd: 'atd' in input ? (input.atd ?? null) : iso(was?.['atd']),
+        };
+        const p = scheduleProblems(after);
+        const touched = (k: string) => k in input;
+        const problem =
+          (touched('eta') && p.eta) ||
+          ((touched('eta') || touched('etd')) && p.etd) ||
+          (touched('ata') && p.ata) ||
+          ((touched('ata') || touched('atd')) && p.atd) ||
+          null;
+        if (problem) throw new BadRequestException(problem);
+      }
+      // The place (user 2026-11-13): an area or berth this edit leaves alone
+      // and that is empty takes the port's only choice; a value stands
+      if (!('portAreaCode' in input) || !('berth' in input)) {
+        const was = beforeRow.rows[0] as
+          | { port_locode: string | null; port_area_code: string | null; berth: string | null }
+          | undefined;
+        const now: Place = {
+          portAreaCode: 'portAreaCode' in input ? (input.portAreaCode ?? null) : (was?.port_area_code ?? null),
+          berth: 'berth' in input ? (input.berth ?? null) : (was?.berth ?? null),
+        };
+        const locode = 'portLocode' in input ? input.portLocode : was?.port_locode;
+        const place = await this.placeFor(client, locode, now);
+        if (!('portAreaCode' in input) && place.portAreaCode !== now.portAreaCode) {
+          input = { ...input, portAreaCode: place.portAreaCode };
+        }
+        const areaAfter = 'portAreaCode' in input ? (input.portAreaCode ?? null) : now.portAreaCode;
+        if (!('berth' in input) && place.berth !== now.berth && areaAfter && areaAfter === place.portAreaCode) {
+          input = { ...input, berth: place.berth };
+        }
+      }
       // Itinerary edits replace the touched array; null clears it. Computed
       // from the locked row (spec 0037).
       const itineraryChange = 'prevPorts' in input || 'nextPorts' in input;

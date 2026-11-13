@@ -6,9 +6,10 @@
        On a phone each row is a card: the name and code on top, then one line
        per source with its dot, the NEMOLink line and the To NEMO line
        (spec 0092); agreeing rows fold to one line each. -->
-  <div ref="rootEl" class="fl" :class="{ 'fl--cards': compact, 'fl--code-hover': codeOnHover && !compact }">
-    <!-- All details: count-first filters (tap to filter, concept §3.5) -->
-    <!-- The facts' tab bar on every width (user 2026-11-07) -->
+  <div ref="rootEl" class="fl" :class="{ 'fl--cards': compact }">
+    <!-- Phones: count-first filters (tap to filter, concept §3.5). Desktop
+         has no separate Missing list (user 2026-11-13): the standard table
+         below, a missing value typed right in its cell -->
     <div v-if="filterBar" class="fl-filters" role="group" aria-label="Show">
       <button
         v-for="f in filters"
@@ -24,15 +25,99 @@
         <span><span class="tnum">{{ f.count || (f.key === 'missing' ? 0 : '–') }}</span> {{ f.words }}</span>
       </button>
     </div>
-    <div v-if="shown.length && !compact" class="fl-row fl-head">
-      <span>Field</span>
-      <template v-if="!codeOnHover">
-        <span class="prov-head prov-head--ext">External</span>
-        <span class="prov-head prov-head--nl">NEMOLink</span>
+    <!-- Desktop: the standard table (StandardTable, user 2026-11-13), as
+         Ship forms — Field · To NEMO · From; missing values in the
+         missing-field orange, tapped and typed in place -->
+    <StandardTable
+      v-if="!compact && shown.length"
+      fixed
+      row-head="Field"
+      :row-head-width="290"
+      :columns="columns"
+      :rows="tableRows"
+    >
+      <!-- The place in the port, together: the port, then its area and berth -->
+      <template #group>
+        <div class="fl-group">
+          <q-icon name="place" size="16px" />
+          <span>Port <b>{{ portWords }}</b></span>
+          <span class="fl-meta">— the area and berth come from its list; a berth sets its area</span>
+        </div>
       </template>
-      <span class="prov-head prov-head--nemo" :class="{ 'prov-lane': !codeOnHover }">To NEMO</span>
-      <span>{{ codeOnHover ? 'From' : 'NEMO code' }}</span>
-    </div>
+      <template #cell="{ row, column }">
+        <template v-if="column.key === 'toNemo'">
+          <StandardCell
+            :state="stateOf(rowOf(row.key))"
+            :interactive="tappable(rowOf(row.key))"
+            :editing="editingDesk(rowOf(row.key))"
+            :label="`${rowOf(row.key).ok ? 'Edit' : 'Fill'} ${row.label}`"
+            @open="openRow(rowOf(row.key))"
+          >
+            <div v-if="rowOf(row.key).ok" class="st-line tnum fl-value">{{ words(rowOf(row.key), rowOf(row.key).toNemo) }}</div>
+            <div v-else class="st-line fl-value fl-value--missing">missing</div>
+            <div v-if="rowOf(row.key).problem" class="st-line fl-note">{{ rowOf(row.key).problem }}</div>
+            <div v-else-if="rowOf(row.key).ok && rowOf(row.key).differs" class="st-line fl-note">the sources disagree — check</div>
+            <template #editor>
+              <div class="fl-edit" :data-edit-key="row.key" @keydown.esc.stop.prevent="cancelEdit(rowOf(row.key))">
+                <q-option-group
+                  v-if="rowOf(row.key).codelist && fewChoices(rowOf(row.key))"
+                  :model-value="draftOf(rowOf(row.key))"
+                  :options="choicesFor(rowOf(row.key))"
+                  type="radio" inline color="primary"
+                  class="fl-choice"
+                  :disable="busyKey === row.key"
+                  @update:model-value="(v: unknown) => save(rowOf(row.key), v)"
+                />
+                <q-select
+                  v-else-if="rowOf(row.key).codelist"
+                  :model-value="draftOf(rowOf(row.key))"
+                  :options="optionsFor(rowOf(row.key))"
+                  emit-value map-options dense outlined options-dense
+                  popup-content-class="fl-select-options"
+                  use-input fill-input hide-selected input-debounce="0"
+                  :placeholder="selectPlaceholder(rowOf(row.key))"
+                  :loading="busyKey === row.key"
+                  class="fl-input"
+                  :disable="busyKey === row.key || (isPlace(rowOf(row.key)) && placeOptions(rowOf(row.key)).length === 0)"
+                  @filter="(q: string, update: FilterUpdate, abort: () => void) => (rowOf(row.key).codelist === 'locode' ? filterPorts(rowOf(row.key), q, update, abort) : filter(rowOf(row.key), q, update))"
+                  @update:model-value="(v: unknown) => save(rowOf(row.key), v)"
+                />
+                <q-input
+                  v-else
+                  :model-value="inputOf(rowOf(row.key))"
+                  :type="rowOf(row.key).kind === 'number' ? 'number' : 'text'"
+                  dense outlined
+                  :placeholder="rowOf(row.key).kind === 'date' ? 'dd.mm.yyyy' : placeholderOf(rowOf(row.key))"
+                  :inputmode="rowOf(row.key).kind === 'date' ? 'numeric' : undefined"
+                  :loading="busyKey === row.key"
+                  :disable="busyKey === row.key"
+                  :error="!!typedErrors[row.key]"
+                  :error-message="typedErrors[row.key] ?? undefined"
+                  hide-bottom-space
+                  class="fl-input"
+                  :aria-label="row.label"
+                  @update:model-value="(v: unknown) => { drafts[row.key] = v; typedErrors[row.key] = null; }"
+                  @blur="save(rowOf(row.key), drafts[row.key])"
+                  @keyup.enter="save(rowOf(row.key), drafts[row.key])"
+                />
+              </div>
+            </template>
+          </StandardCell>
+        </template>
+        <template v-else-if="column.key === 'from'">
+          <!-- One line; what does not fit shows on hover (Send to NEMO rule, user 2026-11-06) -->
+          <div v-if="rowOf(row.key).owner === 'callCore' && canEditCall" class="st-line fl-from"
+            >this call — <a href="#" class="fl-link" @click.prevent="emit('edit-call')">Edit details</a></div
+          >
+          <div v-else class="st-line fl-from" :data-clip-key="row.key">{{ fromWords(rowOf(row.key)) }}</div>
+          <q-tooltip v-if="clipped[row.key]" anchor="top middle" self="bottom middle" :offset="[0, 6]">{{ fromWords(rowOf(row.key)) }}</q-tooltip>
+        </template>
+        <div v-else class="st-line tnum fl-code">{{ rowOf(row.key).de ?? '—' }}</div>
+      </template>
+    </StandardTable>
+
+    <!-- Phones: one card per row, as before (the mobile view stays) -->
+    <template v-if="compact">
     <template v-for="r in shown" :key="r.key">
     <!-- The place in the port, together: the port, then its area and berth -->
     <div v-if="r.key === placeHead" class="fl-group">
@@ -53,7 +138,7 @@
         <span :class="{ 'fl-label__hover': codeOnHover && !compact && r.de }">{{ r.label }}</span>
         <q-tooltip v-if="codeOnHover && !compact && r.de" anchor="top middle" self="bottom middle" :offset="[0, 6]">NEMO code {{ r.de }}</q-tooltip>
         <!-- Missing: the tag under the name, on the wide table too (user 2026-11-07) -->
-        <span v-if="!r.ok && (compact || codeOnHover)" class="fl-tag fl-tag--missing">Missing</span>
+        <span v-if="!r.ok && (compact || codeOnHover)" class="fl-tag fl-tag--missing">{{ r.problem ? 'Check' : 'Missing' }}</span>
         <span v-else-if="compact && r.differs" class="fl-tag fl-tag--differs">Sources differ</span>
         <!-- What goes: a green Ready tag under the name (user 2026-11-07,
              was the blue To NEMO tag) -->
@@ -117,11 +202,16 @@
               :model-value="inputOf(r)"
               :type="r.kind === 'number' ? 'number' : 'text'"
               dense outlined
-              :placeholder="placeholderOf(r)"
+              :placeholder="r.kind === 'date' ? 'dd.mm.yyyy' : placeholderOf(r)"
+              :inputmode="r.kind === 'date' ? 'numeric' : undefined"
               :loading="busyKey === r.key"
               :disable="busyKey === r.key"
+              :error="!!typedErrors[r.key]"
+              :error-message="typedErrors[r.key] ?? undefined"
+              hide-bottom-space
               class="fl-input"
-              @update:model-value="(v: unknown) => (drafts[r.key] = v)"
+              :aria-label="r.label"
+              @update:model-value="(v: unknown) => { drafts[r.key] = v; typedErrors[r.key] = null; }"
               @blur="save(r, drafts[r.key])"
               @keyup.enter="save(r, drafts[r.key])"
             >
@@ -157,8 +247,15 @@
           <span v-if="r.differs" class="fl-meta fl-amber">the sources disagree — check</span>
         </template>
         <template v-else>
-          <span class="prov-missing"><q-icon name="error_outline" size="15px" />Missing</span>
-          <span class="prov-note">NEMO requires it</span>
+          <!-- Filled but wrong (user 2026-11-13): the value and what is wrong with it -->
+          <template v-if="r.problem">
+            <span class="tnum prov-value">{{ words(r, r.toNemo) }}</span>
+            <span class="prov-missing"><q-icon name="error_outline" size="15px" />{{ r.problem }}</span>
+          </template>
+          <template v-else>
+            <span class="prov-missing"><q-icon name="error_outline" size="15px" />Missing</span>
+            <span class="prov-note">{{ r.hint ?? 'NEMO requires it' }}</span>
+          </template>
         </template>
       </span>
 
@@ -174,6 +271,7 @@
       </span>
       <span v-if="!codeOnHover || compact" class="fl-cell tnum fl-code" data-col="NEMO code">{{ r.de ?? '—' }}</span>
     </div>
+    </template>
     </template>
 
     <div v-if="hidden > 0 && !hideReady" class="fl-ready">
@@ -196,8 +294,11 @@ import { useAuth, type LedgerRow, type PortAreaOption } from '../auth/auth';
 import { CALL_PURPOSES, SHIP_REGISTRIES, VOYAGE_TYPES } from '../generated/noa-codes';
 import { COUNTRIES } from '../generated/countries';
 import { SHIP_TYPES } from '../generated/ship-types';
+import { ICE_CLASSES } from '../generated/ice-classes';
 import { LANGUAGES, ledgerWords, placeNames, portNames } from '../lib/ledger-words';
-import { fmtWhen } from '../lib/time';
+import { fmtTypedDay, fmtWhen, parseTypedDay } from '../lib/time';
+import StandardTable, { type StandardTableColumn, type StandardTableRow } from './StandardTable.vue';
+import StandardCell, { type StandardCellState } from './StandardCell.vue';
 
 const props = defineProps<{
   rows: LedgerRow[];
@@ -237,7 +338,7 @@ watch(() => props.rows, (rows, previous) => {
   for (const r of rows) {
     const old = before.get(r.key);
     if (r.ok && old && !old.ok && (!props.allDetails || view.value === 'missing')) keep.add(r.key);
-    if (r.ok && old && !sameValue(old.entered, r.entered)) editingKeys.delete(r.key);
+    if (r.ok && old && (!sameValue(old.entered, r.entered) || !sameValue(old.toNemo, r.toNemo))) editingKeys.delete(r.key);
   }
   retained.value = keep;
 });
@@ -249,6 +350,54 @@ async function beginEdit(r: LedgerRow): Promise<void> {
   const row = [...(rootEl.value?.querySelectorAll<HTMLElement>('[data-row-key]') ?? [])]
     .find(el => el.dataset.rowKey === r.key);
   row?.querySelector<HTMLElement>('input, [role="radio"]')?.focus();
+  // A dropdown of the call's own list opens at once; a port is typed first
+  if (!compact.value && r.codelist && r.codelist !== 'locode' && !fewChoices(r)) {
+    row?.querySelector<HTMLElement>('.q-select .q-field__control')?.click();
+  }
+}
+
+// ---- desktop: the standard table (user 2026-11-13) --------------------------
+
+/** Field · To NEMO · From, as Send to NEMO (Figma 500:7424): 278 · 258 · the rest, 12px apart. */
+const columns = computed<StandardTableColumn[]>(() => [
+  { key: 'toNemo', label: 'To NEMO', width: 270 },
+  { key: 'from', label: 'From' },
+  ...(props.codeOnHover ? [] : [{ key: 'code', label: 'NEMO code', width: 140 }]),
+]);
+const rowByKey = computed(() => new Map(props.rows.map((r) => [r.key, r])));
+const rowOf = (key: string): LedgerRow => rowByKey.value.get(key)!;
+const tableRows = computed<StandardTableRow[]>(() =>
+  shown.value.map((r) => ({ key: r.key, label: r.label, code: r.de, group: r.key === placeHead.value ? 'place' : null })),
+);
+function stateOf(r: LedgerRow): StandardCellState {
+  if (!r.ok) return 'missing';
+  return r.problem || r.differs ? 'warning' : null;
+}
+/** A value typed here, or the call's own (its Edit port call pop-up). */
+const tappable = (r: LedgerRow): boolean => r.editable || (r.owner === 'callCore' && !!props.canEditCall);
+/** Desktop: a cell holds its field only once tapped. */
+const editingDesk = (r: LedgerRow): boolean => r.editable && editingKeys.has(r.key);
+function openRow(r: LedgerRow): void {
+  if (props.busyKey) return;
+  if (r.editable) void beginEdit(r);
+  else if (r.owner === 'callCore' && props.canEditCall) emit('edit-call');
+}
+/** Esc, or a tap elsewhere on an untouched dropdown: the cell as it was. */
+function cancelEdit(r: LedgerRow): void {
+  drafts[r.key] = firstOf(valueOf(r));
+  editingKeys.delete(r.key);
+}
+function leaveEditing(event: Event): void {
+  if (compact.value || !editingKeys.size || !(event.target instanceof Element)) return;
+  if (event.target.closest('.fl-select-options, .q-menu')) return;
+  for (const key of [...editingKeys]) {
+    const r = rowByKey.value.get(key);
+    // A typed field saves on its blur; only choices are put back here
+    if (!r?.codelist) continue;
+    const cell = rootEl.value?.querySelector<HTMLElement>(`[data-edit-key="${CSS.escape(key)}"]`);
+    if (cell?.contains(event.target)) continue;
+    cancelEdit(r);
+  }
 }
 
 /** Area and berth are one decision: when one shows, both do. */
@@ -307,7 +456,7 @@ watch(usable, (list) => {
 });
 /** The filter bar, on every width with All details (user 2026-11-07):
     opens on Missing, so the missing fields get filled first. */
-const filterBar = computed(() => props.allDetails && props.rows.length > 0);
+const filterBar = computed(() => compact.value && props.allDetails && props.rows.length > 0);
 /** A value entered here that replaces a source's: said on hover over the field. */
 const overrides = (r: LedgerRow): boolean => r.entered !== null && r.externals.length > 0;
 const shown = computed(() => (filterBar.value ? visible.value.filter(r => TESTS[view.value](r) || (view.value === 'missing' && retained.value.has(r.key))) : visible.value));
@@ -340,18 +489,28 @@ onMounted(() => {
   window.addEventListener('resize', measureClips);
   document.addEventListener('pointerdown', leaveCompletedMissing);
   document.addEventListener('focusin', leaveCompletedMissing);
+  document.addEventListener('pointerdown', leaveEditing);
 });
 onUpdated(measureClips);
 onBeforeUnmount(() => {
   window.removeEventListener('resize', measureClips);
   document.removeEventListener('pointerdown', leaveCompletedMissing);
   document.removeEventListener('focusin', leaveCompletedMissing);
+  document.removeEventListener('pointerdown', leaveEditing);
 });
 
 /** The From column of the VID-style table: the call, here, or the source. */
 function fromWords(r: LedgerRow): string {
   if (r.owner === 'callCore') return 'this call';
-  if (!r.ok && r.editable) return 'enter it here';
+  // Says where a value typed here is kept (user 2026-11-13): the ship's own
+  // data and the organisation settings serve every later report too
+  if (!r.ok && r.editable) {
+    // Filled by a form not uploaded yet (user 2026-11-13): said before typing
+    if (r.hint) return r.hint;
+    if (r.owner === 'ship') return 'enter it here — saved to the ship data';
+    if (r.owner === 'org') return 'enter it here — saved to organisation settings';
+    return 'enter it here';
+  }
   return sourceOf(r) || '—';
 }
 
@@ -364,6 +523,8 @@ function sourceOf(r: LedgerRow): string {
 }
 
 type Option = { label: string; value: string };
+const YES_NO_CODES = [{ code: 'yes', name: 'Yes' }, { code: 'no', name: 'No' }];
+const YES_NO: Option[] = YES_NO_CODES.map((c) => ({ label: c.name, value: c.code }));
 const toOptions = (list: { code: string; name: string }[]): Option[] =>
   list.map((c) => ({ label: `${c.name} (${c.code})`, value: c.code }));
 const ALL: Record<string, Option[]> = {
@@ -373,10 +534,12 @@ const ALL: Record<string, Option[]> = {
   registry: toOptions(SHIP_REGISTRIES),
   shipType: toOptions(SHIP_TYPES),
   language: toOptions(LANGUAGES),
+  iceClass: toOptions(ICE_CLASSES),
+  yesNo: YES_NO,
 };
 /** The buttons carry the name alone; the code shows in To NEMO. */
 function choicesFor(r: LedgerRow): Option[] {
-  const list: Record<string, { code: string; name: string }[]> = { voyage: VOYAGE_TYPES, language: LANGUAGES };
+  const list: Record<string, { code: string; name: string }[]> = { voyage: VOYAGE_TYPES, language: LANGUAGES, yesNo: YES_NO_CODES };
   return (list[r.codelist ?? ''] ?? []).map((c) => ({ label: c.name, value: c.code }));
 }
 /** Four or fewer choices render as buttons (voyage type: International / National). */
@@ -442,6 +605,27 @@ function selectPlaceholder(r: LedgerRow): string {
 }
 
 /**
+ * One choice is no choice (user 2026-11-13): an empty area or berth whose
+ * list holds a single entry is saved at once, and the row stays on screen
+ * with the pick. The area goes first; its save brings the area's only berth.
+ * Each pick is tried once, so a refused save does not repeat.
+ */
+const autoPicked = new Set<string>();
+watch([areas, () => props.rows], () => {
+  if (props.busyKey || areas.value.length === 0) return;
+  for (const r of props.rows) {
+    if (!isPlace(r) || !r.editable || r.ok || r.problem) continue;
+    const only = placeOptions(r);
+    if (only.length !== 1) continue;
+    const once = `${props.portLocode ?? ''}|${r.key}|${only[0]!.value}`;
+    if (autoPicked.has(once)) continue;
+    autoPicked.add(once);
+    save(r, only[0]!.value);
+    return;
+  }
+});
+
+/**
  * Ports come from our port list (platform.location, worldwide, spec 0051):
  * a lookup from two letters, by name or UN/LOCODE.
  */
@@ -490,14 +674,26 @@ function valueOf(r: LedgerRow): unknown {
   return r.owner === 'callCore' ? r.toNemo : r.entered;
 }
 function firstOf(v: unknown): unknown {
-  return Array.isArray(v) ? (v[0] ?? null) : v;
+  const one = Array.isArray(v) ? (v[0] ?? null) : v;
+  // An ice class record is picked by its code; yes / no by its word
+  if (one && typeof one === 'object' && typeof (one as { code?: unknown }).code === 'string') return (one as { code: string }).code;
+  if (typeof one === 'boolean') return one ? 'yes' : 'no';
+  return one;
 }
+/** A typed value that cannot be taken, by row (a day that is not one). */
+const typedErrors = reactive<Record<string, string | null>>({});
+const todayIso = (): string => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
 function draftOf(r: LedgerRow): unknown {
   return drafts[r.key] ?? null;
 }
 /** The text box's value: a string or a number, empty as null. */
 function inputOf(r: LedgerRow): string | number | null {
   const v = drafts[r.key];
+  // A day kept as YYYY-MM-DD reads as typed, 24.11.2026
+  if (r.kind === 'date' && typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v)) return fmtTypedDay(v);
   return typeof v === 'number' || typeof v === 'string' ? v : null;
 }
 function placeholderOf(r: LedgerRow): string {
@@ -515,12 +711,23 @@ function norm(r: LedgerRow, v: unknown): string | number | null {
 }
 function save(r: LedgerRow, v: unknown): void {
   if (props.busyKey === r.key) return;
+  // A day as people type it (24.11.2026, 24.11., 24 Nov 2026) goes as YYYY-MM-DD
+  if (r.kind === 'date' && v !== null && v !== undefined && String(v).trim() !== '') {
+    const day = parseTypedDay(String(v), todayIso());
+    if (!day) {
+      typedErrors[r.key] = 'Type the day as dd.mm.yyyy, e.g. 24.11.2026';
+      return;
+    }
+    v = day;
+  }
+  typedErrors[r.key] = null;
   const next = norm(r, v);
   // The berth list follows the area at once; the server clears a berth outside it
   if (r.codelist === 'portArea') drafts[r.key] = next;
   const current = norm(r, firstOf(editingKeys.has(r.key) && r.entered === null ? r.toNemo : valueOf(r)));
   if (next === current) {
-    if (r.ok) editingKeys.delete(r.key);
+    // Desktop: nothing changed puts the cell back, filled or still missing
+    if (r.ok || !compact.value) editingKeys.delete(r.key);
     return;
   }
   emit('save', r.key, next);
@@ -562,107 +769,37 @@ function words(r: LedgerRow, v: unknown): string {
 .fl-row--missing {
   background: var(--nl-red-bg);
 }
-/* The Send to NEMO VID table (Figma 500:7424, components 500:7353):
-   Field 278 · To NEMO 258 · From; 12px gaps, rows at least 48px between
-   dashed Blue/700 lines; the To NEMO value in its Blue/150 box with the
-   3px Blue/800 bar, SemiBold at its top. A missing value is typed right in
-   that box, which turns orange (missing). External and NEMOLink stay out. */
-.fl--code-hover .fl-row {
-  grid-template-columns: 278px 258px minmax(0, 1fr);
-  gap: 12px;
-  padding: 6px 0 5px;
-  /* Every cell's text in the middle of the cell (user 2026-11-06) */
-  align-items: stretch;
-  border-top: 0;
-  border-bottom: 1px dashed var(--blue-700);
-}
-.fl--code-hover .fl-row:not(.fl-head) {
-  min-height: 48px;
-}
-.fl--code-hover .fl-row--missing,
-.fl--code-hover .fl-row--differs {
-  background: none;
-}
-.fl--code-hover .fl-head {
-  padding-top: 0;
-  font-size: 12px;
-  font-weight: 600; /* every list head SemiBold (user 2026-11-06) */
-  letter-spacing: 0.72px;
-  color: var(--text-100);
-}
-.fl--code-hover .fl-row:not(.fl-head) > [data-col='External'] {
-  display: none;
-}
-.fl--code-hover .fl-row:not(.fl-head) > [data-col='NEMOLink'] {
-  display: none;
-}
-.fl--code-hover .fl-row:not(.fl-head) > .fl-cell {
-  justify-content: center;
-}
-.fl--code-hover .fl-label {
+/* Desktop: the standard table (StandardTable, user 2026-11-13) — Field ·
+   To NEMO · From. Values Text/200 Medium; a missing one says "missing" in
+   the missing-field orange; the field typed in the cell is the app's own:
+   white, the usual solid line */
+.fl-value {
   font-weight: 500;
-  color: var(--text-300); /* the darkest text (user 2026-11-07) */
-}
-.fl--code-hover .fl-row > .prov-lane {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: stretch;
-  margin: 0;
-  padding: 6px 8px 6px 10px;
-  min-height: 37px;
-}
-.fl--code-hover .prov-lane .prov-value {
-  font-weight: 600;
   color: var(--text-200);
 }
-/* A missing value that is typed here: the field sits in the To NEMO box */
-.fl--code-hover .fl-row--edit:not(.fl-head) > [data-col='NEMOLink'] {
-  display: flex;
-  grid-column: 2;
-  grid-row: 1;
-  z-index: 1;
-  justify-content: center;
-  padding: 4px 8px 4px 13px;
+.fl-value--missing {
+  color: var(--orange-500);
 }
-.fl--code-hover .fl-row--edit > .prov-lane > * {
-  visibility: hidden;
+.fl-note {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--orange-500);
 }
-/* A missing row (user 2026-11-07): the Missing tag under the name says
-   it; the field is the app's own — white, the usual solid line — with no
-   orange box or bar around it */
-.fl--code-hover .fl-label:has(.fl-tag) {
-  align-items: flex-start;
-  gap: 8px;
+.fl-from {
+  font-weight: 500;
+  color: var(--text-200);
 }
-.fl--code-hover .fl-row--edit > .prov-lane {
-  background: none;
-  box-shadow: none;
+.fl:not(.fl--cards) .fl-group {
+  padding: 0;
+  border-top: 0;
 }
-.fl--code-hover .fl-row--edit:not(.fl-head) > [data-col='NEMOLink'] {
-  padding: 4px 0;
-}
-.fl--code-hover .fl-row--edit :deep(.q-field__control) {
+.fl:not(.fl--cards) .fl-edit :deep(.q-field__control) {
   background: var(--nl-g-white);
   box-shadow: none;
 }
-.fl--code-hover .fl-row--edit :deep(.q-field__control:before) {
+.fl:not(.fl--cards) .fl-edit :deep(.q-field__control:before) {
   border-style: solid;
   border-color: var(--nl-g-field-line);
-}
-/* The source is the From column's: not again in the box */
-.fl--code-hover .prov-lane .prov-from {
-  display: none;
-}
-.fl-from__text {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.fl--code-hover .fl-from {
-  grid-column: 3;
-  font-weight: 500;
-  color: var(--text-200);
 }
 .fl-label__hover {
   cursor: help;

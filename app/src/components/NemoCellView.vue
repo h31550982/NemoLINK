@@ -72,6 +72,7 @@ const tip = computed(() => {
   if (cut.value.msg) parts.push(message.value);
   if (c.entered) parts.push(`Typed by ${c.entered.author}`);
   if (c.source) parts.push(`From ${c.source.formName} (${c.source.fileName})`);
+  else if (c.origin) parts.push(`From the ${c.origin}`);
   for (const o of c.others ?? []) parts.push(`${o.fileName || 'A form'} says ${o.value}`);
   return parts.join(' · ');
 });

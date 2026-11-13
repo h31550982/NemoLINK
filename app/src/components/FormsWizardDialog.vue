@@ -155,7 +155,7 @@
       <div class="fw-form-head">
         <div class="fw-form-name">{{ currentTable.label }}</div>
         <div class="fw-form-from">
-          From {{ currentTable.sources.map((s) => s.formName).join(', ') }}<template v-if="currentTable.key !== 'cargo'"> · the National Spreadsheet’s
+          From {{ [...currentTable.sources.map((s) => s.formName), ...(currentTable.origins ?? [])].join(', ') }}<template v-if="currentTable.key !== 'cargo'"> · the National Spreadsheet’s
           “{{ currentTable.sheet }}”</template>
         </div>
       </div>
@@ -180,13 +180,11 @@
       <NemoTable
         :table="currentTable"
         :all-details="allDetails"
-        :missing-fields="missingFields"
-        :saving-field="savingMissingField"
         tabs-to="#fw-coltabs-card"
         :anchor="colAnchors[currentTable.key] ?? null"
         @update:anchor="setAnchor"
         @pick="onPick"
-        @save-missing="saveMissingField"
+        @save-cell="saveCell"
       >
         <!-- Desktop keeps column tabs; mobile browses individual categories. -->
         <template #head>
@@ -312,13 +310,11 @@
         <NemoTable
           :table="currentTable"
           :all-details="allDetails"
-          :missing-fields="missingFields"
-          :saving-field="savingMissingField"
           tabs-to="#fw-coltabs-full"
           :anchor="colAnchors[currentTable.key] ?? null"
           @update:anchor="setAnchor"
           @pick="onPick"
-          @save-missing="saveMissingField"
+          @save-cell="saveCell"
         />
       </div>
     </q-card>
@@ -339,7 +335,6 @@
 
 <script setup lang="ts">
 import { useAllDetails } from '../composables/useAllDetails';
-import { useTableMissingFields, type MissingTableEntry } from '../composables/useTableMissingFields';
 /**
  * The forms wizard (spec 0093 §4): drop the ship's forms on a port call and
  * walk them — the files (what each is, the ship gate, D4's "is it our
@@ -361,7 +356,7 @@ import CorrectionDialog, { type CorrectionTarget } from './CorrectionDialog.vue'
 import HouseDialog from './HouseDialog.vue';
 import RemovalDialog from './RemovalDialog.vue';
 import ModulePage from './ModulePage.vue';
-import NemoTable from './NemoTable.vue';
+import NemoTable, { type TableCellSave } from './NemoTable.vue';
 import MobileReportFiles from './MobileReportFiles.vue';
 import MissingReportFieldsDrawer from './MissingReportFieldsDrawer.vue';
 import { missingReportFields } from '../lib/mobile-report-fields';
@@ -433,7 +428,8 @@ const MISSING_WORDS: Record<string, string> = {
 /** Said on the files step once the tables show the call lacks that form. */
 const missingForm = computed(() => {
   const key = missingKey.value;
-  if (!key || tables.value === null || tables.value.some((t) => t.key === key)) return null;
+  // A table the chartering system's ports alone started still lacks its form
+  if (!key || tables.value === null || tables.value.some((t) => t.key === key && t.sources.length > 0)) return null;
   return MISSING_WORDS[key] ?? 'form';
 });
 const uploading = ref(false);
@@ -594,18 +590,17 @@ const mobileMissingSummary = computed(() => {
   const most = [...categories.values()].sort((a, b) => b.count - a.count)[0];
   return `In ${categories.size} ${categories.size === 1 ? 'category' : 'categories'}${most ? `, mostly ${most.label.toLowerCase()}` : ''}`;
 });
-const missingFields = useTableMissingFields(() => currentTable.value, () => $q.screen.gt.sm);
-const savingMissingField = ref<string | null>(null);
-async function saveMissingField(entry: MissingTableEntry, value: string): Promise<void> {
+/** A value typed right in its table cell (user 2026-11-13): no separate
+ *  Missing fields list on desktop; the phone keeps its Fill all missing fields. */
+async function saveCell(target: TableCellSave, done: (ok: boolean) => void): Promise<void> {
   const table = currentTable.value;
-  if (!table || savingMissingField.value) return;
-  savingMissingField.value = entry.id;
+  if (!table) return done(false);
   try {
-    onEntered(await auth.enterTableValue(props.call.id, table.key, entry.rowKey, entry.column.key, value));
+    onEntered(await auth.enterTableValue(props.call.id, table.key, target.rowKey, target.column.key, target.value));
+    done(true);
   } catch (error) {
     $q.notify({ type: 'negative', message: error instanceof Error ? error.message : 'Could not save the value.' });
-  } finally {
-    savingMissingField.value = null;
+    done(false);
   }
 }
 autoDetails(() => {

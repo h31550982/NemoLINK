@@ -261,8 +261,9 @@ export interface LedgerRow {
   key: string;
   label: string;
   de: string | null;
-  kind: 'text' | 'number' | 'time' | 'code';
-  codelist?: 'purpose' | 'voyage' | 'country' | 'registry' | 'shipType' | 'language' | 'locode' | 'portArea' | 'berth';
+  /** date: a day, typed as dd.mm.yyyy, kept as YYYY-MM-DD (ship rows, user 2026-11-13). */
+  kind: 'text' | 'number' | 'time' | 'code' | 'date';
+  codelist?: 'purpose' | 'voyage' | 'country' | 'registry' | 'shipType' | 'language' | 'locode' | 'portArea' | 'berth' | 'iceClass' | 'yesNo';
   multiple?: boolean;
   owner: 'call' | 'ship' | 'org' | 'callCore' | 'fixed';
   editable: boolean;
@@ -270,7 +271,11 @@ export interface LedgerRow {
   entered: unknown;
   toNemo: unknown;
   ok: boolean;
+  /** Filled but not right (user 2026-11-13), e.g. an ETD before the ETA. */
+  problem?: string;
   differs: boolean;
+  /** Where a missing value comes from, so it is not typed twice (user 2026-11-13). */
+  hint?: string;
 }
 
 /** The NOA wizard's view (spec 0088). */
@@ -706,6 +711,8 @@ export interface ObligationItem {
   kind: 'text' | 'time' | 'date';
   from: 'call' | 'ship' | 'org' | 'nemo';
   ok: boolean;
+  /** Filled but not right (user 2026-11-13), e.g. an ETD before the ETA. */
+  problem?: string;
   shipKey?: string;
   inNemo?: { state: 'same' | 'differs' | 'notInNemo' | 'notRead'; value: string | number | null };
 }
@@ -912,6 +919,8 @@ export interface NemoCell {
   source?: { docId: string; fileName: string; formName: string; path: string };
   others?: { value: string; fileName: string }[];
   entered?: { author: string; at: string };
+  /** Not from a form: the system that gave it, in words ("opsdesk voyage plan"). */
+  origin?: string;
 }
 
 export interface NemoRow {
@@ -932,6 +941,8 @@ export interface NemoTable {
   header: Record<string, NemoCell>;
   rows: NemoRow[];
   sources: { docId: string; fileName: string; formName: string }[];
+  /** What else fed it, in words: the chartering system's previous ports (user 2026-11-13). */
+  origins?: string[];
   counts: { error: number; warning: number; missing: number; conflict: number };
 }
 
@@ -1528,10 +1539,15 @@ export function useAuth() {
     },
 
     /** Send the ship data to NEMO as the SID and SHP of a port call (spec 0070). */
-    async sendShipToNemo(id: string, portCallId: string): Promise<ShipNemoReceipt> {
+    async sendShipToNemo(
+      id: string,
+      portCallId: string,
+      /** One report at a time (user 2026-11-13); all when left out. */
+      types?: ('SID' | 'SHP' | 'CRT')[],
+    ): Promise<ShipNemoReceipt> {
       const res = await api(`/ships/${id}/nemo-send`, {
         method: 'POST',
-        body: JSON.stringify({ portCallId }),
+        body: JSON.stringify({ portCallId, ...(types ? { types } : {}) }),
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { message?: string } | null;
@@ -1623,6 +1639,16 @@ export function useAuth() {
     async sendNod(portCallId: string): Promise<ShipNemoReceipt> {
       const res = await api(`/portcalls/${portCallId}/nod/send`, { method: 'POST' });
       if (!res.ok) throw await exchangeError(res, 'Could not send the NOD');
+      return ((await res.json()) as { receipt: ShipNemoReceipt }).receipt;
+    },
+
+    /**
+     * The call's new ETA / ETD to NEMO (user 2026-11-13): the NOA and the NOD
+     * NEMO already has go again as updates.
+     */
+    async sendScheduleUpdate(portCallId: string): Promise<ShipNemoReceipt> {
+      const res = await api(`/portcalls/${portCallId}/schedule/send`, { method: 'POST' });
+      if (!res.ok) throw await exchangeError(res, 'Could not send the new times to NEMO');
       return ((await res.json()) as { receipt: ShipNemoReceipt }).receipt;
     },
 

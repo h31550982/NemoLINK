@@ -619,16 +619,23 @@ describe('send — the CRT goes with SID and SHP (spec 0084)', () => {
     const h = harness({ ship: withCert });
     const crt = (await h.service.preview(ADMIN, 'ship-1', 'pc-1')).formalities.find((f) => f.type === 'CRT')!;
     expect(crt).toMatchObject({ willSend: false, reason: 'missing: the certificate file (NEMO requires it)' });
-    const receipt = await h.service.send(ADMIN, 'ship-1', 'pc-1');
+    // Data missing in one stops the send (user 2026-11-13); the others still go on their own
+    await expect(h.service.send(ADMIN, 'ship-1', 'pc-1')).rejects.toThrow(/Data missing — nothing was sent: CRT CL/);
+    expect(h.nemo.createFormality).not.toHaveBeenCalled();
+    const receipt = await h.service.send(ADMIN, 'ship-1', 'pc-1', ['SID', 'SHP']);
     expect(receipt.results.map((r) => r.type)).toEqual(['SID', 'SHP']);
   });
 });
+
+/** Every pre-arrival report unticked: a ticked one short of data would hold the NOA (user 2026-11-13). */
+const offAll = (...codes: string[]) =>
+  Object.fromEntries((codes.length ? codes : ['CWA', 'EFF', 'STA', 'WAS', 'SEC']).map((c) => [c, { on: false, by: 'Admin', at: '2026-10-06T10:00:00Z' }]));
 
 describe('the NOA (spec 0088)', () => {
   const noaOf = (nemo: { createFormality: jest.Mock }) => nemo.createFormality.mock.calls[0]![3] as Record<string, any>;
 
   it('sends it unconfirmed when the sender says so: no statement, none on the fact', async () => {
-    const { service, nemo, calls } = harness();
+    const { service, nemo, calls } = harness({ call: { nemo: { reports: offAll() } } });
     const receipt = await service.sendNoa(ADMIN, 'pc-1', false);
     expect(nemo.createFormality.mock.calls[0]![2]).toBe('NOA');
     expect(noaOf(nemo)['env:Envelope']['noa:NOA']['noa:ExchangedDeclaration']).toBeUndefined();
@@ -638,7 +645,7 @@ describe('the NOA (spec 0088)', () => {
   });
 
   it('confirms the arrival when the sender says so: ST-FI-01 on the NOA and on the fact', async () => {
-    const { service, nemo, calls } = harness();
+    const { service, nemo, calls } = harness({ call: { nemo: { reports: offAll() } } });
     await service.sendNoa(ADMIN, 'pc-1', true);
     expect(noaOf(nemo)['env:Envelope']['noa:NOA']['noa:ExchangedDeclaration']).toEqual({ 'ram:StatementTypeCode': 'ST-FI-01' });
     const fact = JSON.parse(calls.find((c) => c.sql.includes('UPDATE port_call') && c.sql.includes('formalities'))!.params![1] as string).NOA;
@@ -647,7 +654,7 @@ describe('the NOA (spec 0088)', () => {
 
   it('an update of a confirmed NOA keeps the confirmation (it cannot be withdrawn)', async () => {
     const { service, nemo } = harness({
-      call: { nemo: { formalities: { NOA: { formalityId: 'outer-noa', accepted: true, version: 1, statement: 'ST-FI-01' } } } },
+      call: { nemo: { reports: offAll(), formalities: { NOA: { formalityId: 'outer-noa', accepted: true, version: 1, statement: 'ST-FI-01' } } } },
     });
     await service.sendNoa(ADMIN, 'pc-1', false);
     const envelope = nemo.updateFormality.mock.calls[0]![4] as Record<string, any>;
@@ -677,12 +684,18 @@ describe('the pre-arrival reports go with the NOA (spec 0098)', () => {
   };
   const sentTypes = (nemo: { createFormality: jest.Mock }) => nemo.createFormality.mock.calls.map((c) => c[2]);
 
-  it('the ticked ready report goes after the NOA and the DUE; the ones without data stay out and do not hold it', async () => {
+  it('a ticked report short of data holds the whole send (Data missing, user 2026-11-13)', async () => {
     const h = harness({ tables: [stores] });
     const preview = await h.service.noaPreview(ADMIN, 'pc-1');
-    expect(preview.willSend).toBe(true);
     expect(preview.reports.find((r) => r.code === 'STA')).toMatchObject({ on: true, data: '1 article · from fal3.xlsx' });
     expect(preview.reports.find((r) => r.code === 'CWA')!.missing).toEqual(['the crew list (upload FAL 5 or the NSW crew list)']);
+    await expect(h.service.sendNoa(ADMIN, 'pc-1', false)).rejects.toThrow(/Data missing in CWA/);
+    expect(h.nemo.createFormality).not.toHaveBeenCalled();
+  });
+
+  it('the ticked ready report goes after the NOA and the DUE once the ones without data are unticked', async () => {
+    const h = harness({ tables: [stores], call: { nemo: { reports: offAll('CWA', 'EFF', 'WAS', 'SEC') } } });
+    expect((await h.service.noaPreview(ADMIN, 'pc-1')).willSend).toBe(true);
     await h.service.sendNoa(ADMIN, 'pc-1', false);
     expect(sentTypes(h.nemo)).toEqual(['NOA', 'DUE', 'STA']);
     // its fact keeps the data's print, so an unchanged report is not sent again
@@ -691,7 +704,7 @@ describe('the pre-arrival reports go with the NOA (spec 0098)', () => {
   });
 
   it('an unticked report is not sent', async () => {
-    const h = harness({ tables: [stores], call: { nemo: { reports: { STA: { on: false, by: 'Admin', at: '2026-10-06T10:00:00Z' } } } } });
+    const h = harness({ tables: [stores], call: { nemo: { reports: offAll() } } });
     await h.service.sendNoa(ADMIN, 'pc-1', false);
     expect(sentTypes(h.nemo)).toEqual(['NOA', 'DUE']);
   });

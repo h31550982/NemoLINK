@@ -11,6 +11,7 @@
 
 import { DUES_LANGUAGE, NEXT_PORT_UNKNOWN, type ObligationSnapshot } from './obligations';
 import { noaCallFacts, type FactSource, type NoaCallFactKey } from './noa-facts';
+import { scheduleProblems } from './schedule-rules';
 
 export type LedgerOwner = 'call' | 'ship' | 'org' | 'callCore' | 'fixed';
 export type LedgerKind = 'text' | 'number' | 'time' | 'code';
@@ -37,8 +38,12 @@ export interface LedgerRow {
   entered: unknown;
   toNemo: unknown;
   ok: boolean;
+  /** Filled but not right (user 2026-11-13), e.g. an ETD before the ETA: then not ok. */
+  problem?: string;
   /** Two sources say different things. */
   differs: boolean;
+  /** Where a missing value comes from, so it is not typed twice (user 2026-11-13). */
+  hint?: string;
 }
 
 export interface ShipCells {
@@ -120,8 +125,11 @@ export function noaLedger(snap: ObligationSnapshot, ship: ShipCells | null, org:
     key: 'fixed:duesLanguage', label: 'Fairway dues decision language', de: null, kind: 'code', owner: 'fixed',
     editable: false, codelist: 'language', externals: [], entered: null, toNemo: DUES_LANGUAGE, ok: true, differs: false,
   });
-  rows.push(core('eta', 'Estimated arrival', 'DE-022-02', snap.eta, 'time'));
-  rows.push(core('etd', 'Estimated departure', 'DE-022-05', snap.etd, 'time'));
+  // The times are checked as the checklists check them (user 2026-11-13)
+  const times = scheduleProblems({ eta: snap.eta, etd: snap.etd }, snap.now);
+  const timed = (row: LedgerRow, problem: string | null): LedgerRow => (row.ok && problem ? { ...row, ok: false, problem } : row);
+  rows.push(timed(core('eta', 'Estimated arrival', 'DE-022-02', snap.eta, 'time'), times.eta));
+  rows.push(timed(core('etd', 'Estimated departure', 'DE-022-05', snap.etd, 'time'), times.etd));
   rows.push(callFact('lastPort', 'Last port of call', 'DE-022-06', 'code', 'locode'));
   rows.push({
     key: 'fixed:nextPort', label: 'Next port of call', de: 'DE-022-08', kind: 'code', owner: 'fixed', editable: false,
@@ -138,10 +146,14 @@ export function noaLedger(snap: ObligationSnapshot, ship: ShipCells | null, org:
   rows.push(shipRow('flagState', 'Flag state', 'DE-005-09', 'country'));
   rows.push(shipRow('registryCode', 'Ship registry', 'DE-005-10', 'registry'));
   rows.push(shipRow('registryPort', 'Port of registry', 'DE-005-12', 'locode'));
-  rows.push(callFact('crew', 'Number of crew', 'DE-034-03', 'number'));
-  rows.push(callFact('personsOnBoard', 'Persons on board', 'DE-034-01', 'number'));
-  rows.push(callFact('masterFamilyName', "Master's family name", 'DE-012-01', 'text'));
-  rows.push(callFact('masterGivenNames', "Master's given names", 'DE-012-08', 'text'));
+  // The crew list fills these (user 2026-11-13): while none is uploaded, the
+  // row says so, so the numbers and names are not typed and then sent again
+  const fromCrewList = (row: LedgerRow): LedgerRow =>
+    row.ok || row.externals.length > 0 || snap.formFacts?.crew ? row : { ...row, hint: 'Comes from the crew list — upload it, or enter it here' };
+  rows.push(fromCrewList(callFact('crew', 'Number of crew', 'DE-034-03', 'number')));
+  rows.push(fromCrewList(callFact('personsOnBoard', 'Persons on board', 'DE-034-01', 'number')));
+  rows.push(fromCrewList(callFact('masterFamilyName', "Master's family name", 'DE-012-01', 'text')));
+  rows.push(fromCrewList(callFact('masterGivenNames', "Master's given names", 'DE-012-08', 'text')));
   rows.push(orgRow('agentId', 'Agent identification (EORI)', 'DE-029-01'));
   rows.push(orgRow('agencyName', 'Agency name', 'DE-029-02'));
   rows.push(orgRow('mobile', 'Agent mobile', 'DE-029-07'));
@@ -154,4 +166,17 @@ export function noaLedger(snap: ObligationSnapshot, ship: ShipCells | null, org:
   rows.push(orgRow('city', 'Liable party city', 'DE-077-19'));
   rows.push(orgRow('countryCode', 'Liable party country', 'DE-077-20', 'country'));
   return rows;
+}
+
+/**
+ * The organisation's EORI, the declarant every report is sent in the name
+ * of (user 2026-11-13): shown as a row of its own while it is missing, so it
+ * is typed right where the report says so and saved to the organisation
+ * settings for every report after.
+ */
+export function declarantEoriRow(): LedgerRow {
+  return {
+    key: 'org:eori', label: 'Your EORI (declarant)', de: null, kind: 'text', owner: 'org', editable: true,
+    externals: [], entered: null, toNemo: null, ok: false, differs: false,
+  };
 }

@@ -84,7 +84,7 @@ export interface ReportChoice {
 }
 
 /** The call's NEMO tables by key (spec 0096), with the forms that fed them. */
-export type TablesByKey = Partial<Record<'crew' | 'passengers' | 'cargo' | 'stores' | 'waste' | 'security' | 'health', TableLike & { sources?: { fileName: string }[] }>>;
+export type TablesByKey = Partial<Record<'crew' | 'passengers' | 'cargo' | 'stores' | 'waste' | 'security' | 'health', TableLike & { sources?: { fileName: string }[]; origins?: string[] }>>;
 
 export interface PreArrivalInput {
   tables: TablesByKey;
@@ -123,8 +123,8 @@ function plural(n: number, one: string, many: string): string {
   return `${n} ${n === 1 ? one : many}`;
 }
 
-function fromForms(table: { sources?: { fileName: string }[] } | undefined): string {
-  const names = [...new Set((table?.sources ?? []).map((s) => s.fileName))];
+function fromForms(table: { sources?: { fileName: string }[]; origins?: string[] } | undefined): string {
+  const names = [...new Set([...(table?.sources ?? []).map((s) => s.fileName), ...(table?.origins ?? [])])];
   return names.length > 0 ? ` · from ${names.join(', ')}` : '';
 }
 

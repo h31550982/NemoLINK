@@ -297,6 +297,8 @@ export interface TableCell {
   others?: { value: string; fileName: string }[];
   /** Typed in NEMOLink (spec 0096 decision 2): wins over the forms. */
   entered?: { author: string; at: string };
+  /** Not from a form: the system that gave it, in words ("opsdesk voyage plan"). */
+  origin?: string;
 }
 
 /** One value typed into a table (call_form_entry). */
@@ -331,6 +333,8 @@ export interface MergedTable {
   rows: TableRow[];
   /** The forms that fed it. */
   sources: { docId: string; fileName: string; formName: string }[];
+  /** What else fed it, in words: the chartering system's previous ports. */
+  origins?: string[];
   counts: { error: number; warning: number; missing: number; conflict: number };
 }
 
@@ -549,6 +553,61 @@ function securityRows(doc: SourceDoc): Contribution[] {
     if (row['measures']) values['measures'] = { value: row['measures'], path: at('measures') };
     return { rowKey: String(i + 1), label: `${i + 1} · ${port || 'call'}`, values };
   });
+}
+
+/**
+ * The call's previous ports as the chartering system (or the call form)
+ * gives them, most recent first (spec 0037) — what the SEC's last calls
+ * start from (user 2026-11-13).
+ */
+export interface Rotation {
+  /** In words, for the cells: "opsdesk voyage plan". */
+  origin: string;
+  prev: { portLocode: string; arrival?: string; departure?: string }[];
+}
+
+const SEC_ROWS_MAX = 10;
+const dayOf = (iso: string | undefined): string | null => (iso && /^\d{4}-\d{2}-\d{2}/.test(iso) ? iso.slice(0, 10) : null);
+
+/**
+ * The security form's last calls with the rotation's help: a call the form
+ * lists takes the rotation's dates where the form left them empty (matched
+ * by port, in order); with no form rows the rotation's calls are the rows,
+ * and the facility and security level are left for the ship or a person.
+ * The form always wins a value it gives.
+ */
+function securityFromRotation(rows: TableRow[], rotation: Rotation): boolean {
+  const legs = rotation.prev.filter((p) => /^[A-Z]{2}[A-Z2-9]{3}$/.test(p.portLocode ?? ''));
+  if (legs.length === 0) return false;
+  const cell = (value: string): TableCell => ({ value, origin: rotation.origin });
+  let used = false;
+  if (rows.length === 0) {
+    legs.slice(0, SEC_ROWS_MAX).forEach((leg, i) => {
+      const cells: Record<string, TableCell> = { port: cell(leg.portLocode) };
+      const start = dayOf(leg.arrival);
+      const end = dayOf(leg.departure);
+      if (start) cells['start'] = cell(start);
+      if (end) cells['end'] = cell(end);
+      rows.push({ key: String(i + 1), label: `${i + 1} · ${leg.portLocode}`, cells });
+    });
+    return true;
+  }
+  const taken = new Set<number>();
+  for (const row of rows) {
+    const port = row.cells['port']?.value;
+    if (!port) continue;
+    const at = legs.findIndex((leg, i) => !taken.has(i) && leg.portLocode === port);
+    if (at < 0) continue;
+    taken.add(at);
+    const leg = legs[at]!;
+    for (const [key, value] of [['start', dayOf(leg.arrival)], ['end', dayOf(leg.departure)]] as const) {
+      if (value && !row.cells[key]?.value?.trim()) {
+        row.cells[key] = cell(value);
+        used = true;
+      }
+    }
+  }
+  return used;
 }
 
 /** A stores unit NEMO refuses for its type, with no exact conversion: an error on the unit cell. */
@@ -791,13 +850,21 @@ function applyEntries(table: TableDef, header: Record<string, TableCell>, rows: 
 
 const EFFECTS = ['effectsType', 'effectsDescription', 'effectsQuantity', 'effectsUnit'];
 
-export function buildTables(docs: SourceDoc[], book: CodeBook, entries: TableEntry[] = []): MergedTable[] {
+export function buildTables(
+  docs: SourceDoc[],
+  book: CodeBook,
+  entries: TableEntry[] = [],
+  rotation: Rotation | null = null,
+): MergedTable[] {
   const wasteTypes = new Map([...(book.lists.get(LISTS.wasteType)?.values() ?? [])].map((e) => [e.code, e.en]));
   const ordered = [...docs].sort((a, b) => a.created.localeCompare(b.created));
   const out: MergedTable[] = [];
   for (const def of TABLES) {
     const feeding = ordered.filter((d) => def.sources.includes(d.form.formType));
-    if (feeding.length === 0) continue;
+    // The security table also stands on the chartering system's previous ports
+    const fromRotation = def.key === 'security' && !!rotation?.prev.some((p) => p.portLocode);
+    if (feeding.length === 0 && !fromRotation) continue;
+    const origins: string[] = [];
     const header: Record<string, TableCell> = {};
     let rows: TableRow[] = [];
     if (def.key === 'crew') rows = mergeRows(def, feeding, crewRows, book);
@@ -811,7 +878,10 @@ export function buildTables(docs: SourceDoc[], book: CodeBook, entries: TableEnt
       }
     }
     if (def.key === 'stores') rows = mergeRows(def, feeding, storesRows, book);
-    if (def.key === 'security') rows = mergeRows(def, feeding, securityRows, book);
+    if (def.key === 'security') {
+      rows = mergeRows(def, feeding, securityRows, book);
+      if (rotation && securityFromRotation(rows, rotation)) origins.push(rotation.origin);
+    }
     if (def.key === 'waste') {
       const given = new Map<string, TableRow>();
       for (const doc of feeding) {
@@ -858,6 +928,7 @@ export function buildTables(docs: SourceDoc[], book: CodeBook, entries: TableEnt
       header,
       rows,
       sources: feeding.map((d) => ({ docId: d.id, fileName: d.fileName, formName: d.form.formName })),
+      ...(origins.length > 0 ? { origins } : {}),
     };
     out.push({ ...table, counts: countFlags(table) });
   }

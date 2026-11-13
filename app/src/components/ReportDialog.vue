@@ -8,7 +8,7 @@
     :main-label="receipt ? 'Done' : preview?.previously?.accepted ? `Send update to NEMO: ${code}` : `Send to NEMO: ${code}`"
     :sheet-main-label="receipt ? undefined : 'Send'"
     :main-icon="receipt ? undefined : 'send'"
-    :main-disable="!receipt && (!preview?.willSend || reviewOnly)"
+    :main-disable="!receipt && (!preview?.willSend || !!preview?.missing.length || reviewOnly)"
     :main-loading="sending || loading"
     :ready="page && !allDetails && !!preview?.willSend && !preview.missing.length && !receipt && !loading"
     @main="onMain"
@@ -86,12 +86,11 @@
         <NemoTableView
           :table="table"
           :all-details="allDetails"
-          :missing-fields="missingFields"
-          :saving-field="savingMissingField"
+          edit-entered
           tabs-to="#rd-coltabs"
           :anchor="anchor"
           @update:anchor="anchor = $event"
-          @save-missing="saveMissingField"
+          @save-cell="saveCell"
         >
           <template #head>
             <div class="rd-details-head">
@@ -133,8 +132,7 @@ import { useQuasar } from 'quasar';
 import { useAuth, type NemoTable, type PortCall, type ReportPreview, type ShipNemoReceipt } from '../auth/auth';
 import { missingReportFields } from '../lib/mobile-report-fields';
 import MissingReportFieldsDrawer from './MissingReportFieldsDrawer.vue';
-import NemoTableView from './NemoTable.vue';
-import { useTableMissingFields, type MissingTableEntry } from '../composables/useTableMissingFields';
+import NemoTableView, { type TableCellSave } from './NemoTable.vue';
 import { PLATFORM_ADMIN_SEND_WORDS } from '../lib/obligations';
 import { openShipEditor } from '../lib/ship-editor';
 import { fmtStamp } from '../lib/time';
@@ -175,15 +173,16 @@ const table = ref<NemoTable | null>(null);
 const tableMissing = computed(() => (table.value ? missingReportFields(table.value) : []));
 const fillOpen = ref(false);
 let filled = false;
-/** Desktop: the same in-place Missing list as Review documents. */
-const missingFields = useTableMissingFields(() => table.value, () => $q.screen.gt.sm);
-const savingMissingField = ref<string | null>(null);
+/** Desktop: once a value is typed in the table, the table stays for this visit. */
+const typedHere = ref(false);
 const anchor = ref<string | null>(null);
 
 watch(
   () => props.modelValue,
   (open) => {
-    if (open) void load();
+    if (!open) return;
+    typedHere.value = false;
+    void load();
   },
   { immediate: true },
 );
@@ -221,21 +220,22 @@ async function loadTable(): Promise<void> {
   }
 }
 const showTable = computed(() =>
-  !!table.value && $q.screen.gt.sm && !reviewOnly.value && (!!preview.value?.missing.length || missingFields.offered),
+  !!table.value && $q.screen.gt.sm && !reviewOnly.value && (!!preview.value?.missing.length || typedHere.value),
 );
-async function saveMissingField(entry: MissingTableEntry, value: string): Promise<void> {
+/** A missing value typed right in its table cell, as Review documents (user 2026-11-13). */
+async function saveCell(target: TableCellSave, done: (ok: boolean) => void): Promise<void> {
   const current = table.value;
-  if (!current || savingMissingField.value) return;
-  savingMissingField.value = entry.id;
+  if (!current) return done(false);
   try {
-    const tables = await auth.enterTableValue(props.call.id, current.key, entry.rowKey, entry.column.key, value);
+    const tables = await auth.enterTableValue(props.call.id, current.key, target.rowKey, target.column.key, target.value);
     table.value = tables.find((t) => t.key === current.key) ?? current;
+    typedHere.value = true;
+    done(true);
     emit('sent');
     preview.value = await auth.reportPreview(props.call.id, props.code);
   } catch (error) {
     $q.notify({ type: 'negative', message: error instanceof Error ? error.message : 'Could not save the value.' });
-  } finally {
-    savingMissingField.value = null;
+    done(false);
   }
 }
 function onFilled(tables: NemoTable[]): void {

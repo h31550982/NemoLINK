@@ -3,41 +3,44 @@
     <!-- The parent's heading row (title, column tabs, Full screen) sits right
          on top of the list in every section (user 2026-11-02) — only a
          section with no list has it over its facts -->
-    <slot v-if="missingFields.active || rowsShown.length === 0" name="head" />
+    <slot v-if="rowsShown.length === 0" name="head" />
 
-    <!-- Missing fields by row (user 2026-11-13): the row it is missing from
-         on the far left, each field's name as the header of its box -->
-    <div v-if="missingFields.active" class="nt-missing">
-      <div class="nt-missing__head">
-        <span>{{ rowWord }}</span>
-        <span class="prov-head prov-head--nemo">To NEMO</span>
-      </div>
-      <div v-for="group in missingGroups" :key="group.key" class="nt-missing__row">
-        <div class="nt-missing__who">
-          <span class="nt-missing__name">{{ group.label }}</span>
-          <span class="nt-missing__tag" :class="group.missing ? 'nt-missing__tag--missing' : 'nt-missing__tag--ready'">{{ group.missing ? `${group.missing} missing` : 'Ready' }}</span>
-        </div>
-        <div class="nt-missing__fields">
-          <MissingTableField
-            v-for="entry in group.entries"
-            :key="entry.id"
-            :entry="entry"
-            :busy="savingField === entry.id"
-            :disabled="!!savingField"
-            @save="(field, value) => emit('save-missing', field, value)"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- The table's own facts (waste delivery, ISSC, the CSO…) -->
-    <div v-if="!missingFields.active && headerShown.length > 0" class="nt-facts">
+    <!-- The table's own facts (waste delivery, ISSC, the CSO…): on desktop
+         the standard table, Field · To NEMO (user 2026-11-13) -->
+    <StandardTable
+      v-if="!isMobile && headerShown.length > 0"
+      class="nt-facts-table"
+      fixed
+      row-head="Field"
+      :row-head-width="290"
+      :columns="FACT_COLUMNS"
+      :rows="factRows"
+    >
+      <template #cell="{ row }">
+        <StandardCell
+          :state="table.header[row.key]?.flag"
+          :editing="editingId === cellId(HEADER_ROW, row.key)"
+          :label="cellAction(fieldOf(row.key), table.header[row.key])"
+          @open="open(HEADER_ROW, fieldOf(row.key), table.header[row.key])"
+        >
+          <NemoCellView :cell="table.header[row.key]" :column="fieldOf(row.key)" />
+          <template #editor>
+            <TableCellEditor
+              :column="fieldOf(row.key)"
+              :cell="table.header[row.key]"
+              :busy="savingId === cellId(HEADER_ROW, row.key)"
+              :label="fieldOf(row.key).label"
+              @save="(v) => save(HEADER_ROW, fieldOf(row.key), v)"
+              @cancel="editingId = null"
+            />
+          </template>
+        </StandardCell>
+      </template>
+    </StandardTable>
+    <!-- Phones keep their own facts list (the mobile view stays as it is) -->
+    <div v-else-if="isMobile && headerShown.length > 0" class="nt-facts">
       <template v-for="f in headerShown" :key="f.key">
-        <!-- As Send to NEMO: NOD (user 2026-11-07): the NEMO code on a hover on the name -->
-        <div class="nt-facts__label">
-          <span :class="{ 'nt-hover': f.de }">{{ f.label }}</span>
-          <q-tooltip v-if="f.de" anchor="top middle" self="bottom middle" :offset="[0, 6]">NEMO code {{ f.de }}</q-tooltip>
-        </div>
+        <div class="nt-facts__label">{{ f.label }}</div>
         <div
           class="nt-cell"
           :class="cellClasses(table.header[f.key])"
@@ -53,8 +56,10 @@
 
     <!-- The table itself: NEMO's columns in groups by meaning. Too many for
          the width and the groups come one tab at a time (user 2026-11-02):
-         the rest fold to nothing but keep their height, so rows never jump. -->
-    <slot v-if="!missingFields.active && rowsShown.length > 0" name="head" />
+         the rest fold to nothing but keep their height, so rows never jump.
+         A missing value is typed right in its cell (user 2026-11-13): no
+         separate Missing fields list on desktop. -->
+    <slot v-if="rowsShown.length > 0" name="head" />
     <MobileTable
       v-if="isMobile && rowsShown.length > 0"
       :table="table"
@@ -63,95 +68,64 @@
       :name-key="pinnedKey"
       @pick="emit('pick', $event)"
     />
-    <div v-if="!isMobile && !missingFields.active && rowsShown.length > 0" ref="wrapEl" class="nt-wrap">
-      <table ref="tableEl" class="nt-table">
-        <thead>
-          <tr>
-            <th v-if="!labelLast" class="nt-first" :style="firstStyle">
-              <div class="nt-th__label">{{ rowWord }}</div>
-            </th>
-            <th
-              v-for="c in columnsInOrder"
-              :key="c.key"
-              :data-col="c.key"
-              :class="{ 'nt-th--req': c.required, 'nt-off': !shownKeys.has(c.key), 'nt-pin': c.key === pinnedKey }"
-            >
-              <div class="nt-fold">
-                <div class="nt-th__label" :class="{ 'nt-hover': c.de }" :data-cut="`col:${c.key}`">{{ c.label }}</div>
-              </div>
-              <!-- The NEMO code on hover, as Send to NEMO: NOD (user 2026-11-07) -->
-              <q-tooltip v-if="cutKeys.has(`col:${c.key}`) || c.de" :delay="300" max-width="360px">
-                <div v-if="cutKeys.has(`col:${c.key}`)">{{ c.label }}</div>
-                <div v-if="c.de">NEMO code {{ c.de }}</div>
-              </q-tooltip>
-            </th>
-            <!-- Cargo: required columns lead; the optional item name (Cargo items) closes the row on the right (user 2026-11-12) -->
-            <th v-if="labelLast" class="nt-first nt-first--end" :style="firstStyle">
-              <div class="nt-th__label">{{ rowWord }}</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="r in rowsShown" :key="r.key">
-            <th v-if="!labelLast" class="nt-first" scope="row" :style="firstStyle">
-              <div class="nt-first__text" :data-cut="`row:${r.key}`">{{ r.label }}</div>
-              <q-tooltip v-if="cutKeys.has(`row:${r.key}`)" :delay="300" max-width="360px">{{ r.label }}</q-tooltip>
-            </th>
-            <td
-              v-for="c in columnsInOrder"
-              :key="c.key"
-              :data-col="c.key"
-              :class="{ 'nt-off': !shownKeys.has(c.key), 'nt-pin': c.key === pinnedKey }"
-            >
-              <div class="nt-fold">
-                <!-- Effects: every item of the crew member, stacked -->
-                <template v-if="EFFECTS.includes(c.key) && r.items && r.items.length > 0">
-                  <div
-                    v-for="(item, n) in r.items"
-                    :key="n"
-                    class="nt-cell nt-cell--item"
-                    :class="cellClasses(item[c.key])"
-                    role="button"
-                    tabindex="0"
-                    @click="pick(r.key, c, item[c.key])"
-                    @keyup.enter="pick(r.key, c, item[c.key])"
-                  >
-                    <NemoCellView :cell="item[c.key]" :column="c" />
-                  </div>
-                </template>
-                <div
-                  v-else
-                  class="nt-cell"
-                  :class="cellClasses(r.cells[c.key])"
-                  role="button"
-                  tabindex="0"
-                  @click="pick(r.key, c, r.cells[c.key])"
-                  @keyup.enter="pick(r.key, c, r.cells[c.key])"
-                >
-                  <NemoCellView :cell="r.cells[c.key]" :column="c" />
-                </div>
-              </div>
-            </td>
-            <th v-if="labelLast" class="nt-first nt-first--end" scope="row" :style="firstStyle">
-              <div class="nt-first__text" :data-cut="`row:${r.key}`">{{ r.label }}</div>
-              <q-tooltip v-if="cutKeys.has(`row:${r.key}`)" :delay="300" max-width="360px">{{ r.label }}</q-tooltip>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <StandardTable
+      v-if="!isMobile && rowsShown.length > 0"
+      ref="listRef"
+      :columns="listColumns"
+      :rows="listRows"
+      :row-head="rowWord"
+      :row-head-last="labelLast"
+      :row-head-width="firstWidth"
+      :pinned-key="pinnedKey"
+      :shown-keys="shownKeys"
+    >
+      <template #cell="{ row, column }">
+        <!-- Effects: every item of the crew member, stacked -->
+        <template v-if="EFFECTS.includes(column.key) && itemsOf(row.key).length > 0">
+          <StandardCell
+            v-for="(item, n) in itemsOf(row.key)"
+            :key="n"
+            class="nt-item"
+            :state="item[column.key]?.flag"
+            :label="cellAction(columnOf(column.key), item[column.key])"
+            @open="pick(row.key, columnOf(column.key), item[column.key])"
+          >
+            <NemoCellView :cell="item[column.key]" :column="columnOf(column.key)" />
+          </StandardCell>
+        </template>
+        <StandardCell
+          v-else
+          :state="cellOf(row.key, column.key)?.flag"
+          :editing="editingId === cellId(row.key, column.key)"
+          :label="cellAction(columnOf(column.key), cellOf(row.key, column.key))"
+          @open="open(row.key, columnOf(column.key), cellOf(row.key, column.key))"
+        >
+          <NemoCellView :cell="cellOf(row.key, column.key)" :column="columnOf(column.key)" />
+          <template #editor>
+            <TableCellEditor
+              :column="columnOf(column.key)"
+              :cell="cellOf(row.key, column.key)"
+              :busy="savingId === cellId(row.key, column.key)"
+              :label="`${column.label} for ${row.label}`"
+              @save="(v) => save(row.key, columnOf(column.key), v)"
+              @cancel="editingId = null"
+            />
+          </template>
+        </StandardCell>
+      </template>
+    </StandardTable>
 
     <!-- The tabs sit in the heading row the parent names, beside Full screen.
          That row is drawn over the list or over the facts (above), so it is a
          new element when All details turns on or off; keyed by where it sits,
          the tabs follow it instead of staying in the removed one. -->
-    <Teleport v-if="tabsTo && !isMobile" :key="missingFields.active ? 'over-missing' : rowsShown.length > 0 ? 'over-list' : 'over-facts'" defer :to="tabsTo">
+    <Teleport v-if="tabsTo && !isMobile" :key="rowsShown.length > 0 ? 'over-list' : 'over-facts'" defer :to="tabsTo">
       <ColumnTabs
-        v-if="tabSegments.length > 1"
-        :segments="tabSegments"
-        :model-value="missingFields.active ? MISSING_TAB : activeSegment.id"
+        v-if="segments.length > 1"
+        :segments="segments"
+        :model-value="activeSegment.id"
         :compact="compact"
-        @update:model-value="chooseSegment"
+        @update:model-value="emit('update:anchor', $event)"
       />
     </Teleport>
   </div>
@@ -160,9 +134,10 @@
 <script setup lang="ts">
 /**
  * One NEMO table (spec 0096): the ship's forms merged into the columns the
- * National Spreadsheet has, DE codes over the names, the first column
- * sticky while the rest scroll. Without All details only what needs a
- * person: rows and facts with a flag.
+ * National Spreadsheet has, drawn as the standard table (StandardTable,
+ * user 2026-11-13). Without All details only what needs a person: rows and
+ * facts with a flag. A missing value is typed right in its cell; a value a
+ * form gave, or two forms disagreeing, opens its own dialog (pick).
  */
 import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
@@ -171,9 +146,10 @@ import { fitSegments, groupsOf, markOf, type ColumnSegment } from '../lib/column
 import ColumnTabs from './ColumnTabs.vue';
 import NemoCellView from './NemoCellView.vue';
 import MobileTable from './MobileTable.vue';
-import MissingTableField from './MissingTableField.vue';
+import StandardTable, { type StandardTableColumn, type StandardTableRow } from './StandardTable.vue';
+import StandardCell from './StandardCell.vue';
+import TableCellEditor from './TableCellEditor.vue';
 import { reportAttachmentMovingKey, reportAttachmentVisibleKey } from '../lib/report-attachment-trigger';
-import type { MissingTableEntry, TableMissingFields } from '../composables/useTableMissingFields';
 
 const drawerMoving = inject(reportAttachmentMovingKey, ref(false));
 const $q = useQuasar();
@@ -184,24 +160,31 @@ const drawerVisible = inject(reportAttachmentVisibleKey, ref(false));
 // at the end of either animation. Wider groups remain horizontally scrollable.
 const keepColumnGroups = computed(() => drawerVisible.value || drawerMoving.value);
 
+/** A value typed into the table: where, and what. */
+export interface TableCellSave {
+  rowKey: string;
+  column: NemoColumn;
+  value: string;
+}
+
 const props = defineProps<{
   table: NemoTable;
   allDetails: boolean;
-  missingFields: TableMissingFields;
-  savingField?: string | null;
   /** Where the column tabs go (a selector in the parent's heading row); none, no tabs. */
   tabsTo?: string;
   /** A column of the chosen tab — kept by the parent, so a refresh or full screen keeps the place. */
   anchor?: string | null;
+  /** Values typed in NEMOLink are edited in their cell too (no dialog of their own on the page). */
+  editEntered?: boolean;
 }>();
 const emit = defineEmits<{
   pick: [target: { rowKey: string; column: NemoColumn; cell: NemoCell | undefined }];
   'update:anchor': [key: string];
-  'save-missing': [entry: MissingTableEntry, value: string];
+  /** Save the value; the parent calls done(true) once the table is fresh, done(false) when refused. */
+  'save-cell': [target: TableCellSave, done: (ok: boolean) => void];
 }>();
 
 const HEADER_ROW = '_';
-const MISSING_TAB = '__missing-fields';
 const EFFECTS = ['effectsType', 'effectsDescription', 'effectsQuantity', 'effectsUnit'];
 
 const flagged = (c: NemoCell | undefined) => !!c?.flag;
@@ -210,28 +193,31 @@ function rowFlagged(r: NemoRow): boolean {
   return Object.values(r.cells).some(flagged) || (r.items ?? []).some((i) => Object.values(i).some(flagged));
 }
 
-const headerShown = computed(() =>
-  props.table.fields.filter((f) => isMobile.value ? true : props.missingFields.active
-    ? props.missingFields.fields.has(f.key)
-    : props.allDetails || flagged(props.table.header[f.key])),
-);
-const rowsShown = computed(() => isMobile.value ? props.table.rows : props.missingFields.active
-  ? props.table.rows.filter(row => props.missingFields.rows.has(row.key))
-  : props.allDetails ? props.table.rows : props.table.rows.filter(rowFlagged));
-const rowWord = computed(() => props.table.rowNoun[0]!.toUpperCase() + props.table.rowNoun.slice(1));
-/** The Missing list grouped by the row each field belongs to, in table order. */
-const missingGroups = computed(() => {
-  const groups = new Map<string, { key: string; label: string; entries: MissingTableEntry[]; missing: number }>();
-  for (const entry of props.missingFields.entries) {
-    const group = groups.get(entry.rowKey) ?? { key: entry.rowKey, label: entry.rowKey === HEADER_ROW ? 'Report details' : entry.rowLabel, entries: [], missing: 0 };
-    group.entries.push(entry);
-    if (entry.cell.flag === 'missing') group.missing++;
-    groups.set(entry.rowKey, group);
-  }
-  return [...groups.values()];
+/** Rows and facts filled here while All details is off stay in view until the
+ *  section changes, so the row never vanishes under the pointer. */
+const kept = ref(new Set<string>());
+watch(() => props.table.key, () => {
+  kept.value = new Set();
+  editingId.value = null;
 });
 
-/** The columns by group, and the tabs the width allows (lib/column-groups). */
+const headerShown = computed(() =>
+  props.table.fields.filter((f) =>
+    isMobile.value || props.allDetails || flagged(props.table.header[f.key]) || kept.value.has(cellId(HEADER_ROW, f.key)),
+  ),
+);
+const rowsShown = computed(() =>
+  isMobile.value || props.allDetails
+    ? props.table.rows
+    : props.table.rows.filter((r) => rowFlagged(r) || kept.value.has(r.key)),
+);
+const rowWord = computed(() => props.table.rowNoun[0]!.toUpperCase() + props.table.rowNoun.slice(1));
+
+/** The facts as standard table rows: the field's name, its NEMO code on hover. */
+const FACT_COLUMNS: StandardTableColumn[] = [{ key: 'value', label: 'To NEMO' }];
+const factRows = computed<StandardTableRow[]>(() => headerShown.value.map((f) => ({ key: f.key, label: f.label, code: f.de })));
+const fieldOf = (key: string): NemoColumn => props.table.fields.find((f) => f.key === key)!;
+
 /**
  * Cargo (user 2026-11-12): left to right the required columns come first and
  * the optional ones last. Description of goods is the first column, the one
@@ -252,12 +238,19 @@ const columnsInOrder = computed(() => {
   const pinned = pinnedKey.value ? [byKey.get(pinnedKey.value)!] : [];
   return [...pinned, ...groups.value.flatMap((g) => g.keys.map((k) => byKey.get(k)!))];
 });
+const columnByKey = computed(() => new Map(props.table.columns.map((c) => [c.key, c])));
+const columnOf = (key: string): NemoColumn => columnByKey.value.get(key)!;
+const listColumns = computed<StandardTableColumn[]>(() =>
+  columnsInOrder.value.map((c) => ({ key: c.key, label: c.label, required: c.required, code: c.de })),
+);
+const rowByKey = computed(() => new Map(props.table.rows.map((r) => [r.key, r])));
+const listRows = computed<StandardTableRow[]>(() => rowsShown.value.map((r) => ({ key: r.key, label: r.label })));
+const cellOf = (rowKey: string, colKey: string): NemoCell | undefined => rowByKey.value.get(rowKey)?.cells[colKey];
+const itemsOf = (rowKey: string) => rowByKey.value.get(rowKey)?.items ?? [];
+
 const widths = ref(new Map<string, number>());
 /** The first column's own width, kept on every tab: its line never moves (user 2026-11-02). */
 const firstWidth = ref<number | null>(null);
-const firstStyle = computed(() =>
-  firstWidth.value ? { width: `${firstWidth.value}px`, minWidth: `${firstWidth.value}px` } : undefined,
-);
 const room = ref(Infinity);
 const tabsRoom = ref(Infinity);
 const segments = computed<ColumnSegment[]>(() =>
@@ -266,53 +259,67 @@ const segments = computed<ColumnSegment[]>(() =>
     mark: markOf(props.table.rows, s.keys),
   })),
 );
-const tabSegments = computed<ColumnSegment[]>(() => props.missingFields.offered
-  ? [{ id: MISSING_TAB, label: 'Missing fields', keys: [...props.missingFields.columns], mark: props.missingFields.count ? 'check' : null }, ...segments.value]
-  : segments.value);
-function chooseSegment(id: string): void {
-  props.missingFields.choose(id === MISSING_TAB);
-  if (id !== MISSING_TAB) emit('update:anchor', id);
-}
 const activeSegment = computed(
   () => segments.value.find((s) => !!props.anchor && s.keys.includes(props.anchor)) ?? segments.value[0]!,
 );
 const shownKeys = computed(() => new Set([
   ...(pinnedKey.value ? [pinnedKey.value] : []),
-  ...(props.missingFields.active ? props.missingFields.columns : activeSegment.value.keys),
+  ...activeSegment.value.keys,
 ]));
 
 /** Over six tabs, or more than the heading row holds: the folded "‹ 1 of 7 ›". */
 const compact = computed(() => {
-  if (tabSegments.value.length > 6) return true;
+  if (segments.value.length > 6) return true;
   // each tab a 30px circle, 8px apart
-  return tabSegments.value.length * 38 - 8 > tabsRoom.value;
+  return segments.value.length * 38 - 8 > tabsRoom.value;
 });
 
-/** Column heads and row names cut short with … — measured, so only those get the full text on hover. */
-const wrapEl = ref<HTMLElement | null>(null);
-const rootEl = ref<HTMLElement | null>(null);
-const tableEl = ref<HTMLElement | null>(null);
-const cutKeys = ref(new Set<string>());
-function measure(): void {
-  if (drawerMoving.value) return;
-  const found = new Set<string>();
-  for (const el of tableEl.value?.querySelectorAll<HTMLElement>('[data-cut]') ?? []) {
-    if (el.closest('.nt-off')) continue;
-    if (el.scrollWidth > el.clientWidth + 1) found.add(el.dataset.cut!);
+// ---- typing a value in its cell (user 2026-11-13) --------------------------
+
+const cellId = (rowKey: string, colKey: string) => `${rowKey}\u0000${colKey}`;
+const editingId = ref<string | null>(null);
+const savingId = ref<string | null>(null);
+
+/** An empty cell is filled in place; so is a typed value where the page has no dialog for it. */
+function inPlace(cell: NemoCell | undefined): boolean {
+  if (!cell?.value) return true;
+  return !!props.editEntered && !!cell.entered && cell.flag !== 'conflict';
+}
+function cellAction(column: NemoColumn, cell: NemoCell | undefined): string {
+  return `${cell?.value ? 'Check' : 'Fill'} ${column.label}`;
+}
+function open(rowKey: string, column: NemoColumn, cell: NemoCell | undefined): void {
+  if (savingId.value) return;
+  if (inPlace(cell)) {
+    editingId.value = cellId(rowKey, column.key);
+    return;
   }
-  cutKeys.value = found;
+  pick(rowKey, column, cell);
+}
+function save(rowKey: string, column: NemoColumn, value: string): void {
+  const id = cellId(rowKey, column.key);
+  savingId.value = id;
+  emit('save-cell', { rowKey, column, value }, (ok) => {
+    if (savingId.value === id) savingId.value = null;
+    if (!ok) return;
+    if (editingId.value === id) editingId.value = null;
+    if (!props.allDetails) kept.value = new Set([...kept.value, rowKey === HEADER_ROW ? id : rowKey]);
+  });
 }
 
 /** Each column's own width, folded or not: its widest line (200px at most) plus the padding. */
+const listRef = ref<InstanceType<typeof StandardTable> | null>(null);
+const rootEl = ref<HTMLElement | null>(null);
 const COL_MIN = 112;
 const FIRST_MIN = 171;
 const LINE_MAX = 200;
 function measureWidths(): void {
   if (keepColumnGroups.value) return;
-  const table = tableEl.value;
+  const table = listRef.value?.tableEl ?? null;
+  const wrap = listRef.value?.wrapEl ?? null;
   const slot = props.tabsTo ? document.querySelector<HTMLElement>(props.tabsTo) : null;
   tabsRoom.value = slot ? slot.clientWidth : Infinity;
-  if (!table || !wrapEl.value) {
+  if (!table || !wrap) {
     if (rootEl.value) room.value = Math.max(0, rootEl.value.clientWidth - FIRST_MIN - (pinnedKey.value ? COL_MIN : 0));
     return;
   }
@@ -327,7 +334,7 @@ function measureWidths(): void {
   const out = new Map<string, number>();
   for (const cell of table.querySelectorAll<HTMLElement>('[data-col]')) {
     const head = cell.tagName === 'TH';
-    const lines = cell.querySelectorAll(head ? '.nt-de, .nt-th__label' : '.nc__line');
+    const lines = cell.querySelectorAll(head ? '.st-th__label' : '.nc__line');
     let widest = 0;
     lines.forEach((l) => (widest = Math.max(widest, line(l))));
     // th 16 + 16; td 7 + 7 around the value's 6 + 6 and its 3px flag bar; 2px to spare
@@ -336,53 +343,37 @@ function measureWidths(): void {
     out.set(key, Math.max(out.get(key) ?? 0, w));
   }
   let first = FIRST_MIN;
-  table.querySelectorAll('.nt-first__text, thead .nt-first .nt-th__label').forEach((l) => {
+  table.querySelectorAll('.st-first__text, thead .st-first .st-th__label').forEach((l) => {
     first = Math.max(first, line(l) + 32 + 2);
   });
   widths.value = out;
   firstWidth.value = Math.ceil(first);
-  room.value = wrapEl.value.clientWidth - firstWidth.value - (pinnedKey.value ? (out.get(pinnedKey.value) ?? COL_MIN) : 0);
+  room.value = wrap.clientWidth - firstWidth.value - (pinnedKey.value ? (out.get(pinnedKey.value) ?? COL_MIN) : 0);
 }
 
 let observer: ResizeObserver | null = null;
 function observe(): void {
   observer?.disconnect();
   if (typeof ResizeObserver !== 'undefined') {
-    observer = new ResizeObserver(() => {
-      measureWidths();
-      measure();
-    });
-    if (wrapEl.value) observer.observe(wrapEl.value);
+    observer = new ResizeObserver(() => measureWidths());
+    const wrap = listRef.value?.wrapEl;
+    const table = listRef.value?.tableEl;
+    if (wrap) observer.observe(wrap);
     if (rootEl.value) observer.observe(rootEl.value);
-    if (tableEl.value) observer.observe(tableEl.value);
+    if (table) observer.observe(table);
     const slot = props.tabsTo ? document.querySelector<HTMLElement>(props.tabsTo) : null;
     if (slot) observer.observe(slot);
   }
   measureWidths();
-  measure();
 }
-function leaveCompletedMissing(event: Event): void {
-  if (!(event.target instanceof Element)) return;
-  // Editors and full-screen tables are portalled outside the regular table.
-  if (event.target.closest('[data-nemo-table], .ct, .q-dialog, .q-menu, .missing-table-options')) return;
-  props.missingFields.leaveCompleted();
-}
-onMounted(() => {
-  void nextTick(observe);
-  document.addEventListener('pointerdown', leaveCompletedMissing);
-  document.addEventListener('focusin', leaveCompletedMissing);
-});
-onBeforeUnmount(() => {
-  observer?.disconnect();
-  document.removeEventListener('pointerdown', leaveCompletedMissing);
-  document.removeEventListener('focusin', leaveCompletedMissing);
-});
-watch([rowsShown, () => props.table.columns, () => props.missingFields.active, isMobile], () => void nextTick(observe));
-watch(shownKeys, () => void nextTick(measure));
+onMounted(() => void nextTick(observe));
+onBeforeUnmount(() => observer?.disconnect());
+watch([rowsShown, () => props.table.columns, isMobile], () => void nextTick(observe));
 watch(keepColumnGroups, (keep) => {
   if (!keep) void nextTick(observe);
 });
 
+/** The phone's facts list keeps its own cell look. */
 function cellClasses(c: NemoCell | undefined): string[] {
   const out: string[] = [];
   if (c?.flag) out.push(`nt-cell--${c.flag}`);
@@ -396,196 +387,25 @@ function pick(rowKey: string, column: NemoColumn, cell: NemoCell | undefined): v
 </script>
 
 <style scoped>
-.nt-missing { font-size: 14px; }
-.nt-missing__head {
-  display: grid;
-  grid-template-columns: 278px minmax(0, 1fr);
-  gap: 12px;
-  padding: 0 0 5px;
-  border-bottom: 1px dashed var(--blue-700);
-  font-size: 12px;
-  line-height: 20px;
-  font-weight: 600;
-  letter-spacing: 0.72px;
-  text-transform: uppercase;
-  color: var(--text-100);
+/* The list and its look are the standard table's (StandardTable.vue). */
+/* The facts sit as far above the list's heading row as under the files (user 2026-11-02) */
+.nt-facts-table {
+  margin-bottom: 26px;
 }
-.nt-missing__row {
-  display: grid;
-  grid-template-columns: 278px minmax(0, 1fr);
-  gap: 12px;
-  padding: 16px 0 17px;
-  border-bottom: 1px dashed var(--blue-700);
-  /* The name and its count centred on the row's fields (user 2026-11-13) */
-  align-items: center;
-}
-.nt-missing__who { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
-.nt-missing__name { font-weight: 600; color: var(--text-300); overflow-wrap: anywhere; }
-.nt-missing__tag { font-size: 12px; line-height: 16px; font-weight: 600; border-radius: 999px; padding: 1px 8px; }
-.nt-missing__tag--missing { background: var(--nl-g-yellow); color: var(--nl-g-on-yellow); }
-.nt-missing__tag--ready { background: var(--nl-g-green); color: var(--nl-on-fill); }
-/* The row's fields side by side, 258px boxes as before, wrapping on narrow widths */
-.nt-missing__fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 258px)); gap: 20px 24px; min-width: 0; }
-/* The table's own facts: the field name (Heading/14) with its DE code
-   (Body/12) beside the value */
-.nt-facts {
-  display: grid;
-  grid-template-columns: minmax(140px, max-content) minmax(0, 1fr);
-  gap: 2px 16px;
-  align-items: start;
-  margin-bottom: 26px; /* the list's heading row then sits as far below as under the files (user 2026-11-02) */
-}
-.nt-facts__label {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 600;
-  color: var(--nl-g-ink);
-  padding: 4px 0;
-}
-.nt-de {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--nl-g-secondary);
-  font-variant-numeric: tabular-nums;
-}
-/* The table (Figma "Crew table"): a Blue/600 frame, radius 10; the header
-   row Blue/200 with a Blue/600 divider; rows white, divided by Blue/500.
-   Every line is 1px (user 2026-11-02). */
-/* The tabs keep every column of the chosen group in view; the sideways
-   scroll is only a last resort for a column wider than the screen */
-.nt-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--nl-g-line-white);
-  border-radius: 10px;
-}
-.nt-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--nl-g-body);
-}
-/* Every line in the list stays on one line (user 2026-11-02): a line may
-   be 200px wide and ends in … beyond that, the whole text on hover */
-.nt-table th,
-.nt-table td {
-  min-width: 112px;
-  white-space: nowrap;
-  vertical-align: top;
-  text-align: left;
-}
-.nt-th__label,
-.nt-first__text,
-.nt-table :deep(.nc__line) {
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* A column of another tab: folded to nothing, its content still giving
-   the row its height (several crew effects stay several lines tall) */
-.nt-table .nt-off {
-  width: 0;
-  min-width: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-.nt-off > .nt-fold {
-  width: 0;
-  overflow: hidden;
-  visibility: hidden;
-}
-/* Column heads: the DE code over the name, Heading/12 */
-.nt-table thead th {
-  padding: 14px 16px;
-  background: var(--nl-g-head-surface);
-}
-.nt-th__label {
+/* Crew effects: one value per item, stacked */
+.nt-item + .nt-item {
   margin-top: 2px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--nl-g-ink);
-}
-.nt-th--req .nt-th__label::after {
-  content: ' *';
-}
-.nt-table tbody tr + tr > * {
-  border-top: 1px solid var(--nl-g-line-row);
-}
-/* A cell's own padding plus the tappable value's: 14px 16px as in Figma */
-.nt-table td {
-  padding: 10px 7px;
-}
-/* The row's person or article: Heading/14, ink */
-.nt-table tbody th {
-  padding: 14px 16px;
-  font-weight: 600;
-  color: var(--nl-g-ink);
-  background: var(--nl-card);
-}
-/* The row's person or article stays in view while the columns scroll */
-.nt-first {
-  min-width: 171px;
-  position: sticky;
-  left: 0;
-  z-index: 1;
-}
-/* Its 1px Blue/600 line on the right, head to last row; drawn on the cell
-   itself — Chrome paints no box-shadow on cells of this collapsed table */
-.nt-first::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--nl-g-line-white);
-  pointer-events: none;
-}
-.nt-table thead .nt-first {
-  background: var(--nl-g-head-surface);
-}
-.nt-cell {
-  padding: 4px 6px;
-  border-radius: 6px;
-  cursor: pointer;
-  border-left: 3px solid transparent;
-  min-height: 28px;
-}
-.nt-cell--item + .nt-cell--item {
-  margin-top: 2px;
-}
-.nt-cell:hover {
-  background: var(--nl-gray-bg);
-}
-.nt-cell--error {
-  border-left-color: var(--red-200);
-  background: var(--red-100);
-}
-/* Missing, disagreeing or to check: the missing-field orange */
-.nt-cell--warning,
-.nt-cell--conflict,
-.nt-cell--missing {
-  border-left-color: var(--orange-300);
-  background: var(--orange-100);
 }
 
-/* Every list table as Send to NEMO: NOD (Figma 500:7424, user 2026-11-07):
-   no frame and no head surface; dashed Blue/700 under every row, rows at
-   least 48px, heads Text/100, the row's name Text/300 Medium, values
-   Text/200; the NEMO code on a hover on the name. Overrides the above. */
-.nt-hover {
-  cursor: help;
-}
+/* Phones: the facts as label · value lines (mobile stays as it is) */
 .nt-facts {
+  display: grid;
   grid-template-columns: 278px minmax(0, 1fr);
   gap: 0 12px;
+  align-items: start;
+  margin-bottom: 26px;
+  font-size: 14px;
+  line-height: 20px;
 }
 .nt-facts > * {
   min-height: 48px;
@@ -596,64 +416,30 @@ function pick(rowKey: string, column: NemoColumn, cell: NemoCell | undefined): v
   border-bottom: 1px dashed var(--blue-700);
 }
 .nt-facts__label {
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
   color: var(--text-300);
 }
-.nt-facts > .nt-cell {
+.nt-cell {
+  padding: 4px 6px;
   border-radius: 0;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  min-height: 28px;
 }
-.nt-wrap {
-  border: 0;
-  border-radius: 0;
+.nt-cell:hover {
+  background: var(--nl-gray-bg);
 }
-.nt-table {
-  color: var(--text-200);
+.nt-cell--error {
+  border-left-color: var(--red-200);
+  background: var(--red-100);
 }
-.nt-table thead th,
-.nt-table thead .nt-first {
-  padding: 0 12px 6px 0;
-  background: var(--nl-card);
-  vertical-align: bottom;
-}
-.nt-th__label {
-  margin-top: 0;
-  letter-spacing: 0.72px;
-  color: var(--text-100);
-}
-.nt-table tr > * {
-  border-bottom: 1px dashed var(--blue-700);
-}
-.nt-table tbody tr + tr > * {
-  border-top: 0;
-}
-.nt-table td {
-  padding: 6px 12px 5px 0;
-  vertical-align: middle;
-}
-.nt-table tbody th {
-  height: 48px;
-  padding: 6px 12px 5px 0;
-  font-weight: 500;
-  color: var(--text-300);
-  vertical-align: middle;
-}
-/* No column lines, as NOD */
-.nt-first::after {
-  display: none;
-}
-/* Cargo: the item name is the last column; the description is the one that stays in view */
-.nt-first--end {
-  position: static;
-}
-.nt-table thead .nt-first--end,
-.nt-table tbody .nt-first--end {
-  padding-right: 0;
-}
-.nt-pin {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  background: var(--nl-card);
+.nt-cell--warning,
+.nt-cell--conflict,
+.nt-cell--missing {
+  border-left-color: var(--orange-300);
+  background: var(--orange-100);
 }
 @media (max-width: 599.98px) {
   .nt-facts {

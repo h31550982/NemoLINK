@@ -36,6 +36,7 @@
           :today="todayIso"
           min-date=""
           :not-after="nowLocal"
+          @incomplete="timeIncomplete = $event"
         />
       </section>
       <div class="ata-notes">
@@ -218,9 +219,11 @@ const firstStep = computed(() => {
 const reviewOnly = computed(() => auth.user.value?.platformAdmin === true);
 const allAccepted = computed(() => !!receipt.value && receipt.value.results.every((r) => r.accepted));
 const mainLabel = computed(() => (receipt.value ? 'Done' : `Confirm ${w.value.code} ${clock.value} and send`));
+/** A half-typed or unreadable day or time holds the send (user 2026-11-13). */
+const timeIncomplete = ref(false);
 const mainDisable = computed(() => {
   if (receipt.value) return false;
-  return reviewOnly.value || !preview.value?.willSend;
+  return reviewOnly.value || timeIncomplete.value || !preview.value?.willSend;
 });
 
 async function onMain(): Promise<void> {

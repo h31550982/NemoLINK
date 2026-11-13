@@ -131,6 +131,7 @@ import { useQuasar } from 'quasar';
 import { MOBILE_BREAKPOINT } from '../lib/breakpoints';
 import HelpTip from './HelpTip.vue';
 import { reportAttachmentTriggerKey } from '../lib/report-attachment-trigger';
+import { isMainShortcut, useMainShortcut } from '../lib/main-shortcut';
 
 const attachmentTrigger = ref<HTMLElement | null>(null);
 provide(reportAttachmentTriggerKey, attachmentTrigger);
@@ -255,8 +256,11 @@ const shortcut = computed(() => ($q.platform.is.mac ? '⌘ + Enter' : 'Ctrl + En
     toggles, selects and the like swallow Enter themselves. The focused
     field is blurred first so a half-typed value commits (a typed date
     applies on blur, spec 0071), then the action runs and focus returns. */
+// Also when focus has dropped to the page under it — and an open pop-up
+// without a main button keeps the shortcut from the page behind it
+useMainShortcut(() => props.modelValue, (e) => void onKeydown(e));
 async function onKeydown(e: KeyboardEvent): Promise<void> {
-  if (e.key !== 'Enter' || !(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey) return;
+  if (!isMainShortcut(e)) return;
   if (!props.mainLabel) return;
   e.preventDefault();
   e.stopPropagation();

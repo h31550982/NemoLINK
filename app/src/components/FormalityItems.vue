@@ -2,7 +2,48 @@
   <!-- What a report would carry (spec 0075): one line per element, the
        value NEMOLink would send, where it comes from, and — for ship
        fields — how it compares with NEMO's ship database -->
-  <div ref="rootEl" class="fi" :class="{ 'fi--no-nemo': !hasInNemo, 'fi--roomy': codeOnHover }">
+  <!-- Desktop: the standard table (StandardTable, user 2026-11-13) -->
+  <div v-if="!phone" ref="rootEl" class="fi fi--table">
+    <StandardTable fixed row-head="Field" :row-head-width="290" :columns="columns" :rows="tableRows">
+      <template #cell="{ column, index }">
+        <template v-if="column.key === 'toNemo'">
+          <StandardCell
+            :state="stateOf(items[index]!)"
+            :interactive="fixable(items[index]!)"
+            :label="`Fill ${items[index]!.label} in the ship data`"
+            @open="editShip"
+          >
+            <div v-if="items[index]!.value !== null" class="st-line tnum fi-cell-value">{{ valueWords(items[index]!) }}</div>
+            <div v-else-if="items[index]!.from === 'nemo' || items[index]!.de === null" class="st-line fi-cell-value">
+              <q-icon :name="items[index]!.ok ? 'check' : 'close'" size="15px" />
+              {{ items[index]!.ok ? 'yes' : 'not yet' }}
+            </div>
+            <div v-else class="st-line fi-cell-value fi-cell-value--missing">missing</div>
+            <div v-if="items[index]!.problem" class="st-line fi-cell-note">{{ items[index]!.problem }}</div>
+          </StandardCell>
+        </template>
+        <template v-else-if="column.key === 'from'">
+          <!-- In place (spec 0085): the ship dialog opens over this page -->
+          <a
+            v-if="items[index]!.from === 'ship' && shipLink"
+            :href="shipLink"
+            class="fi-link"
+            @click.prevent="editShip"
+          >ship data</a>
+          <!-- One line, what does not fit on hover (user 2026-11-06) -->
+          <template v-else>
+            <div class="st-line fi-cell-from" :data-clip-key="index">{{ FROM_WORDS[items[index]!.from] }}</div>
+            <q-tooltip v-if="clipped[index]" anchor="top middle" self="bottom middle" :offset="[0, 6]">{{ FROM_WORDS[items[index]!.from] }}</q-tooltip>
+          </template>
+        </template>
+        <div v-else class="st-line fi-nemo" :class="items[index]!.inNemo ? `fi-nemo--${items[index]!.inNemo!.state}` : ''">
+          <template v-if="items[index]!.inNemo">{{ inNemoWords(items[index]!) }}</template>
+        </div>
+      </template>
+    </StandardTable>
+  </div>
+  <!-- Phones keep their own lines (the mobile view stays as it is) -->
+  <div v-else ref="rootEl" class="fi" :class="{ 'fi--no-nemo': !hasInNemo, 'fi--roomy': codeOnHover }">
     <div class="fi-row fi-head">
       <span>Field</span>
       <span class="prov-head prov-head--nemo">To NEMO</span>
@@ -54,6 +95,9 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, onUpdated, reactive, ref } from 'vue';
+import { useQuasar } from 'quasar';
+import StandardTable, { type StandardTableColumn, type StandardTableRow } from './StandardTable.vue';
+import StandardCell, { type StandardCellState } from './StandardCell.vue';
 import type { ObligationItem } from '../auth/auth';
 import { openShipEditor } from '../lib/ship-editor';
 import { countryName } from '../generated/countries';
@@ -80,6 +124,27 @@ const props = defineProps<{
       (Send to NEMO, Figma 500:7424, user 2026-11-05). */
   codeOnHover?: boolean;
 }>();
+
+const $q = useQuasar();
+/** Phones (the ledger's 640px card breakpoint) keep the old lines. */
+const phone = computed(() => $q.screen.width <= 640);
+
+/** Field · To NEMO · From (· In NEMO), as Send to NEMO (Figma 500:7424). */
+const columns = computed<StandardTableColumn[]>(() => [
+  { key: 'toNemo', label: 'To NEMO', width: 270 },
+  { key: 'from', label: 'From' },
+  ...(hasInNemo.value ? [{ key: 'inNemo', label: 'In NEMO', width: 180 }] : []),
+]);
+const tableRows = computed<StandardTableRow[]>(() =>
+  props.items.map((item, i) => ({ key: String(i), label: item.label, code: item.de })),
+);
+function stateOf(item: ObligationItem): StandardCellState {
+  if (item.problem) return 'warning';
+  if (item.ok) return null;
+  return item.value === null && item.from !== 'nemo' && item.de !== null ? 'missing' : 'warning';
+}
+/** A ship value that is missing opens the ship data, where it is filled. */
+const fixable = (item: ObligationItem): boolean => !item.ok && item.from === 'ship' && !!props.shipLink;
 
 /** From texts cut to one line, by row: those get the whole text on hover. */
 const clipped = reactive<Record<number, boolean>>({});
@@ -143,6 +208,32 @@ function inNemoWords(item: ObligationItem): string {
 </script>
 
 <style scoped>
+/* Desktop: the standard table's cells */
+.fi--table {
+  margin-top: 8px;
+}
+.fi-cell-value {
+  font-weight: 500;
+  color: var(--text-200);
+}
+.fi-cell-value .q-icon {
+  vertical-align: -2px;
+}
+.fi-cell-value--missing,
+.fi-cell-note {
+  color: var(--orange-500);
+}
+.fi-cell-note {
+  font-size: 12px;
+  line-height: 16px;
+}
+.fi-cell-from {
+  font-weight: 500;
+  color: var(--text-200);
+}
+.fi--table .fi-link {
+  white-space: nowrap;
+}
 .fi {
   font-size: 14px;
   margin-top: 8px;

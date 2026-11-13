@@ -6,12 +6,15 @@
  * `port_call.data.formFacts` so the checklists and the send read the same
  * values without re-reading PII.
  *
- * - Crew: the NSW crew list's rows (arrival or both), else the count a
- *   FAL 1 or the health declaration states.
- * - Master: the crew list row ranked Master; else FAL 1's "name of master"
- *   is shown but not split (a full name is not a family and given name).
- * - Persons on board: crew + the passenger list's rows; crew alone when no
- *   passenger list or count says otherwise.
+ * - Crew: the crew list's rows (arrival or both) — the NSW crew list, else
+ *   an IMO FAL 5 — else the count a FAL 1 or the health declaration states.
+ *   Whichever crew list the ship sends, the NOA and NOD do not ask for the
+ *   crew again (user 2026-11-13).
+ * - Master: the crew list row ranked Master (in words, or NEMO's code
+ *   10100); else FAL 1's "name of master" is shown but not split (a full
+ *   name is not a family and given name).
+ * - Persons on board: crew + the passenger list's rows (NSW, else FAL 6);
+ *   crew alone when no passenger list or count says otherwise.
  * - Last port: the NSW security form's most recent port facility call that
  *   ended before this call's ETA. The waste form's last port of delivery is
  *   NOT used: a ship does not deliver waste in every port (user, 2026-09-27).
@@ -45,6 +48,23 @@ export interface ActiveForm {
 
 const LOCODE = /^[A-Z]{2}[A-Z0-9]{3}$/;
 
+/** NEMO's crew role for the master (crew_role 10100) and the words ships write for it. */
+const MASTER_WORDS = new Set(['master', 'captain', 'capt', 'ship master', 'shipmaster', 'master mariner', '10100']);
+function isMaster(rank: unknown): boolean {
+  const words = String(rank ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+  return MASTER_WORDS.has(words) || /^10100\b/.test(words);
+}
+
+/** A crew member's family and given names: the NSW list's columns, FAL 5's "FAMILY, Given". */
+function namesOf(row: Record<string, string>, formType: string): [string, string] {
+  if (formType === 'nsw-crew') return [String(row['lastName'] ?? '').trim(), String(row['firstName'] ?? '').trim()];
+  const [family, ...given] = String(row['name'] ?? '').split(',');
+  return [(family ?? '').trim(), given.join(',').trim()];
+}
+
 function count(text: string | undefined): number | null {
   if (!text) return null;
   const n = Number(String(text).replace(/[^\d]/g, ''));
@@ -63,14 +83,14 @@ export function formFactsOf(forms: ActiveForm[], eta: string | null): FormFacts 
       .filter((f) => f.form.formType === type && f.form.context !== 'departure')
       .sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt))[0];
 
-  const crewList = byType('nsw-crew');
-  if (crewList && Array.isArray(crewList.form.rows) && crewList.form.rows.length > 0) {
-    const rows = crewList.form.rows;
+  const hasRows = (f: ActiveForm | undefined): f is ActiveForm => !!f && Array.isArray(f.form.rows) && f.form.rows.length > 0;
+  const crewList = [byType('nsw-crew'), byType('fal5')].find(hasRows);
+  if (crewList) {
+    const rows = crewList.form.rows!;
     out.crew = { value: rows.length, ...sourceOf(crewList) };
-    const master = rows.find((r) => /^master$|^captain$/i.test(String(r['rank'] ?? '').trim()));
+    const master = rows.find((r) => isMaster(r['rank']));
     if (master) {
-      const family = String(master['lastName'] ?? '').trim();
-      const given = String(master['firstName'] ?? '').trim();
+      const [family, given] = namesOf(master, crewList.form.formType);
       if (family) out.masterFamilyName = { value: family, ...sourceOf(crewList) };
       if (given) out.masterGivenNames = { value: given, ...sourceOf(crewList) };
     }
@@ -84,7 +104,7 @@ export function formFactsOf(forms: ActiveForm[], eta: string | null): FormFacts 
   }
 
   if (out.crew) {
-    const paxList = byType('nsw-pax');
+    const paxList = [byType('nsw-pax'), byType('fal6')].find((f) => !!f && Array.isArray(f.form.rows));
     let passengers = 0;
     let paxSource: ActiveForm | undefined;
     if (paxList && Array.isArray(paxList.form.rows)) {

@@ -25,7 +25,7 @@ import { AuditService } from '../../audit/audit.service';
 import { SessionUser } from '../../auth/session.service';
 import { TenantDb } from '../../tenancy/tenant-db';
 import { LISTS, TABLE_LISTS, loadCodeBook, rememberPick } from './form-codes';
-import { MergedTable, SourceDoc, TableEntry, TableKey, buildTables, columnOf, entryValue } from './form-tables';
+import { MergedTable, Rotation, SourceDoc, TableEntry, TableKey, buildTables, columnOf, entryValue } from './form-tables';
 import { nationalSpreadsheet, SHEETS, warmNationalSpreadsheet } from './national-spreadsheet';
 import { CorrectedFile, XLSX_TYPE, correctedFile, zipFiles } from './corrected-file';
 import {
@@ -793,7 +793,12 @@ export class DocumentsService implements OnApplicationBootstrap {
         const checks = await runChecks(client, effective, callShip);
         docs.push({ id: row.id, fileName: row.file_name, created: row.created.toISOString(), form: effective, annotations: checks.annotations });
       }
-      return buildTables(docs, await loadCodeBook(client, TABLE_LISTS), await this.entriesOf(client, portCallId));
+      return buildTables(
+        docs,
+        await loadCodeBook(client, TABLE_LISTS),
+        await this.entriesOf(client, portCallId),
+        await this.rotationOf(client, portCallId),
+      );
     });
     await this.audit.access({
       actorId: user.username,
@@ -803,6 +808,30 @@ export class DocumentsService implements OnApplicationBootstrap {
       schema,
     });
     return tables;
+  }
+
+  /**
+   * The call's previous ports (spec 0037), for the SEC's last calls (user
+   * 2026-11-13): the chartering system's voyage plan, else what the call
+   * form lists. Named by where they came from.
+   */
+  private async rotationOf(client: PoolClient, portCallId: string): Promise<Rotation | null> {
+    const found = await client.query(
+      `SELECT data->'itinerary'->'prev' AS prev, data->'ingest'->'plan'->>'sourceSystem' AS plan_source
+         FROM port_call WHERE id = $1`,
+      [portCallId],
+    );
+    const row = found?.rows?.[0] as { prev: unknown; plan_source: string | null } | undefined;
+    if (!row || !Array.isArray(row.prev) || row.prev.length === 0) return null;
+    const prev = (row.prev as Record<string, unknown>[])
+      .filter((p) => !!p && typeof p['portLocode'] === 'string')
+      .map((p) => ({
+        portLocode: String(p['portLocode']).toUpperCase(),
+        ...(typeof p['arrival'] === 'string' ? { arrival: p['arrival'] } : {}),
+        ...(typeof p['departure'] === 'string' ? { departure: p['departure'] } : {}),
+      }));
+    if (prev.length === 0) return null;
+    return { origin: row.plan_source ? `${row.plan_source} voyage plan` : 'the port call’s previous ports', prev };
   }
 
   /**

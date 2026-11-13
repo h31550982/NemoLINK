@@ -41,6 +41,7 @@ import { useQuasar } from 'quasar';
 import ReportHeadline from './ReportHeadline.vue';
 import ReportReadyBanner from './ReportReadyBanner.vue';
 import { reportAttachmentMovingKey, reportAttachmentTriggerKey, reportAttachmentVisibleKey } from '../lib/report-attachment-trigger';
+import { isMainShortcut, useMainShortcut } from '../lib/main-shortcut';
 
 defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<{
@@ -81,8 +82,10 @@ onBeforeUnmount(() => actionObserver?.disconnect());
 const $q = useQuasar();
 const shortcut = computed(() => $q.platform.is.mac ? '⌘ + Enter' : 'Ctrl + Enter');
 const progressLabel = computed(() => `Step ${(props.stepLabel ?? '1 of 1').replace(/\s+of\s+/, '/')}`);
+// Also when focus has left the page (a click on blank space or a checkbox)
+useMainShortcut(() => props.modelValue, (event) => void onKeydown(event));
 async function onKeydown(event: KeyboardEvent): Promise<void> {
-  if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey || !props.mainLabel) return;
+  if (!isMainShortcut(event) || !props.mainLabel) return;
   event.preventDefault();
   event.stopPropagation();
   const focused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -106,7 +109,7 @@ async function onKeydown(event: KeyboardEvent): Promise<void> {
 .module-page__body { min-width: 0; padding-inline-start: var(--nl-report-content-inset); }
 .module-page__body :deep(.rp), .module-page__body :deep(.wz-sum) { width: 100%; max-width: none; }
 .module-page__body :deep(.ata-body) { min-height: 0; }
-.module-page__actions { position: fixed; inset-inline: 0; inset-block-end: 0; z-index: 1900; background: var(--blue-100); }
+.module-page__actions { position: fixed; inset-inline: 0; inset-inline-start: var(--nl-rail-width); inset-block-end: 0; z-index: 1900; background: var(--blue-100); }
 .module-page__action-content { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 16px; width: 100%; max-width: var(--nl-page-max-width); margin-inline: auto; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); padding-left: calc(var(--nl-page-padding-left) + var(--nl-report-content-inset)); padding-right: calc(var(--nl-page-padding-right) + var(--module-attachments-space, 0px)); }
 .module-page__extra { display: flex; flex: 1; flex-wrap: wrap; gap: 12px; }
 .module-page__main { display: flex; flex-direction: column; align-items: center; gap: 4px; }

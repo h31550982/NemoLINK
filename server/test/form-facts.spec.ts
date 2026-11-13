@@ -41,6 +41,25 @@ describe('the facts the pre-arrival forms give (spec 0090)', () => {
     expect(formFactsOf([at(security, 's.xlsx')], '2026-09-27T10:00:00Z').lastPort?.value).toBe('FIKTK');
   });
 
+  it('a FAL 5 crew list gives the crew and the master as the NSW list does (user 2026-11-13)', () => {
+    const fal5 = form('fal5', [
+      { name: 'SPARROW, Jack', rank: 'Capt.' },
+      { name: 'GIBBS, Joshamee', rank: 'Chief Officer' },
+    ]);
+    const f = formFactsOf([at(fal5, 'fal5.xlsx')], null);
+    expect(f.crew).toMatchObject({ value: 2, source: 'IMO FAL 5 — Crew list (fal5.xlsx)' });
+    expect(f.masterFamilyName?.value).toBe('SPARROW');
+    expect(f.masterGivenNames?.value).toBe('Jack');
+  });
+
+  it('the master by NEMO code; a FAL 6 passenger list counts in persons on board', () => {
+    const coded = form('nsw-crew', [{ rank: '10100', firstName: 'Jack', lastName: 'Sparrow' }, { rank: '10420', firstName: 'A', lastName: 'B' }]);
+    const fal6 = form('fal6', [{ name: 'SWANN, Elizabeth' }]);
+    const f = formFactsOf([at(coded, 'c.xlsx'), at(fal6, 'p.xlsx')], null);
+    expect(f.masterFamilyName?.value).toBe('Sparrow');
+    expect(f.personsOnBoard?.value).toBe(3);
+  });
+
   it('a FAL 1 count stands in when no crew list has rows', () => {
     const fal1 = form('fal1', [], { crewCount: '12', passengerCount: '0' });
     expect(formFactsOf([at(fal1, 'fal1.xls')], null)).toMatchObject({ crew: { value: 12 }, personsOnBoard: { value: 12 } });
@@ -79,5 +98,22 @@ describe('the NOA facts and rows (spec 0090)', () => {
     expect(rows.find((r) => r.key === 'ship:flagState')).toMatchObject({ entered: 'SE', toNemo: 'SE', externals: [{ value: 'FI' }], ok: true });
     expect(rows.find((r) => r.key === 'org:agentId')).toMatchObject({ ok: false, editable: true });
     expect(rows.find((r) => r.key === 'fixed:duesLanguage')).toMatchObject({ toNemo: 'EN', ok: true, editable: false });
+  });
+});
+
+describe('the crew rows point to the crew list (user 2026-11-13)', () => {
+  const org = { agentId: 'FI1', agencyName: 'A', mobile: '+358', email: 'a@b', businessId: '1', street: 's', postcode: '1', city: 'c', countryCode: 'FI' };
+  const crewRows = (rows: ReturnType<typeof noaLedger>) => rows.filter((r) => ['call:crew', 'call:personsOnBoard', 'call:masterFamilyName', 'call:masterGivenNames'].includes(r.key));
+
+  it('no crew list yet: the missing rows say it fills them', () => {
+    const rows = crewRows(noaLedger(noaSnapshot({ formFacts: {}, notice: {} }), null, org));
+    expect(rows.every((r) => !r.ok && r.hint?.startsWith('Comes from the crew list'))).toBe(true);
+  });
+
+  it('with a crew list: filled, and no hint even where the master is not ranked', () => {
+    const noMaster = form('nsw-crew', [{ rank: 'AB', firstName: 'A', lastName: 'B' }]);
+    const rows = crewRows(noaLedger(noaSnapshot({ formFacts: formFactsOf([at(noMaster, 'c.xlsx')], null) }), null, org));
+    expect(rows.find((r) => r.key === 'call:crew')?.ok).toBe(true);
+    expect(rows.some((r) => r.hint)).toBe(false);
   });
 });

@@ -45,10 +45,10 @@ describe('NOA place rows (port area, berth)', () => {
     expect(portCalls.updateManual).toHaveBeenCalledWith(USER, CALL, { portAreaCode: 'FIRAU-BE', berth: 'FIRAU-BE-BE2' });
   });
 
-  it('an area clears a berth outside it and keeps one inside', async () => {
+  it('an area replaces a berth outside it — with its only berth — and keeps one inside', async () => {
     const outside = controller('FIRAU-BB-BB1');
     await outside.save('callCore:portArea', 'FIRAU-BE');
-    expect(outside.portCalls.updateManual).toHaveBeenCalledWith(USER, CALL, { portAreaCode: 'FIRAU-BE', berth: null });
+    expect(outside.portCalls.updateManual).toHaveBeenCalledWith(USER, CALL, { portAreaCode: 'FIRAU-BE', berth: 'FIRAU-BE-BE2' });
 
     const inside = controller('FIRAU-BB-BB1');
     await inside.save('callCore:portArea', 'FIRAU-BB');

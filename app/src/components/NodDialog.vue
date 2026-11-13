@@ -49,9 +49,11 @@
           <div v-for="s in summary" :key="s.key" class="tg-row">
             <div class="tg-row__body">
               <dt class="tg-row__label">{{ s.label }}</dt>
-              <dd class="tg-row__value tnum">{{ s.missing ? '–' : s.value }}</dd>
+              <dd class="tg-row__value tnum" :class="{ 'tg-row__value--problem': !!s.problem }">{{ s.missing ? (s.problem ?? '–') : s.value }}</dd>
             </div>
-            <StatusPill v-if="s.missing" tone="amber" label="Data missing" />
+            <!-- Filled but wrong (an ETD before the ETA) says so: it stops the send too -->
+                <StatusPill v-if="s.problem" tone="amber" label="Check data" />
+                <StatusPill v-else-if="s.missing" tone="amber" label="Data missing" />
             <StatusPill v-else tone="green" label="Ready" />
           </div>
         </dl>
@@ -178,6 +180,7 @@ const summary = computed(() =>
     label: r.label,
     value: ledgerWords(r, r.toNemo),
     missing: !r.ok,
+    problem: r.problem ?? null,
     onCall: r.owner === 'callCore',
   })),
 );
@@ -221,7 +224,9 @@ const allAccepted = computed(() => !!receipt.value && receipt.value.results.ever
 const busy = computed(() => sending.value || loading.value);
 const mainDisable = computed(() => {
   if (receipt.value) return false;
-  return reviewOnly.value || !preview.value?.willSend || !!savingKey.value;
+  // Any Data missing notice stops the send (user 2026-11-13)
+  const dataMissing = !!preview.value?.missing.length || summary.value.some((s) => s.missing);
+  return reviewOnly.value || dataMissing || !preview.value?.willSend || !!savingKey.value;
 });
 
 async function onMain(): Promise<void> {
@@ -300,6 +305,10 @@ async function onMain(): Promise<void> {
   line-height: normal;
   letter-spacing: 0.14px;
   color: var(--text-300); /* user 2026-11-07 */
+}
+/* What is wrong with a filled value, in the missing-field orange */
+.tg-row__value--problem {
+  color: var(--nl-amber-text) !important;
 }
 .tg-row__value {
   margin: 0;

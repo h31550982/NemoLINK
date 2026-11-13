@@ -241,3 +241,61 @@ export function fmtSchedule(value: string | null | undefined): string {
   const day = new Date(Number(y), Number(mo) - 1, Number(d)).getDay();
   return `${WEEKDAYS[day]} ${d}.${mo}.${y} · ${h}:${mi}`;
 }
+
+// ---- typed schedule fields (user 2026-11-13): a day and a time typed in -----
+
+const MONTH_WORDS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const pad2 = (n: number): string => String(n).padStart(2, '0');
+
+/**
+ * A day as people type it → 'YYYY-MM-DD', or null when it is not a real
+ * day. Takes 24.11.2026, 24.11.26, 24.11. and 24.11 (this year, from
+ * `today`), 24/11/2026, 2026-11-24, 24 Nov 2026, 24 Nov and 24112026.
+ */
+export function parseTypedDay(text: string, today: string): string | null {
+  const s = text.trim().toLowerCase().replace(/,/g, ' ').replace(/\s+/g, ' ');
+  if (!s) return null;
+  const thisYear = Number(today.slice(0, 4)) || new Date().getFullYear();
+  let y: number;
+  let mo: number;
+  let d: number;
+  let m: RegExpExecArray | null;
+  if ((m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s))) {
+    [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  } else if ((m = /^(\d{1,2})[./\- ](\d{1,2})(?:[./\- ](\d{2}|\d{4})?)?\.?$/.exec(s))) {
+    [d, mo] = [Number(m[1]), Number(m[2])];
+    y = m[3] ? (m[3].length === 2 ? 2000 + Number(m[3]) : Number(m[3])) : thisYear;
+  } else if ((m = /^(\d{2})(\d{2})(\d{4})$/.exec(s))) {
+    [d, mo, y] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  } else if ((m = /^(\d{1,2})\.? ?([a-z]{3})[a-z]*\.?(?: (\d{4}))?$/.exec(s))) {
+    d = Number(m[1]);
+    mo = MONTH_WORDS.indexOf(m[2]!) + 1;
+    y = m[3] ? Number(m[3]) : thisYear;
+  } else {
+    return null;
+  }
+  if (mo < 1 || mo > 12) return null;
+  const iso = `${y}-${pad2(mo)}-${pad2(d)}`;
+  return isoDateValid(iso) ? iso : null;
+}
+
+/** A time of day as people type it → 'HH:mm', or null: 14:30, 14.30, 1430, 930, 14. */
+export function parseTypedTime(text: string): string | null {
+  const s = text.trim().replace(/\s+/g, '');
+  if (!s) return null;
+  let m: RegExpExecArray | null;
+  let h: number;
+  let mi: number;
+  if ((m = /^(\d{1,2})[:.](\d{2})$/.exec(s))) [h, mi] = [Number(m[1]), Number(m[2])];
+  else if ((m = /^(\d{1,2})(\d{2})$/.exec(s))) [h, mi] = [Number(m[1]), Number(m[2])];
+  else if ((m = /^(\d{1,2})$/.exec(s))) [h, mi] = [Number(m[1]), 0];
+  else return null;
+  if (h > 23 || mi > 59) return null;
+  return `${pad2(h)}:${pad2(mi)}`;
+}
+
+/** 'YYYY-MM-DD' → '24.11.2026', the day as the typed field shows it. */
+export function fmtTypedDay(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  return m ? `${m[3]}.${m[2]}.${m[1]}` : '';
+}

@@ -12,6 +12,7 @@ import '@fontsource/inter/600.css';
 import { useQuasar } from 'quasar';
 import { MOBILE_BREAKPOINT } from './lib/breakpoints';
 import { installKeepPlace } from './lib/keepPlace';
+import { installEnterPicksOnlyOption } from './lib/enter-picks-only-option';
 
 // Every icon is a Material Symbol (outlined): a plain name such as "event"
 // renders from that font, so templates keep the short names. Prefixed names
@@ -42,6 +43,8 @@ document.addEventListener('keydown', roomForMenu, true);
 document.addEventListener('focusin', roomForMenu, true);
 // Opening or closing any dropdown leaves the page where it was (user 2026-11-06)
 installKeepPlace();
+// A dropdown narrowed to one choice takes it on Enter (user 2026-11-13)
+installEnterPicksOnlyOption();
 $q.iconMapFn = (name) => {
   const swap = SYMBOL_SWAPS[name];
   if (swap) return { cls: 'material-symbols-outlined', content: swap };

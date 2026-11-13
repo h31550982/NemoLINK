@@ -34,10 +34,25 @@
       </q-item-label>
     </q-list>
   </q-expansion-item>
-  <q-btn v-else flat dense round class="q-mr-sm" :aria-label="`System status: ${WORDS[light]}`">
+  <!-- `rail`: in the left navigation rail (user 2026-11-13) — 48px target,
+       tooltip and menu open to the right of it -->
+  <q-btn
+    v-else
+    flat
+    dense
+    round
+    :class="rail ? 'sl-rail' : 'q-mr-sm'"
+    :aria-label="`System status: ${WORDS[light]}`"
+  >
     <span class="sl-dot" :class="`sl-dot--${light}`" />
-    <q-tooltip>{{ WORDS[light] }}</q-tooltip>
-    <q-menu anchor="bottom right" self="top right" @show="void load()">
+    <q-tooltip v-if="rail" anchor="center right" self="center left" :offset="[8, 0]">{{ WORDS[light] }}</q-tooltip>
+    <q-tooltip v-else>{{ WORDS[light] }}</q-tooltip>
+    <q-menu
+      anchor="bottom right"
+      :self="rail ? 'bottom left' : 'top right'"
+      :offset="rail ? [8, 0] : [0, 0]"
+      @show="void load()"
+    >
       <q-list style="min-width: 300px; max-width: 420px" dense>
         <q-item-label header class="row items-center">
           System status
@@ -73,7 +88,7 @@ import { fmtStamp } from '../lib/time';
 type Light = 'green' | 'yellow' | 'red';
 
 /** item: draw as a row for a menu instead of the header dot. */
-defineProps<{ item?: boolean }>();
+defineProps<{ item?: boolean; rail?: boolean }>();
 
 const auth = useAuth();
 const light = ref<Light>('green');
@@ -112,6 +127,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.sl-rail { width: 48px; min-width: 48px; height: 48px; min-height: 48px; }
 .sl-dot {
   display: inline-block;
   width: 14px;

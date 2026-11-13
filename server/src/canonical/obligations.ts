@@ -19,6 +19,7 @@ import { FI_REQUIRED_SHIP_KEYS, SHIP_FIELD_HOMES } from './ship-formalities';
 import { sameValue } from './ship-lanes';
 import type { FormFacts } from './form-facts';
 import { noaCallFacts, type NoaCallFactKey } from './noa-facts';
+import { scheduleProblems } from './schedule-rules';
 
 /** Vendored declarant API, `portCallStatuses`: the NEMO port-call status. */
 export type NemoStatus =
@@ -109,6 +110,8 @@ export interface ObligationItem {
   kind: 'text' | 'time' | 'date';
   from: ItemSource;
   ok: boolean;
+  /** Filled but not right (user 2026-11-13), e.g. an ETD before the ETA: not ok, and why. */
+  problem?: string;
   /** The ship wire key for ship fields — the UI names codes and links the ledger. */
   shipKey?: string;
   inNemo?: { state: InNemoState; value: string | number | null };
@@ -312,6 +315,16 @@ function item(
 /** A call field. */
 const onCall = (label: string, de: string, value: unknown, kind: Item['kind'] = 'text'): Item =>
   item(label, de, value, 'call', kind);
+/**
+ * The ETA or ETD (user 2026-11-13): required wherever a report carries it,
+ * and checked — an ETD before the ETA, or a mistyped year, blocks the send
+ * as a gap does, with the reason.
+ */
+function onTime(label: string, de: string, which: 'eta' | 'etd', snap: ObligationSnapshot): Item {
+  const line = onCall(label, de, snap[which], 'time');
+  const problem = line.ok ? scheduleProblems({ eta: snap.eta, etd: snap.etd }, snap.now)[which] : null;
+  return problem ? { ...line, ok: false, problem } : line;
+}
 /** An organisation (declarant profile) field. */
 const onOrg = (label: string, de: string | null, value: unknown): Item => item(label, de, value, 'org');
 
@@ -421,7 +434,9 @@ function checklist(code: string, snap: ObligationSnapshot): Item[] {
         onShip('MMSI number', 'DE-005-04', s, 'mmsi'),
         onShip('Call sign', 'DE-005-05', s, 'callSign'),
         onCall('Port of call', 'DE-014-04', snap.portLocode),
-        onCall('Estimated arrival', 'DE-022-02', snap.eta, 'time'),
+        // Both times, as the NOA and NOD (user 2026-11-13): the VID carries them too
+        onTime('Estimated arrival', 'DE-022-02', 'eta', snap),
+        onTime('Estimated departure', 'DE-022-05', 'etd', snap),
       ];
     case 'NOA': {
       // Only what NEMO requires (emsw.fi NOA guide, spec 0087). Tonnages,
@@ -434,8 +449,8 @@ function checklist(code: string, snap: ObligationSnapshot): Item[] {
       const v = (k: NoaCallFactKey): unknown => (Array.isArray(f[k].toNemo) ? (f[k].toNemo as string[]).join(', ') : f[k].toNemo);
       return [
         item('Fairway dues decision language', null, DUES_LANGUAGE, 'call'),
-        onCall('Estimated arrival', 'DE-022-02', snap.eta, 'time'),
-        onCall('Estimated departure', 'DE-022-05', snap.etd, 'time'),
+        onTime('Estimated arrival', 'DE-022-02', 'eta', snap),
+        onTime('Estimated departure', 'DE-022-05', 'etd', snap),
         onCall('Last port of call', 'DE-022-06', v('lastPort')),
         // Always ZZUKN, sequence 1 (user decision 2026-09-26): emsw.fi allows it for the
         // next port only; the port is corrected once known
@@ -488,7 +503,7 @@ function checklist(code: string, snap: ObligationSnapshot): Item[] {
       // board the NOA resolved. Voyage number rides along when there is one.
       const f = noaCallFacts(snap);
       return [
-        onCall('Estimated departure', 'DE-022-05', snap.etd, 'time'),
+        onTime('Estimated departure', 'DE-022-05', 'etd', snap),
         onCall('Next port', 'DE-022-08', snap.nextPorts?.[0] ?? NEXT_PORT_UNKNOWN),
         onCall('Number of crew', 'DE-034-03', f.crew.toNemo),
         onCall('Persons on board', 'DE-034-01', f.personsOnBoard.toNemo),
@@ -592,7 +607,9 @@ function obligation(code: string, snap: ObligationSnapshot): Obligation {
     state,
     filled,
     total,
-    missing: items.filter((i) => !i.ok).map((i) => (i.de ? `${i.label} (${i.de})` : i.label)),
+    missing: items
+      .filter((i) => !i.ok)
+      .map((i) => `${i.de ? `${i.label} (${i.de})` : i.label}${i.problem ? ` — ${i.problem}` : ''}`),
     items,
     dueAt,
     dueState: asap && state !== 'sent' ? 'overdue' : dueStateOf(dueAt, snap.now, state),

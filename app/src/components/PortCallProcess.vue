@@ -14,11 +14,18 @@
         </div>
         <div class="process-route__item">
           <dt>ETA</dt>
-          <dd :class="{ 'process-route__unset': !etaLabel }">{{ etaLabel || 'Not set' }}</dd>
+          <!-- The planned times open their own pop-up (user 2026-11-13) -->
+          <dd :class="{ 'process-route__unset': !etaLabel }">
+            <button v-if="timeEditable('eta')" type="button" class="process-route__edit" :aria-label="`ETA ${etaLabel || 'not set'} — change it`" @click="emit('schedule', 'eta')">{{ etaLabel || 'Not set' }}</button>
+            <template v-else>{{ etaLabel || 'Not set' }}</template>
+          </dd>
         </div>
         <div class="process-route__item">
           <dt>ETD</dt>
-          <dd :class="{ 'process-route__unset': !etdLabel }">{{ etdLabel || 'Not set' }}</dd>
+          <dd :class="{ 'process-route__unset': !etdLabel }">
+            <button v-if="timeEditable('etd')" type="button" class="process-route__edit" :aria-label="`ETD ${etdLabel || 'not set'} — change it`" @click="emit('schedule', 'etd')">{{ etdLabel || 'Not set' }}</button>
+            <template v-else>{{ etdLabel || 'Not set' }}</template>
+          </dd>
         </div>
       </dl>
       <!-- The same report badges as on the port call card, under the route card (user 2026-11-12) -->
@@ -111,13 +118,12 @@
           <ProgressPill :state="section.cta.state" />
         </div>
         <ul v-if="!section.upload && section.rows.length" class="process-rows">
-          <li v-for="row in section.rows" :key="row.id" class="process-row" :class="{ 'process-row--file': row.action.kind === 'document', 'process-row--action': !isCompletedReportLocked(row) && !rowDisabled(row) && !(row.state === 'completed' && !moored) }">
-            <span v-if="isCompletedReportLocked(row)" class="process-row__link process-row__label">{{ row.label }}</span>
+          <!-- A report already sent opens too (user 2026-11-13): it shows what
+               went to NEMO and NEMO's answer, as on a moored call -->
+          <li v-for="row in section.rows" :key="row.id" class="process-row" :class="{ 'process-row--file': row.action.kind === 'document', 'process-row--action': !rowDisabled(row) }">
             <button
-              v-else
               type="button"
               class="process-row__link"
-              :class="{ 'process-row__link--completed': row.state === 'completed' && !moored && row.action.kind !== 'edit' }"
               :disabled="rowDisabled(row)"
               @click="openRow(row)"
             >{{ row.label }}</button>
@@ -143,7 +149,12 @@ import ProgressPill from './ProgressPill.vue';
 import chevronDownUrl from '../assets/figma/chevron-down.svg';
 
 const props = defineProps<{ call: PortCall; documents: PortCallDocument[] | null; canUpload: boolean; canReport: boolean; canEdit: boolean; canRemoveDocument?: (document: PortCallDocument) => boolean; etaLabel: string; etdLabel: string; routeLabel?: string }>();
-const emit = defineEmits<{ action: [action: ProcessAction]; upload: [files: File[]]; remove: [document: PortCallDocument]; edit: []; cancel: [] }>();
+const emit = defineEmits<{ action: [action: ProcessAction]; upload: [files: File[]]; remove: [document: PortCallDocument]; edit: []; schedule: [which: 'eta' | 'etd']; cancel: [] }>();
+/** A planned time an editor may change: not after it happened, not on a cancelled call. */
+function timeEditable(which: 'eta' | 'etd'): boolean {
+  if (!props.canEdit || props.call.status === 'cancelled') return false;
+  return which === 'eta' ? !props.call.ata : !props.call.atd;
+}
 const fileInput = ref<HTMLInputElement | null>(null);
 const dragging = ref(false);
 const auth = useAuth();
@@ -166,18 +177,13 @@ function readReviewed(): string[] {
 const sections = computed(() => buildProcessSections(props.call, props.documents ?? [], reviewed.value));
 const moored = computed(() => props.call.nemoStatus === 'Moored');
 const cannotCancel = computed(() => props.call.status === 'departed' || props.call.obligations.some(o => o.code === 'ATA' && o.state === 'sent'));
-function isCompletedReportLocked(row: ProcessRow): boolean {
-  if (moored.value || row.id === 'VID' || row.state !== 'completed') return false;
-  const code = row.action.kind === 'report' ? row.action.code : row.action.kind === 'noa' ? 'NOA' : null;
-  return code !== null && props.call.obligations.some(o => o.code === code && o.state === 'sent' && !o.rejected);
-}
 function rowDisabled(row: ProcessRow): boolean {
   if (row.state === 'blocked' && !moored.value) return true;
   if (row.action.kind === 'edit') return !props.canEdit;
   return !props.canReport && row.action.kind !== 'document' && row.action.kind !== 'forms';
 }
 function openRow(row: ProcessRow): void {
-  if ((row.state === 'blocked' && !moored.value) || isCompletedReportLocked(row)) return;
+  if (row.state === 'blocked' && !moored.value) return;
   if (row.action.kind === 'edit') {
     if (props.canEdit) emit('edit');
     return;
@@ -212,6 +218,9 @@ function dropFiles(event: DragEvent): void { dragging.value = false; upload(Arra
 .process-route dt { color: var(--text-100); font-size: 12px; font-weight: 600; line-height: 16px; letter-spacing: 0.48px; text-transform: uppercase; }
 .process-route dd { margin: 0; color: var(--text-300); font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: 0.14px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .process-route dd.process-route__unset { color: var(--text-100); }
+/* The time as a link: the same words, underlined, no hover change */
+.process-route__edit { padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.process-route__edit:focus-visible { outline: 2px solid var(--blue-800); outline-offset: 2px; border-radius: 4px; }
 .port-process :deep(.process-badges) { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px 0 0; padding: 0; padding-inline-start: var(--process-inset); list-style: none; }
 .process-sections { padding-block: 0; padding-inline-end: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 44px; }
 .process-section__title { margin: 0 0 14px; color: var(--text-300); font-size: 22px; font-weight: 600; line-height: 28px; letter-spacing: -0.1px; }
@@ -221,7 +230,6 @@ function dropFiles(event: DragEvent): void { dragging.value = false; upload(Arra
 .process-row--file { grid-template-columns: minmax(0, 1fr); }
 .process-row__link { min-width: 0; justify-self: start; padding: 0; border: 0; background: none; color: var(--text-200); text-align: left; font: inherit; font-size: 14px; font-weight: 500; line-height: normal; letter-spacing: 0.14px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; overflow-wrap: anywhere; }
 .process-row__link:disabled, .process-row__label { color: var(--text-300); cursor: default; text-decoration: none; }
-.process-row__link--completed { text-decoration: none; }
 .process-row__link:focus-visible, .process-secondary:focus-visible, .process-cancel:focus-visible, .process-files-toggle:focus-visible { outline: 2px solid var(--blue-800); outline-offset: 4px; border-radius: 4px; }
 .process-row__reason { grid-column: 1 / -1; margin: 8px 0 0; color: var(--text-300); font-size: 12px; line-height: 16px; }
 .process-upload { border-radius: 8px; }
@@ -286,7 +294,7 @@ function dropFiles(event: DragEvent): void { dragging.value = false; upload(Arra
 }
 @media (hover: hover) {
   /* Underlined links turn SemiBold on hover (user 2026-11-12) */
-  .process-row--action .process-row__link:not(:disabled):not(.process-row__link--completed):hover { font-weight: 600; }
+  .process-row--action .process-row__link:not(:disabled):hover { font-weight: 600; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .process-row, .process-row__link { transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.16s ease, opacity 0.16s ease; }

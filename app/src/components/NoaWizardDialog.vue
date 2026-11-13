@@ -188,9 +188,11 @@
               <div v-for="s in summary" :key="s.label" class="rp-row tg-row">
                 <div class="rp-body tg-row__body">
                   <dt class="tg-row__label">{{ s.label }}</dt>
-                  <dd class="tg-row__value tnum">{{ s.missing ? '–' : s.value }}</dd>
+                  <dd class="tg-row__value tnum" :class="{ 'tg-row__value--problem': !!s.problem }">{{ s.missing ? (s.problem ?? '–') : s.value }}</dd>
                 </div>
-                <StatusPill v-if="s.missing" tone="amber" label="Data missing" />
+                <!-- Filled but wrong (an ETD before the ETA) says so: it stops the send too -->
+                <StatusPill v-if="s.problem" tone="amber" label="Check data" />
+                <StatusPill v-else-if="s.missing" tone="amber" label="Data missing" />
                 <StatusPill v-else tone="green" label="Ready" />
               </div>
             </dl>
@@ -512,12 +514,13 @@ const summary = computed(() => {
   const call = props.call;
   const berth = rows.find((r) => r.de === 'DE-015-04');
   const head = [
-    { label: 'Ship', value: [call.shipName, call.imoNumber ? `IMO ${call.imoNumber}` : null].filter(Boolean).join(' · ') || '—', mine: false, missing: false, onCall: false },
+    { label: 'Ship', value: [call.shipName, call.imoNumber ? `IMO ${call.imoNumber}` : null].filter(Boolean).join(' · ') || '—', mine: false, missing: false, problem: null as string | null, onCall: false },
     {
       label: 'Port · berth',
       value: `${call.portLocode ?? '—'} · ${berth?.ok ? ledgerWords(berth, berth.toNemo) : 'no berth yet'}`,
       mine: false,
       missing: !berth?.ok,
+      problem: null,
       onCall: true,
     },
   ];
@@ -532,6 +535,7 @@ const summary = computed(() => {
         value: r.ok ? ledgerWords(r, r.toNemo).replace(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2})/g, '$1' + String.fromCharCode(160) + '$2') : 'missing',
         mine: r.owner === 'call' && r.entered !== null,
         missing: !r.ok,
+        problem: r.problem ?? null,
         // A port call's own field is fixed on the port call, not here
         onCall: r.owner === 'callCore',
       }];
@@ -625,6 +629,8 @@ const mainDisable = computed(() => {
   if (step.value === 'reports') return !!choosing.value;
   if (step.value === 'facts') return !!savingKey.value;
   if (reviewOnly.value) return true;
+  // Any Data missing notice stops the send (user 2026-11-13)
+  if (p.missing.length || missingCount.value > 0 || waiting.value.length > 0) return true;
   return !p.willSend;
 });
 
@@ -1009,6 +1015,10 @@ async function onMain(): Promise<void> {
   line-height: normal;
   letter-spacing: 0.14px;
   color: var(--text-100);
+}
+/* What is wrong with a filled value, in the missing-field orange */
+.tg-row__value--problem {
+  color: var(--nl-amber-text) !important;
 }
 .tg-row__value {
   margin: 0;

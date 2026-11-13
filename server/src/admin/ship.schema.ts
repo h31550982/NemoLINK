@@ -69,5 +69,11 @@ export type ShipCreate = z.infer<typeof shipCreateSchema>;
 export type ShipUpdate = z.infer<typeof shipUpdateSchema>;
 
 /** Send the ship data as the SID and SHP of this port call (spec 0070). */
-export const shipNemoSendSchema = z.object({ portCallId: z.string().uuid() }).strict();
+export const shipNemoSendSchema = z
+  .object({
+    portCallId: z.string().uuid(),
+    /** One report at a time (user 2026-11-13): SID, SHP or CRT; all when left out. */
+    types: z.array(z.enum(['SID', 'SHP', 'CRT'])).min(1).max(3).optional(),
+  })
+  .strict();
 export type ShipNemoSend = z.infer<typeof shipNemoSendSchema>;

@@ -17,6 +17,42 @@
       </div>
     </div>
 
+    <!-- Tablet and desktop: search, New port call and Card view are the top
+         row of the front page — 132px from the top, the content 56px under it
+         (user 2026-11-13; they were in the top bar) -->
+    <div
+      v-if="!isPhone && !isProcessPage && !isCaptain"
+      class="home-top home-wrap"
+      :class="{ 'home-top--drawer': callEditDrawerOpen }"
+    >
+      <div class="home-top__tools">
+        <SearchBox
+          v-model="search"
+          placeholder="Search ships, voyages"
+          :autofocus="false"
+          class="home-top__search"
+        />
+        <q-btn
+          v-if="auth.isAdmin.value"
+          unelevated
+          no-caps
+          color="primary"
+          label="New port call"
+          class="home-top__new"
+          :class="{ 'tool-muted': callFormOpen && !callEditDrawerOpen }"
+          @click="openCreate"
+        />
+      </div>
+      <q-toggle
+        v-model="cardView"
+        label="Card view"
+        left-label
+        color="primary"
+        class="view-switch"
+        :class="{ 'tool-muted': callFormOpen && !callEditDrawerOpen }"
+      />
+    </div>
+
     <div v-if="isProcessPage" class="process-page home-wrap">
       <div v-if="loading" class="q-py-lg"><q-spinner color="primary" size="32px" /></div>
       <template v-else-if="selectedCall">
@@ -34,7 +70,7 @@
       </template>
       <p v-else role="status">This port call is no longer available.</p>
     </div>
-    <div v-else class="home-body home-wrap">
+    <div v-else class="home-body home-wrap" :class="{ 'home-body--under-tools': !isPhone && !isCaptain }">
       <div v-if="loading" class="row justify-center q-pa-lg">
         <q-spinner size="32px" color="primary" />
       </div>
@@ -252,7 +288,7 @@
               map-options
               options-dense
               :disable="areaOptions.length === 0"
-              @update:model-value="form.berth = ''"
+              @update:model-value="onAreaPicked"
             />
           </FormField>
           <FormField
@@ -260,7 +296,7 @@
             label="Berth"
             for-id="pc-berth"
             optional
-            :hint="form.portAreaCode ? 'Fill it in if it is known. The list holds the area’s berths in NEMO.' : 'Pick a port area first.'"
+            :hint="berthHint"
           >
             <q-select
               popup-content-class="nl-field-menu"
@@ -316,6 +352,7 @@
             v-model="form.ata"
             name="ata"
             popup-side="left"
+            optional
             :today="todayDate"
             min-date=""
             @incomplete="scheduleIncomplete.ata = $event"
@@ -330,6 +367,7 @@
             v-model="form.atd"
             name="atd"
             popup-side="left"
+            optional
             :today="todayDate"
             :min-date="form.ata ? form.ata.slice(0, 10) : ''"
             :after="form.ata || undefined"
@@ -519,7 +557,10 @@ import RemovalDialog from '../components/RemovalDialog.vue';
 import NemoResultDialog from '../components/NemoResultDialog.vue';
 import PortCallBlock from '../components/PortCallBlock.vue';
 import PortCallDrawer from '../components/PortCallDrawer.vue';
+import SearchBox from '../components/SearchBox.vue';
 import ScheduleFields from '../components/ScheduleFields.vue';
+import { checkSchedule } from '../lib/schedule-rules';
+import { onlyPlace } from '../lib/only-place';
 
 const $q = useQuasar();
 const route = useRoute();
@@ -700,28 +741,42 @@ const todayDate = computed(() => {
   const p = (n: number) => String(n).padStart(2, '0');
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
 });
-/** Today 00:00, datetime-local format — the ETA floor. */
-const etaMin = computed(() => `${todayDate.value}T00:00`);
 
 // Inline immediately per docs/07 law 4 (user rule 2026-08-24); the
 // datetime-local strings compare chronologically, clock time included.
 // The past-ETA rule applies only to a value the user changed, so other
 // fields of a historical call stay editable; the ordering rules always.
-const etaError = computed(() =>
-  form.eta && form.eta !== originalTimes.eta && form.eta < etaMin.value
-    ? 'ETA cannot be in the past'
-    : null,
+// The shared rules (lib/schedule-rules, user 2026-11-13): the ETA and ETD
+// are required, as every report to NEMO needs them; a time that cannot be
+// right says so at its field while the form is filled.
+const scheduleCheck = computed(() =>
+  checkSchedule(
+    { eta: form.eta, etd: form.etd, ata: form.ata, atd: form.atd },
+    { required: ['eta', 'etd'], originalEta: originalTimes.eta },
+  ),
 );
-const etdError = computed(() =>
-  form.eta && form.etd && form.etd <= form.eta ? 'ETD must be after the ETA' : null,
-);
-const atdError = computed(() =>
-  form.ata && form.atd && form.atd <= form.ata ? 'ATD must be after the ATA' : null,
-);
+/** An empty required time shows its error once the other one is set — the
+    footer names the gaps until then. */
+const etaError = computed(() => (form.eta || form.etd ? scheduleCheck.value.eta : null));
+const etdError = computed(() => (form.eta || form.etd ? scheduleCheck.value.etd : null));
+const atdError = computed(() => scheduleCheck.value.atd);
 const scheduleIncomplete = reactive({ eta: false, etd: false, ata: false, atd: false });
 const scheduleInvalid = computed(
-  () => scheduleIncomplete.eta || scheduleIncomplete.etd || (form.id && (scheduleIncomplete.ata || scheduleIncomplete.atd)) || !!etaError.value || !!etdError.value || !!atdError.value,
+  () => scheduleIncomplete.eta || scheduleIncomplete.etd || (form.id && (scheduleIncomplete.ata || scheduleIncomplete.atd)) || !!scheduleCheck.value.eta || !!scheduleCheck.value.etd || !!atdError.value,
 );
+/** Why the main button is off, in words beside it (user 2026-11-13). */
+const formBlocker = computed(() => {
+  const gaps: string[] = [];
+  if (!form.id && !form.shipId) gaps.push('the ship');
+  if (!form.portLocode) gaps.push('the port');
+  if (!form.eta || scheduleIncomplete.eta) gaps.push('the ETA');
+  if (!form.etd || scheduleIncomplete.etd) gaps.push('the ETD');
+  if (form.id && scheduleIncomplete.ata) gaps.push('the ATA');
+  if (form.id && scheduleIncomplete.atd) gaps.push('the ATD');
+  if (gaps.length > 0) return `Still needed: ${gaps.join(', ')}`;
+  const wrong = scheduleCheck.value.eta ?? scheduleCheck.value.etd ?? atdError.value;
+  return wrong ? `Check the times: ${wrong}` : null;
+});
 
 /** ZZUKN quick chip (spec 0037): toggles the code in the next-ports list. */
 const zzuknSelected = computed({
@@ -751,8 +806,30 @@ const areaHint = computed(() =>
     ? 'Pick the port first.'
     : areaOptions.value.length === 0
       ? 'NEMO has no published port areas for this port.'
-      : 'Fill it in if it is known. The list holds the port’s areas in NEMO.',
+      : areaOptions.value.length === 1
+        ? 'The only port area NEMO has for this port — picked for you.'
+        : 'Fill it in if it is known. The list holds the port’s areas in NEMO.',
 );
+const berthHint = computed(() =>
+  !form.portAreaCode
+    ? 'Pick a port area first.'
+    : berthOptions.value.length === 1
+      ? 'The only berth NEMO has for this area — picked for you.'
+      : 'Fill it in if it is known. The list holds the area’s berths in NEMO.',
+);
+
+/** One choice is no choice (user 2026-11-13): the only area, and the area's
+    only berth, fill an empty field. The fields stay, so the pick shows. */
+function pickOnlyPlace(): void {
+  const place = onlyPlace(portAreas.value, { portAreaCode: form.portAreaCode || null, berth: form.berth || null });
+  if (!form.portAreaCode && place.portAreaCode) form.portAreaCode = place.portAreaCode;
+  if (!form.berth && place.berth && place.portAreaCode === form.portAreaCode) form.berth = place.berth;
+}
+
+function onAreaPicked(): void {
+  form.berth = '';
+  pickOnlyPlace();
+}
 
 /** Puts the cursor in a field of the card, by its FormField name (the card
     opens with its first field ready). */
@@ -769,7 +846,11 @@ async function loadPortAreas(locode: string): Promise<void> {
     return;
   }
   try {
-    portAreas.value = await auth.listPortAreas(locode);
+    const areas = await auth.listPortAreas(locode);
+    // The port may have changed while the list loaded
+    if (form.portLocode !== locode) return;
+    portAreas.value = areas;
+    pickOnlyPlace();
   } catch {
     portAreas.value = [];
   }
@@ -944,7 +1025,7 @@ function parseRoute(text: string): string[] {
 }
 
 const formMainDisable = computed(
-  () => !form.portLocode || (!form.id && !form.shipId) || scheduleInvalid.value,
+  () => !form.portLocode || (!form.id && !form.shipId) || !!scheduleInvalid.value,
 );
 const formUsesSheet = computed(() => $q.screen.width < 900);
 watch(
@@ -978,6 +1059,7 @@ const formCardProps = computed(() =>
         mainLabel: form.id ? 'Save changes' : 'Create port call',
         mainLoading: saving.value,
         mainDisable: formMainDisable.value,
+        mainNote: formMainDisable.value ? formBlocker.value : null,
       },
 );
 
@@ -1038,7 +1120,7 @@ async function saveCall(): Promise<void> {
   saving.value = true;
   try {
     // Backstop for the inline field errors (Save is disabled while any shows)
-    const inlineError = etaError.value ?? etdError.value ?? atdError.value;
+    const inlineError = scheduleCheck.value.eta ?? scheduleCheck.value.etd ?? atdError.value;
     if (inlineError) {
       $q.notify({ type: 'negative', message: inlineError });
       return;
@@ -1386,10 +1468,90 @@ onMounted(async () => {
 .view-switch {
   flex: none;
 }
+/* Tablet and desktop: the front page's top row (user 2026-11-13) — search
+   and New port call on the content's left edge, Card view on its right;
+   132px from the top of the window */
+.home-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding-top: 132px;
+}
+.home-top__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.home-top__search {
+  flex: 0 1 280px;
+  width: 280px;
+  min-width: 160px;
+  max-width: 280px;
+}
+.home-top__new {
+  flex: none;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+}
+.home-top__new :deep(.q-btn__content) {
+  min-height: 0;
+}
+.home-top .view-switch {
+  margin-inline-start: auto;
+}
+/* On tablet the label "Card view" is hidden — the toggle alone is enough (user 2026-11-06) */
+@media (max-width: 1023px) {
+  .home-top .view-switch :deep(.q-toggle__label) {
+    display: none;
+  }
+}
+/* The new/edit drawer covers the right side: the row makes room so the
+   switch stays visible beside it */
+@media (min-width: 1024px) {
+  .home-top {
+    transition: padding-right 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .home-top--drawer {
+    padding-right: max(
+      var(--nl-page-padding-right),
+      calc(var(--nl-call-drawer-width) + 48px - max(0px, (100vw - var(--nl-rail-width) - var(--nl-page-max-width)) / 2))
+    );
+    transition-duration: 300ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-top { transition: none; }
+}
+.tool-muted {
+  opacity: 0.45;
+  transition: opacity 0.18s ease;
+}
+.tool-muted:hover,
+.tool-muted:focus-within {
+  opacity: 1;
+}
 /* The body on the front page's #F3F4F8 ground (MainLayout) */
 .home-body {
   padding-top: 32px;
   padding-bottom: 48px;
+}
+/* Tablet and desktop: 56px under the top row; with no row (the captain)
+   the content itself starts 132px from the top */
+@media (min-width: 600px) {
+  .home-body {
+    padding-top: 132px;
+  }
+  .home-body--under-tools {
+    padding-top: 56px;
+  }
 }
 /* Phones: the head band is still present, body starts closer (user 2026-11-06) */
 @media (max-width: 599.98px) {

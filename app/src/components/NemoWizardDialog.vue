@@ -3,7 +3,7 @@
     :model-value="modelValue"
     :context="page ? `${call.shipName ?? 'Ship'} · ${call.portName ?? call.portLocode ?? 'Port not set'}` : undefined"
     class="nemo-wz"
-    :title="page ? reportLinkLabel(step === 'vid' ? 'VID' : shipReportCode ?? 'SID') : 'Send to NEMO'"
+    :title="page ? reportLinkLabel(step === 'vid' ? 'VID' : stepCode) : 'Send to NEMO'"
     :sheet-title="sheetTitle"
     :step-label="stepLabel"
     :sheet-main-label="sheetMainLabel"
@@ -15,7 +15,7 @@
     full-height
     :main-label="mainLabel"
     :main-icon="mainIcon"
-    :main-icon-right="vidReview ? 'arrow_forward' : undefined"
+    :main-icon-right="mainIconRight"
     :main-disable="mainDisable"
     :main-loading="busy"
     @main="onMain"
@@ -47,15 +47,35 @@
     </template>
 
     <!-- As Ship forms (user 2026-11-05): no Close in the footer — Close stays
-         at the top right; Back on step 2, also after NEMO's answer -->
+         at the top right. Back to the step before; SID, SHP and CRT each go
+         on their own (user 2026-11-13), so a report can also be passed by
+         with Skip and come back to with Back -->
     <template #secondary>
-      <q-btn
-        v-if="canGoBack"
-        outline no-caps color="primary" label="Back"
-        class="wz-back"
-        :disable="busy"
-        @click="goBack"
-      />
+      <div v-if="canGoBack || canSkip || canResend" class="wz-nav">
+        <q-btn
+          v-if="canGoBack"
+          outline no-caps color="primary" icon="arrow_back" label="Back"
+          class="wz-back"
+          :disable="busy"
+          @click="goBack"
+        />
+        <q-btn
+          v-if="canSkip"
+          outline no-caps color="primary" :label="step === 'crt' ? 'Skip and finish' : 'Skip'"
+          class="wz-back"
+          :disable="busy"
+          @click="advance"
+        />
+        <!-- A report NEMO already has: Next is the main action, sending it
+             again (an update) stays at hand here (user 2026-11-13) -->
+        <q-btn
+          v-if="canResend"
+          outline no-caps color="primary" label="Send again"
+          class="wz-back"
+          :disable="busy"
+          @click="send"
+        />
+      </div>
       <!-- An empty slot would bring the footer's own Close back -->
       <span v-else aria-hidden="true" />
     </template>
@@ -87,14 +107,16 @@
                   <div class="tg-row__label">Port call (VID)</div>
                   <div class="tg-row__value">{{ blocker ?? 'Everything the VID needs is here.' }}</div>
                 </div>
-                <!-- Data missing leads to the fix (user 2026-11-06): the ship
-                     data for the ship's gaps, the port call for its own -->
-                
                 <StatusPill v-if="blocker" tone="amber" label="Data missing" />
                 <StatusPill v-else tone="green" label="Ready" />
               </div>
             </div>
             <div v-if="allDetails && blocker" class="wz-warn q-mt-sm">{{ blocker }}</div>
+            <!-- The times are fixed right here, in the ETA / ETD pop-up (user 2026-11-13) -->
+            <div v-if="timesGap" class="rp-note">
+              <a href="#" class="wz-link" @click.prevent="emit('edit-schedule')">Set the ETA and ETD</a>
+              — the check updates when you save them.
+            </div>
           </template>
           <!-- No In NEMO heading over the visit id (user 2026-11-07) -->
           <template v-else>
@@ -114,7 +136,7 @@
 
         <!-- The ship data that follows — checked here, before anything is
              sent, so a gap is fixed first (user rule 2026-09-25) -->
-        <section v-if="!vidReview" class="rp-block">
+        <section v-if="!visitId" class="rp-block">
           <!-- "Ship data", no paragraph under it, on every width (user 2026-11-07) -->
           <h3 class="rp-heading">Ship data</h3>
           <div v-if="shpBlocked" class="wz-warn q-mb-sm">
@@ -129,7 +151,6 @@
                   {{ shipGaps.length > 0 ? `Missing: ${shipGaps.join(', ')}` : 'The ship data Finland requires is complete.' }}
                 </div>
               </div>
-              
               <StatusPill v-if="shipGaps.length > 0 || shpBlocked" tone="amber" label="Data missing" />
               <StatusPill v-else tone="green" label="Ready" />
             </div>
@@ -142,37 +163,48 @@
                 <div v-else-if="certsGoing.length > 0" class="tg-row__value">{{ certsGoing.join(', ') }}</div>
                 <div v-else class="tg-row__value">No certificates on file — add them in the ship data.</div>
               </div>
-              
               <StatusPill v-if="certGaps.length > 0 || certsGoing.length === 0" tone="amber" label="Data missing" />
               <StatusPill v-else tone="green" label="Ready" />
             </div>
           </div>
+          <!-- Missing basic data typed right here (user 2026-11-13), saved to the ship data / organisation -->
+          <ShipDataFill
+            :call="call"
+            :declarant-missing="!!preview && !preview.declarant"
+            :editable="!reviewOnly"
+            @saved="onFilled"
+          />
           <div v-if="(shipGaps.length > 0 || shpBlocked || certGaps.length > 0) && shipLink" class="rp-note">
             <a :href="shipLink" class="wz-link" @click.prevent="editShip">Edit the ship data</a>
-            — it opens right here, and this check updates when you close it.
+            — every field, certificates and files; it opens right here, and this check updates when you close it.
           </div>
         </section>
       </div>
     </template>
 
-    <!-- 2 · the ship data: what goes, then NEMO's answer -->
+    <!-- 2–4 · SID, SHP and CRT, one report per step, each sent on its own
+         (user 2026-11-13): what goes, then NEMO's answer -->
     <template v-else>
-      <div v-if="loadingPreview" class="row justify-center q-pa-lg">
+      <div v-if="loadingPreview && !preview" class="row justify-center q-pa-lg">
         <q-spinner color="primary" size="32px" />
       </div>
       <div v-else-if="previewError" class="wz-warn">{{ previewError }}</div>
 
-      <!-- 3 · as Pre-arrival's This goes to NEMO (user 2026-11-07): label over
-           value between Blue/500 hairlines, Ready or Add missing data right -->
-      <div v-else-if="preview && !receipt" class="rp rp--ship-reports">
+      <!-- As Pre-arrival's This goes to NEMO (user 2026-11-07): label over
+           value between Blue/500 hairlines, Ready or Data missing right -->
+      <div v-else-if="preview && !stepReceipt" class="rp rp--ship-reports">
         <section class="rp-block">
           <div v-if="!preview.declarant" class="wz-warn q-mb-sm">
             Set the EORI in NEMO declarant details first — it names your organisation on every
             report.
           </div>
+          <div v-if="step === 'shp' && shpBlocked" class="wz-warn q-mb-sm">
+            NEMO refuses the ship particulars (SHP) without the registered owner
+            or the lessee (operator) name (NR-SHP-001) — the SHP would not go.
+          </div>
           <h3 class="rp-overview-heading">Overview</h3>
           <dl class="tg-rows tg-rows--reports">
-            <ReportListRow v-for="fm in preview.formalities" :key="fm.type + (fm.certKey ?? '')" :simple="reportIsSimple(fm)">
+            <ReportListRow v-for="fm in stepFormalities" :key="fm.type + (fm.certKey ?? '')" :simple="reportIsSimple(fm)">
                 <dt class="tg-row__label">{{ reportTitle(fm) }}</dt>
                 <!-- No "Goes now" nor the ice-class line (user 2026-11-07): Ready says it -->
                 <dd v-if="fm.willSend && fm.previously?.formalityId" class="tg-row__value">
@@ -186,11 +218,34 @@
                 </dd>
               <template #status>
                 <StatusPill v-if="fm.willSend" tone="green" label="Ready" />
-                <StatusPill v-else-if="fm.gaps?.length || fm.problems.length || !fm.willSend" tone="amber" label="Data missing" />
+                <StatusPill v-else-if="fm.previously?.accepted && !fm.gaps?.length && !fm.problems.length" tone="violet" icon="check" label="In NEMO" />
+                <StatusPill v-else-if="fm.gaps?.length || fm.problems.length" tone="amber" label="Data missing" />
                 <StatusPill v-else tone="gray" label="Not sent" />
               </template>
             </ReportListRow>
+            <!-- A step with no report of its own: the CRT with no certificate on file -->
+            <ReportListRow v-if="stepFormalities.length === 0">
+              <dt class="tg-row__label">{{ STEP_TITLES[step] }}</dt>
+              <dd class="tg-row__value">
+                {{ step === 'crt' ? 'No certificates on file — add them in the ship data.' : 'Nothing to send.' }}
+              </dd>
+              <template #status><StatusPill tone="amber" label="Data missing" /></template>
+            </ReportListRow>
           </dl>
+          <!-- The ship's own gaps for this report, fixed in the ship data -->
+          <div v-if="stepShipGaps.length > 0" class="wz-warn q-mt-sm">Missing in the ship data: {{ stepShipGaps.join(', ') }}</div>
+          <!-- …typed right here (user 2026-11-13): this report's ship fields, and the EORI -->
+          <ShipDataFill
+            :call="call"
+            :codes="step === 'crt' ? [] : [stepCode]"
+            :declarant-missing="!preview.declarant"
+            :editable="!reviewOnly"
+            @saved="onFilled"
+          />
+          <div v-if="(stepShipGaps.length > 0 || (step === 'shp' && shpBlocked) || (step === 'crt' && (certGaps.length > 0 || stepFormalities.length === 0))) && shipLink" class="rp-note">
+            <a :href="shipLink" class="wz-link" @click.prevent="editShip">Edit the ship data</a>
+            — it opens right here, and this check updates when you close it.
+          </div>
         </section>
 
         <!-- All details: the declarant, every field (the list table), the raw JSON -->
@@ -213,27 +268,27 @@
             >
           </p>
           <!-- As the NOD list table (user 2026-11-07): Report before NEMO ID -->
-          <div class="st" role="table" aria-label="Fields that go to NEMO">
+          <div v-if="stepFields.length > 0" class="st" role="table" aria-label="Fields that go to NEMO">
             <div class="st-row st-head" role="row">
               <span role="columnheader">Field</span>
               <span role="columnheader">Value</span>
               <span role="columnheader">Report</span>
               <span role="columnheader">NEMO ID</span>
             </div>
-            <div v-for="f in preview.fields" :key="f.key" class="st-row" :class="{ 'st-row--kept': !f.sent }" role="row">
+            <div v-for="f in stepFields" :key="f.key" class="st-row" :class="{ 'st-row--kept': !f.sent }" role="row">
               <span class="st-cell st-label" role="cell">{{ labels[f.key] ?? FALLBACK_LABELS[f.key] ?? f.key }}</span>
               <span class="st-cell prov-lane st-value" role="cell"><span class="tnum prov-value">{{ fmtValue(f) }}</span></span>
               <span class="st-cell" role="cell">{{ reportWords(f) }}</span>
               <span class="st-cell tnum st-code" role="cell">{{ f.de }}</span>
             </div>
           </div>
-          <template v-for="fm in preview.formalities" :key="`raw-${fm.type}`">
+          <template v-for="fm in stepFormalities" :key="`raw-${fm.type}-${fm.certKey ?? ''}`">
             <q-expansion-item
               v-if="fm.envelope"
               dense
               dense-toggle
               expand-icon-class="text-grey-6"
-              :label="`Raw JSON — ${fm.type}`"
+              :label="`Raw JSON — ${fm.type === 'CRT' ? certWords({ ...fm, files: [] }) : fm.type}`"
               header-class="send-raw-head"
               class="q-mt-sm"
             >
@@ -244,19 +299,15 @@
         <div v-if="reviewOnly" class="wz-warn">{{ PLATFORM_ADMIN_SEND_WORDS }}</div>
       </div>
 
-      <template v-else-if="receipt">
-        <!-- CRT: NEMO's answer with its dropdowns closed (user 2026-11-07) -->
-        <NemoResultView :exchanges="receipt.results.map((r) => r.exchange)" :expanded="false" />
-        <div v-if="nextReport && receipt.results.every((r) => r.accepted)" class="dlg-section q-mt-md">
+      <template v-else-if="stepReceipt">
+        <!-- NEMO's answer to this step's report, its dropdowns closed (user 2026-11-07) -->
+        <NemoResultView :exchanges="stepReceipt.results.map((r) => r.exchange)" :expanded="false" />
+        <div v-if="step === 'crt' && nextReport && stepReceipt.results.every((r) => r.accepted)" class="dlg-section q-mt-md">
           <div class="dlg-section__title">Next for this call</div>
           <div class="text-body2">
             <b>{{ nextReport.code }}</b> — {{ nextReport.title }}<template v-if="dueLine(nextReport)">.
               {{ dueLine(nextReport) }}</template
             >
-          </div>
-          <div v-if="allDetails" class="text-body2 q-mt-xs wz-muted">
-            The notices and the actual times are not sent from NEMOLink yet — their chips on the
-            call show what NEMOLink can pre-fill.
           </div>
         </div>
       </template>
@@ -268,18 +319,17 @@
 import { useAllDetails } from '../composables/useAllDetails';
 /**
  * The NEMO wizard (spec 0079): one dialog walks a port call through NEMO's
- * order, one step per Ctrl+Enter — 1 the port call (the VID, spec 0075),
- * 2 the ship data (SID + SHP, spec 0070) — and says what NEMO answered.
- * It opens on the VID chip of a call that is not in NEMO (step 1) and on
- * the SID and SHP chips of one that is (step 2). Before anything is sent
- * it flags the required ship fields that are missing, so they are fixed
- * first. The plain view shows only the outcome and what needs attention;
- * "All details" reveals every field, the declarant, the policy and the raw
- * JSON (user rules 2026-09-25). The sends are `POST /portcalls/:id/nemo-create`
- * and `POST /ships/:id/nemo-send`; every exchange lands on the call's chain
- * (spec 0078).
+ * order — 1 the port call (the VID, spec 0075), then the ship data one
+ * report at a time (user 2026-11-13): 2 SID, 3 SHP, 4 CRT, each sent on its
+ * own with Back and Skip between them; only after the CRT does the port
+ * call page come back. Before anything is sent it flags what is missing or
+ * wrong — a send never goes with a gap. The plain view shows only the
+ * outcome and what needs attention; "All details" reveals every field, the
+ * declarant, the policy and the raw JSON (user rules 2026-09-25). The sends
+ * are `POST /portcalls/:id/nemo-create` and `POST /ships/:id/nemo-send`
+ * with the step's report; every exchange lands on the call's chain (spec 0078).
  */
-import { computed, ref, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import {
   useAuth,
@@ -298,21 +348,24 @@ import NemoResultView from './NemoResultView.vue';
 import HouseDialog from './HouseDialog.vue';
 import ModulePage from './ModulePage.vue';
 import ReportListRow from './ReportListRow.vue';
+import ShipDataFill from './ShipDataFill.vue';
 import { sendWasAccepted } from '../lib/port-call-sections';
 import { reportLinkLabel } from '../lib/port-call-process';
 import StatusPill from './StatusPill.vue';
 import { PLATFORM_ADMIN_SEND_WORDS, dueLine } from '../lib/obligations';
 import { fmtStamp } from '../lib/time';
 
-type StepKey = 'vid' | 'ship';
+type StepKey = 'vid' | 'sid' | 'shp' | 'crt';
+type ShipStep = Exclude<StepKey, 'vid'>;
+type Formality = ShipNemoPreview['formalities'][number];
 
 const props = withDefaults(
   defineProps<{
     modelValue: boolean; page?: boolean;
     call: PortCall;
-    /** Where to open: the VID chip starts at 1, the SID and SHP chips at 2. */
-    startAt?: StepKey;
-    /** Preserve the particular ship-data link that opened the shared page. */
+    /** Where to open: the VID chip starts at 1, the SID, SHP and CRT chips at the ship data. */
+    startAt?: 'vid' | 'ship';
+    /** The ship-data report that opened the page: its own step (SID, SHP or CRT). */
     shipReportCode?: string;
   }>(),
   { startAt: 'vid' },
@@ -324,6 +377,8 @@ const emit = defineEmits<{
   (e: 'completed', step: 'vid' | 'ship'): void;
   /** Add missing data on the port call's own gaps: the call's edit form. */
   (e: 'edit-call'): void;
+  /** The ETA or ETD is missing or wrong: the ETA / ETD pop-up. */
+  (e: 'edit-schedule'): void;
 }>();
 
 const $q = useQuasar();
@@ -337,18 +392,17 @@ const FORMALITY_WORDS: Record<string, string> = {
 const FALLBACK_LABELS: Record<string, string> = { imoNumber: 'IMO number' };
 
 const step = ref<StepKey>('vid');
-/** Back from step 2 lands on step 1 itself (see goBack). */
-const vidReview = ref(false);
 const visitId = ref<string | null>(null);
 const creating = ref(false);
 const loadingPreview = ref(false);
 const previewError = ref<string | null>(null);
 const sending = ref(false);
 const preview = ref<ShipNemoPreview | null>(null);
-const receipt = ref<ShipNemoReceipt | null>(null);
+/** NEMO's answer per ship-data step, sent in this dialog. */
+const receipts = reactive<Record<ShipStep, ShipNemoReceipt | null>>({ sid: null, shp: null, crt: null });
 /** NEMO's answer to the VID made in this dialog (spec 0081). */
 const vidExchange = ref<NemoExchange | null>(null);
-/** Step 3's policy text, folded behind Read more. */
+/** The policy text, folded behind Read more. */
 const policyOpen = ref(false);
 
 const { allDetails, autoDetails } = useAllDetails();
@@ -366,12 +420,15 @@ function start(): void {
   visitId.value = props.call.visitId;
   preview.value = null;
   previewError.value = null;
-  receipt.value = null;
+  receipts.sid = null;
+  receipts.shp = null;
+  receipts.crt = null;
   vidExchange.value = null;
   policyOpen.value = false;
-  step.value = props.startAt === 'ship' && visitId.value ? 'ship' : 'vid';
-  vidReview.value = false;
-  // Step 2 shows it; step 1 checks the certificates with it (spec 0084)
+  const code = (props.shipReportCode ?? 'SID').toLowerCase();
+  const shipStep: ShipStep = code === 'shp' || code === 'crt' ? code : 'sid';
+  step.value = props.startAt === 'ship' && visitId.value ? shipStep : 'vid';
+  // The ship steps show it; step 1 checks the certificates with it (spec 0084)
   void loadPreview();
 }
 
@@ -379,42 +436,33 @@ function obligation(code: string): Obligation | null {
   return props.call.obligations.find((o) => o.code === code) ?? null;
 }
 
-const shipName = computed(() => props.call.shipName ?? 'the ship');
-
 // ---- the steps ---------------------------------------------------------------
 
-/* The three ship-data codes are progress points of their own (user
-   2026-11-06), but one request sends them: they share the ship step's
-   state and rise and fall together. */
-const STEPS: { key: string; phase: StepKey; label: string }[] = [
-  { key: 'vid', phase: 'vid', label: 'Port call (VID)' },
-  { key: 'sid', phase: 'ship', label: 'SID' },
-  { key: 'shp', phase: 'ship', label: 'SHP' },
-  { key: 'crt', phase: 'ship', label: 'CRT' },
+/* Four steps, each its own send (user 2026-11-13): the port call, then the
+   three ship-data reports one by one. */
+const STEPS: { key: StepKey; label: string }[] = [
+  { key: 'vid', label: 'Port call (VID)' },
+  { key: 'sid', label: 'SID' },
+  { key: 'shp', label: 'SHP' },
+  { key: 'crt', label: 'CRT' },
 ];
 /** What the step is called where there is room for a sentence, not a code. */
-const PHASE_TITLES: Record<StepKey, string> = {
+const STEP_TITLES: Record<StepKey, string> = {
   vid: 'Port call (VID)',
-  ship: 'Ship data',
+  sid: 'Ship identity (SID)',
+  shp: 'Ship particulars (SHP)',
+  crt: 'Certificates (CRT)',
 };
 
-/**
- * One point per press (user 2026-11-06): the indicator moves on one step
- * each time the main button is pressed, and only that one stands out —
- * on the port call 1 (VID); with the visit id in hand 2 (SID); on the
- * ship data 3 (SHP); NEMO's answer 4 (CRT). Back to step 1 is 1 again.
- */
-const position = computed<number>(() => {
-  if (step.value === 'vid') return visitId.value && !vidReview.value ? 1 : 0;
-  return receipt.value ? 3 : 2;
-});
-
+const position = computed(() => STEPS.findIndex((s) => s.key === step.value));
 const steps = computed(() =>
   STEPS.map((s, i) => {
     const state = i === position.value ? 'current' : i < position.value ? 'done' : 'todo';
     return { ...s, n: i + 1, done: state === 'done', state, at: state === 'current' };
   }),
 );
+/** SID, SHP or CRT — the report this step sends. */
+const stepCode = computed(() => step.value.toUpperCase() as 'SID' | 'SHP' | 'CRT');
 
 // ---- 1 · the port call (VID) ---------------------------------------------------
 
@@ -426,6 +474,17 @@ const shipLink = computed(() =>
   auth.isAdmin.value && props.call.shipId ? `/admin/ships?ship=${props.call.shipId}` : null,
 );
 
+/** The call's own gaps in the VID, by NEMO element: the words for each. */
+const CALL_NEEDS: Record<string, string> = {
+  'DE-014-04': 'a port',
+  'DE-022-02': 'an ETA',
+  'DE-022-05': 'an ETD',
+};
+/** The ETA or ETD is missing or wrong: the VID cannot go yet. */
+const timesGap = computed(
+  () => !visitId.value && vidItems.value.some((i) => !i.ok && (i.de === 'DE-022-02' || i.de === 'DE-022-05')),
+);
+
 /** What the server requires before it asks NEMO (spec 0070 createInNemo). */
 const blocker = computed(() => {
   const need = (de: string) => vidItems.value.find((i) => i.de === de && !i.ok);
@@ -433,64 +492,45 @@ const blocker = computed(() => {
   if (auth.user.value?.platformAdmin) return PLATFORM_ADMIN_SEND_WORDS;
   if (!props.call.shipId) return 'The port call has no ship.';
   if (need('DE-005-03')) return 'The ship needs an IMO number before NEMO can identify it.';
-  if (need('DE-014-04') || need('DE-022-02')) return 'The port call needs a port and an ETA.';
+  // A time that is there but wrong says what is wrong (user 2026-11-13)
+  const wrong = vidItems.value.find((i) => !i.ok && i.problem);
+  if (wrong?.problem) return `${wrong.problem}.`;
+  const gaps = Object.keys(CALL_NEEDS).filter((de) => need(de)).map((de) => CALL_NEEDS[de]!);
+  if (gaps.length > 0) {
+    const words = gaps.length > 1 ? `${gaps.slice(0, -1).join(', ')} and ${gaps[gaps.length - 1]}` : gaps[0];
+    return `The port call needs ${words}.`;
+  }
   return null;
 });
 
-/** Where the VID's gap is fixed: the ship data (admins) or the port call. */
-const blockerFix = computed<'ship' | 'call' | null>(() => {
-  if (!blocker.value || auth.user.value?.platformAdmin) return null;
-  if (!props.call.shipId) return 'call';
-  if (vidItems.value.some((i) => i.de === 'DE-005-03' && !i.ok)) return shipLink.value ? 'ship' : null;
-  return 'call';
-});
-
-/**
- * The required ship fields SID and SHP would carry but cannot: the
- * checklists' own missing lines. Owner and lessee are one requirement
- * (either, NR-SHP-001), so with one of them present neither is listed.
- */
-const shipGaps = computed(() => {
+/** The required ship fields a report would carry but cannot: its checklist's own missing lines. */
+function gapsOf(codes: readonly string[]): string[] {
   const out: string[] = [];
   const shp = obligation('SHP')?.items ?? [];
   const has = (key: string) => shp.some((i) => i.shipKey === key && i.ok);
+  // Owner and lessee are one requirement (either, NR-SHP-001)
   const partyOk = has('ownerName') || has('operatorName');
-  for (const code of ['SID', 'SHP']) {
+  for (const code of codes) {
     for (const i of obligation(code)?.items ?? []) {
       if (i.ok) continue;
+      if (code === 'NOA' && i.from !== 'ship') continue;
       if (partyOk && (i.shipKey === 'ownerName' || i.shipKey === 'operatorName')) continue;
       const words = i.de ? `${i.label} (${i.de})` : i.label;
       if (!out.includes(words)) out.push(words);
     }
   }
-  // The NOA's ship items: type, flag, registry, port of registry (spec 0088 amendment)
-  for (const i of obligation('NOA')?.items ?? []) {
-    if (i.ok || i.from !== 'ship') continue;
-    const words = i.de ? `${i.label} (${i.de})` : i.label;
-    if (!out.includes(words)) out.push(words);
-  }
   return out;
-});
+}
+/** Step 1's check of all the ship data — and the NOA's ship items (spec 0088 amendment). */
+const shipGaps = computed(() => gapsOf(['SID', 'SHP', 'NOA']));
+/** This step's own ship gaps. */
+const stepShipGaps = computed(() => (step.value === 'sid' || step.value === 'shp' ? gapsOf([stepCode.value]) : []));
 
 /** Neither owner nor lessee: NEMO refuses the SHP (NR-SHP-001). */
 const shpBlocked = computed(() => {
   const shp = obligation('SHP')?.items ?? [];
   const has = (key: string) => shp.some((i) => i.shipKey === key && i.ok);
   return shp.length > 0 && !has('ownerName') && !has('operatorName');
-});
-
-const reportReady = computed(() => {
-  const p = preview.value;
-  if (!p?.declarant || loadingPreview.value || previewError.value || receipt.value || blocker.value || shipGaps.value.length || shpBlocked.value) return false;
-  return p.formalities.length > 0 && p.formalities.every(formality =>
-    !formality.gaps?.length && !formality.problems.length && (formality.willSend || formality.previously?.accepted),
-  );
-});
-
-autoDetails(() => {
-  if (previewError.value) return true;
-  if (loadingPreview.value || !preview.value || receipt.value) return null;
-  return !reportReady.value;
 });
 
 async function create(): Promise<void> {
@@ -502,6 +542,8 @@ async function create(): Promise<void> {
     vidExchange.value = out.exchange;
     if (props.page && out.visitId && out.exchange.outcome === 'success') emit('completed', 'vid');
     else emit('sent');
+    // The ship-data reports can be built now that the visit id is there
+    if (out.visitId) void loadPreview({ quiet: true });
   } catch (e) {
     // NEMO's answer — or its absence — in the result viewer (spec 0081)
     if (e instanceof NemoExchangeError && e.exchange) vidExchange.value = e.exchange;
@@ -511,7 +553,7 @@ async function create(): Promise<void> {
   }
 }
 
-// ---- 2 · the ship data (SID + SHP) ----------------------------------------------
+// ---- 2–4 · SID, SHP, CRT — one at a time ------------------------------------------
 
 /** The ship rows' own words, from the reports that carry them. */
 const labels = computed<Record<string, string>>(() => {
@@ -522,52 +564,71 @@ const labels = computed<Record<string, string>>(() => {
   return out;
 });
 
-/** Invariant 4 (spec 0076): an acting platform admin reviews, never sends. */
-const reviewOnly = computed(() => auth.user.value?.platformAdmin === true);
-const canSend = computed(
-  () => !reviewOnly.value && !!preview.value?.formalities.some((f) => f.willSend),
+/** This step's reports: the SID, the SHP, or every certificate's CRT. */
+const stepFormalities = computed<Formality[]>(() =>
+  step.value === 'vid' ? [] : (preview.value?.formalities ?? []).filter((f) => f.type === stepCode.value),
 );
-/**
- * The button names what goes, or the one thing standing in the way. A send
- * never depends on a change: every send carries the full set, and a resend
- * updates NEMO's copy (spec 0070).
- */
-const sendLabel = computed(() => {
-  if (reviewOnly.value) return 'Only the organisation can send';
-  const formalities = preview.value?.formalities ?? [];
-  const types = [...new Set(formalities.filter((f) => f.willSend).map((f) => f.type))];
-  // Just "Send to NEMO" (user 2026-11-07), no codes after it
-  if (types.length > 0) return 'Send to NEMO';
-  if (!preview.value) return 'Send to NEMO';
-  if (!preview.value.declarant) return 'Set the EORI first';
-  return formalities.find((f) => f.reason)?.reason ?? 'Nothing to send';
+/** The fields this step's report carries (the CRTs carry certificates, not fields). */
+const stepFields = computed(() =>
+  step.value === 'sid' || step.value === 'shp' ? (preview.value?.fields ?? []).filter((f) => f.formality === stepCode.value) : [],
+);
+const stepReceipt = computed(() => (step.value === 'vid' ? null : receipts[step.value]));
+
+const formalityClean = (f: Formality): boolean =>
+  !f.gaps?.length && !f.problems.length && (f.willSend || !!f.previously?.accepted);
+
+const reportReady = computed(() => {
+  const p = preview.value;
+  if (!p?.declarant || loadingPreview.value || previewError.value) return false;
+  if (step.value === 'vid') {
+    if (blocker.value || shipGaps.value.length || shpBlocked.value || visitId.value) return false;
+    return p.formalities.length > 0 && p.formalities.every(formalityClean);
+  }
+  if (stepReceipt.value || stepShipGaps.value.length || (step.value === 'shp' && shpBlocked.value)) return false;
+  return stepFormalities.value.length > 0 && stepFormalities.value.every(formalityClean);
 });
 
-/**
- * On to the ship data. In the plain view (spec 0079 rule 1, the user's
- * point 5) the same Ctrl+Enter also sends when both reports can go —
- * nothing to review; the review stays when something needs attention,
- * and always under All details.
- */
-async function goShip(): Promise<void> {
-  step.value = 'ship';
-  // Back and forward again after NEMO's answer: show that answer, send nothing
-  if (receipt.value) return;
-  await loadPreview();
-  const all = preview.value?.formalities ?? [];
-  const core = all.filter((f) => f.type !== 'CRT');
-  const crts = all.filter((f) => f.type === 'CRT');
-  // Nothing to review: SID and SHP go, and no certificate lacks anything
-  const clean = core.length > 0 && core.every((f) => f.willSend) && crts.every((f) => f.willSend || (f.gaps?.length ?? 0) === 0);
-  if (!allDetails.value && canSend.value && clean) await send();
-}
+autoDetails(() => {
+  if (previewError.value) return true;
+  if (loadingPreview.value || !preview.value || stepReceipt.value) return null;
+  return !reportReady.value;
+});
 
-async function loadPreview(): Promise<void> {
+
+/** Invariant 4 (spec 0076): an acting platform admin reviews, never sends. */
+const reviewOnly = computed(() => auth.user.value?.platformAdmin === true);
+/**
+ * This step's report can go: nothing missing or wrong in it (user
+ * 2026-11-13) — the server says so per report, and the ship's own gaps
+ * for it stop it too.
+ */
+const canSend = computed(
+  () =>
+    !reviewOnly.value &&
+    !previewError.value &&
+    !stepShipGaps.value.length &&
+    !(step.value === 'shp' && shpBlocked.value) &&
+    // A Data missing pill on any report of the step stops it (user 2026-11-13)
+    !stepFormalities.value.some((f) => !f.willSend && (f.gaps?.length || f.problems.length)) &&
+    stepFormalities.value.some((f) => f.willSend),
+);
+
+/** Step 1's Data missing pills (port call, ship data, certificates): any of them stops the VID (user 2026-11-13). */
+const vidDataMissing = computed(
+  () =>
+    !!blocker.value ||
+    shipGaps.value.length > 0 ||
+    shpBlocked.value ||
+    (!!preview.value && (certGaps.value.length > 0 || certsGoing.value.length === 0)),
+);
+
+async function loadPreview(opts: { quiet?: boolean } = {}): Promise<void> {
   if (!props.call.shipId) {
     previewError.value = 'The port call has no ship.';
     return;
   }
-  loadingPreview.value = true;
+  // Quiet: after a send the page keeps NEMO's answer in view while it reloads
+  if (!opts.quiet) loadingPreview.value = true;
   previewError.value = null;
   try {
     preview.value = await auth.shipNemoPreview(props.call.shipId, props.call.id);
@@ -579,12 +640,13 @@ async function loadPreview(): Promise<void> {
 }
 
 async function send(): Promise<void> {
-  if (!props.call.shipId) return;
+  if (!props.call.shipId || step.value === 'vid') return;
+  const at = step.value;
   sending.value = true;
   try {
-    receipt.value = await auth.sendShipToNemo(props.call.shipId, props.call.id);
-    if (props.page && sendWasAccepted(receipt.value)) emit('completed', 'ship');
-    else emit('sent');
+    receipts[at] = await auth.sendShipToNemo(props.call.shipId, props.call.id, [stepCode.value]);
+    emit('sent');
+    void loadPreview({ quiet: true });
   } catch (e) {
     $q.notify({ type: 'negative', message: (e as Error).message, timeout: 12000 });
   } finally {
@@ -593,18 +655,18 @@ async function send(): Promise<void> {
 }
 
 /** A report's row title: "Ship identity (SID)", or the certificate. */
-function reportTitle(fm: ShipNemoPreview['formalities'][number]): string {
+function reportTitle(fm: Formality): string {
   if (fm.type === 'CRT') return `${certWords(fm)} (CRT)`;
   const w = FORMALITY_WORDS[fm.type] ?? fm.type;
   return `${w.charAt(0).toUpperCase()}${w.slice(1)} (${fm.type})`;
 }
 
-function reportIsSimple(fm: ShipNemoPreview['formalities'][number]): boolean {
-  return !fm.problems.length && (fm.willSend ? !fm.previously?.formalityId : !fm.reason);
+function reportIsSimple(fm: Formality): boolean {
+  return !fm.problems.length && !fm.gaps?.length && (fm.willSend ? !fm.previously?.formalityId : !fm.reason);
 }
 
 /** A CRT in words: which certificate and how many files (spec 0084). */
-function certWords(fm: ShipNemoPreview['formalities'][number]): string {
+function certWords(fm: Formality): string {
   const type = fm.certKey?.split(':')[0] ?? '';
   const number = fm.certKey?.split(':').slice(1).join(':') ?? '';
   const files = fm.files?.length ? ` · ${fm.files.length} file${fm.files.length === 1 ? '' : 's'}` : '';
@@ -628,6 +690,12 @@ const certsGoing = computed(() =>
  * The ship dialog, in place (spec 0085): opens over the wizard; when it
  * closes after a change, the call and the check reload.
  */
+/** A missing field typed into the list was saved: the call and the check reload. */
+async function onFilled(): Promise<void> {
+  emit('sent');
+  await loadPreview({ quiet: true });
+}
+
 async function editShip(): Promise<void> {
   if (!props.call.shipId) return;
   if (await openShipEditor(props.call.shipId)) {
@@ -644,69 +712,84 @@ const nextReport = computed(
     ) ?? null,
 );
 
-// ---- the footer: one main action per step, Ctrl+Enter walks through -----------
+// ---- the footer: Back, Skip, and one main action per step ----------------------
 
 const busy = computed(() => creating.value || sending.value || loadingPreview.value);
 
-/**
- * Back, as Ship forms and Pre-arrival (user 2026-11-05): wherever step 2 is
- * current — the ship step, also after NEMO's answer, and the port call
- * view once the VID is in NEMO (its main action leads to the ship data).
- * Back lands on step 1 itself: the port call in NEMO, and Next.
- */
-const canGoBack = computed(
-  () => step.value === 'ship' || (step.value === 'vid' && !!visitId.value && !vidReview.value),
-);
+/** Back to the step before: from SID to the port call, from SHP to SID, from CRT to SHP. */
+const canGoBack = computed(() => position.value > 0);
 function goBack(): void {
   if (!canGoBack.value || busy.value) return;
-  step.value = 'vid';
-  vidReview.value = true;
+  step.value = STEPS[position.value - 1]!.key;
+}
+
+/** Skip: on past a report that could go but is not sent now — Back returns to it. */
+const canSkip = computed(() => step.value !== 'vid' && !stepReceipt.value && canSend.value && !alreadyInNemo.value);
+
+/**
+ * Looking at a report NEMO already has (user 2026-11-13): every report of
+ * this step that would go was accepted before, so the main action is Next
+ * (Done after the CRT), not Send to NEMO. Send again stays beside Back.
+ */
+const alreadyInNemo = computed(() => {
+  const going = stepFormalities.value.filter((f) => f.willSend);
+  return going.length > 0 && going.every((f) => !!f.previously?.accepted);
+});
+const canResend = computed(() => step.value !== 'vid' && !stepReceipt.value && canSend.value && alreadyInNemo.value);
+
+/** On to the next step; after the CRT the port call page comes back. */
+function advance(): void {
+  if (busy.value) return;
+  if (step.value === 'vid') {
+    step.value = 'sid';
+    return;
+  }
+  if (step.value !== 'crt') {
+    step.value = STEPS[position.value + 1]!.key;
+    return;
+  }
+  finish();
+}
+
+/**
+ * The end of the ship data (user 2026-11-13): SID, SHP and CRT have each had
+ * their step, and only now does the port call page come back. On the page
+ * an accepted send says so there; otherwise the page simply returns.
+ */
+function finish(): void {
+  const sent = Object.values(receipts).filter((r): r is ShipNemoReceipt => !!r);
+  if (props.page && sent.length > 0 && sent.every(sendWasAccepted)) emit('completed', 'ship');
+  else emit('update:modelValue', false);
 }
 
 const mainLabel = computed(() => {
-  if (vidReview.value) return 'Next';
-  if (step.value === 'vid') return 'Send to NEMO';
-  if (receipt.value) return 'Done';
-  return sendLabel.value;
+  if (step.value === 'vid') return visitId.value ? 'Next' : 'Send to NEMO';
+  if (stepReceipt.value || !canSend.value || alreadyInNemo.value) return step.value === 'crt' ? 'Done' : 'Next';
+  return 'Send to NEMO';
 });
-
-const mainIcon = computed(() => {
-  if (vidReview.value) return undefined;
-  if (step.value === 'vid') return 'send';
-  return receipt.value ? 'check' : 'send';
-});
+const sendsNow = computed(() => mainLabel.value === 'Send to NEMO');
+const mainIcon = computed(() => (sendsNow.value ? 'send' : mainLabel.value === 'Done' ? 'check' : undefined));
+const mainIconRight = computed(() => (mainLabel.value === 'Next' ? 'arrow_forward' : undefined));
 
 /** The phone has no band: the step names the title, its number the action bar,
     and the send button is bare — the title already says where it goes. */
-const sheetTitle = computed(() => PHASE_TITLES[step.value === 'vid' && (!visitId.value || vidReview.value) ? 'vid' : 'ship']);
-const stepLabel = computed(() => {
-  const at = steps.value.findIndex((s) => s.state === 'current');
-  return at >= 0 ? `${at + 1} of ${steps.value.length}` : undefined;
-});
-const sheetMainLabel = computed(() =>
-  vidReview.value || receipt.value ? undefined : 'Send',
-);
+const sheetTitle = computed(() => STEP_TITLES[step.value]);
+const stepLabel = computed(() => `${position.value + 1} of ${STEPS.length}`);
+const sheetMainLabel = computed(() => (sendsNow.value ? 'Send' : undefined));
 
 const mainDisable = computed(() => {
-  if (step.value === 'vid') return visitId.value ? false : !!blocker.value;
-  if (receipt.value) return false;
-  return !canSend.value || !!previewError.value;
+  if (step.value === 'vid') return visitId.value ? false : vidDataMissing.value;
+  return false;
 });
 
 async function onMain(): Promise<void> {
-  // Next from step 1: back to where Back came from, nothing is sent
-  if (vidReview.value) {
-    vidReview.value = false;
-    if (receipt.value) step.value = 'ship';
-    return;
-  }
   if (step.value === 'vid') {
-    if (visitId.value) await goShip();
+    if (visitId.value) advance();
     else await create();
     return;
   }
-  if (receipt.value) emit('update:modelValue', false);
-  else await send();
+  if (sendsNow.value) await send();
+  else advance();
 }
 
 // ---- words -------------------------------------------------------------------
@@ -733,6 +816,12 @@ function pretty(v: unknown): string {
 </script>
 
 <style scoped>
+/* Back and Skip side by side on the left of the footer */
+.wz-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 /* The head in the band, as Pre-arrival: the step strip left, All details right */
 .wz-head {
   display: flex;

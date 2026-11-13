@@ -8,7 +8,8 @@ import type { LedgerRow } from '../auth/auth';
 import { callPurposeName, registryName, voyageTypeName } from '../generated/noa-codes';
 import { countryName } from '../generated/countries';
 import { shipTypeName } from '../generated/ship-types';
-import { fmtStamp } from './time';
+import { iceClassName } from '../generated/ice-classes';
+import { fmtDay, fmtStamp } from './time';
 
 export const LANGUAGES = [
   { code: 'FI', name: 'Finnish' },
@@ -26,7 +27,14 @@ export function ledgerWords(r: Pick<LedgerRow, 'kind' | 'codelist'>, v: unknown)
   if (Array.isArray(v)) return v.map((x) => ledgerWords(r, x)).join(', ');
   const s = String(v);
   if (r.kind === 'time') return fmtStamp(s);
+  if (r.kind === 'date') return fmtDay(s);
+  if (typeof v === 'boolean') return v ? 'Yes' : 'No';
+  if (typeof v === 'object' && typeof (v as { code?: unknown }).code === 'string') return ledgerWords(r, (v as { code: string }).code);
   switch (r.codelist) {
+    case 'iceClass':
+      return `${iceClassName(s)} (${s})`;
+    case 'yesNo':
+      return s === 'yes' || s === 'true' ? 'Yes' : s === 'no' || s === 'false' ? 'No' : s;
     case 'purpose':
       return `${callPurposeName(s)} (${s})`;
     case 'voyage':
