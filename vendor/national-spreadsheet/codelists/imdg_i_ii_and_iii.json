@@ -1,0 +1,40 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imdg_I_II_and_III",
+  "headerless": false,
+  "usedIn": [
+    "DE-049-06"
+  ],
+  "formalities": [
+    "HZA/D"
+  ],
+  "rules": [
+    "R-HZA-010"
+  ],
+  "entries": [
+    {
+      "id": "I",
+      "en": "High danger",
+      "fi": "Erittäin vaaralliset aineet",
+      "sv": "Mycket farliga ämnen"
+    },
+    {
+      "id": "II",
+      "en": "Medium danger",
+      "fi": "Vaaralliset aineet",
+      "sv": "Farliga ämnen"
+    },
+    {
+      "id": "III",
+      "en": "Low danger",
+      "fi": "Vähäistä vaaraa aiheuttavat aineet",
+      "sv": "Ämnen med liten fara"
+    }
+  ]
+}

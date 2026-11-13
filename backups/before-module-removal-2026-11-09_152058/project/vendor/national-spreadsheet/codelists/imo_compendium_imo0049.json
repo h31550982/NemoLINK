@@ -1,0 +1,425 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0049",
+  "headerless": false,
+  "usedIn": [
+    "DE-049-02",
+    "DE-050-03"
+  ],
+  "formalities": [
+    "HZA/D"
+  ],
+  "rules": [
+    "C-HZA-003"
+  ],
+  "entries": [
+    {
+      "id": "1",
+      "en": "Explosives",
+      "fi": "Räjähteet",
+      "sv": "Explosiva ämnen och föremål"
+    },
+    {
+      "id": "2",
+      "en": "Gases",
+      "fi": "Kaasut",
+      "sv": "Gaser"
+    },
+    {
+      "id": "3",
+      "en": "Flammable liquids",
+      "fi": "Syttyvät nesteet",
+      "sv": "Brandfarliga vätskor"
+    },
+    {
+      "id": "4",
+      "en": "Flammable solids; substances liable to spontaneous combustion; substances which, in contact with water, emit flammable gases",
+      "fi": "Syttyvät kiinteät aineet; aineet, jotka voivat syttyä itsestään; aineet, jotka veden kanssa kosketuksiin joutuessaan päästävät syttyviä kaasuja",
+      "sv": "Brandfarliga fasta ämnen; självantändande ämnen; ämnen som utvecklar brandfarlig gas vid kontakt med vatten"
+    },
+    {
+      "id": "5",
+      "en": "Oxidizing substances and organic peroxides",
+      "fi": "Hapettavat aineet ja orgaaniset peroksidit",
+      "sv": "Oxiderande ämnen och organiska peroxider"
+    },
+    {
+      "id": "6",
+      "en": "Toxic and infectious substances",
+      "fi": "Myrkylliset ja tartuntavaaralliset aineet",
+      "sv": "Giftiga och smittförande ämnen"
+    },
+    {
+      "id": "7",
+      "en": "Radioactive material",
+      "fi": "Radioaktiiviset aineet",
+      "sv": "Radioaktivt material"
+    },
+    {
+      "id": "8",
+      "en": "Corrosive substances",
+      "fi": "Syövyttävät aineet",
+      "sv": "Frätande ämnen"
+    },
+    {
+      "id": "9",
+      "en": "Miscellaneous dangerous substances and articles",
+      "fi": "Erilaiset vaaralliset aineet ja tuotteet",
+      "sv": "Övriga farliga ämnen och varor"
+    },
+    {
+      "id": "1.1",
+      "en": "Substances and articles which have a mass explosion hazard",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran",
+      "sv": "Ämnen och föremål som har en risk för massexplosion"
+    },
+    {
+      "id": "1.2",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion"
+    },
+    {
+      "id": "1.3",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa",
+      "sv": "Ämnen och artiklar med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion"
+    },
+    {
+      "id": "1.4",
+      "en": "Substances and articles which present no significant hazard",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa",
+      "sv": "Ämnen och föremål som endast utgör en liten risk"
+    },
+    {
+      "id": "1.5",
+      "en": "Very insensitive substances which have a mass explosion hazard",
+      "fi": "Erittäin epäherkät aineet, jotka aiheuttavat massaräjähdysvaaran",
+      "sv": "Mycket okänsliga ämnen med risk för massexplosion"
+    },
+    {
+      "id": "1.6",
+      "en": "Extremely insensitive articles which do not have a mass explosion hazard",
+      "fi": "Äärimmäisen epäherkät tuotteet, jotka eivät muodostava massaräjähdysvaaraa",
+      "sv": "Extremt okänsliga föremål som inte har någon risk för massexplosion"
+    },
+    {
+      "id": "1.1A",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group A",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä A",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp A"
+    },
+    {
+      "id": "1.1B",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group B",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä B",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp B"
+    },
+    {
+      "id": "1.1C",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group C",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä C",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp C"
+    },
+    {
+      "id": "1.1D",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group D",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä D",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp D"
+    },
+    {
+      "id": "1.1E",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group E",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä E",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp E"
+    },
+    {
+      "id": "1.1F",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group F",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä F",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp F"
+    },
+    {
+      "id": "1.1G",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group G",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä G",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp G"
+    },
+    {
+      "id": "1.1J",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group J",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä J",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp J"
+    },
+    {
+      "id": "1.1L",
+      "en": "Substances and articles which have a mass explosion hazard, compatibility group L",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä L’",
+      "sv": "Ämnen och föremål som har en risk för massexplosion, samhanteringsgrupp L"
+    },
+    {
+      "id": "1.2B",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group B",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä B",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp B"
+    },
+    {
+      "id": "1.2C",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group C",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä C",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp C"
+    },
+    {
+      "id": "1.2D",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group D",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä D",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp D"
+    },
+    {
+      "id": "1.2E",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group E",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä E",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp E"
+    },
+    {
+      "id": "1.2F",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group F",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä F",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp F"
+    },
+    {
+      "id": "1.2G",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group G",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä G",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp G"
+    },
+    {
+      "id": "1.2H",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group H",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä H",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp H"
+    },
+    {
+      "id": "1.2J",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group J",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä J",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp J"
+    },
+    {
+      "id": "1.2K",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group K",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä K",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp K"
+    },
+    {
+      "id": "1.2L",
+      "en": "Substances and articles which have a projection hazard but not a mass explosion hazard, compatibility group L",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat ulkonemavaaran, mutta eivät massaräjähdysvaaraa, yhteensopivuusryhmä L",
+      "sv": "Ämnen och föremål som har en risk för splitter men inte en risk för massexplosion, samhanteringsgrupp L"
+    },
+    {
+      "id": "1.3C",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category C",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka C",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori C"
+    },
+    {
+      "id": "1.3F",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category F",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka F",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori F"
+    },
+    {
+      "id": "1.3G",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category G",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka G",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori G"
+    },
+    {
+      "id": "1.3H",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category H",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka H",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori H"
+    },
+    {
+      "id": "1.3J",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category J",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka J",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori J"
+    },
+    {
+      "id": "1.3K",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category K",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka K",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori K"
+    },
+    {
+      "id": "1.3L",
+      "en": "Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard, or both, but not a mass explosion hazard, category L",
+      "fi": "Aineet ja tuotteet, jotka aiheuttavat palovaaran ja joko lievän räjähdysvaaran tai lievän ulkonemavaaran tai molemmat, mutta eivät massaräjähdysvaaraa, luokka L",
+      "sv": "Ämnen och föremål med risk för brand och antingen en mindre risk för explosion eller en mindre risk för splitter, eller båda, men inte en risk för massexplosion, kategori L"
+    },
+    {
+      "id": "1.4B",
+      "en": "Substances and articles which present no significant hazard, compatibility group B",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä B",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp B"
+    },
+    {
+      "id": "1.4C",
+      "en": "Substances and articles which present no significant hazard, compatibility group C",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä C",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp C"
+    },
+    {
+      "id": "1.4D",
+      "en": "Substances and articles which present no significant hazard, compatibility group D",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä D",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp D"
+    },
+    {
+      "id": "1.4E",
+      "en": "Substances and articles which present no significant hazard, compatibility group E",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä E",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp E"
+    },
+    {
+      "id": "1.4F",
+      "en": "Substances and articles which present no significant hazard, compatibility group F",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä F",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp F"
+    },
+    {
+      "id": "1.4G",
+      "en": "Substances and articles which present no significant hazard, compatibility group G",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä G",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp G"
+    },
+    {
+      "id": "1.4S",
+      "en": "Substances and articles which present no significant hazard, compatibility group S",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä S",
+      "sv": "Ämnen och föremål som endast utgör en liten risk, samhanteringsgrupp S"
+    },
+    {
+      "id": "1.5D",
+      "en": "Very insensitive substances which have a mass explosion hazard, compatibility group D",
+      "fi": "Erittäin epäherkät aineet, jotka aiheuttavat massaräjähdysvaaran, yhteensopivuusryhmä D",
+      "sv": "Mycket okänsliga ämnen med risk för massexplosion, samhanteringsgrupp D"
+    },
+    {
+      "id": "1.6N",
+      "en": "Extremely insensitive articles which do not have a mass explosion hazard compatibility group N",
+      "fi": "Aineet ja tuotteet, jotka eivät aiheuta merkittävää vaaraa, yhteensopivuusryhmä N",
+      "sv": "Extremt okänsliga föremål som inte har någon risk för massexplosion, samhanteringsgrupp N"
+    },
+    {
+      "id": "2.1",
+      "en": "Flammable gases",
+      "fi": "Syttyvät kaasut",
+      "sv": "Brandfarliga gaser"
+    },
+    {
+      "id": "2.2",
+      "en": "Non-flammable, non-toxic gases",
+      "fi": "Syttymättömät, myrkyttömät kaasut",
+      "sv": "Icke brandfarliga, giftfria gaser"
+    },
+    {
+      "id": "2.3",
+      "en": "Toxic gases",
+      "fi": "Myrkylliset kaasut",
+      "sv": "Giftiga gaser"
+    },
+    {
+      "id": "4.1",
+      "en": "Flammable solids, self-reactive substances and desensitized explosives",
+      "fi": "Syttyvät kiinteät aineet, itsereaktiiviset aineet ja epäherkistetyt räjähteet",
+      "sv": "Brandfarliga fasta ämnen, självreaktiva ämnen och fasta okänsliggjorda explosivämnen"
+    },
+    {
+      "id": "4.2",
+      "en": "Substances liable to spontaneous combustion",
+      "fi": "Helposti itsestään syttyvät aineet",
+      "sv": "Självantändande ämnen"
+    },
+    {
+      "id": "4.3",
+      "en": "Substances which, in contact with water, emit flammable gases",
+      "fi": "Aineet, jotka veden kanssa kosketuksiin joutuessaan kehittävät palavia kaasuja",
+      "sv": "Ämnen som utvecklar brandfarlig gas vid kontakt med vatten"
+    },
+    {
+      "id": "5.1",
+      "en": "Oxidizing substances",
+      "fi": "Hapettavat aineet",
+      "sv": "Oxiderande ämnen"
+    },
+    {
+      "id": "5.2",
+      "en": "Organic peroxides",
+      "fi": "Orgaaniset peroksidit",
+      "sv": "Organiska peroxider"
+    },
+    {
+      "id": "6.1",
+      "en": "Toxic substances",
+      "fi": "Myrkylliset aineet",
+      "sv": "Giftiga ämnen"
+    },
+    {
+      "id": "6.2",
+      "en": "Infectious substances",
+      "fi": "Tartuntavaaralliset aineet",
+      "sv": "Smittförande ämnen"
+    },
+    {
+      "id": "A",
+      "en": "Cargo which may liquefy",
+      "fi": "Lasti, joka voi nesteytyä",
+      "sv": "Last som kan undergå likvifaktion"
+    },
+    {
+      "id": "A AND B",
+      "en": "Cargoes which may liquefy and with chemical hazards",
+      "fi": "Lastit, jotka voivat nesteytyä ja aiheuttaa kemiallisia vaaroja",
+      "sv": "Last som kan undergå likvifaktion och som orsakar kemisk fara"
+    },
+    {
+      "id": "B",
+      "en": "Cargoes with chemical hazards",
+      "fi": "Kemiallisesti vaaralliset lastit",
+      "sv": "Last som orsakar kemisk fara"
+    },
+    {
+      "id": "N.A.",
+      "en": "Not Applicable",
+      "fi": "Ei sovellettavissa",
+      "sv": "Ej tillämpligt"
+    },
+    {
+      "id": "P",
+      "en": "Product is included in code because of its pollution hazards",
+      "fi": "Tuote sisältyy koodiin ympäristön pilaamisvaaran vuoksi",
+      "sv": "Produkten ingår i koden på grund av dess föroreningsrisker"
+    },
+    {
+      "id": "S",
+      "en": "Product is included in code because of its safety hazards",
+      "fi": "Tuote sisältyy koodiin turvallisuusvaaran vuoksi",
+      "sv": "Produkten ingår i koden på grund av dess säkerhetsrisker"
+    },
+    {
+      "id": "S/P",
+      "en": "Product is included in code because of its safety and pollution hazards",
+      "fi": "Tuote sisältyy koodiin turvallisuusvaaran ja ympäristön pilaamisvaaran vuoksi",
+      "sv": "Produkten ingår i koden på grund av dess säkerhets- och föroreningsrisker"
+    }
+  ]
+}

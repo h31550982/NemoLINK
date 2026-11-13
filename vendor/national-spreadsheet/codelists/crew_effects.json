@@ -1,0 +1,92 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "crew_effects",
+  "headerless": false,
+  "usedIn": [
+    "DE-036-02"
+  ],
+  "formalities": [
+    "EFF"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "CRE-001",
+      "en": "Alcoholic spirits",
+      "fi": "Alkoholijuomat",
+      "sv": "Alkoholhaltiga spritdrycker"
+    },
+    {
+      "id": "CRE-002",
+      "en": "Beer",
+      "fi": "Olut",
+      "sv": "Öl"
+    },
+    {
+      "id": "CRE-003",
+      "en": "Wine",
+      "fi": "Viini",
+      "sv": "Vin"
+    },
+    {
+      "id": "CRE-004",
+      "en": "Cigarettes",
+      "fi": "Savukkeet",
+      "sv": "Cigaretter"
+    },
+    {
+      "id": "CRE-005",
+      "en": "Cigars",
+      "fi": "Sikarit",
+      "sv": "Cigarrer"
+    },
+    {
+      "id": "CRE-006",
+      "en": "Tobacco",
+      "fi": "Nikotiinituotteet",
+      "sv": "Nikotintillverkade produkter"
+    },
+    {
+      "id": "CRE-007",
+      "en": "Drugs (medicines)",
+      "fi": "Lääkkeet",
+      "sv": "Läkemedel"
+    },
+    {
+      "id": "CRE-008",
+      "en": "Meat and meat products",
+      "fi": "Liha ja lihavalmisteet",
+      "sv": "Kött och köttprodukter"
+    },
+    {
+      "id": "CRE-009",
+      "en": "Firearms",
+      "fi": "Ampuma-aseet",
+      "sv": "Skjutvapen"
+    },
+    {
+      "id": "CRE-010",
+      "en": "Ammunition",
+      "fi": "Ampumatarvikkeet",
+      "sv": "Ammunition"
+    },
+    {
+      "id": "CRE-011",
+      "en": "Other alcohol containing substances",
+      "fi": "Muut alkoholia sisältävät aineet",
+      "sv": "Andra substanser som innehåller alkohol"
+    },
+    {
+      "id": "CRE-099",
+      "en": "Other",
+      "fi": "Muu",
+      "sv": "Övrigt"
+    }
+  ]
+}

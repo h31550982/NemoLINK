@@ -1,0 +1,38 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0224",
+  "headerless": false,
+  "usedIn": [
+    "DE-037-05"
+  ],
+  "formalities": [
+    "MDD"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "S",
+      "en": "Still onboard",
+      "fi": "Edelleen aluksella",
+      "sv": "Fortfarande ombord"
+    },
+    {
+      "id": "E",
+      "en": "Evacuated",
+      "fi": "Evakuoitu",
+      "sv": "Evakuerad"
+    },
+    {
+      "id": "B",
+      "en": "Buried at sea",
+      "fi": "Haudattu mereen",
+      "sv": "Begravd till sjöss"
+    }
+  ]
+}

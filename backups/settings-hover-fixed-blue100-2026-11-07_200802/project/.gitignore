@@ -1,0 +1,21 @@
+# Secrets — env files are never committed; examples are
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Node
+node_modules/
+dist/
+.quasar/
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# STG end-to-end run output (exchanges, summaries — dummy data, but never committed)
+tools/stg-e2e/runs/

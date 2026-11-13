@@ -1,0 +1,116 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "ship_stores_article",
+  "headerless": false,
+  "usedIn": [
+    "DE-067-02"
+  ],
+  "formalities": [
+    "STA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "STO-001",
+      "en": "Alcoholic spirits",
+      "fi": "Alkoholijuomat",
+      "sv": "Alkoholhaltiga spritdrycker"
+    },
+    {
+      "id": "STO-002",
+      "en": "Beer",
+      "fi": "Olut",
+      "sv": "Öl"
+    },
+    {
+      "id": "STO-003",
+      "en": "Wine",
+      "fi": "Viini",
+      "sv": "Vin"
+    },
+    {
+      "id": "STO-004",
+      "en": "Cigarettes",
+      "fi": "Savukkeet",
+      "sv": "Cigaretter"
+    },
+    {
+      "id": "STO-005",
+      "en": "Cigars",
+      "fi": "Sikarit",
+      "sv": "Cigarrer"
+    },
+    {
+      "id": "STO-006",
+      "en": "Tobacco",
+      "fi": "Nikotiinituotteet",
+      "sv": "Nikotintillverkade produkter"
+    },
+    {
+      "id": "STO-007",
+      "en": "Other fuels",
+      "fi": "Muut polttoaineet",
+      "sv": "Andra bränslen"
+    },
+    {
+      "id": "STO-008",
+      "en": "Lubricants",
+      "fi": "Voiteluaineet",
+      "sv": "Smörjmedel"
+    },
+    {
+      "id": "STO-009",
+      "en": "Drugs (medicines)",
+      "fi": "Lääkkeet",
+      "sv": "Läkemedel"
+    },
+    {
+      "id": "STO-010",
+      "en": "Meat and meat products",
+      "fi": "Liha ja lihavalmisteet",
+      "sv": "Kött och köttprodukter"
+    },
+    {
+      "id": "STO-011",
+      "en": "Firearms",
+      "fi": "Ampuma-aseet",
+      "sv": "Skjutvapen"
+    },
+    {
+      "id": "STO-012",
+      "en": "Ammunition",
+      "fi": "Ampumatarvikkeet",
+      "sv": "Ammunition"
+    },
+    {
+      "id": "STO-013",
+      "en": "Other alcohol containing substances",
+      "fi": "Muut alkoholia sisältävät aineet",
+      "sv": "Andra substanser som innehåller alkohol"
+    },
+    {
+      "id": "STO-014",
+      "en": "Fueloil",
+      "fi": "Polttoöljy",
+      "sv": "Eldningsolja"
+    },
+    {
+      "id": "STO-015",
+      "en": "Gasoil",
+      "fi": "Kaasuöljy",
+      "sv": "Gasolja"
+    },
+    {
+      "id": "STO-099",
+      "en": "Other",
+      "fi": "Muu",
+      "sv": "Övrigt"
+    }
+  ]
+}

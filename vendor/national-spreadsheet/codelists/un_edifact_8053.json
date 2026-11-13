@@ -1,0 +1,408 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "UN-EDIFACT 8053",
+  "headerless": true,
+  "usedIn": [],
+  "formalities": [],
+  "rules": [],
+  "entries": [
+    {
+      "id": "AA",
+      "en": "Ground equipment"
+    },
+    {
+      "id": "AB",
+      "en": "Chain"
+    },
+    {
+      "id": "AD",
+      "en": "Temperature recorder"
+    },
+    {
+      "id": "AE",
+      "en": "Body trailer"
+    },
+    {
+      "id": "AG",
+      "en": "Slipsheet"
+    },
+    {
+      "id": "AH",
+      "en": "No special equipment needed"
+    },
+    {
+      "id": "AI",
+      "en": "Vessel hold"
+    },
+    {
+      "id": "AJ",
+      "en": "Flat rack"
+    },
+    {
+      "id": "AK",
+      "en": "Aircraft"
+    },
+    {
+      "id": "AL",
+      "en": "Medical device"
+    },
+    {
+      "id": "AM",
+      "en": "Refrigerated container"
+    },
+    {
+      "id": "AN",
+      "en": "Synthetic pallet 80*120cm"
+    },
+    {
+      "id": "AO",
+      "en": "Synthetic pallet 100*120cm"
+    },
+    {
+      "id": "AP",
+      "en": "Clothing hanger rack"
+    },
+    {
+      "id": "AQ",
+      "en": "Road/rail trailer"
+    },
+    {
+      "id": "AT",
+      "en": "Overhang wagon"
+    },
+    {
+      "id": "BB",
+      "en": "Un-containerized cargo (breakbulk)"
+    },
+    {
+      "id": "BL",
+      "en": "Blocks"
+    },
+    {
+      "id": "BPN",
+      "en": "Box pallet non-exchangeable"
+    },
+    {
+      "id": "BPO",
+      "en": "Truck being transported"
+    },
+    {
+      "id": "BPP",
+      "en": "Truck and trailer combination being transported"
+    },
+    {
+      "id": "BPQ",
+      "en": "Tractor and trailer being transported"
+    },
+    {
+      "id": "BPR",
+      "en": "Postal bag"
+    },
+    {
+      "id": "BPS",
+      "en": "Letter Tray"
+    },
+    {
+      "id": "BPT",
+      "en": "Roller Cage"
+    },
+    {
+      "id": "BPU",
+      "en": "Flats Tray"
+    },
+    {
+      "id": "BPV",
+      "en": "Out of bag parcel"
+    },
+    {
+      "id": "BPW",
+      "en": "Wheeled Platform"
+    },
+    {
+      "id": "BPX",
+      "en": "Container non-compliant with the Customs Convention on"
+    },
+    {
+      "id": "BPY",
+      "en": "Box pallet EUR Y non exchangeable"
+    },
+    {
+      "id": "BPZ",
+      "en": "Roll Pallet 1"
+    },
+    {
+      "id": "BR",
+      "en": "Barge"
+    },
+    {
+      "id": "BX",
+      "en": "Boxcar"
+    },
+    {
+      "id": "CH",
+      "en": "Chassis"
+    },
+    {
+      "id": "CN",
+      "en": "Container"
+    },
+    {
+      "id": "DPA",
+      "en": "Deadlight (panel)"
+    },
+    {
+      "id": "DPB",
+      "en": "Roll Pallet 2"
+    },
+    {
+      "id": "DPC",
+      "en": "Container gantry crane"
+    },
+    {
+      "id": "DPD",
+      "en": "Mobile crane"
+    },
+    {
+      "id": "DPE",
+      "en": "Floating crane"
+    },
+    {
+      "id": "DPF",
+      "en": "Ship's equipment crane"
+    },
+    {
+      "id": "DPG",
+      "en": "Conveyor belt"
+    },
+    {
+      "id": "DPH",
+      "en": "Forklift"
+    },
+    {
+      "id": "DPI",
+      "en": "Stacking equipment"
+    },
+    {
+      "id": "DPJ",
+      "en": "Taillift"
+    },
+    {
+      "id": "DPK",
+      "en": "Pallet ISO 0 - 1/2 EURO Pallet"
+    },
+    {
+      "id": "DPL",
+      "en": "On-board equipment"
+    },
+    {
+      "id": "DPM",
+      "en": "Pallet ISO 1 - 1/1 EURO Pallet (GS1 Temporary Code)"
+    },
+    {
+      "id": "DPN",
+      "en": "Pallet ISO 2"
+    },
+    {
+      "id": "DPO",
+      "en": "1/4 EURO Pallet"
+    },
+    {
+      "id": "EFP",
+      "en": "Exchangeable EUR flat pallet"
+    },
+    {
+      "id": "EFQ",
+      "en": "1/8 EURO Pallet"
+    },
+    {
+      "id": "EFR",
+      "en": "Wholesaler pallet"
+    },
+    {
+      "id": "EFS",
+      "en": "Pallet 80 X 100 cm"
+    },
+    {
+      "id": "EFT",
+      "en": "Pallet 60 X 100 cm"
+    },
+    {
+      "id": "EFU",
+      "en": "Oneway pallet"
+    },
+    {
+      "id": "EFV",
+      "en": "Returnable pallet"
+    },
+    {
+      "id": "EFW",
+      "en": "Bottlecrate"
+    },
+    {
+      "id": "EFX",
+      "en": "Bottle, non-protected, cylindrical"
+    },
+    {
+      "id": "EFY",
+      "en": "Box"
+    },
+    {
+      "id": "EFZ",
+      "en": "CHEP Eurobox"
+    },
+    {
+      "id": "EGA",
+      "en": "Case"
+    },
+    {
+      "id": "EGB",
+      "en": "Display package"
+    },
+    {
+      "id": "EGC",
+      "en": "Isothermic case"
+    },
+    {
+      "id": "EGD",
+      "en": "Pallet modular collars 80*100"
+    },
+    {
+      "id": "EGE",
+      "en": "Pallet modular collars 80*120"
+    },
+    {
+      "id": "EGF",
+      "en": "Tray"
+    },
+    {
+      "id": "EGG",
+      "en": "Roll cage"
+    },
+    {
+      "id": "EGH",
+      "en": "Trolley"
+    },
+    {
+      "id": "EGI",
+      "en": "Landside power generator"
+    },
+    {
+      "id": "EYP",
+      "en": "Exchangeable EUR Y box pallet"
+    },
+    {
+      "id": "FPN",
+      "en": "Flat pallet EUR non exchangeable"
+    },
+    {
+      "id": "FPR",
+      "en": "Flat pallet (railway property) non-exchangeable"
+    },
+    {
+      "id": "IL",
+      "en": "Lidded stackable rigid tray (CEN TS 14482:2002)"
+    },
+    {
+      "id": "LAR",
+      "en": "Lashing rope"
+    },
+    {
+      "id": "LU",
+      "en": "Load/unload device on equipment"
+    },
+    {
+      "id": "MPA",
+      "en": "Movable panel"
+    },
+    {
+      "id": "PA",
+      "en": "Pallet"
+    },
+    {
+      "id": "PBP",
+      "en": "Identified private box pallet"
+    },
+    {
+      "id": "PFP",
+      "en": "Identified private flat pallet"
+    },
+    {
+      "id": "PL",
+      "en": "Platform"
+    },
+    {
+      "id": "PPA",
+      "en": "Protecting panel"
+    },
+    {
+      "id": "PST",
+      "en": "Portable stove"
+    },
+    {
+      "id": "RF",
+      "en": "Flat car"
+    },
+    {
+      "id": "RG",
+      "en": "Reefer generator"
+    },
+    {
+      "id": "RGF",
+      "en": "Ground facility"
+    },
+    {
+      "id": "RO",
+      "en": "Rope"
+    },
+    {
+      "id": "RR",
+      "en": "Rail car"
+    },
+    {
+      "id": "SM",
+      "en": "Semi-trailer"
+    },
+    {
+      "id": "SPP",
+      "en": "Identified special pallet"
+    },
+    {
+      "id": "STR",
+      "en": "Strap"
+    },
+    {
+      "id": "SW",
+      "en": "Swap body"
+    },
+    {
+      "id": "TE",
+      "en": "Trailer"
+    },
+    {
+      "id": "TN",
+      "en": "Tank"
+    },
+    {
+      "id": "TP",
+      "en": "Tarpaulin"
+    },
+    {
+      "id": "TS",
+      "en": "Tackles"
+    },
+    {
+      "id": "TSU",
+      "en": "Tarpaulin support"
+    },
+    {
+      "id": "UL",
+      "en": "ULD (Unit load device)"
+    }
+  ]
+}

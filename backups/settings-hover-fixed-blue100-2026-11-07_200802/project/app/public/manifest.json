@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "NEMOLink",
+  "short_name": "NEMOLink",
+  "description": "nauticAi NEMOLink — NEMO maritime single window",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en",
+  "theme_color": "#FFFFFF",
+  "background_color": "#F3F4F8",
+  "icons": [
+    {
+      "src": "icons/icon512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon512_rounded.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

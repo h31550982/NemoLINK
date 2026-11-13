@@ -1,0 +1,410 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "certificate_type",
+  "headerless": false,
+  "usedIn": [
+    "DE-006-01"
+  ],
+  "formalities": [
+    "CRT"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "CL",
+      "en": "Classification certificate",
+      "fi": "Luokitustodistus",
+      "sv": "Klassificeringsintyg",
+      "national": true
+    },
+    {
+      "id": "ISPS",
+      "en": "International Ship Security Certificate or Interim International Ship Security Certificate",
+      "fi": "ISPS-turvatodistus (ISSC)",
+      "sv": "ISPS-säkerhetscertifikat (ISSC)",
+      "national": true
+    },
+    {
+      "id": "LL",
+      "en": "International Load Line Certificate or Exception",
+      "fi": "Lastiviivatodistus",
+      "sv": "Internationellt fribordscertifikat eller undantag",
+      "national": true
+    },
+    {
+      "id": "REG",
+      "en": "Certificate of Registry",
+      "fi": "Rekisteröintitodistus (Kansallisuuskirja)",
+      "sv": "Registreringsintyg (Nationalitetsbevis)",
+      "national": true
+    },
+    {
+      "id": "TM",
+      "en": "International Tonnage Certificate",
+      "fi": "Mittakirja",
+      "sv": "Internationellt tonnageintyg",
+      "national": true
+    },
+    {
+      "id": "OTHER",
+      "en": "Other type of certificate",
+      "fi": "Muu todistustyyppi",
+      "sv": "Annan typ av certifikat",
+      "national": true
+    },
+    {
+      "id": "AFS",
+      "en": "International Anti-Fouling System Certificate",
+      "fi": "Kansainvälinen kiinnittymisenestojärjestelmän todistus",
+      "sv": "Internationellt certifikat för påväxthindrande system"
+    },
+    {
+      "id": "APP",
+      "en": "International Air Pollution Prevention Certificate",
+      "fi": "Kansainvälinen ilmansuojelutodistus",
+      "sv": "Internationellt intyg om förebyggande av luftföroreningar"
+    },
+    {
+      "id": "BCARD",
+      "en": "ITF Blue Card",
+      "fi": "ITF Blue Card",
+      "sv": "ITF Blue Card"
+    },
+    {
+      "id": "BCH",
+      "en": "International Certificate of Fitness for the carriage of Dangerous Chemicals in Bulk",
+      "fi": "Kansainvälinen todistus kelpoisuudesta vaarallisten kemikaalien kuljetukseen irtolastina",
+      "sv": "International Certificate of Fitness for the carriage of Dangerous Chemicals in Bulk"
+    },
+    {
+      "id": "BUNKER",
+      "en": "Certificate of insurance or other financial security in respect of civil liability for bunker oil pollution damage",
+      "fi": "Todistus vakuutuksesta tai muusta rahavakuudesta polttoaineöljyvahinkovastuun osalta",
+      "sv": "Certifikat för försäkring eller annan ekonomisk säkerhet om ansvarighet för skada orsakad av förorening genom bunkerolja"
+    },
+    {
+      "id": "BWM",
+      "en": "International Ballast Water Managment Certificate",
+      "fi": "Kansainvälinen painolastiveden käsittelytodistus",
+      "sv": "Internationellt certifikat för hantering av barlastvatten"
+    },
+    {
+      "id": "CAS",
+      "en": "Condition Assessment Scheme Statement of compliance",
+      "fi": "Kunnonarviointiohjelman vaatimustenmukaisuusvakuutus",
+      "sv": "Condition Assessment Scheme Statement of compliance"
+    },
+    {
+      "id": "CLC",
+      "en": "Certificate of Insurance in Respect of Civil Liability for Oil Pollution Damage",
+      "fi": "Todistus öljyvahinkoja koskevan siviilioikeudellisen vastuun varalta otettavasta vakuutuksesta",
+      "sv": "Försäkringscertifikat avseende skadeståndsansvar för oljeföroreningsskador"
+    },
+    {
+      "id": "CS",
+      "en": "Cargo Ship Safety Certificate",
+      "fi": "Rahtialuksen turvallisuustodistus",
+      "sv": "Säkerhetscertifikat för lastfartyg"
+    },
+    {
+      "id": "CY_CPVS",
+      "en": "Coastal Passenger Vessel Safety Certificate",
+      "fi": "Rannikkomatkustaja-aluksen turvallisuustodistus",
+      "sv": "Coastal Passenger Vessel Safety Certificate"
+    },
+    {
+      "id": "CY_FWT",
+      "en": "Fresh Water Tank Certificate",
+      "fi": "Makeavesisäiliön todistus",
+      "sv": "Fresh Water Tank Certificate"
+    },
+    {
+      "id": "CY_SPVS",
+      "en": "Small Passenger Vessel Safety Certificate",
+      "fi": "Pienen matkustaja-aluksen turvallisuustodistus",
+      "sv": "Small Passenger Vessel Safety Certificate"
+    },
+    {
+      "id": "DOC",
+      "en": "Document of Compliance (ISM)",
+      "fi": "Vaatimustenmukaisuusasiakirja (ISM)",
+      "sv": "Överensstämmelsedokument (ISM)"
+    },
+    {
+      "id": "DOCDG",
+      "en": "Document of compliance with the special requirements for ships carrying dangerous goods (for any ship carrying dangerous goods) - SOLAS 1974/Reg.II-2/19.4",
+      "fi": "Asiakirja vaarallisia aineita kuljettavia aluksia koskevien erityisvaatimusten noudattamisesta (vaarallisia aineita kuljettavat alukset) – SOLAS 1974/Reg.II-2/19.4",
+      "sv": "Överensstämmelsedokument avseende särskilda krav på fartyg med farligt gods (för alla fartyg som transporterar farligt gods) – Solas 1974/Reg.II-2/19.4"
+    },
+    {
+      "id": "EE",
+      "en": "International Energy Efficiency Certificate",
+      "fi": "Kansainvälinen energiatehokkuustodistus",
+      "sv": "Internationellt energieffektivitetscertifikat"
+    },
+    {
+      "id": "EEDI",
+      "en": "Energy Efficiency Design Index",
+      "fi": "Energiatehokkuuden suunnitteluindeksi",
+      "sv": "Energieffektivitetsindex"
+    },
+    {
+      "id": "EIAPP",
+      "en": "Engine International Air Pollution Prevention Certificate",
+      "fi": "Moottoria koskeva kansainvälinen ilmansuojelutodistus",
+      "sv": "Engine International Air Pollution Prevention Certificate"
+    },
+    {
+      "id": "GC",
+      "en": "Certificate of Fitness for the Carriage of Liquified Gases in Bulk",
+      "fi": "Todistus kelpoisuudesta nesteytettyjen kaasujen kuljetukseen irtolastina",
+      "sv": "Internationellt certifikat om lämplighet för last med flytande gas i tank"
+    },
+    {
+      "id": "HSC",
+      "en": "High-Speed Craft Safety Certificate",
+      "fi": "Suurnopeusalusten turvallisuustodistus",
+      "sv": "Säkerhetscertifikat för höghastighetsfartyg"
+    },
+    {
+      "id": "IMC",
+      "en": "Insurance for Maritime Claims",
+      "fi": "Merivahinkovakuutus",
+      "sv": "Försäkring för sjörättsliga skadeståndsanspråk"
+    },
+    {
+      "id": "INF",
+      "en": "International certificate of Fitness for the Carriage of INF cargo",
+      "fi": "Kansainvälinen todistus kelpoisuudesta INF-rahdin kuljetukseen",
+      "sv": "International certificate of Fitness for the Carriage of INF cargo"
+    },
+    {
+      "id": "IT_CDG",
+      "en": "Statement of compliance for the carriage of dangerous goods (Italy)",
+      "fi": "Vaarallisten aineiden kuljetuksia koskeva vaatimustenmukaisuusvakuutus (Italia)",
+      "sv": "Försäkran om överensstämmelse för transport av farligt gods (Italien)"
+    },
+    {
+      "id": "IT_CFS",
+      "en": "Certificate of fitness/safety proof (Italy)",
+      "fi": "Kelpoisuus - ja turvallisuustodistus (Italia)",
+      "sv": "Certifikat om lämplighet/säkerhetscertifikat (Italien)"
+    },
+    {
+      "id": "IT_CI",
+      "en": "Crew insurance (Italy)",
+      "fi": "Miehistövakuutus (Italia)",
+      "sv": "Besättningsförsäkring (Italien)"
+    },
+    {
+      "id": "IT_CMF",
+      "en": "Statement of compliance for the carriage of motor vehicles with fuel in their tank (Italy)",
+      "fi": "Vaatimustenmukaisuusvakuutus moottoriajoneuvojen kuljettamisesta polttoaineineen (Italia)",
+      "sv": "Försäkran om överensstämmelse för transport av motorfordon med fylld bränsletank (Italien)"
+    },
+    {
+      "id": "IT_CR",
+      "en": "Crew role document (Italy)",
+      "fi": "Miehistön rooliasiakirja (Italia)",
+      "sv": "Förteckning över besättningens roller (Italien)"
+    },
+    {
+      "id": "IT_CS",
+      "en": "Certificate of seaworthiness (Italy)",
+      "fi": "Merikelpoisuustodistus (Italia)",
+      "sv": "Sjövärdighetscertifikat (Italien)"
+    },
+    {
+      "id": "IT_CSDG",
+      "en": "Statement of compliance for the carriage of solid dangerous goods in bulk (Italy)",
+      "fi": "Vaatimustenmukaisuusvakuutus irtotavarana kuljetettavien kiinteiden vaarallisten aineiden osalta (Italia)",
+      "sv": "Försäkran om överensstämmelse för transport av farligt gods i fast form (Italien)"
+    },
+    {
+      "id": "IT_CSGB",
+      "en": "Statement of compliance for the carriage of solid goods in bulk having a moisture content in excess of the TML (Italy)",
+      "fi": "Vaatimustenmukaisuusvakuutus sellaisten irtotavarana kuljetettavien kiinteiden tavaroiden osalta, joiden kosteuspitoisuus ylittää TML:n (Italia)",
+      "sv": "Försäkran om överensstämmelse för transport av fast gods i bulk med en fukthalt som överstiger transportfukthalten (Italien)"
+    },
+    {
+      "id": "IT_OES",
+      "en": "On-board equipment and services survey (Italy)",
+      "fi": "Aluksen laitteiden ja palvelujen tutkimus (Italia)",
+      "sv": "Besiktning av utrustning och service ombord (Italien)"
+    },
+    {
+      "id": "IT_TH",
+      "en": "Technical - health survey (Italy)",
+      "fi": "Teknisen kunnon tutkimus (Italia)",
+      "sv": "Teknisk – hälsoundersökning (Italien)"
+    },
+    {
+      "id": "MLC",
+      "en": "Maritime Labour Certificate",
+      "fi": "Merityötodistus",
+      "sv": "Sjöarbetscertifikat"
+    },
+    {
+      "id": "MODU",
+      "en": "Mobile Offshore Drilling Unit Safety Certificate",
+      "fi": "Siirrettävän offshore-porausyksikön turvallisuustodistus",
+      "sv": "Säkerhetscertifikat för flyttbar oljeborrplattform till sjöss"
+    },
+    {
+      "id": "MSDS",
+      "en": "Material Safety Data Sheets: ships carrying oil or oil fuel",
+      "fi": "Käyttöturvallisuustiedotteet: öljyä tai polttoöljyä kuljettavat alukset",
+      "sv": "Materialsäkerhetsdatablad: fartyg som transporterar olja eller brännolja"
+    },
+    {
+      "id": "MT_CA",
+      "en": "Class Attestations / Certificate",
+      "fi": "Luokkavahvistukset/-todistus",
+      "sv": "Intyg/certifikat om klass"
+    },
+    {
+      "id": "MT_HM",
+      "en": "Hull & Machinery",
+      "fi": "Runko ja koneet",
+      "sv": "Skrov och maskiner"
+    },
+    {
+      "id": "NCS",
+      "en": "Nuclear Cargo Ship Safety Certificate",
+      "fi": "Ydinrahtialuksen turvallisuustodistus",
+      "sv": "Nuclear Cargo Ship Safety Certificate"
+    },
+    {
+      "id": "NLS",
+      "en": "International Pollution Prevention Certificate for the Carriage of Noxious Liquid Substances in Bulk",
+      "fi": "Kansainvälinen pilaantumisen ehkäisemistä koskeva todistus haitallisten nestemäisten aineiden kuljettamiseen irtolastina",
+      "sv": "Internationellt föroreningsskyddscertifikat för transport av skadliga flytande ämnen i bulk"
+    },
+    {
+      "id": "NPSS",
+      "en": "Nuclear Passenger Ship Safety Certificate",
+      "fi": "Ydinmatkustaja-aluksen turvallisuustodistus",
+      "sv": "Nuclear Passenger Ship Safety Certificate"
+    },
+    {
+      "id": "OPP",
+      "en": "International Oil Pollution Prevention Certificate",
+      "fi": "Kansainvälinen öljyvahinkojen ehkäisemistä koskeva todistus",
+      "sv": "Internationellt oljeskyddscertifikat"
+    },
+    {
+      "id": "OSV",
+      "en": "Offshore Supply vessel Document of Compliance",
+      "fi": "Offshore-toimitusaluksen vaatimustenmukaisuusasiakirja",
+      "sv": "Dokument om överensstämmelse för försörjningsfartyg inom offshoresektorn"
+    },
+    {
+      "id": "PAL",
+      "en": "Certificate of insurance or other financial security in respect of liability for the death of and personal injury to passengers",
+      "fi": "Todistus vakuutuksesta tai muusta taloudellisesta vakuudesta matkustajien kuolemaa ja henkilövahinkoja koskevan vastuun osalta",
+      "sv": "Certifikat angående försäkring eller annan ekonomisk säkerhet för ansvar för passagerares död"
+    },
+    {
+      "id": "POLAR",
+      "en": "Polar Ship Certificate",
+      "fi": "Polaarialustodistus",
+      "sv": "Polarfartygscertifikat"
+    },
+    {
+      "id": "PSS",
+      "en": "Passenger Ship Safety Certificate",
+      "fi": "Matkustaja-aluksen turvallisuustodistus",
+      "sv": "Säkerhetscertifikat för passagerarfartyg"
+    },
+    {
+      "id": "SC",
+      "en": "Cargo Ship Safety Construction Certificate",
+      "fi": "Lastialuksen rakenneturvallisuuskirja",
+      "sv": "Konstruktionssäkerhetscertifikat för lastfartyg"
+    },
+    {
+      "id": "SE",
+      "en": "Cargo Ship Safety Equipment Certificate",
+      "fi": "Lastialuksen turvalaitetodistus",
+      "sv": "Utrustningssäkerhetscertifikat för lastfartyg"
+    },
+    {
+      "id": "SEEMP",
+      "en": "Shipboard Energy Efficiency Management Plan",
+      "fi": "Laivan energiatehokkuuden hallintasuunnitelma",
+      "sv": "Shipboard Energy Efficiency Management Plan"
+    },
+    {
+      "id": "SM",
+      "en": "Safety Management Certificate",
+      "fi": "Turvallisuusjohtamisjärjestelmätodistus",
+      "sv": "Certifikat om godkänd säkerhetsorganisation"
+    },
+    {
+      "id": "SMAN",
+      "en": "Minimum Safe Manning Document",
+      "fi": "Turvallisen vähimmäismiehityksen todistus",
+      "sv": "Beslut om säkerhetsbesättning"
+    },
+    {
+      "id": "SPP",
+      "en": "International Sewage Pollution Prevention certificate",
+      "fi": "Kansainvälinen jäteveden pilaantumisen ehkäisemistä koskeva todistus",
+      "sv": "Internationellt intyg om förebyggande av föroreningar från avloppsvatten"
+    },
+    {
+      "id": "SPS",
+      "en": "Special Purpose Ship Safety Certificate",
+      "fi": "Erikoisaluksen turvallisuustodistus",
+      "sv": "Säkerhetscertifikat för fartyg med speciellt användningsområde"
+    },
+    {
+      "id": "SR",
+      "en": "Cargo Ship Safety Radio Certificate",
+      "fi": "Lastialuksen radioturvallisuuskirja",
+      "sv": "Radiosäkerhetscertifikat för lastfartyg"
+    },
+    {
+      "id": "SSC",
+      "en": "Ship Sanitation Control Certificate",
+      "fi": "Laivan saniteettitarkastustodistus",
+      "sv": "Fartygets intyg om hälsokontroll"
+    },
+    {
+      "id": "SSCEX",
+      "en": "Ship Sanitation Control Exemption Certificate",
+      "fi": "Laivan saniteettitarkastuksen vapautustodistus",
+      "sv": "Fartygets intyg om undantag från hälsokontroll"
+    },
+    {
+      "id": "SSTP",
+      "en": "Special Trade Passenger Ship Space Certificate",
+      "fi": "Erityismatkustaja-aluksen tilatodistus",
+      "sv": "Special Trade Passenger Ship Space Certificate"
+    },
+    {
+      "id": "STP",
+      "en": "Special Trade Passenger Ship Safety Certificate",
+      "fi": "Erityismatkustaja-aluksen turvallisuustodistus",
+      "sv": "Special Trade Passenger Ship Safety Certificate"
+    },
+    {
+      "id": "TOW",
+      "en": "Towage certificate",
+      "fi": "Hinaustodistus",
+      "sv": "Bogseringsintyg"
+    },
+    {
+      "id": "WRC",
+      "en": "Certificate of Insurance in Respect of Civil Liability for the Removal of Wrecks",
+      "fi": "Todistus vakuutuksesta hylkyjen poistamista koskevan siviilioikeudellisen vastuun osalta",
+      "sv": "Försäkringscertifikat avseende skadeståndsansvar för borttagning av vrak"
+    }
+  ]
+}

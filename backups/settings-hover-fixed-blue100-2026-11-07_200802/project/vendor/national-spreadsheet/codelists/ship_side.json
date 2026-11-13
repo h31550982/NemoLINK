@@ -1,0 +1,59 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "ship_side",
+  "headerless": false,
+  "usedIn": [
+    "DE-019-04",
+    "DE-082-02"
+  ],
+  "formalities": [
+    "NOA, NOS, SRV",
+    "SHP",
+    "SRV"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "BOW",
+      "en": "Bow",
+      "fi": "Keula",
+      "sv": "För"
+    },
+    {
+      "id": "MIDSHIP",
+      "en": "Midship",
+      "fi": "Keskilaiva",
+      "sv": "Midskepps"
+    },
+    {
+      "id": "OTHER",
+      "en": "Other",
+      "fi": "Muu",
+      "sv": "Övrigt"
+    },
+    {
+      "id": "PORT",
+      "en": "Port",
+      "fi": "Paapuuri",
+      "sv": "Babord"
+    },
+    {
+      "id": "STARBOARD",
+      "en": "Starboard",
+      "fi": "Tyyrpuuri",
+      "sv": "Styrbord"
+    },
+    {
+      "id": "STERN",
+      "en": "Stern",
+      "fi": "Perä",
+      "sv": "Akter"
+    }
+  ]
+}

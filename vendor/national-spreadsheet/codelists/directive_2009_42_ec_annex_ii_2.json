@@ -1,0 +1,206 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "directive_2009_42_ec_annex_II_2",
+  "headerless": false,
+  "usedIn": [
+    "DE-045-17"
+  ],
+  "formalities": [
+    "CGA/D, MTS"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "11",
+      "en": "Liquefied gas",
+      "fi": "Nesteytetty kaasu",
+      "sv": "Flytande gas"
+    },
+    {
+      "id": "12",
+      "en": "Crude oil",
+      "fi": "Raakaöljy",
+      "sv": "Råolja"
+    },
+    {
+      "id": "13",
+      "en": "Oil products",
+      "fi": "Öljytuotteet",
+      "sv": "Petroleumprodukter"
+    },
+    {
+      "id": "19",
+      "en": "Other liquid bulk goods",
+      "fi": "Muut nestemäiset irtolastit",
+      "sv": "Övrig flytande bulk"
+    },
+    {
+      "id": "21",
+      "en": "Ores",
+      "fi": "Malmit",
+      "sv": "Malm"
+    },
+    {
+      "id": "22",
+      "en": "Coal",
+      "fi": "Kivihiili",
+      "sv": "Stenkol"
+    },
+    {
+      "id": "23",
+      "en": "Agricultural products (e.g. grain, soya, tapioca)",
+      "fi": "Maataloustuotteet (esim. vilja, soija, tapioka)",
+      "sv": "Jordbruksprodukter (t.ex. spannmål, soja, tapioka)"
+    },
+    {
+      "id": "29",
+      "en": "Other dry bulk goods",
+      "fi": "Muut kuivat irtolastit",
+      "sv": "Övrig torr bulk"
+    },
+    {
+      "id": "31",
+      "en": "20 ft freight units",
+      "fi": "20 jalan rahtiyksiköt",
+      "sv": "20-fots lastenheter"
+    },
+    {
+      "id": "32",
+      "en": "40 ft freight units",
+      "fi": "40 jalan rahtiyksiköt",
+      "sv": "40-fots lastenheter"
+    },
+    {
+      "id": "33",
+      "en": "Freight units > 20 ft and < 40 f",
+      "fi": "Rahtiyksiköt > 20 jalkaa ja < 40 jalkaa",
+      "sv": "Lastenheter > 20 fot och < 40 fot"
+    },
+    {
+      "id": "34",
+      "en": "Freight units > 40 ft",
+      "fi": "Rahtiyksiköt > 40 jalkaa",
+      "sv": "Lastenheter > 40 fot"
+    },
+    {
+      "id": "51",
+      "en": "Road goods vehicles and accompanying trailers",
+      "fi": "Maantietavaraliikenteen ajoneuvot ja niihin kuuluvat perävaunut",
+      "sv": "Vägtransportfordon och tillhörande släpvagnar"
+    },
+    {
+      "id": "52",
+      "en": "Passenger cars, motorcycles and accompanying trailers/ caravans",
+      "fi": "Henkilöautot, moottoripyörät ja niihin kuuluvat perävaunut/asuntovaunut",
+      "sv": "Personbilar, motorcyklar och tillhörande släpvagnar/husvagnar"
+    },
+    {
+      "id": "53",
+      "en": "Passenger buses",
+      "fi": "Linja-autot",
+      "sv": "Bussar"
+    },
+    {
+      "id": "54",
+      "en": "Trade vehicles (including import/export motor vehicles)",
+      "fi": "Myytäväksi kuljetetut ajoneuvot (mukaan lukien ajoneuvojen tuonti/vienti)",
+      "sv": "Fordon som transporteras för försäljning (inklusive import/export av fordon)"
+    },
+    {
+      "id": "56",
+      "en": "Live animals on the hoof",
+      "fi": "Elävät eläimet jalkaisillaan",
+      "sv": "Levande djur på egna ben"
+    },
+    {
+      "id": "59",
+      "en": "Other mobile self-propelled units",
+      "fi": "Muut siirrettävät itseliikkuvat yksiköt",
+      "sv": "Andra flyttbara självgående enheter"
+    },
+    {
+      "id": "61",
+      "en": "Unaccompanied road goods trailers and semi-trailers",
+      "fi": "Maantiekuljetusten perävaunut ja puoliperävaunut, joiden mukana ei ole kuljettajaa",
+      "sv": "Vägtransportens släp och påhängsvagnar utan förare"
+    },
+    {
+      "id": "62",
+      "en": "Unaccompanied caravans and other road, agricultural and industrial vehicles",
+      "fi": "Asuntovaunut ja muut tie-, maatalous- ja teollisuusajoneuvot, joiden mukana ei ole kuljettajaa",
+      "sv": "Husvagnar och andra väg-, jordbruks- och industrifordon utan förare"
+    },
+    {
+      "id": "64",
+      "en": "Rail wagons engaged in goods transport",
+      "fi": "Rautatievaunut, jotka harjoittavat tavaraliikennettä",
+      "sv": "Järnvägsvagnar som bedriver godstransport"
+    },
+    {
+      "id": "65",
+      "en": "Shipborne port-to-port trailers engaged in goods transport",
+      "fi": "Satamasta satamaan kulkevat perävaunut, jotka harjoittavat tavaraliikennettä",
+      "sv": "Hamn-till-hamn-släpvagnar som bedriver godstransport"
+    },
+    {
+      "id": "66",
+      "en": "Shipborne barges engaged in goods transport",
+      "fi": "Laivaproomut, jotka harjoittavat tavaraliikennettä",
+      "sv": "Fartygsburna pråmar som bedriver godstransport"
+    },
+    {
+      "id": "69",
+      "en": "Other mobile non-self-propelled units",
+      "fi": "Muut siirrettävät ei-itseliikkuvat yksiköt",
+      "sv": "Andra flyttbara icke-självgående enheter"
+    },
+    {
+      "id": "91",
+      "en": "Forestry products",
+      "fi": "Metsätaloustuotteet",
+      "sv": "Skogsbruksprodukter"
+    },
+    {
+      "id": "92",
+      "en": "Iron and steel products",
+      "fi": "Rauta- ja terästuotteet",
+      "sv": "Järn- och stålprodukter"
+    },
+    {
+      "id": "99",
+      "en": "Other general cargo",
+      "fi": "Muu kappaletavara",
+      "sv": "Annat styckegods"
+    },
+    {
+      "id": "R1",
+      "en": "20 ft freight units",
+      "fi": "20 jalan rahtiyksiköt",
+      "sv": "20-fots lastenheter"
+    },
+    {
+      "id": "R2",
+      "en": "40 ft freight units",
+      "fi": "40 jalan rahtiyksiköt",
+      "sv": "40-fots lastenheter"
+    },
+    {
+      "id": "R3",
+      "en": "Freight units > 20 ft and < 40 ft",
+      "fi": "Rahtiyksiköt > 20 jalkaa ja < 40 jalkaa",
+      "sv": "Lastenheter > 20 fot och < 40 fot"
+    },
+    {
+      "id": "R4",
+      "en": "Freight units > 40 ft",
+      "fi": "Rahtiyksiköt > 40 jalkaa",
+      "sv": "Lastenheter > 40 fot"
+    }
+  ]
+}

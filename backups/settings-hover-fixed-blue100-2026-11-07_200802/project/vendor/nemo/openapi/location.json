@@ -1,0 +1,541 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Location service.",
+    "version": "1.0.0",
+    "description": "API for the location service.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8871",
+      "description": "Location service."
+    }
+  ],
+  "paths": {
+    "/api/v1/gisis": {
+      "get": {
+        "operationId": "getGisisCodes",
+        "tags": [
+          "NationalBerth"
+        ],
+        "summary": "Fetches GISIS codes related to the given LOCODE. If no LOCODE is supplied then all available GISIS codes are returned.",
+        "description": "Fetches GISIS codes related to the given LOCODE. If no LOCODE is supplied then all available GISIS codes are returned.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locode",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The LOCODE of the port where the GISIS berths are."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching GISIS-list."
+          }
+        }
+      }
+    },
+    "/api/v1/nationalBerth/listByPortAreaCode": {
+      "get": {
+        "operationId": "getNationalBerthsByPortAreaCode",
+        "tags": [
+          "NationalBerth"
+        ],
+        "summary": "Fetches finnish port information from the db with port area code. If code is not provided then all berths are returned.",
+        "description": "Fetches finnish port information from the db with port area code.",
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "name": "portAreaName",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The finnish port area code eg. FIHEL-ES."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NationalBerthDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching port data."
+          }
+        }
+      }
+    },
+    "/api/v1/nationalBerth/listByGisisCode": {
+      "get": {
+        "operationId": "getNationalBerthsByGisisCode",
+        "tags": [
+          "NationalBerth"
+        ],
+        "summary": "Fetches finnish berth information from the db with gisisCode.",
+        "description": "Fetches finnish berth information from the db with gisisCode.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gisis",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The gisisCode of the finnish berth."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NationalBerthDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching berth data."
+          }
+        }
+      }
+    },
+    "/api/v1/nationalBerth/{code}": {
+      "get": {
+        "operationId": "getNationalBerth",
+        "tags": [
+          "NationalBerth"
+        ],
+        "summary": "Fetches finnish port information from the db.",
+        "description": "Fetches finnish port information from the db.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The finnish port berth code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NationalBerthDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching port data."
+          }
+        }
+      }
+    },
+    "/api/v1/nationalPortArea": {
+      "get": {
+        "operationId": "getNationalPortAreasByLocode",
+        "tags": [
+          "NationalPortArea"
+        ],
+        "summary": "Fetches finnish port areas from the db with locode. If locode is not provided then all port areas are returned.",
+        "description": "Fetches finnish port areas from the db with locode. If locode is not provided then all port areas are returned.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locode",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The locode of the finnish port."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NationalPortAreaDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching port data."
+          }
+        }
+      }
+    },
+    "/api/v1/location": {
+      "post": {
+        "operationId": "queryLocationData",
+        "tags": [
+          "Location"
+        ],
+        "summary": "Fetches location data from the db. If request body is empty then a limited default list of location items is returned.",
+        "description": "Fetches location data from the db. If request body is empty then a limited default list of location items is returned.",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationQueryDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LocationDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching location data."
+          }
+        }
+      }
+    },
+    "/api/v1/location/locodes": {
+      "get": {
+        "operationId": "getLocodes",
+        "tags": [
+          "Location"
+        ],
+        "summary": "Fetches only LOCODE values from the db. If no LOCODE filter is supplied then all available LOCODE values are returned.",
+        "description": "Fetches only LOCODE values from the db. If no LOCODE filter is supplied then all available LOCODE values are returned.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locode",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional LOCODE filter. Matching is case-insensitive and uses LOCODE values only."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching locode data."
+          }
+        }
+      }
+    },
+    "/api/v1/location/locodeCheck": {
+      "get": {
+        "operationId": "checkLocode",
+        "tags": [
+          "Location"
+        ],
+        "summary": "Checks if locode exists in db.",
+        "description": "Checks if locode exists in db.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Locode to check."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. True or false.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "NationalPortAreaDTO": {
+        "$schema": "https://json-schema.org/2020-12/schema#",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "portName": {
+            "type": "string"
+          },
+          "portAreaName": {
+            "type": "string"
+          },
+          "locode": {
+            "type": "string"
+          },
+          "berths": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "portAreaName",
+          "portName",
+          "code",
+          "berths",
+          "locode"
+        ]
+      },
+      "NationalBerthDTO": {
+        "$schema": "https://json-schema.org/2020-12/schema#",
+        "type": "object",
+        "title": "NationalBerthDTO",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "portAreaCode": {
+            "type": "string"
+          },
+          "berthName": {
+            "type": "string"
+          },
+          "gisisCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "isps": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "code",
+          "portAreaCode",
+          "berthName",
+          "isps"
+        ]
+      },
+      "LocationDTO": {
+        "$schema": "https://json-schema.org/2020-12/schema#",
+        "type": "object",
+        "properties": {
+          "locode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "createdOn": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "lastUpdatedOn": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "locationNameWithDiacritics": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locationNameWithoutDiacritics": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "countryCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "coordinates": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Coordinates"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "UNECEFunctions": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "portFacilities": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "code": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "coordinates": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Coordinates"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "LocationQueryDTO": {
+        "$schema": "https://json-schema.org/2020-12/schema#",
+        "type": "object",
+        "properties": {
+          "stringSearch": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A general string search param. Is matched against locode and location name."
+          }
+        }
+      },
+      "Coordinates": {
+        "$schema": "https://json-schema.org/2020-12/schema#",
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

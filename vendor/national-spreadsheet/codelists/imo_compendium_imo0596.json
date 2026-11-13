@@ -1,0 +1,128 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0596",
+  "headerless": false,
+  "usedIn": [
+    "DE-032-18"
+  ],
+  "formalities": [
+    "MDH"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "CDF",
+      "en": "Increase cleaning and disinfection frequency",
+      "fi": "Puhdistus- ja desinfiointitiheyden lisäys",
+      "sv": "Ökad frekvens av rengöring och desinfektion"
+    },
+    {
+      "id": "COM",
+      "en": "Increase the frequency of communications between the ship and port health authorities",
+      "fi": "Aluksen ja sataman terveysviranomaisten välisen yhteydenpidon lisäys",
+      "sv": "Intensifierad kommunikation mellan fartygets och hamnens hälsomyndigheter"
+    },
+    {
+      "id": "DLM",
+      "en": "Designate one laundry machine for affected cabins",
+      "fi": "Erillisen pyykinpesukoneen osoittaminen määrätyille hyteille",
+      "sv": "Tilldelning av separat tvättmaskin för angivna hytter"
+    },
+    {
+      "id": "EBK",
+      "en": "Establish embarkation and de-embarkation procedures with port authorities",
+      "fi": "Satamaviranomaisten kanssa alukseen nousemista ja aluksesta poistumista koskevien menettelyjen laatiminen",
+      "sv": "Utarbetande av rutiner tillsammans med hamnmyndigheterna för ombord- och avstigningsförfaranden"
+    },
+    {
+      "id": "HST",
+      "en": "Implement measures to determine the health status of embarking passengers and crew",
+      "fi": "Toimenpiteet alukseen nousevien matkustajien ja miehistön jäsenten terveydentilan määrittämiseksi",
+      "sv": "Åtgärder för att fastställa hälsotillståndet hos passagerare och besättningsmedlemmar som går ombord"
+    },
+    {
+      "id": "HWS",
+      "en": "Increase hand sanitizing/ hand wash stations",
+      "fi": "Käsien desinfiointi-/pesupaikkojen lisääminen",
+      "sv": "Fler stationer för handdesinfektion och handtvätt"
+    },
+    {
+      "id": "LAB",
+      "en": "Make arrangements for laboratory analysis as required",
+      "fi": "Laboratorioanalyysiä varten tarvittavien järjestelyjen tekeminen",
+      "sv": "Genomförande av nödvändiga arrangemang för laboratorieanalys"
+    },
+    {
+      "id": "NEV",
+      "en": "Restrict entry of non-essential visitors",
+      "fi": "Ei-välttämättömien vierailijoiden pääsyn rajoitus",
+      "sv": "Begränsning av tillträde för icke nödvändiga besökare"
+    },
+    {
+      "id": "OCC",
+      "en": "Reduce occupancy of common areas",
+      "fi": "Yhteisten alueiden käytön rajoitus",
+      "sv": "Begränsning av användningen av gemensamma utrymmen"
+    },
+    {
+      "id": "OTH",
+      "en": "Others",
+      "fi": "Muu",
+      "sv": "Annat"
+    },
+    {
+      "id": "PPE",
+      "en": "Application of personal protective equipment",
+      "fi": "Henkilönsuojainten käyttö",
+      "sv": "Användning av personlig skyddsutrustning"
+    },
+    {
+      "id": "QMC",
+      "en": "Implement quarantine measures for suspected cases",
+      "fi": "Karanteenitoimenpiteiden toteuttaminen epäiltyjen tapausten osalta",
+      "sv": "Genomförande av karantänsåtgärder för misstänkta fall"
+    },
+    {
+      "id": "RCM",
+      "en": "Dissemination of risk communication messaging onboard",
+      "fi": "Riskiviestintä aluksella",
+      "sv": "Riskkommunikation ombord"
+    },
+    {
+      "id": "SHL",
+      "en": "Restrict crew shore leave if they present signs and symptoms",
+      "fi": "Miehistön maihin pääsyn rajoittaminen, jos heillä on sairauden merkkejä ja oireita",
+      "sv": "Begränsning av besättningens landstigning vid tecken och symtom på sjukdom"
+    },
+    {
+      "id": "SSB",
+      "en": "Stop self-service buffets",
+      "fi": "Noutopöytätarjoilun lopettaminen",
+      "sv": "Avskaffande av bufféservering"
+    },
+    {
+      "id": "SSL",
+      "en": "Stop self-service laundry",
+      "fi": "Itsepalvelupesuloiden käytön lopettaminen",
+      "sv": "Avstängning av självbetjäningstvättstugor"
+    },
+    {
+      "id": "VCM",
+      "en": "Apply targeted vector control measures",
+      "fi": "Kohdennettujen torjuntatoimenpiteiden soveltaminen",
+      "sv": "Tillämpning av riktade kontrollåtgärder"
+    },
+    {
+      "id": "WAS",
+      "en": "Implement measures for removal of contaminated waste",
+      "fi": "Saastuneen jätteen poistotoimenpiteiden soveltaminen",
+      "sv": "Tillämpning av åtgärder för avlägsnande av kontaminerat avfall"
+    }
+  ]
+}

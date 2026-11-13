@@ -1,0 +1,1800 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0043",
+  "headerless": false,
+  "usedIn": [
+    "DE-031-02",
+    "DE-035-14"
+  ],
+  "formalities": [
+    "CWA/D, BWA, MDD, EFF",
+    "SEC"
+  ],
+  "rules": [
+    "G-PXA-001"
+  ],
+  "entries": [
+    {
+      "id": "10100",
+      "en": "Captain / Master",
+      "fi": "Kapteeni / päällikkö",
+      "sv": "Kapten/Befälhavare"
+    },
+    {
+      "id": "10101",
+      "en": "Captain / Master on ships above 3000 GT",
+      "fi": "Kapteeni / päällikkö yli 3 000 GT:n aluksilla",
+      "sv": "Kapten/Befälhavare på fartyg med en bruttodräktighet över 3000"
+    },
+    {
+      "id": "10102",
+      "en": "Captain / Master on ships up to 3000 GT",
+      "fi": "Kapteeni / päällikkö enintään 3 000 GT:n aluksilla",
+      "sv": "Kapten/Befälhavare på fartyg med en bruttodräktighet upp till 3000"
+    },
+    {
+      "id": "10103",
+      "en": "Captain / Master near coastal voyages on ships up to 500 GT",
+      "fi": "Kapteeni / päällikkö rannikkomatkoilla enintään 500 GT:n aluksilla",
+      "sv": "Kapten/Befälhavare i närtrafik på fartyg med en bruttodräktighet upp till 500"
+    },
+    {
+      "id": "10104",
+      "en": "Staff Captain on Cruise Ships",
+      "fi": "Apulaiskapteeni (risteilyaluksilla)",
+      "sv": "Stabsbefälhavare på kryssningsfartyg"
+    },
+    {
+      "id": "10105",
+      "en": "Captain / Master including Offshore, MODUs or MOPUs",
+      "fi": "Kapteeni / päällikkö, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Kapten/Befälhavare inklusive offshore, flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10106",
+      "en": "Captain / Master on vessels up to 3000 GT including Offshore, MODUs & MOPUs",
+      "fi": "Kapteeni / päällikkö enintään 3 000 GT:n aluksilla, mukaan lukien offshore-alukset, MODU:t ja MOPU:t",
+      "sv": "Kapten/befälhavare på fartyg med upp till 3000 bruttodräktighet, inklusive offshore, flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10107",
+      "en": "Skipper on fishing vessels of 24 metres in length and over",
+      "fi": "Laivuri vähintään 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Skeppare på fiskefartyg med en längd på minst 24 meter"
+    },
+    {
+      "id": "10108",
+      "en": "Skipper on fishing vessels under 24 metres in length",
+      "fi": "Laivuri alle 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Skeppare på fiskefartyg med en längd under 24 meter"
+    },
+    {
+      "id": "10110",
+      "en": "Chief Mate, Chief Officer or First Officer, First Mate",
+      "fi": "Yliperämies",
+      "sv": "Överstyrman"
+    },
+    {
+      "id": "10111",
+      "en": "Chief Mate on ships above 3,000 GT",
+      "fi": "Yliperämies yli 3 000 GT:n aluksilla",
+      "sv": "Överstyrman på fartyg med en bruttodräktighet över 3000"
+    },
+    {
+      "id": "10112",
+      "en": "Chief Mate on ships up to 3,000 GT",
+      "fi": "Yliperämies enintään 3 000 GT:n aluksilla",
+      "sv": "Överstyrman på fartyg med en bruttodräktighet upp till 3000"
+    },
+    {
+      "id": "10113",
+      "en": "Chief Mate including Offshore, MODUs or MOPUs",
+      "fi": "Yliperämies, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Överstyrman inklusive offshore, flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10114",
+      "en": "Chief Mate on fishing vessels 24 metres in length and over",
+      "fi": "Yliperämies vähintään 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Överstyrman på fiskefartyg med en längd på minst 24 meter"
+    },
+    {
+      "id": "10115",
+      "en": "Chief Mate on fishing vessels under 24 metres in length",
+      "fi": "Yliperämies alle 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Överstyrman på fiskefartyg med en längd under 24 meter"
+    },
+    {
+      "id": "10120",
+      "en": "Officer in Charge of a Navigational Watch",
+      "fi": "Vahtipäällikkö",
+      "sv": "Vakthavande befäl"
+    },
+    {
+      "id": "10121",
+      "en": "Officer in Charge of a Navigational Watch as Second Mate / Officer",
+      "fi": "Vahtipäällikkö, 2. perämies",
+      "sv": "Vakthavande befäl som andre styrman"
+    },
+    {
+      "id": "10122",
+      "en": "Officer in Charge of a Navigational Watch as Third Mate / Officer",
+      "fi": "Vahtipäällikkö, 3. perämies",
+      "sv": "Vakthavande befäl som tredje styrman"
+    },
+    {
+      "id": "10123",
+      "en": "Officer in Charge of a Navigational Watch as Fourth Mate / Officer",
+      "fi": "Vahtipäällikkö, 4. perämies",
+      "sv": "Vakthavande befäl som fjärde styrman"
+    },
+    {
+      "id": "10124",
+      "en": "Officer in Charge of a Navigational Watch on ships up to 500 GT (Near Coastal)",
+      "fi": "Vahtipäällikkö, enintään 500 GT:n aluksilla (lähiliikenne)",
+      "sv": "Vakthavande befäl på fartyg med bruttodräktighet upp till 500 (närtrafik)"
+    },
+    {
+      "id": "10125",
+      "en": "Officer in Charge of a Navigational Watch including MODUs or MOPUs",
+      "fi": "Vahtipäällikkö, mukaan lukien MODU- tai MOPU-yksiköt",
+      "sv": "Vakthavande befäl, inklusive flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10126",
+      "en": "Officer in charge of a navigational watch on fishing vessels of 24 metres in length and over",
+      "fi": "Vahtipäällikkö vähintään 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Vakthavande befäl på fiskefartyg med en längd på minst 24 meter"
+    },
+    {
+      "id": "10127",
+      "en": "Officer in charge of a navigational watch on fishing vessels under 24 metres in length",
+      "fi": "Vahtipäällikkö alle 24 metrin pituisilla kalastusaluksilla",
+      "sv": "Vakthavande befäl på fiskefartyg med en längd under 24 meter"
+    },
+    {
+      "id": "10130",
+      "en": "Radio officer/radio operator",
+      "fi": "Radiosähköttäjä/radisti",
+      "sv": "Radiooperatör"
+    },
+    {
+      "id": "10131",
+      "en": "Radio officer/radio operator ROC",
+      "fi": "Radiosähköttäjä/radisti ROC",
+      "sv": "Radiooperatör ROC"
+    },
+    {
+      "id": "10132",
+      "en": "Radio officer/radio operator GOC",
+      "fi": "Radiosähköttäjä/radisti GOC",
+      "sv": "Radiooperatör GOC"
+    },
+    {
+      "id": "10133",
+      "en": "Radio officer/ Radio Operator on fishing vessels",
+      "fi": "Radiosähköttäjä/radisti kalastusaluksilla",
+      "sv": "Radiooperatör på fiskefartyg"
+    },
+    {
+      "id": "10140",
+      "en": "Deck Cadet / Apprentice",
+      "fi": "Perämiesharjoittelija",
+      "sv": "Styrmanspraktikant"
+    },
+    {
+      "id": "10141",
+      "en": "Deck cadet on fishing vessels",
+      "fi": "Perämiesharjoittelija kalastusaluksilla",
+      "sv": "Styrmanspraktikant på fiskefartyg"
+    },
+    {
+      "id": "10150",
+      "en": "Chief Engineer, Chief Engineer Officer",
+      "fi": "Konepäällikkö",
+      "sv": "Maskinchef"
+    },
+    {
+      "id": "10151",
+      "en": "Chief Engineer Officer on vessels above 3,000 kW propulsion power",
+      "fi": "Konepäällikkö yli 3 000 kW:n konetehon aluksilla",
+      "sv": "Maskinchef på fartyg med över 3 000 kW maskineffekt"
+    },
+    {
+      "id": "10152",
+      "en": "Chief Engineer Officer on vessels with up to 3,000 kW propulsion power",
+      "fi": "Konepäällikkö enintään 3 000 kW:n konetehon aluksilla",
+      "sv": "Maskinchef på fartyg med upp till 3 000 kW maskineffekt"
+    },
+    {
+      "id": "10153",
+      "en": "Staff Chief Engineer",
+      "fi": "Apulaiskonepäällikkö / vanhempi konemestari",
+      "sv": "Stabsövermaskinmästare"
+    },
+    {
+      "id": "10154",
+      "en": "Chief Engineer including MODUs or MOPUs",
+      "fi": "Konepäällikkö, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Maskinchef, inklusive flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10155",
+      "en": "Chief engineer officer of fishing vessels powered by main propulsion machinery of 750 kW propulsion power or more",
+      "fi": "Konepäällikkö kalastusaluksilla, joiden pääkoneiden teho on vähintään 750 kW",
+      "sv": "Maskinchef på fiskefartyg med ett framdrivningsmaskineri med en effekt av 750 kW eller mer"
+    },
+    {
+      "id": "10156",
+      "en": "Chief engineer officer of fishing vessels powered by main propulsion machinery with up to 750 kW propulsion power",
+      "fi": "Konepäällikkö kalastusaluksilla, joiden pääkoneiden teho on enintään 750 kW",
+      "sv": "Maskinchef på fiskefartyg med ett framdrivningsmaskineri med upp till 750 kW maskineffekt"
+    },
+    {
+      "id": "10210",
+      "en": "First Engineer",
+      "fi": "1. konemestari",
+      "sv": "Förste maskinmästare"
+    },
+    {
+      "id": "10211",
+      "en": "First Engineer including MODUs or MOPUs",
+      "fi": "1. konemestari, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Förste maskinmästare, inklusive flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10212",
+      "en": "First Engineer on fishing vessels",
+      "fi": "1. konemestari kalastusaluksilla",
+      "sv": "Förste maskinmästare på fiskefartyg"
+    },
+    {
+      "id": "10220",
+      "en": "Second Engineer, Second Engineer Officer",
+      "fi": "2. konemestari",
+      "sv": "Maskinmästare"
+    },
+    {
+      "id": "10221",
+      "en": "Second Engineer, Second Engineer Officer on vessels above 3,000 kW propulsion power",
+      "fi": "2. konemestari yli 3 000 kW:n konetehon aluksilla",
+      "sv": "Maskinmästare på fartyg med över 3 000 kW motoreffekt"
+    },
+    {
+      "id": "10222",
+      "en": "Second Engineer, Second Engineer Officer on vessels up to 3,000 kW propulsion power",
+      "fi": "2. konemestari enintään 3 000 kW:n konetehon aluksilla",
+      "sv": "Maskinmästare på fartyg med över 3 000 kW motoreffekt"
+    },
+    {
+      "id": "10223",
+      "en": "Second Engineer including MODUs or MOPUs",
+      "fi": "2. konemestari, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Maskinmästare, inklusive flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10224",
+      "en": "Second engineer on fishing vessels powered by main propulsion machinery of 750 kW propulsion power or more",
+      "fi": "2. konemestari kalastusaluksilla, joiden pääkoneiden teho on vähintään 750 kW",
+      "sv": "Maskinmästare på fiskefartyg med ett framdrivningsmaskineri med en effekt av 750 kW eller mer"
+    },
+    {
+      "id": "10230",
+      "en": "Officer in Charge of an engineering Watch as Third Engineer",
+      "fi": "Konevahtipäällikkö, 3. konemestari",
+      "sv": "Vakthavande maskinbefäl"
+    },
+    {
+      "id": "10231",
+      "en": "Third Engineer including MODUs or MOPUs",
+      "fi": "3. konemestari, mukaan lukien offshore-, MODU- tai MOPU-yksiköt",
+      "sv": "Tredjemaskinist, inklusive flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10232",
+      "en": "Third Engineer on fishing vessels",
+      "fi": "3. konemestari kalastusaluksilla",
+      "sv": "Tredjemaskinist på fiskefartyg"
+    },
+    {
+      "id": "10240",
+      "en": "Officer in Charge of an engineering Watch as Fourth Engineer",
+      "fi": "Konevahtipäällikkö, 4. konemestari",
+      "sv": "Vakthavande maskinbefäl, fjärdemaskinist"
+    },
+    {
+      "id": "10250",
+      "en": "LNG Systems Engineer",
+      "fi": "Nesteytetyn maakaasun järjestelmäinsinööri",
+      "sv": "LNG-systemingenjör"
+    },
+    {
+      "id": "10260",
+      "en": "(Liquefied) Gas Engineer",
+      "fi": "Nesteytetyn kaasun insinööri",
+      "sv": "Ingenjör för flytande gas"
+    },
+    {
+      "id": "10270",
+      "en": "Reefer Engineer",
+      "fi": "Kylmäteknikko / kylmälaitemestari",
+      "sv": "Kylingenjör"
+    },
+    {
+      "id": "10280",
+      "en": "Engineer Cadet / Apprentice / Assistant Engineer",
+      "fi": "Konemestariharjoittelija",
+      "sv": "Maskinpraktikant"
+    },
+    {
+      "id": "10290",
+      "en": "Engineer Cadet / Apprentice / Assistant Engineer",
+      "fi": "Konemestariharjoittelija",
+      "sv": "Maskinpraktikant"
+    },
+    {
+      "id": "10300",
+      "en": "Chief Electro-Technical Officer/Chief Electrician",
+      "fi": "Sähkömestari",
+      "sv": "Elmästare"
+    },
+    {
+      "id": "10310",
+      "en": "First Electro-Technical Officer / First Electrician",
+      "fi": "1. laivasähkömestari",
+      "sv": "Förste elmästare"
+    },
+    {
+      "id": "10330",
+      "en": "Electro-Technical Officer (ETO)",
+      "fi": "Sähkömestari (ETO)",
+      "sv": "Elmästare (ETO)"
+    },
+    {
+      "id": "10331",
+      "en": "Electro-Technical Officer (ETO) including Offshore, MODUs and MOPUs",
+      "fi": "Sähkömestari (ETO) mukaan lukien offshore-, MODU- ja MOPU-yksiköt",
+      "sv": "Elmästare inklusive offshore, flyttbar oljeplattform till sjöss eller flyttbar produktionsenhet till sjöss"
+    },
+    {
+      "id": "10332",
+      "en": "Second Electro-Technical Officer (2nd ETO)",
+      "fi": "2. sähkömestari (2. ETO)",
+      "sv": "Andre elmästare"
+    },
+    {
+      "id": "10340",
+      "en": "Chief Electrician",
+      "fi": "Laivasähköasentaja",
+      "sv": "Fartygselektriker"
+    },
+    {
+      "id": "10341",
+      "en": "Ship's Electrician/Electro-technical Rating (E.T.R.)",
+      "fi": "Laivasähköasentaja (E.T.R.)",
+      "sv": "Fartygselektriker (ETR)"
+    },
+    {
+      "id": "10342",
+      "en": "Assistant Ship's Electrician",
+      "fi": "Avustava laivasähköasentaja",
+      "sv": "Biträdande fartygselektriker"
+    },
+    {
+      "id": "10343",
+      "en": "Trainee Electrician",
+      "fi": "Sähköasentajaharjoittelija",
+      "sv": "Elektrikerpraktikant"
+    },
+    {
+      "id": "10400",
+      "en": "Boatswain (Bosun)",
+      "fi": "Pursimies",
+      "sv": "Båtsman"
+    },
+    {
+      "id": "10401",
+      "en": "Chief Boatswain (Chief Bosun)",
+      "fi": "Ylipursimies",
+      "sv": "Chefsbåtsman"
+    },
+    {
+      "id": "10402",
+      "en": "2nd Boatswain (2nd Bosun)",
+      "fi": "2. pursimies",
+      "sv": "Andre båtsman"
+    },
+    {
+      "id": "10403",
+      "en": "Boatswain's Assistant (Bosun's Assistant)",
+      "fi": "Pursimiehen assistentti",
+      "sv": "Båtsmansassistent"
+    },
+    {
+      "id": "10410",
+      "en": "Dual-Purpose Rating (DP Rating) (Both Deck & Engine Departments)",
+      "fi": "Yleistoimipätevyys (sekä kansi- että koneosasto)",
+      "sv": "Allmän tjänst (Både däcks- och maskinavdelningarna)"
+    },
+    {
+      "id": "10420",
+      "en": "Able Bodied Seafarer (AB Deck)",
+      "fi": "Matruusi",
+      "sv": "Matros"
+    },
+    {
+      "id": "10430",
+      "en": "Quartermaster (designated helmsman)",
+      "fi": "Ruorimies (quartermaster)",
+      "sv": "Kvartermästare (rorsman)"
+    },
+    {
+      "id": "10440",
+      "en": "Sailmaker",
+      "fi": "Purjeneuloja",
+      "sv": "Segelmakare"
+    },
+    {
+      "id": "10450",
+      "en": "Ordinary Seafarer (OS Deck) / Rating Forming Part of a Navigational Watch",
+      "fi": "Vahtimies, kansi",
+      "sv": "Vaktman, däck"
+    },
+    {
+      "id": "10460",
+      "en": "Deckhand, Deck Utility (uncertified rating)",
+      "fi": "Kansimies (ei pätevyyskirjaa)",
+      "sv": "Däcksman (ocertifierad)"
+    },
+    {
+      "id": "10461",
+      "en": "Efficient Deckhand (EDH)",
+      "fi": "Pätevä kansimies (EDH)",
+      "sv": "Efficient Deckhand (EDH), däcksman"
+    },
+    {
+      "id": "10462",
+      "en": "Deck Trainee",
+      "fi": "Vahtimiesharjoittelija, kansi",
+      "sv": "Vaktmanspraktikant, däck"
+    },
+    {
+      "id": "10470",
+      "en": "Pumpman",
+      "fi": "Pumppumies",
+      "sv": "Pumpman"
+    },
+    {
+      "id": "10480",
+      "en": "Ship's Carpenter",
+      "fi": "Timpuri",
+      "sv": "Fartygssnickare"
+    },
+    {
+      "id": "10481",
+      "en": "Second Ship's Carpenter (Passenger ships)",
+      "fi": "2. timpuri (matkustaja-alukset)",
+      "sv": "Andre fartygssnickare (passagerarfartyg)"
+    },
+    {
+      "id": "10500",
+      "en": "Fitter",
+      "fi": "Korjausmies",
+      "sv": "Reparatör"
+    },
+    {
+      "id": "10505",
+      "en": "Donkeyman (Historical vessels)",
+      "fi": "Donkey-mies (historialliset alukset)",
+      "sv": "Donkeyman (historiska fartyg)"
+    },
+    {
+      "id": "10510",
+      "en": "Storekeeper",
+      "fi": "Varastopäällikkö",
+      "sv": "Butiksinnehavare"
+    },
+    {
+      "id": "10511",
+      "en": "Maintenance & Workshop Technician",
+      "fi": "Huolto- ja korjaamoteknikko",
+      "sv": "Underhålls- och verkstadstekniker"
+    },
+    {
+      "id": "10512",
+      "en": "Mechanic/Turner or Welder",
+      "fi": "Mekaanikko/sorvaaja tai hitsaaja",
+      "sv": "Mekaniker/svarvare eller svetsare"
+    },
+    {
+      "id": "10530",
+      "en": "A.B. Engine, Motorman",
+      "fi": "Koneosaston matruusi (A.B. Engine)",
+      "sv": "Motorman (maskinavdelning) (A.B. Engine)"
+    },
+    {
+      "id": "10531",
+      "en": "Oiler, qualified as an A.B. Engine",
+      "fi": "Öljymies, pätevä koneosaston matruusiksi (A.B. Engine)",
+      "sv": "Oljare, kvalificerad som motorman"
+    },
+    {
+      "id": "10532",
+      "en": "Wiper",
+      "fi": "Koneapulainen",
+      "sv": "Maskinassistent / Wiper"
+    },
+    {
+      "id": "10533",
+      "en": "Rating Forming Part of a Watch in a Manned Engine-Room (OS Engine)",
+      "fi": "Vahtimies, kone",
+      "sv": "Vaktman, maskin"
+    },
+    {
+      "id": "10534",
+      "en": "Engine-Room Trainee",
+      "fi": "Vahtimiesharjoittelija, kone",
+      "sv": "Vaktmanpraktikant, maskin"
+    },
+    {
+      "id": "10560",
+      "en": "Fireman/stoker",
+      "fi": "Lämmittäjä",
+      "sv": "Eldare"
+    },
+    {
+      "id": "10561",
+      "en": "Trimmer",
+      "fi": "Trimmaaja",
+      "sv": "Trimmare"
+    },
+    {
+      "id": "10600",
+      "en": "Ship's Doctor (Surgeon)",
+      "fi": "Aluksen lääkäri",
+      "sv": "Fartygsläkare"
+    },
+    {
+      "id": "10601",
+      "en": "2nd Ship's Doctor (2nd Surgeon)",
+      "fi": "2. aluksen lääkäri",
+      "sv": "Andre fartygsläkare"
+    },
+    {
+      "id": "10602",
+      "en": "1st Ship's Nurse/ Medical Orderly",
+      "fi": "1. aluksen sairaanhoitaja",
+      "sv": "Fartygets första sjukskötare / Medikalvaktmästare"
+    },
+    {
+      "id": "10603",
+      "en": "2nd Ship's Nurse/ Medical Orderly",
+      "fi": "2. aluksen sairaanhoitaja",
+      "sv": "Fartygets andra sjukskötare / Medikalvaktmästare"
+    },
+    {
+      "id": "10604",
+      "en": "Hospital Secretary/Assistant",
+      "fi": "Sairaalan sihteeri/avustaja",
+      "sv": "Sjukhussekreterare/assistent"
+    },
+    {
+      "id": "10605",
+      "en": "Masseur",
+      "fi": "Hieroja",
+      "sv": "Massör"
+    },
+    {
+      "id": "10606",
+      "en": "Physiotherapeutic Assistant",
+      "fi": "Fysioterapeutin assistentti",
+      "sv": "Fysioterapeutisk assistent"
+    },
+    {
+      "id": "10700",
+      "en": "Chief Cook",
+      "fi": "Keittiömestari",
+      "sv": "Köksmästare"
+    },
+    {
+      "id": "10701",
+      "en": "Ship's Cook",
+      "fi": "Laivakokki",
+      "sv": "Fartygskock"
+    },
+    {
+      "id": "10702",
+      "en": "Assistant Cook",
+      "fi": "Apukokki",
+      "sv": "Assisterande kock"
+    },
+    {
+      "id": "10703",
+      "en": "Baker on merchant ships which regularly carry up to 12 passengers",
+      "fi": "Leipuri kauppa-aluksilla, joilla kuljetetaan säännöllisesti enintään 12 matkustajaa",
+      "sv": "Bagare på handelsfartyg som regelbundet har upp till 12 passagerare"
+    },
+    {
+      "id": "10800",
+      "en": "Kitchen Management staff",
+      "fi": "Keittiön johtohenkilöstö",
+      "sv": "Köksledningspersonal"
+    },
+    {
+      "id": "10801",
+      "en": "Executive Chef / Chef de Cuisine",
+      "fi": "Keittiömestari / Chef de Cuisine",
+      "sv": "Kökschef / Chef de Cuisine"
+    },
+    {
+      "id": "10802",
+      "en": "Food & Beverage Manager",
+      "fi": "Ruoka- ja juomajohtaja",
+      "sv": "Mat- och dryckesmästare"
+    },
+    {
+      "id": "10803",
+      "en": "Provisions Master",
+      "fi": "Tarvikevastaava",
+      "sv": "Proviantmästare"
+    },
+    {
+      "id": "10804",
+      "en": "Deputy Head Chef / Sous Chef",
+      "fi": "2. pääkokki / Sous Chef",
+      "sv": "Andrekock / Sous Chef"
+    },
+    {
+      "id": "10805",
+      "en": "Station Chef / Chef de Partie",
+      "fi": "Osastokokki / Chef de Partie",
+      "sv": "Avdelningskock / Chef de Partie"
+    },
+    {
+      "id": "10806",
+      "en": "Swing Chef / Tournant",
+      "fi": "Kiertävä kokki / Tournant",
+      "sv": "Tournantkock / Förstekock (tournant)"
+    },
+    {
+      "id": "10807",
+      "en": "Vegetable Chef / Entremetier",
+      "fi": "Kasviskokki / Entremetier",
+      "sv": "Grönsakskock/Entremetier"
+    },
+    {
+      "id": "10808",
+      "en": "Fry Chef / Friturier",
+      "fi": "Paistokokki / Friturier",
+      "sv": "Frityrkock/Friturier"
+    },
+    {
+      "id": "10809",
+      "en": "Pantry Chef / Garde manger",
+      "fi": "Kylmäkkökokki / Garde manger",
+      "sv": "Kallskänka / Garde manger"
+    },
+    {
+      "id": "10810",
+      "en": "Pastry Chef",
+      "fi": "Leivonnaiskokki",
+      "sv": "Konditor/Pâtissier"
+    },
+    {
+      "id": "10811",
+      "en": "Fish Chef / Poissonnier",
+      "fi": "Kalakokki / Poissonnier",
+      "sv": "Fiskkock/Poissonnier"
+    },
+    {
+      "id": "10812",
+      "en": "Meat or Roast Chef",
+      "fi": "Liha- tai grillikokki",
+      "sv": "Köttkock/Rotisseur"
+    },
+    {
+      "id": "10813",
+      "en": "Sauce Chef / Saucier",
+      "fi": "Kastikekokki / Saucier",
+      "sv": "Sautékock/Saucier"
+    },
+    {
+      "id": "10814",
+      "en": "Assistant or Junior Chef / Commis Chef",
+      "fi": "Apulaiskokki tai nuorempi kokki / Commis Chef",
+      "sv": "Kocklärling / Commis Chef"
+    },
+    {
+      "id": "10815",
+      "en": "Galley Chef for the passenger ship's crew",
+      "fi": "Miehistökokki (matkustaja-aluksilla) / Galley Chef",
+      "sv": "Manskapskock på passagerarfartyg"
+    },
+    {
+      "id": "10816",
+      "en": "Butcher / Boucher",
+      "fi": "Teurastaja / Boucher",
+      "sv": "Slaktare/Boucher"
+    },
+    {
+      "id": "10817",
+      "en": "Galley/Kitchen Staff",
+      "fi": "Keittiötyöntekijä",
+      "sv": "Kabyss-/Kökspersonal"
+    },
+    {
+      "id": "10818",
+      "en": "Chief Purser",
+      "fi": "Pääpurseri",
+      "sv": "Chefspurser"
+    },
+    {
+      "id": "10819",
+      "en": "2nd Purser",
+      "fi": "2. purseri",
+      "sv": "Purser"
+    },
+    {
+      "id": "10820",
+      "en": "3rd Purser",
+      "fi": "3. purseri",
+      "sv": "Purserbiträde"
+    },
+    {
+      "id": "10821",
+      "en": "Chief Steward/Stewardess",
+      "fi": "Ylitalousesimies / Chief Steward",
+      "sv": "Överintendent / Chief Steward"
+    },
+    {
+      "id": "10822",
+      "en": "Steward/Stewardess",
+      "fi": "Stuertti (Steward)",
+      "sv": "Steward / Intendent"
+    },
+    {
+      "id": "10823",
+      "en": "Messman or Pantryman-woman",
+      "fi": "Messipoika / messityttö",
+      "sv": "Messpojke / messflicka"
+    },
+    {
+      "id": "10824",
+      "en": "Laundryman only on ships which regularly carry up to 12 passengers",
+      "fi": "Pyykkityöntekijä kauppa-aluksilla, joilla kuljetetaan säännöllisesti enintään 12 matkustajaa",
+      "sv": "Tvättman på fartyg som regelbundet har upp till 12 passagerare"
+    },
+    {
+      "id": "10900",
+      "en": "Dining Room staff",
+      "fi": "Tarjoiluhenkilöstö",
+      "sv": "Matsalspersonal"
+    },
+    {
+      "id": "10901",
+      "en": "Dining Room manager",
+      "fi": "Tarjoiluesimies",
+      "sv": "Hovmästare"
+    },
+    {
+      "id": "10902",
+      "en": "Dining Room Head Waiter/Waitress",
+      "fi": "Päätarjoilija",
+      "sv": "Matsalens huvudservitör/huvudservitris"
+    },
+    {
+      "id": "10903",
+      "en": "1st Wine Steward/Stewardess / Sommelier",
+      "fi": "1. viinimestari / sommelier",
+      "sv": "Sommelier"
+    },
+    {
+      "id": "10904",
+      "en": "2nd Wine Steward/Stewardess / 2. Sommelier",
+      "fi": "2. viinimestari / 2. sommelier",
+      "sv": "Andre sommelier"
+    },
+    {
+      "id": "10905",
+      "en": "Dining Room Waiter/Waitress",
+      "fi": "Tarjoilija",
+      "sv": "Matsalsservitör/-servitris"
+    },
+    {
+      "id": "11000",
+      "en": "Bar staff",
+      "fi": "Baarityöntekijä",
+      "sv": "Barpersonal"
+    },
+    {
+      "id": "11001",
+      "en": "Bar Manager",
+      "fi": "Baarin johtaja",
+      "sv": "Barchef"
+    },
+    {
+      "id": "11002",
+      "en": "Bartender / Barkeeper / Barmaid",
+      "fi": "Baarimestari",
+      "sv": "Barmästare"
+    },
+    {
+      "id": "11003",
+      "en": "Cocktail Server",
+      "fi": "Cocktailtarjoilija",
+      "sv": "Cocktailservitör"
+    },
+    {
+      "id": "11100",
+      "en": "Buffet staff",
+      "fi": "Buffet-henkilöstö",
+      "sv": "Buffépersonal"
+    },
+    {
+      "id": "11101",
+      "en": "Head Buffet Server",
+      "fi": "Buffet-päätarjoilija",
+      "sv": "Bufféservitör"
+    },
+    {
+      "id": "11102",
+      "en": "Buffer Servers",
+      "fi": "Buffet-tarjoilijat",
+      "sv": "Bufféservitörer"
+    },
+    {
+      "id": "11200",
+      "en": "Hotel staff",
+      "fi": "Hotellihenkilöstö",
+      "sv": "Hotellpersonal"
+    },
+    {
+      "id": "11201",
+      "en": "Hotel Director",
+      "fi": "Hotellin johtaja",
+      "sv": "Hotellchef"
+    },
+    {
+      "id": "11202",
+      "en": "Accountant",
+      "fi": "Kirjanpitäjä",
+      "sv": "Revisor"
+    },
+    {
+      "id": "11203",
+      "en": "Front Desk - Concierge",
+      "fi": "Vastaanottovirkailija / concierge",
+      "sv": "Receptionist/Concierge"
+    },
+    {
+      "id": "11204",
+      "en": "Receptionist",
+      "fi": "Vastaanottovirkailija",
+      "sv": "Receptionist"
+    },
+    {
+      "id": "11205",
+      "en": "Programme Coordinator",
+      "fi": "Ohjelmakoordinaattori",
+      "sv": "Programkoordinator"
+    },
+    {
+      "id": "11206",
+      "en": "Chief Cabin Steward/Stewardess",
+      "fi": "Pääkabiinihyttipalvelija",
+      "sv": "Huvudkabinuppassare"
+    },
+    {
+      "id": "11207",
+      "en": "1st Cabin Steward/Stewardess",
+      "fi": "1. hyttipalvelija",
+      "sv": "1:e hyttuppassare"
+    },
+    {
+      "id": "11208",
+      "en": "2nd Cabin Steward/Stewardess",
+      "fi": "2. hyttipalvelija",
+      "sv": "2:e hyttuppassare"
+    },
+    {
+      "id": "11209",
+      "en": "Cabin Steward/Stewardess",
+      "fi": "Hyttipalvelija",
+      "sv": "Hyttuppassare"
+    },
+    {
+      "id": "11210",
+      "en": "Butler / Page",
+      "fi": "Hovimestari / paasi",
+      "sv": "Butler/Page"
+    },
+    {
+      "id": "11211",
+      "en": "Lift Attendant / Porter",
+      "fi": "Hissinkuljettaja / portieeri",
+      "sv": "Hissförare/Portier"
+    },
+    {
+      "id": "11212",
+      "en": "Chief Housekeeper",
+      "fi": "Siivouspäällikkö",
+      "sv": "Städchef"
+    },
+    {
+      "id": "11213",
+      "en": "Assistant Housekeeper",
+      "fi": "Apulaissiivouspäällikkö",
+      "sv": "Biträdande städchef"
+    },
+    {
+      "id": "11214",
+      "en": "Cabin Cleaning Staff",
+      "fi": "Matkustamon siivoushenkilöstö",
+      "sv": "Kabinrengöringspersonal"
+    },
+    {
+      "id": "11215",
+      "en": "General Cleaning Staff",
+      "fi": "Yleisten tilojen siivoushenkilöstö",
+      "sv": "Allmän städpersonal"
+    },
+    {
+      "id": "11216",
+      "en": "Laundry Manager",
+      "fi": "Pyykkivastaava",
+      "sv": "Tvättchef"
+    },
+    {
+      "id": "11217",
+      "en": "Laundry Staff",
+      "fi": "Pyykkihenkilöstö",
+      "sv": "Tvättpersonal"
+    },
+    {
+      "id": "11300",
+      "en": "Commercial service staff",
+      "fi": "Kaupallisten palveluiden henkilöstö",
+      "sv": "Kommersiell servicepersonal"
+    },
+    {
+      "id": "11301",
+      "en": "Gift Shop Manager",
+      "fi": "Lahjamyymäläpäällikkö",
+      "sv": "Presentbutikschef"
+    },
+    {
+      "id": "11302",
+      "en": "Gift Shop Sales Assistant",
+      "fi": "Lahjamyymälän avustaja",
+      "sv": "Presentbutikens försäljningsassistent"
+    },
+    {
+      "id": "11303",
+      "en": "Hairdresser",
+      "fi": "Kampaaja",
+      "sv": "Hårfrisör"
+    },
+    {
+      "id": "11304",
+      "en": "Photograph",
+      "fi": "Valokuvaaja",
+      "sv": "Fotograf"
+    },
+    {
+      "id": "11305",
+      "en": "Masseur",
+      "fi": "Hieroja",
+      "sv": "Massör"
+    },
+    {
+      "id": "11306",
+      "en": "Physiotherapeutic Assistant",
+      "fi": "Fysioterapeutin assistentti",
+      "sv": "Fysioterapeutisk assistent"
+    },
+    {
+      "id": "11307",
+      "en": "Sauna-Attendant",
+      "fi": "Saunatyöntekijä",
+      "sv": "Bastuskötare"
+    },
+    {
+      "id": "11308",
+      "en": "Fitness-Trainer",
+      "fi": "Kuntovalmentaja",
+      "sv": "Konditionstränare"
+    },
+    {
+      "id": "11309",
+      "en": "Pool-Attendant",
+      "fi": "Allastyöntekijä",
+      "sv": "Poolskötare"
+    },
+    {
+      "id": "11400",
+      "en": "Entertainment staff",
+      "fi": "Viihdehenkilöstö",
+      "sv": "Underhållningspersonal"
+    },
+    {
+      "id": "11401",
+      "en": "Casino Manager",
+      "fi": "Kasinopäällikkö",
+      "sv": "Kasinochef"
+    },
+    {
+      "id": "11402",
+      "en": "Croupier",
+      "fi": "Croupier",
+      "sv": "Croupier"
+    },
+    {
+      "id": "11403",
+      "en": "Casino Staff",
+      "fi": "Kasinohenkilöstö",
+      "sv": "Kasinopersonal"
+    },
+    {
+      "id": "11404",
+      "en": "Theatre Manager",
+      "fi": "Teatteripäällikkö",
+      "sv": "Teaterchef"
+    },
+    {
+      "id": "11405",
+      "en": "Artist",
+      "fi": "Taiteilija",
+      "sv": "Artist"
+    },
+    {
+      "id": "11406",
+      "en": "Entertainer",
+      "fi": "Viihdyttäjä",
+      "sv": "Underhållare"
+    },
+    {
+      "id": "11407",
+      "en": "Soloist Musician",
+      "fi": "Soolomuusikko",
+      "sv": "Solomusiker"
+    },
+    {
+      "id": "11408",
+      "en": "Musician",
+      "fi": "Muusikko",
+      "sv": "Musiker"
+    },
+    {
+      "id": "11409",
+      "en": "Singer",
+      "fi": "Laulaja",
+      "sv": "Sångare"
+    },
+    {
+      "id": "11410",
+      "en": "Children Entertainers / Storytellers",
+      "fi": "Lasten­viihdyttäjä / satukertoja",
+      "sv": "Barnunderhållare / sagoberättare"
+    },
+    {
+      "id": "11411",
+      "en": "Event Manager",
+      "fi": "Tapahtumapäällikkö",
+      "sv": "Evenemangschef"
+    },
+    {
+      "id": "11412",
+      "en": "Event/Excursion Expert or Guide",
+      "fi": "Tapahtuma-/retkiasiantuntija tai opas",
+      "sv": "Evenemangs-/utflyktsexpert eller guide"
+    },
+    {
+      "id": "11500",
+      "en": "Technical staff",
+      "fi": "Tekninen henkilöstö",
+      "sv": "Teknisk personal"
+    },
+    {
+      "id": "11501",
+      "en": "Maintenance Engineer",
+      "fi": "Huoltoinsinööri",
+      "sv": "Underhållsingenjör"
+    },
+    {
+      "id": "11502",
+      "en": "Exhaust Gas Cleaning Systems Engineer (EGCS)",
+      "fi": "Pakokaasujen puhdistusjärjestelmien insinööri (EGCS)",
+      "sv": "Avgasreningssystemsingenjör (EGCS)"
+    },
+    {
+      "id": "11503",
+      "en": "Environmental Officer",
+      "fi": "Ympäristövastaava",
+      "sv": "Miljöansvarig"
+    },
+    {
+      "id": "11504",
+      "en": "Recycling Operations Officer",
+      "fi": "Kierrätysvastaava",
+      "sv": "Återvinningsansvarig"
+    },
+    {
+      "id": "11505",
+      "en": "Junior Environmental Officer",
+      "fi": "Nuorempi ympäristövastaava",
+      "sv": "Junior miljöansvarig"
+    },
+    {
+      "id": "11506",
+      "en": "Process Engineer (Rating)",
+      "fi": "Prosessi-insinööri (miehistöasemassa)",
+      "sv": "Processingenjör (manskap)"
+    },
+    {
+      "id": "11507",
+      "en": "Waste Water Plant Assistant",
+      "fi": "Vedenpuhdistamon avustaja",
+      "sv": "Assistent på avloppsvattenanläggning"
+    },
+    {
+      "id": "11508",
+      "en": "Garbage Handler",
+      "fi": "Jätteenkäsittelijä",
+      "sv": "Avfallshanterare"
+    },
+    {
+      "id": "11509",
+      "en": "Facility Manager (Rating)",
+      "fi": "Laitosvastaava (miehistöasemassa)",
+      "sv": "Anläggningsansvarig (manskap)"
+    },
+    {
+      "id": "11510",
+      "en": "Facility Crewmember",
+      "fi": "Laitosmiehistön jäsen",
+      "sv": "Anläggningens besättningsmedlem"
+    },
+    {
+      "id": "11511",
+      "en": "Entertainment Electronics Officer",
+      "fi": "Viihde-elektroniikkavastaava",
+      "sv": "Underhållningselektronikansvarig"
+    },
+    {
+      "id": "11512",
+      "en": "IT-Communications Officer",
+      "fi": "IT-viestintävastaava",
+      "sv": "IT-kommunikationsansvarig"
+    },
+    {
+      "id": "11513",
+      "en": "IT-Technician",
+      "fi": "IT-teknikko",
+      "sv": "IT-tekniker"
+    },
+    {
+      "id": "11514",
+      "en": "Assistant IT-Technician",
+      "fi": "Avustava IT-teknikko",
+      "sv": "Biträdande IT-tekniker"
+    },
+    {
+      "id": "11515",
+      "en": "HVAC Engineer (Rating) {Air Conditioning etc}",
+      "fi": "LVI-insinööri (miehistöasemassa) {ilmastointi jne.}",
+      "sv": "VVS-ingenjör (manskap) {luftkonditionering osv.}"
+    },
+    {
+      "id": "11516",
+      "en": "1st. HVAC Technician & Refrigeration Assistant",
+      "fi": "1. LVI-teknikko ja jäähdytyslaiteavustaja",
+      "sv": "Första VVS-tekniker & kylassistent"
+    },
+    {
+      "id": "11517",
+      "en": "2nd. HVAC Technician & Refrigeration Assistant",
+      "fi": "2. LVI-teknikko ja jäähdytyslaiteavustaja",
+      "sv": "Andra VVS-tekniker & kylassistent"
+    },
+    {
+      "id": "11518",
+      "en": "QMED (Qualified Member of the Engine Department)",
+      "fi": "Pätevä koneosaston miehistön jäsen (QMED)",
+      "sv": "QMED (Qualified Member of the Engine Department)"
+    },
+    {
+      "id": "11600",
+      "en": "Safety staff",
+      "fi": "Turvallisuushenkilöstö",
+      "sv": "Säkerhetspersonal"
+    },
+    {
+      "id": "11601",
+      "en": "Ship Safety Officer",
+      "fi": "Aluksen turvapäällikkö",
+      "sv": "Fartygets säkerhetsansvarig"
+    },
+    {
+      "id": "11602",
+      "en": "Safety Officer, Life Saving Appliances (LSA)",
+      "fi": "Turvallisuusvastaava, hengenpelastuslaitteet (LSA)",
+      "sv": "Säkerhetsanvarig, livräddningsutrustning (LSA)"
+    },
+    {
+      "id": "11603",
+      "en": "Safety Officer, Fire-Fighting (FF)",
+      "fi": "Turvallisuusvastaava, palontorjunta (FF)",
+      "sv": "Säkerhetsansvarig, brandbekämpning (FF)"
+    },
+    {
+      "id": "11604",
+      "en": "Safety A.B. Rating for Life Saving Appliances (LSA)",
+      "fi": "Hengenpelastuslaitteiden pätevä kansimies (LSA)",
+      "sv": "Säkerhetsmatros för LSA (LSA)"
+    },
+    {
+      "id": "11605",
+      "en": "Deck Clerk",
+      "fi": "Kansikonttoristi / kansisihteeri",
+      "sv": "Däckskontorist"
+    },
+    {
+      "id": "11606",
+      "en": "Chief Fire-Fighter (Chief Fireman)",
+      "fi": "Palopäällikkö",
+      "sv": "Brandmästare"
+    },
+    {
+      "id": "11607",
+      "en": "Fire-Fighter/Fireman",
+      "fi": "Palomies",
+      "sv": "Brandman"
+    },
+    {
+      "id": "11608",
+      "en": "Ship Security Officer on Cruise ships",
+      "fi": "Turvapäällikkö risteilyaluksilla",
+      "sv": "Skyddschef på kryssningsfartyg"
+    },
+    {
+      "id": "11609",
+      "en": "Assistant Security Officer",
+      "fi": "Apulaisturvallisuuspäällikkö",
+      "sv": "Biträdande skyddschef"
+    },
+    {
+      "id": "11610",
+      "en": "Security Guard",
+      "fi": "Vartija",
+      "sv": "Säkerhetsvakt"
+    },
+    {
+      "id": "11700",
+      "en": "Fisher",
+      "fi": "Kalastaja",
+      "sv": "Fiskare"
+    },
+    {
+      "id": "11701",
+      "en": "Fish-Worker, Fish-Processor (on board)",
+      "fi": "Kalatyöntekijä, kalanjalostaja (aluksella)",
+      "sv": "Fiskarbetare, fiskprocessor (ombord)"
+    },
+    {
+      "id": "11702",
+      "en": "Factory Foreman on board Fishing Vessels",
+      "fi": "Tehtaan työnjohtaja kalastusaluksilla",
+      "sv": "Fabriksförman ombord på fiskefartyg"
+    },
+    {
+      "id": "11703",
+      "en": "Boat Handler",
+      "fi": "Veneenkäsittelijä",
+      "sv": "Båthanterare"
+    },
+    {
+      "id": "11704",
+      "en": "Diver (Fishing Industry)",
+      "fi": "Sukeltaja (kalastusteollisuus)",
+      "sv": "Dykare (fiskeindustri)"
+    },
+    {
+      "id": "11705",
+      "en": "Netmaker",
+      "fi": "Verkonvalmistaja",
+      "sv": "Nätmakare"
+    },
+    {
+      "id": "11706",
+      "en": "Spotter",
+      "fi": "Tarkkailija",
+      "sv": "Observatör"
+    },
+    {
+      "id": "11707",
+      "en": "Harpooner",
+      "fi": "Harppuunankäyttäjä",
+      "sv": "Harpunerare"
+    },
+    {
+      "id": "11708",
+      "en": "Winchman",
+      "fi": "Vinssinkäyttäjä",
+      "sv": "Vinschman"
+    },
+    {
+      "id": "11709",
+      "en": "Efficient Deckhand Fishing Vessels",
+      "fi": "Pätevä kansimies (EDH), kalastusalukset",
+      "sv": "Efficient Deckhand på fiskefartyg"
+    },
+    {
+      "id": "11710",
+      "en": "Deck Hand on Fishing Vessels",
+      "fi": "Kansimies kalastusaluksilla",
+      "sv": "Däcksman på fiskefartyg"
+    },
+    {
+      "id": "11711",
+      "en": "Marine Biologist on Fishery Research Vessels",
+      "fi": "Meribiologi kalakantojen tutkimusaluksilla",
+      "sv": "Marinbiolog på fiskefartyg"
+    },
+    {
+      "id": "11712",
+      "en": "Refrigeration Engineer on fishing vessels",
+      "fi": "Kylmälaitemestari kalastusaluksilla",
+      "sv": "Kylingenjör på fiskefartyg"
+    },
+    {
+      "id": "11713",
+      "en": "Maintenance Technician / Installation Technician",
+      "fi": "Huoltoteknikko / asennusteknikko",
+      "sv": "Underhållstekniker/installationstekniker"
+    },
+    {
+      "id": "11714",
+      "en": "Marine Refrigeration Technician",
+      "fi": "Merikylmälaiteteknikko",
+      "sv": "Marin kyltekniker"
+    },
+    {
+      "id": "11800",
+      "en": "(Maritime) Barge Supervisor (with or without STCW Certificate Qualifications)",
+      "fi": "Proomupäällikkö (merialus), (STCW-todistuksella tai ilman)",
+      "sv": "Pråmövervakare (maritim), med eller utan STCW-behörighet"
+    },
+    {
+      "id": "11801",
+      "en": "Deputy Platform Manager with Master Mariner Certification",
+      "fi": "Apulaistoimintapäällikkö (öljynporauslautta), Master Mariner -pätevyys",
+      "sv": "Biträdande oljeplattformschef med sjökaptenscertifiering"
+    },
+    {
+      "id": "11802",
+      "en": "Stability Supervisor on MODUs or MOPUs",
+      "fi": "Vakavuusvastaava, MODU- tai MOPU-yksiköt",
+      "sv": "Stabilitetsansvarig för flyttbara oljeplattformar till sjöss eller flyttbara produktionsenheter till sjöss"
+    },
+    {
+      "id": "11803",
+      "en": "Ballast Control Technician",
+      "fi": "Painolastin ohjausteknikko",
+      "sv": "Ballastkontrolltekniker"
+    },
+    {
+      "id": "11804",
+      "en": "Ballast Controlman on Offshore, MODUs or MOPUs",
+      "fi": "Painolastinvalvoja / ballastivalvoja (offshore, MODU/MOPU)",
+      "sv": "Ballaskontrollör offshore, på flyttbara oljeplattformar till sjöss eller flyttbara produktionsenheter till sjöss"
+    },
+    {
+      "id": "11805",
+      "en": "Mudstrainer Operator",
+      "fi": "Sedimenttisuodattimen käyttäjä",
+      "sv": "Slamfilteroperatör"
+    },
+    {
+      "id": "11806",
+      "en": "Dynamic Positioning Officer (DPO) on Offshore, MODUs or MOPUs",
+      "fi": "Dynaamisen paikannuksen päällystö (DPO), offshore-/MODU-/MOPU-yksiköt",
+      "sv": "Dynamisk positioneringsansvarig offshore, på flyttbara oljeplattformar till sjöss eller flyttbara produktionsenheter till sjöss"
+    },
+    {
+      "id": "11807",
+      "en": "Seismic Navigator",
+      "fi": "Seisminen navigaattori",
+      "sv": "Seismisk navigator"
+    },
+    {
+      "id": "11808",
+      "en": "Seismic Surveyor",
+      "fi": "Seismisen tutkimuksen mittaaja / kartoittaja",
+      "sv": "Seismisk inspektör"
+    },
+    {
+      "id": "11809",
+      "en": "Cartographer & Draughtsman",
+      "fi": "Kartografi ja syväystyöntekijä",
+      "sv": "Kartograf & konstruktör"
+    },
+    {
+      "id": "11810",
+      "en": "Platform Manager / Rig Manager",
+      "fi": "Porauslautan päällikkö / yksikön päällikkö",
+      "sv": "Oljeplattformschef"
+    },
+    {
+      "id": "11811",
+      "en": "Barge Engineer with STCW Certification on MODUs or MOPUs",
+      "fi": "Proomuinsinööri (STCW-pätevyys), MODU-/MOPU-yksiköillä",
+      "sv": "Pråmingenjör med STCW-certifiering på flyttbar oljeplattform till sjöss eller mobil produktionsenhet till sjöss"
+    },
+    {
+      "id": "11812",
+      "en": "Civil Engineer",
+      "fi": "Rakennusinsinööri",
+      "sv": "Byggnadsingenjör"
+    },
+    {
+      "id": "11813",
+      "en": "Drilling Engineer",
+      "fi": "Porateknikko",
+      "sv": "Borrningsingenjör"
+    },
+    {
+      "id": "11814",
+      "en": "Hydraulic Engineer",
+      "fi": "Hydrauliteknikko",
+      "sv": "Hydrotekniker"
+    },
+    {
+      "id": "11815",
+      "en": "Instrumentation Engineer",
+      "fi": "Mittariteknikko",
+      "sv": "Instrumenteringstekniker"
+    },
+    {
+      "id": "11816",
+      "en": "Operation Engineer",
+      "fi": "Käyttöinsinööri",
+      "sv": "Driftingenjör"
+    },
+    {
+      "id": "11817",
+      "en": "Structural Engineer",
+      "fi": "Rakenneinsinööri",
+      "sv": "Konstruktionsingenjör"
+    },
+    {
+      "id": "11818",
+      "en": "Subsea Engineer",
+      "fi": "Vedenalaisjärjestelmien insinööri",
+      "sv": "Undervattenssystemsingenjör / Subsea-ingenjör"
+    },
+    {
+      "id": "11819",
+      "en": "Environmental Engineer",
+      "fi": "Ympäristöinsinööri",
+      "sv": "Miljöingenjör"
+    },
+    {
+      "id": "11820",
+      "en": "Geotechnical Engineer",
+      "fi": "Geotekninen insinööri",
+      "sv": "Geotekniker"
+    },
+    {
+      "id": "11821",
+      "en": "Geochemist",
+      "fi": "Geokemisti",
+      "sv": "Geokemist"
+    },
+    {
+      "id": "11822",
+      "en": "Geologist",
+      "fi": "Geologi",
+      "sv": "Geolog"
+    },
+    {
+      "id": "11823",
+      "en": "Laboratory Technician",
+      "fi": "Laboratorioteknikko",
+      "sv": "Laboratorietekniker"
+    },
+    {
+      "id": "11824",
+      "en": "Refinery Supervisor",
+      "fi": "Jalostamon valvoja",
+      "sv": "Raffinaderiansvarig"
+    },
+    {
+      "id": "11825",
+      "en": "Cargo Technician",
+      "fi": "Kuormateknikko",
+      "sv": "Lasttekniker"
+    },
+    {
+      "id": "11826",
+      "en": "Process Operator",
+      "fi": "Prosessityöntekijä",
+      "sv": "Processoperatör"
+    },
+    {
+      "id": "11827",
+      "en": "Gas-Plant-Operator",
+      "fi": "Kaasulaitoksen työntekijä",
+      "sv": "Gasanläggningsoperatör"
+    },
+    {
+      "id": "11828",
+      "en": "Production Supervisor",
+      "fi": "Tuotannon esihenkilö",
+      "sv": "Produktionsansvarig"
+    },
+    {
+      "id": "11829",
+      "en": "Maintenance Supervisor",
+      "fi": "Huollon esihenkilö",
+      "sv": "Underhållsansvarig"
+    },
+    {
+      "id": "11830",
+      "en": "Deck Supervisor",
+      "fi": "Kansihenkilöstön esihenkilö",
+      "sv": "Däcksansvarig"
+    },
+    {
+      "id": "11831",
+      "en": "Safety Supervisor",
+      "fi": "Turvallisuusesihenkilö",
+      "sv": "Säkerhetsansvarig"
+    },
+    {
+      "id": "11832",
+      "en": "Section Supervisor",
+      "fi": "Osaston esihenkilö",
+      "sv": "Avdelningsansvarig"
+    },
+    {
+      "id": "11833",
+      "en": "Assistant Section Supervisor",
+      "fi": "Avustava osaston esihenkilö",
+      "sv": "Biträdande avdelningsansvarig"
+    },
+    {
+      "id": "11834",
+      "en": "Crane Supervisor",
+      "fi": "Nosturihenkilöstön esihenkilö",
+      "sv": "Kranansvarig"
+    },
+    {
+      "id": "11835",
+      "en": "Winching Supervisor",
+      "fi": "Vinssihenkilöstön esihenkilö",
+      "sv": "Vinschansvarig"
+    },
+    {
+      "id": "11836",
+      "en": "Diving Supervisor",
+      "fi": "Sukellusvalvoja",
+      "sv": "Dykansvarig"
+    },
+    {
+      "id": "11837",
+      "en": "Technical Supervisor",
+      "fi": "Tekninen esihenkilö",
+      "sv": "Teknikansvarig"
+    },
+    {
+      "id": "11838",
+      "en": "Control-room Operator",
+      "fi": "Prosessinohjaaja",
+      "sv": "Kontrollrumsoperatör"
+    },
+    {
+      "id": "11839",
+      "en": "Engine-room Operator",
+      "fi": "Konehuoneenhoitaja",
+      "sv": "Maskinrumsoperatör"
+    },
+    {
+      "id": "11840",
+      "en": "Electronics Engineer",
+      "fi": "Elektroniikkainsinööri",
+      "sv": "Elektronikingenjör"
+    },
+    {
+      "id": "11841",
+      "en": "Rig Electrician",
+      "fi": "Offshore-sähköasentaja",
+      "sv": "Riggelektriker"
+    },
+    {
+      "id": "11842",
+      "en": "ROV Technical Pilot",
+      "fi": "ROV-ohjaaja",
+      "sv": "Teknisk pilot för fjärrstyrd undervattensfarkost (ROV)"
+    },
+    {
+      "id": "11843",
+      "en": "Drilling Superintendent",
+      "fi": "Poraustarkastaja",
+      "sv": "Borrningsledare"
+    },
+    {
+      "id": "11844",
+      "en": "Drilling Foreman",
+      "fi": "Poratyönjohtaja",
+      "sv": "Borrförman"
+    },
+    {
+      "id": "11845",
+      "en": "Directional Driller",
+      "fi": "Suuntaporaaja",
+      "sv": "Riktningsborrare"
+    },
+    {
+      "id": "11846",
+      "en": "Driller",
+      "fi": "Poraaja",
+      "sv": "Borrare"
+    },
+    {
+      "id": "11847",
+      "en": "Assistant Driller",
+      "fi": "Apulaisporaaja",
+      "sv": "Assistentborrare"
+    },
+    {
+      "id": "11848",
+      "en": "Drilling and Maintenance Operator (DMO)",
+      "fi": "Poraus- ja huoltotyöntekijä (DMO)",
+      "sv": "Borr- och underhållsoperatör (DMO)"
+    },
+    {
+      "id": "11849",
+      "en": "Operation and Maintenance Operator (OMO)",
+      "fi": "Käyttö- ja huoltotyöntekijä (OMO)",
+      "sv": "Drifts- och underhållsoperatör (OMO)"
+    },
+    {
+      "id": "11850",
+      "en": "Derrickman",
+      "fi": "Porausmastonhoitaja",
+      "sv": "Borrman"
+    },
+    {
+      "id": "11851",
+      "en": "Floorhand",
+      "fi": "Tukityöntekijä",
+      "sv": "Floorhand"
+    },
+    {
+      "id": "11852",
+      "en": "Rig-Mover Roughneck / Rigger",
+      "fi": "Tukityöntekijä porauslautalla",
+      "sv": "Roughneck / Rigger"
+    },
+    {
+      "id": "11853",
+      "en": "Heavy-Machinery Operator",
+      "fi": "Raskaiden laitteiden käyttäjä",
+      "sv": "Anläggningsmaskinsoperatör"
+    },
+    {
+      "id": "11854",
+      "en": "Crane Operator",
+      "fi": "Nosturinkäyttäjä",
+      "sv": "Kranoperatör"
+    },
+    {
+      "id": "11855",
+      "en": "Diver",
+      "fi": "Sukeltaja",
+      "sv": "Dykare"
+    },
+    {
+      "id": "11856",
+      "en": "Diving Supporter (Signalman & Diver's Assistant)",
+      "fi": "Sukellusten tukityöntekijä (Signalman & Diver's Assistant)",
+      "sv": "Dykarassistent (teckengivare)"
+    },
+    {
+      "id": "11857",
+      "en": "Welding Superintendent",
+      "fi": "Hitsausylitarkastaja",
+      "sv": "Svetsningschef"
+    },
+    {
+      "id": "11858",
+      "en": "Toolpusher",
+      "fi": "Porausmestari / työmaapäällikkö (porauksen vastuuhenkilö)",
+      "sv": "Toolpusher"
+    },
+    {
+      "id": "11859",
+      "en": "Rig Welder",
+      "fi": "Hitsaaja porauslautalla",
+      "sv": "Riggsvetsare"
+    },
+    {
+      "id": "11860",
+      "en": "Rigger",
+      "fi": "Porauslauttatyöntekijä",
+      "sv": "Rigger"
+    },
+    {
+      "id": "11861",
+      "en": "Maintenance Roustabout",
+      "fi": "Huollon tukityöntekijä",
+      "sv": "Underhållsroustabout"
+    },
+    {
+      "id": "11862",
+      "en": "Scaffolder",
+      "fi": "Telinetyöntekijä",
+      "sv": "Ställningsbyggare"
+    },
+    {
+      "id": "11863",
+      "en": "Industrial Worker on Offshore Installations",
+      "fi": "Teollisuustyöntekijä merilaitoksissa",
+      "sv": "Industriarbetare på offshoreanläggningar"
+    },
+    {
+      "id": "11864",
+      "en": "Executive Officer",
+      "fi": "Toimitusjohtaja",
+      "sv": "Sekond"
+    },
+    {
+      "id": "11865",
+      "en": "Audit Manager and Risk Management",
+      "fi": "Tarkastuspäällikkö ja riskienhallinta",
+      "sv": "Revisionschef och riskhantering"
+    },
+    {
+      "id": "11866",
+      "en": "Environmental Safety and Training Officer",
+      "fi": "Ympäristöturvallisuus- ja koulutusvastaava",
+      "sv": "Miljösäkerhets- och utbildningsansvarig"
+    },
+    {
+      "id": "11867",
+      "en": "Safety Training Engineer",
+      "fi": "Turvallisuuskoulutusteknikko",
+      "sv": "Säkerhetsutbildningsingenjör"
+    },
+    {
+      "id": "11868",
+      "en": "Safety Training Representative",
+      "fi": "Turvallisuuskoulutusedustaja",
+      "sv": "Representant för säkerhetsutbildning"
+    },
+    {
+      "id": "11869",
+      "en": "Emergency Response or Paramedic",
+      "fi": "Hätäpelastaja tai ensihoitaja",
+      "sv": "Akutinsats eller akutvårdspersonal"
+    },
+    {
+      "id": "11870",
+      "en": "Chief Rig Fire-Fighter",
+      "fi": "Pelastuspäällikkö porauslautalla",
+      "sv": "Brandmästare på oljeplattform"
+    },
+    {
+      "id": "11900",
+      "en": "Truck Mechanic",
+      "fi": "Trukkimekaanikko",
+      "sv": "Lastbilsmekaniker"
+    }
+  ]
+}

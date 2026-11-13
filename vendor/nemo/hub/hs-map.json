@@ -1,0 +1,328 @@
+{
+  "source": "https://fintraffic-vts.github.io/mnsw/hs-map.html",
+  "note": "parsed from the HTML table; hs6 is derived (the page prints HS codes without leading zeros — zero-padded to 6 digits, hsPrinted keeps the verbatim value); 9999xx are NEMO placeholder codes outside the HS nomenclature",
+  "entries": [
+    {
+      "groupCode": "20",
+      "groupLabel": "RAAKAPUU",
+      "refinement": "Raakapuu",
+      "hsPrinted": "440399",
+      "hs6": "440399"
+    },
+    {
+      "groupCode": "21",
+      "groupLabel": "SAHATAVARA",
+      "refinement": "Sahatavara",
+      "hsPrinted": "440799",
+      "hs6": "440799"
+    },
+    {
+      "groupCode": "22",
+      "groupLabel": "SELLU, PUUHIOKE",
+      "refinement": "Sellu",
+      "hsPrinted": "470500",
+      "hs6": "470500"
+    },
+    {
+      "groupCode": "22",
+      "groupLabel": "SELLU, PUUHIOKE",
+      "refinement": "Puuhioke",
+      "hsPrinted": "470100",
+      "hs6": "470100"
+    },
+    {
+      "groupCode": "23",
+      "groupLabel": "PAPERI, KARTONKI",
+      "refinement": "Paperi",
+      "hsPrinted": "481190",
+      "hs6": "481190"
+    },
+    {
+      "groupCode": "23",
+      "groupLabel": "PAPERI, KARTONKI",
+      "refinement": "Kartonki",
+      "hsPrinted": "480700",
+      "hs6": "480700"
+    },
+    {
+      "groupCode": "24",
+      "groupLabel": "VANERI, MUUT PUULEVYT",
+      "refinement": "Vaneri",
+      "hsPrinted": "441239",
+      "hs6": "441239"
+    },
+    {
+      "groupCode": "24",
+      "groupLabel": "VANERI, MUUT PUULEVYT",
+      "refinement": "Muut puulevyt",
+      "hsPrinted": "441299",
+      "hs6": "441299"
+    },
+    {
+      "groupCode": "26",
+      "groupLabel": "RAUTAMALMI, RIKASTE",
+      "refinement": "Rautamalmi, rikaste",
+      "hsPrinted": "260111",
+      "hs6": "260111"
+    },
+    {
+      "groupCode": "27",
+      "groupLabel": "MUU MALMI RIKASTE",
+      "refinement": "Muu malmi rikaste",
+      "hsPrinted": "261790",
+      "hs6": "261790"
+    },
+    {
+      "groupCode": "28",
+      "groupLabel": "PERUSMETALLIT, METALLITUOTTEET",
+      "refinement": "Perusmetallit, metallituotteet",
+      "hsPrinted": "732690",
+      "hs6": "732690"
+    },
+    {
+      "groupCode": "29",
+      "groupLabel": "KONEET, LAITTEET",
+      "refinement": "Koneet, laitteet",
+      "hsPrinted": "847989",
+      "hs6": "847989"
+    },
+    {
+      "groupCode": "30",
+      "groupLabel": "MUUT METALLITUOTTEET",
+      "refinement": "Muut metallituotteet",
+      "hsPrinted": "848790",
+      "hs6": "848790"
+    },
+    {
+      "groupCode": "29.1",
+      "groupLabel": "MYYTÄVÄKSI KULJ. MOOTTORIAJON.",
+      "refinement": "Myytäväksi kuljetetut moottoriajoneuvot",
+      "hsPrinted": "870390",
+      "hs6": "870390"
+    },
+    {
+      "groupCode": "31",
+      "groupLabel": "RAAKAÖLJY",
+      "refinement": "Raakaöljy",
+      "hsPrinted": "270900",
+      "hs6": "270900"
+    },
+    {
+      "groupCode": "32",
+      "groupLabel": "ÖLJYTUOTTEET, NESTEKAASU",
+      "refinement": "Öljytuotteet",
+      "hsPrinted": "271019",
+      "hs6": "271019"
+    },
+    {
+      "groupCode": "32",
+      "groupLabel": "ÖLJYTUOTTEET, NESTEKAASU",
+      "refinement": "Nestekaasu",
+      "hsPrinted": "271119",
+      "hs6": "271119"
+    },
+    {
+      "groupCode": "33",
+      "groupLabel": "KIVIHIILI",
+      "refinement": "Kivihiili",
+      "hsPrinted": "270112",
+      "hs6": "270112"
+    },
+    {
+      "groupCode": "34",
+      "groupLabel": "TURVE",
+      "refinement": "Turve",
+      "hsPrinted": "270300",
+      "hs6": "270300"
+    },
+    {
+      "groupCode": "33.1",
+      "groupLabel": "KOKSI",
+      "refinement": "Koksi",
+      "hsPrinted": "270400",
+      "hs6": "270400"
+    },
+    {
+      "groupCode": "35",
+      "groupLabel": "LANNOITTEET",
+      "refinement": "Lannoitteet",
+      "hsPrinted": "310590",
+      "hs6": "310590"
+    },
+    {
+      "groupCode": "36",
+      "groupLabel": "PERUSKEMIKAALIT",
+      "refinement": "Peruskemikaalit",
+      "hsPrinted": "285390",
+      "hs6": "285390"
+    },
+    {
+      "groupCode": "37",
+      "groupLabel": "MUUT KEM. TUOTTEET",
+      "refinement": "Muut kemialliset tuotteet",
+      "hsPrinted": "382499",
+      "hs6": "382499"
+    },
+    {
+      "groupCode": "38",
+      "groupLabel": "RAAKAMINERAALIT",
+      "refinement": "Raakamineraalit",
+      "hsPrinted": "253090",
+      "hs6": "253090"
+    },
+    {
+      "groupCode": "39",
+      "groupLabel": "SEMENTTI, KALKKI, MIN. TUOTTEET",
+      "refinement": "Sementti",
+      "hsPrinted": "252329",
+      "hs6": "252329"
+    },
+    {
+      "groupCode": "39",
+      "groupLabel": "SEMENTTI, KALKKI, MIN. TUOTTEET",
+      "refinement": "Kalkki",
+      "hsPrinted": "252210",
+      "hs6": "252210"
+    },
+    {
+      "groupCode": "39",
+      "groupLabel": "SEMENTTI, KALKKI, MIN. TUOTTEET",
+      "refinement": "Mineraalituotteet",
+      "hsPrinted": "681599",
+      "hs6": "681599"
+    },
+    {
+      "groupCode": "40",
+      "groupLabel": "VILJA",
+      "refinement": "Vilja",
+      "hsPrinted": "100890",
+      "hs6": "100890"
+    },
+    {
+      "groupCode": "47",
+      "groupLabel": "NAHAT, TEKSTIILIT",
+      "refinement": "Nahat",
+      "hsPrinted": "411200",
+      "hs6": "411200"
+    },
+    {
+      "groupCode": "47",
+      "groupLabel": "NAHAT, TEKSTIILIT",
+      "refinement": "Tekstiilit",
+      "hsPrinted": "630790",
+      "hs6": "630790"
+    },
+    {
+      "groupCode": "25",
+      "groupLabel": "MUUT PUUTEOL. TUOTTEET",
+      "refinement": "Muut puuteollisuuden tuotteet",
+      "hsPrinted": "442199",
+      "hs6": "442199"
+    },
+    {
+      "groupCode": "48",
+      "groupLabel": "LASI, KERAMIIKKATUOTTEET",
+      "refinement": "Lasi",
+      "hsPrinted": "702000",
+      "hs6": "702000"
+    },
+    {
+      "groupCode": "48",
+      "groupLabel": "LASI, KERAMIIKKATUOTTEET",
+      "refinement": "Keramiikkatuotteet",
+      "hsPrinted": "691490",
+      "hs6": "691490"
+    },
+    {
+      "groupCode": "49",
+      "groupLabel": "MUUT TEOLLISUUDEN TUOTTEET",
+      "refinement": "Muut teollisuuden tuotteet",
+      "hsPrinted": "999999",
+      "hs6": "999999"
+    },
+    {
+      "groupCode": "50",
+      "groupLabel": "ERITTELEMÄTÖN KAPPALETAVARA",
+      "refinement": "Erittelemätön kappaletavara",
+      "hsPrinted": "999950",
+      "hs6": "999950"
+    },
+    {
+      "groupCode": "41",
+      "groupLabel": "SOKERIJUURIKAS",
+      "refinement": "Sokerijuurikas",
+      "hsPrinted": "121291",
+      "hs6": "121291"
+    },
+    {
+      "groupCode": "42",
+      "groupLabel": "TUOREET HEDELMÄT, VIHANNEKSET",
+      "refinement": "Tuoreet hedelmät",
+      "hsPrinted": "081090",
+      "hs6": "081090"
+    },
+    {
+      "groupCode": "42",
+      "groupLabel": "TUOREET HEDELMÄT, VIHANNEKSET",
+      "refinement": "Vihannekset",
+      "hsPrinted": "070999",
+      "hs6": "070999"
+    },
+    {
+      "groupCode": "43",
+      "groupLabel": "ELÄVÄT ELÄIMET",
+      "refinement": "Elävät eläimet",
+      "hsPrinted": "010690",
+      "hs6": "010690"
+    },
+    {
+      "groupCode": "44",
+      "groupLabel": "ELINTARVIKKEET, ELÄINTEN REHU",
+      "refinement": "Elintarvikkeet",
+      "hsPrinted": "210690",
+      "hs6": "210690"
+    },
+    {
+      "groupCode": "44",
+      "groupLabel": "ELINTARVIKKEET, ELÄINTEN REHU",
+      "refinement": "Eläinten rehu",
+      "hsPrinted": "230990",
+      "hs6": "230990"
+    },
+    {
+      "groupCode": "45",
+      "groupLabel": "KASVIÖLJYT, ELÄINRASVAT",
+      "refinement": "Kasviöljyt, eläinrasvat",
+      "hsPrinted": "151590",
+      "hs6": "151590"
+    },
+    {
+      "groupCode": "46",
+      "groupLabel": "TEKSTIILIRAAKA-AINEET",
+      "refinement": "Tekstiiliraaka-aineet",
+      "hsPrinted": "550690",
+      "hs6": "550690"
+    },
+    {
+      "groupCode": "51.1",
+      "groupLabel": "JÄTTEET, KIERRÄTYSMATERIAALIT",
+      "refinement": "Jätteet",
+      "hsPrinted": "382510",
+      "hs6": "382510"
+    },
+    {
+      "groupCode": "51.1",
+      "groupLabel": "JÄTTEET, KIERRÄTYSMATERIAALIT",
+      "refinement": "Kierrätysmateriaalit",
+      "hsPrinted": "720449",
+      "hs6": "720449"
+    },
+    {
+      "groupCode": "51",
+      "groupLabel": "MUUT LUOKITTELEM. TUOTTEET",
+      "refinement": "Muut luokittelemattomat tuotteet",
+      "hsPrinted": "999951",
+      "hs6": "999951"
+    }
+  ]
+}

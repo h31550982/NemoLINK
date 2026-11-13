@@ -1,0 +1,62 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0314",
+  "headerless": false,
+  "usedIn": [
+    "DE-006-06"
+  ],
+  "formalities": [
+    "CRT"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "01",
+      "en": "Flag",
+      "fi": "Lippuvaltio",
+      "sv": "Flaggstat"
+    },
+    {
+      "id": "02",
+      "en": "Class",
+      "fi": "Luokituslaitos",
+      "sv": "Klassificeringssällskap"
+    },
+    {
+      "id": "03",
+      "en": "Recognized organization",
+      "fi": "Hyväksytty laitos",
+      "sv": "Erkänd organisation"
+    },
+    {
+      "id": "04",
+      "en": "Recognized security organization",
+      "fi": "Tunnustettu turvaorganisaatio",
+      "sv": "Erkänd sjöfartsskyddsorganisation"
+    },
+    {
+      "id": "05",
+      "en": "Notified body",
+      "fi": "Ilmoitettu laitos",
+      "sv": "Anmält organ"
+    },
+    {
+      "id": "06",
+      "en": "Insurance company",
+      "fi": "Vakuutusyhtiö",
+      "sv": "Försäkringsbolag"
+    },
+    {
+      "id": "99",
+      "en": "Other",
+      "fi": "Muu",
+      "sv": "Övrigt"
+    }
+  ]
+}

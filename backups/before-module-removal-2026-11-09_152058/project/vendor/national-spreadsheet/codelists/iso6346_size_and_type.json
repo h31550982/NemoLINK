@@ -1,0 +1,723 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "iso6346_size_and_type",
+  "headerless": false,
+  "usedIn": [
+    "DE-051-17"
+  ],
+  "formalities": [
+    "CGA/D, HZA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "22G1",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer",
+      "national": true
+    },
+    {
+      "id": "45G1",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti",
+      "sv": "High Cube-container",
+      "national": true
+    },
+    {
+      "id": "42P1",
+      "en": "FLAT (FIXED ENDS)",
+      "fi": "Tasokontti (kiinteät päädyt)",
+      "sv": "Flakcontainer (fasta gavlar)",
+      "national": true
+    },
+    {
+      "id": "42R1",
+      "en": "REEFER CONTAINER",
+      "fi": "Jäähdytyskontti",
+      "sv": "Kylcontainer",
+      "national": true
+    },
+    {
+      "id": "32G1",
+      "en": "GENERAL PURPOSE CONT",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer",
+      "national": true
+    },
+    {
+      "id": "5EG1",
+      "en": "HIGH CUBE CONT. (WIDTH 2.5M)",
+      "fi": "High Cube -kontti (leveys 2,5 m)",
+      "sv": "High Cube-container (bredd 2,5 m)",
+      "national": true
+    },
+    {
+      "id": "22K6",
+      "en": "PRESSURIZED TANK CONTAINER",
+      "fi": "Painesäiliökontti",
+      "sv": "Trycksatt tankcontainer",
+      "national": true
+    },
+    {
+      "id": "20G0",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer"
+    },
+    {
+      "id": "20G1",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer"
+    },
+    {
+      "id": "20H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "20P1",
+      "en": "FLAT (FIXED ENDS)",
+      "fi": "Tasokontti (kiinteät päädyt)",
+      "sv": "Flakcontainer (fasta gavlar)"
+    },
+    {
+      "id": "20T0",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T1",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T2",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T3",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T4",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T5",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T6",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T7",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "20T8",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22B0",
+      "en": "BULK CONTAINER",
+      "fi": "Irtoaineskontti",
+      "sv": "Bulkcontainer"
+    },
+    {
+      "id": "22G0",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer"
+    },
+    {
+      "id": "22H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "22P1",
+      "en": "FLAT (FIXED ENDS)",
+      "fi": "Tasokontti (kiinteät päädyt)",
+      "sv": "Flakcontainer (fasta gavlar)"
+    },
+    {
+      "id": "22P3",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "22P8",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "22P9",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "22P7",
+      "en": "FLAT (GENSET CARRIER)",
+      "fi": "Tasokontti (generaattorin kuljetukseen)",
+      "sv": "Flakcontainer (för generatortransport)"
+    },
+    {
+      "id": "22R1",
+      "en": "REEFER CONTAINER",
+      "fi": "Jäähdytyskontti",
+      "sv": "Kylcontainer"
+    },
+    {
+      "id": "22R7",
+      "en": "BUILT-IN GEN. F. POWER SPLY OF REEF",
+      "fi": "Jäähdytyskontti sisäänrakennetulla generaattorilla",
+      "sv": "Kylcontainer med inbyggd generator"
+    },
+    {
+      "id": "22R9",
+      "en": "REEFER CONT. (NO FOOD)",
+      "fi": "Jäähdytyskontti (ei elintarvikkeille)",
+      "sv": "Kylcontainer (ej för livsmedel)"
+    },
+    {
+      "id": "22S1",
+      "en": "NAMED CARGO CONTAINER",
+      "fi": "Erikoistavaralle nimetty kontti",
+      "sv": "Container för specificerad last"
+    },
+    {
+      "id": "22T0",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T1",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T2",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T3",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T4",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T5",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T6",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T7",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22T8",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "22U1",
+      "en": "OPEN TOP CONTAINER",
+      "fi": "Avoin kontti",
+      "sv": "Öppen topp-container"
+    },
+    {
+      "id": "22U6",
+      "en": "HARDTOP CONTAINER",
+      "fi": "Irrotettavalla katolla varustettu kontti (hardtop)",
+      "sv": "Hardtop-container"
+    },
+    {
+      "id": "22V0",
+      "en": "VENTILATED CONTAINER",
+      "fi": "Ilmastointikontti",
+      "sv": "Ventilerad container"
+    },
+    {
+      "id": "22V2",
+      "en": "VENTILATED CONTAINER",
+      "fi": "Ilmastointikontti",
+      "sv": "Ventilerad container"
+    },
+    {
+      "id": "22V3",
+      "en": "VENTILATED CONTAINER",
+      "fi": "Ilmastointikontti",
+      "sv": "Ventilerad container"
+    },
+    {
+      "id": "25G0",
+      "en": "GP-CONTAINER HIGH CUBE",
+      "fi": "Yleistavarasäiliökontti (High Cube)",
+      "sv": "Allmän lastcontainer (High Cube)"
+    },
+    {
+      "id": "26G0",
+      "en": "GP-CONTAINER SUPER HIGH CUBE",
+      "fi": "Yleistavarasäiliökontti (Super High Cube)",
+      "sv": "Allmän lastcontainer (Super High Cube)"
+    },
+    {
+      "id": "26H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "28T8",
+      "en": "TANK FOR GAS",
+      "fi": "Kaasusäiliökontti",
+      "sv": "Gastankcontainer"
+    },
+    {
+      "id": "28U1",
+      "en": "OPEN TOP (HALF HEIGHT)",
+      "fi": "Avoin kontti (puolikorkea)",
+      "sv": "Öppen topp-container (halvhög)"
+    },
+    {
+      "id": "28V0",
+      "en": "VE-HALF-HEIGHT =1448 MM HEIGHT",
+      "fi": "Tuulettuva puolikorkea kontti (korkeus 1448 mm)",
+      "sv": "Ventilerad halvhög container (höjd 1448 mm)"
+    },
+    {
+      "id": "29P0",
+      "en": "PLATFORM",
+      "fi": "Alustakontti / tasoalusta",
+      "sv": "Plattformcontainer"
+    },
+    {
+      "id": "2EG0",
+      "en": "HIGH CUBE CONT. (WIDTH 2.5M)",
+      "fi": "High Cube -kontti (leveys 2,5 m)",
+      "sv": "High Cube-container (bredd 2,5 m)"
+    },
+    {
+      "id": "42G0",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer"
+    },
+    {
+      "id": "42G1",
+      "en": "GENERAL PURPOSE CONT.",
+      "fi": "Yleistavarasäiliökontti",
+      "sv": "Allmän lastcontainer"
+    },
+    {
+      "id": "42H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "42P3",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "42P3",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "42P8",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "42P9",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "42P6",
+      "en": "FLAT SPACE SAVER",
+      "fi": "Tilaa säästävä tasokontti",
+      "sv": "Utrymmesbesparande flakcontainer"
+    },
+    {
+      "id": "42R3",
+      "en": "REEFER CONT. (DIESEL GEN.)",
+      "fi": "Jäähdytyskontti (dieselgeneraattorilla)",
+      "sv": "Kylcontainer (med dieselgenerator)"
+    },
+    {
+      "id": "42R9",
+      "en": "REEFER CONT. (NO FOOD)",
+      "fi": "Jäähdytyskontti (ei elintarvikkeille)",
+      "sv": "Kylcontainer (ej för livsmedel)"
+    },
+    {
+      "id": "42S1",
+      "en": "NAMED CARGO CONTAINER",
+      "fi": "Erikoistavaralle nimetty kontti",
+      "sv": "Container för specificerad last"
+    },
+    {
+      "id": "42T2",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T5",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T6",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T8",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42U1",
+      "en": "OPEN TOP CONTAINER",
+      "fi": "Avoin kontti",
+      "sv": "Öppen topp-container"
+    },
+    {
+      "id": "42U6",
+      "en": "HARDTOP CONTAINER",
+      "fi": "Hardtop-kontti",
+      "sv": "Hardtop-container"
+    },
+    {
+      "id": "45B3",
+      "en": "BULK CONTAINER",
+      "fi": "Irtoaineskontti",
+      "sv": "Bulkcontainer"
+    },
+    {
+      "id": "45G0",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti",
+      "sv": "High Cube-container"
+    },
+    {
+      "id": "45P3",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "45P8",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Kokoontaitettava tasokontti",
+      "sv": "Hopfällbar flakcontainer"
+    },
+    {
+      "id": "45R1",
+      "en": "REEFER HIGHCUBE CONTAINER",
+      "fi": "Jäähdytyskontti (High Cube)",
+      "sv": "Kylcontainer (High Cube)"
+    },
+    {
+      "id": "45R9",
+      "en": "REEFER CONT. (NO FOOD)",
+      "fi": "Jäähdytyskontti (ei elintarvikkeille)",
+      "sv": "Kylcontainer (ej för livsmedel)"
+    },
+    {
+      "id": "45U1",
+      "en": "OPEN TOP CONTAINER",
+      "fi": "Avoin kontti",
+      "sv": "Öppen topp-container"
+    },
+    {
+      "id": "45U6",
+      "en": "HIGH CUBE HARDTOP CONT.",
+      "fi": "High Cube -hardtop-kontti",
+      "sv": "High Cube Hardtop-container"
+    },
+    {
+      "id": "46H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "48T8",
+      "en": "TANK FOR GAS",
+      "fi": "Kaasusäiliökontti",
+      "sv": "Gastankcontainer"
+    },
+    {
+      "id": "49P0",
+      "en": "PLATFORM",
+      "fi": "Alustakontti / tasoalusta",
+      "sv": "Plattformcontainer"
+    },
+    {
+      "id": "4CG0",
+      "en": "GP CONTAINER (WIDTH 2.5 M)",
+      "fi": "Yleistavarasäiliökontti (leveys 2,5 m)",
+      "sv": "Allmän lastcontainer (bredd 2,5 m)"
+    },
+    {
+      "id": "L0G1",
+      "en": "LOW CUBE CONT.",
+      "fi": "Low Cube -kontti",
+      "sv": "Low Cube-container"
+    },
+    {
+      "id": "L2G1",
+      "en": "STANDARD CONT.",
+      "fi": "Standardikontti",
+      "sv": "Standardcontainer"
+    },
+    {
+      "id": "L5G1",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti",
+      "sv": "High Cube-container"
+    },
+    {
+      "id": "42P8",
+      "en": "FLAT (COLL.FLUSH FOLDING)",
+      "fi": "Tasokontti (saumattomasti kokoontaitettava)",
+      "sv": "Flakcontainer (hopfällbar, plan vikning)"
+    },
+    {
+      "id": "42P9",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Tasokontti (kokoontaitettava)",
+      "sv": "Flakcontainer (hopfällbar)"
+    },
+    {
+      "id": "42P1",
+      "en": "FLAT (FIXED ENDS)",
+      "fi": "Tasokontti (kiinteät päädyt)",
+      "sv": "Flakcontainer (fasta ändar)"
+    },
+    {
+      "id": "42P6",
+      "en": "FLAT SPACE SAVER",
+      "fi": "Tilaa säästävä tasokontti",
+      "sv": "Utrymmesbesparande flakcontainer"
+    },
+    {
+      "id": "42R9",
+      "en": "REEFER CONT. (NO FOOD)",
+      "fi": "Jäähdytyskontti (ei elintarvikkeille)",
+      "sv": "Kylcontainer (ej för livsmedel)"
+    },
+    {
+      "id": "42R3",
+      "en": "REEFER CONT. (DIESEL GEN.)",
+      "fi": "Jäähdytyskontti (dieselgeneraattorilla)",
+      "sv": "Kylcontainer (med dieselgenerator)"
+    },
+    {
+      "id": "42R1",
+      "en": "REEFER CONTAINER",
+      "fi": "Jäähdytyskontti",
+      "sv": "Kylcontainer"
+    },
+    {
+      "id": "42S1",
+      "en": "NAMED CARGO CONTAINER",
+      "fi": "Nimetty rahtikontti / erikoistavarasäiliökontti",
+      "sv": "Namngiven lastcontainer"
+    },
+    {
+      "id": "42T5",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T6",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T8",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42T2",
+      "en": "TANK CONTAINER",
+      "fi": "Säiliökontti",
+      "sv": "Tankcontainer"
+    },
+    {
+      "id": "42U6",
+      "en": "HARDTOP CONTAINER",
+      "fi": "Hardtop-kontti (kovakattoinen)",
+      "sv": "Hardtop-container (med avtagbart tak)"
+    },
+    {
+      "id": "42U1",
+      "en": "OPEN TOP CONTAINER",
+      "fi": "Avoin kontti (avokattoinen)",
+      "sv": "Öppen topp-container"
+    },
+    {
+      "id": "45B3",
+      "en": "BULK CONTAINER",
+      "fi": "Irtoaineskontti",
+      "sv": "Bulkcontainer"
+    },
+    {
+      "id": "45G0",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti (ylikorkea)",
+      "sv": "High Cube-container (extra hög)"
+    },
+    {
+      "id": "45G1",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti (ylikorkea)",
+      "sv": "High Cube-container (extra hög)"
+    },
+    {
+      "id": "45P3",
+      "en": "FLAT (COLLAPSIBLE)",
+      "fi": "Tasokontti (kokoontaitettava)",
+      "sv": "Flakcontainer (hopfällbar)"
+    },
+    {
+      "id": "45P8",
+      "en": "FLAT (COLL.FLUSH FOLDING)",
+      "fi": "Tasokontti (saumattomasti kokoontaitettava)",
+      "sv": "Flakcontainer (hopfällbar, plan vikning)"
+    },
+    {
+      "id": "45R9",
+      "en": "REEFER CONT. (NO FOOD)",
+      "fi": "Jäähdytyskontti (ei elintarvikkeille)",
+      "sv": "Kylcontainer (ej för livsmedel)"
+    },
+    {
+      "id": "45R1",
+      "en": "REEFER HIGHCUBE CONTAINER",
+      "fi": "High Cube -jäähdytyskontti (ylikorkea)",
+      "sv": "High Cube-kylcontainer"
+    },
+    {
+      "id": "45U1",
+      "en": "OPEN TOP CONTAINER",
+      "fi": "Avoin kontti (avokattoinen)",
+      "sv": "Öppen topp-container"
+    },
+    {
+      "id": "45U6",
+      "en": "HIGH CUBE HARDTOP CONT.",
+      "fi": "High Cube -hardtop-kontti (ylikorkea kovakattoinen)",
+      "sv": "High Cube Hardtop-container"
+    },
+    {
+      "id": "46H0",
+      "en": "INSULATED CONTAINER",
+      "fi": "Eristetty kontti",
+      "sv": "Isolerad container"
+    },
+    {
+      "id": "48T8",
+      "en": "TANK FOR GAS",
+      "fi": "Kaasusäiliökontti",
+      "sv": "Gastankcontainer"
+    },
+    {
+      "id": "49P0",
+      "en": "PLATFORM",
+      "fi": "Alustakontti / tasoalusta",
+      "sv": "Plattformcontainer"
+    },
+    {
+      "id": "4CG0",
+      "en": "GP CONTAINER (WIDTH 2.5 M)",
+      "fi": "Yleistavarasäiliökontti (leveys 2,5 m)",
+      "sv": "Allmän lastcontainer (bredd 2,5 m)"
+    },
+    {
+      "id": "L0G1",
+      "en": "LOW CUBE CONT.",
+      "fi": "Low Cube -kontti (matalampi)",
+      "sv": "Low Cube-container"
+    },
+    {
+      "id": "L2G1",
+      "en": "STANDARD CONT.",
+      "fi": "Standardikontti",
+      "sv": "Standardcontainer"
+    },
+    {
+      "id": "L5G1",
+      "en": "HIGH CUBE CONT.",
+      "fi": "High Cube -kontti (ylikorkea)",
+      "sv": "High Cube-container"
+    }
+  ]
+}

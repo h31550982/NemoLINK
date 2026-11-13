@@ -1,0 +1,24 @@
+# Files that run inside Linux containers must stay LF on every checkout —
+# CRLF breaks shebangs and config parsing
+*.sh text eol=lf
+*.conf text eol=lf
+Dockerfile* text eol=lf
+*.sql text eol=lf
+
+# Vendored files must keep their exact published bytes on every checkout —
+# vendor/nemo/manifest.json records SHA-256 of the LF content
+vendor/** text eol=lf
+
+# Git hooks are extensionless shell scripts — CRLF breaks the shebang
+tools/ci/hooks/* text eol=lf
+
+# Vendored package tarballs (spec 0049: SheetJS) are exact binary bytes
+*.tgz binary
+
+# Certificate files and images are exact bytes — a CRLF conversion breaks a
+# PDF and the byte-for-byte tests (sampledata/nemo-ui-download, 2026-10-06)
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+sampledata/nemo-ui-download/** -text

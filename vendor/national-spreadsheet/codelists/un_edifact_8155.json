@@ -1,0 +1,290 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "un_edifact_8155",
+  "headerless": false,
+  "usedIn": [
+    "DE-051-13"
+  ],
+  "formalities": [
+    "CGA/D, HZA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "1",
+      "en": "Dime coated tank",
+      "fi": "Sinkkisilikaattipinnoitettu säiliö",
+      "sv": "Tank med dime-beläggning"
+    },
+    {
+      "id": "2",
+      "en": "Epoxy coated tank",
+      "fi": "Epoksipinnoitettu säiliö",
+      "sv": "Tank med epoxibeläggning"
+    },
+    {
+      "id": "3",
+      "en": "IMO1",
+      "fi": "IMO1",
+      "sv": "IMO1"
+    },
+    {
+      "id": "4",
+      "en": "IMO2",
+      "fi": "IMO2",
+      "sv": "IMO2"
+    },
+    {
+      "id": "5",
+      "en": "IMO3",
+      "fi": "IMO3",
+      "sv": "IMO3"
+    },
+    {
+      "id": "6",
+      "en": "Pressurized tank",
+      "fi": "Painesäiliö",
+      "sv": "Trycktank"
+    },
+    {
+      "id": "7",
+      "en": "Refrigerated tank",
+      "fi": "Kylmäsäiliö",
+      "sv": "Kyltank"
+    },
+    {
+      "id": "8",
+      "en": "Semi-refrigerated",
+      "fi": "Puolijäähdytetty",
+      "sv": "Halvkyld tank"
+    },
+    {
+      "id": "9",
+      "en": "Stainless steel tank",
+      "fi": "Ruostumaton terässäiliö",
+      "sv": "Rostfri ståltank"
+    },
+    {
+      "id": "10",
+      "en": "Nonworking reefer container 40 ft",
+      "fi": "Ei-toimiva kylmäkuljetuskontti, 40 jalkaa",
+      "sv": "Passiv kylcontainer (isolerad utan kylaggregat) 40 fot"
+    },
+    {
+      "id": "11",
+      "en": "Box pallet",
+      "fi": "Laatikkolava",
+      "sv": "Pallbox"
+    },
+    {
+      "id": "12",
+      "en": "Europallet 80 x 120 cm",
+      "fi": "Eurolava 80 x 120 cm",
+      "sv": "Europapall 80 × 120 cm"
+    },
+    {
+      "id": "13",
+      "en": "Scandinavian pallet 100 x 120 cm",
+      "fi": "FIN-lava 100 x 120 cm",
+      "sv": "Skandinavisk lastpall 100 × 120 cm"
+    },
+    {
+      "id": "14",
+      "en": "Trailer",
+      "fi": "Perävaunu",
+      "sv": "Släpvagn"
+    },
+    {
+      "id": "15",
+      "en": "Nonworking reefer container 20 ft",
+      "fi": "Ei-toimiva kylmäkuljetuskontti, 20 jalkaa",
+      "sv": "Passiv kylcontainer (isolerad utan kylaggregat) 20 fot"
+    },
+    {
+      "id": "16",
+      "en": "Exchangeable pallet",
+      "fi": "Vaihtolava",
+      "sv": "Utbytbar pall"
+    },
+    {
+      "id": "17",
+      "en": "Semi-trailer",
+      "fi": "Puoliperävaunu",
+      "sv": "Påhängsvagn"
+    },
+    {
+      "id": "18",
+      "en": "Tank container 20 feet",
+      "fi": "Säiliökontti 20 jalkaa",
+      "sv": "Tankcontainer 20 fot"
+    },
+    {
+      "id": "19",
+      "en": "Tank container 30 feet",
+      "fi": "Säiliökontti 30 jalkaa",
+      "sv": "Tankcontainer 30 fot"
+    },
+    {
+      "id": "20",
+      "en": "Tank container 40 feet",
+      "fi": "Säiliökontti 40 jalkaa",
+      "sv": "Tankcontainer 40 fot"
+    },
+    {
+      "id": "21",
+      "en": "Container IC 20 feet",
+      "fi": "Kontti IC 20 jalkaa",
+      "sv": "Container IC 20 fot"
+    },
+    {
+      "id": "22",
+      "en": "Container IC 30 feet",
+      "fi": "Kontti IC 30 jalkaa",
+      "sv": "Container IC 30 fot"
+    },
+    {
+      "id": "23",
+      "en": "Container IC 40 feet",
+      "fi": "Kontti IC 40 jalkaa",
+      "sv": "Container IC 40 fot"
+    },
+    {
+      "id": "24",
+      "en": "Refrigerated tank 20 feet",
+      "fi": "Kylmäsäiliö 20 jalkaa",
+      "sv": "Kyltank 20 fot"
+    },
+    {
+      "id": "25",
+      "en": "Refrigerated tank 30 feet",
+      "fi": "Kylmäsäiliö 30 jalkaa",
+      "sv": "Kyltank 30 fot"
+    },
+    {
+      "id": "26",
+      "en": "Refrigerated tank 40 feet",
+      "fi": "Kylmäsäiliö 40 jalkaa",
+      "sv": "Kyltank 40 fot"
+    },
+    {
+      "id": "27",
+      "en": "Tank container IC 20 feet",
+      "fi": "Säiliökontti IC 20 jalkaa",
+      "sv": "Tankcontainer IC 20 fot"
+    },
+    {
+      "id": "28",
+      "en": "Tank container IC 30 feet",
+      "fi": "Säiliökontti IC 30 jalkaa",
+      "sv": "Tankcontainer IC 30 fot"
+    },
+    {
+      "id": "29",
+      "en": "Tank container IC 40 feet",
+      "fi": "Säiliökontti IC 40 jalkaa",
+      "sv": "Tankcontainer IC 40 fot"
+    },
+    {
+      "id": "30",
+      "en": "Refrigerated tank IC 20 feet",
+      "fi": "Kylmäsäiliö IC 20 jalkaa",
+      "sv": "Kyltank IC 20 fot"
+    },
+    {
+      "id": "31",
+      "en": "Temperature controlled container 30 ft",
+      "fi": "Lämpötilahallittu kontti 30 jalkaa",
+      "sv": "Temperaturreglerad container 30 fot"
+    },
+    {
+      "id": "32",
+      "en": "Refrigerated tank IC 40 feet",
+      "fi": "Kylmäsäiliö IC 40 jalkaa",
+      "sv": "Kyltank IC 40 fot"
+    },
+    {
+      "id": "33",
+      "en": "Movable case: L < 6,15m",
+      "fi": "Liikkuva kotelo: P < 6,15 m",
+      "sv": "Flyttbar låda: L < 6,15m"
+    },
+    {
+      "id": "34",
+      "en": "Movable case: 6,15m < L < 7,82m",
+      "fi": "Liikkuva kotelo: 6,15 m < P < 7,82 m",
+      "sv": "Flyttbar låda: 6,15m < L < 7,82m"
+    },
+    {
+      "id": "35",
+      "en": "Movable case: 7,82m < L < 9,15m",
+      "fi": "Liikkuva kotelo: 7,82 m < P < 9,15 m",
+      "sv": "Flyttbar låda: 7,82m < L < 9,15m"
+    },
+    {
+      "id": "36",
+      "en": "Movable case: 9,15m < L < 10,90m",
+      "fi": "Liikkuva kotelo: 9,15 m < P < 10,90 m",
+      "sv": "Flyttbar låda: 9,15m < L < 10,90m"
+    },
+    {
+      "id": "37",
+      "en": "Movable case: 10,90m < L < 13,75m",
+      "fi": "Liikkuva kotelo: 10,90 m < P < 13,75 m",
+      "sv": "Flyttbar låda: 10,90m < L < 13,75m"
+    },
+    {
+      "id": "38",
+      "en": "Totebin",
+      "fi": "Laatikkolava",
+      "sv": "Pallbehållare (totebin)"
+    },
+    {
+      "id": "39",
+      "en": "Temperature controlled container 20 ft",
+      "fi": "Lämpötilahallittu kontti 20 jalkaa",
+      "sv": "Temperaturreglerad container 20 fot"
+    },
+    {
+      "id": "40",
+      "en": "Temperature controlled container 40 ft",
+      "fi": "Lämpötilahallittu kontti 40 jalkaa",
+      "sv": "Temperaturreglerad container 40 fot"
+    },
+    {
+      "id": "41",
+      "en": "Non working refrigerated (reefer) container 30ft",
+      "fi": "Ei-toimiva kylmäkontti (kylmäsäiliö) 30 jalkaa",
+      "sv": "Passiv kyld container (isolerad utan kylaggregat) 30 fot"
+    },
+    {
+      "id": "42",
+      "en": "Dual trailers",
+      "fi": "Kaksoisperävaunut",
+      "sv": "Dubbel släpvagn"
+    },
+    {
+      "id": "43",
+      "en": "20 ft IL container (open top)",
+      "fi": "20 jalan IL-kontti (avoin yläosa)",
+      "sv": "20 fot IL container (öppen upptill)"
+    },
+    {
+      "id": "44",
+      "en": "20 ft IL container (closed top)",
+      "fi": "20 jalan IL-kontti (umpinainen yläosa)",
+      "sv": "20 fot IL container (stängd upptill)"
+    },
+    {
+      "id": "45",
+      "en": "40 ft IL container (closed top)",
+      "fi": "40 jalan IL-kontti (umpinainen yläosa)",
+      "sv": "40 fot IL container (stängd upptill)"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "flashpoint_description",
+  "headerless": false,
+  "usedIn": [
+    "DE-049-34"
+  ],
+  "formalities": [
+    "HZA/D/S"
+  ],
+  "rules": [
+    "R-HZA-008"
+  ],
+  "entries": [
+    {
+      "id": "GT60CEL",
+      "en": "Flashpoint greater than 60 degrees Celsius",
+      "fi": "Leimahduspiste yli 60 celsiusastetta",
+      "sv": "Flampunkt över 60 grader Celsius"
+    },
+    {
+      "id": "LE60CEL",
+      "en": "Flashpoint less or equal than 60 degrees Celsius",
+      "fi": "Leimahduspiste enintään 60 celsiusastetta",
+      "sv": "Flampunkt under eller lika med 60 grader Celsius"
+    },
+    {
+      "id": "NF",
+      "en": "Not flammable",
+      "fi": "Ei syttyvä",
+      "sv": "Inte brandfarligt"
+    },
+    {
+      "id": "SF",
+      "en": "Specified flashpoint",
+      "fi": "Määritetty leimahduspiste",
+      "sv": "Specificerad flampunkt"
+    }
+  ]
+}

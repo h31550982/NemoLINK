@@ -1,0 +1,4604 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "formalities": [
+    {
+      "sheet": "Pre-arrival notification",
+      "code": "NOA",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Pre-arrival notification",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-017-03",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Actual maximum draught (m)",
+          "example": "6.13",
+          "row": 10,
+          "column": 1
+        },
+        {
+          "de": "DE-005-16",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship type",
+          "example": "1521 – Dry bulk carrier",
+          "row": 10,
+          "column": 2
+        },
+        {
+          "de": "DE-008-13",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Vessel breadth (m)",
+          "example": "13.6",
+          "row": 10,
+          "column": 3
+        },
+        {
+          "de": "DE-014-30",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Protruding parts description",
+          "example": null,
+          "row": 10,
+          "column": 4
+        },
+        {
+          "de": "DE-008-29",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship deadweight tonnage (t)",
+          "example": "4930",
+          "row": 10,
+          "column": 5
+        },
+        {
+          "de": "DE-008-25",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship length overall (m)",
+          "example": "101.2",
+          "row": 10,
+          "column": 6
+        },
+        {
+          "de": "DE-008-27",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship gross tonnage (GT)",
+          "example": "3405",
+          "row": 10,
+          "column": 7
+        },
+        {
+          "de": "DE-008-28",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship net tonnage (NT)",
+          "example": "1636",
+          "row": 10,
+          "column": 8
+        },
+        {
+          "de": "DE-005-09",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship Flag state",
+          "example": "FI – Finland",
+          "row": 14,
+          "column": 1
+        },
+        {
+          "de": "DE-005-12",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry port (5-character LOCODE)",
+          "example": "FITKU",
+          "row": 14,
+          "column": 2
+        },
+        {
+          "de": "DE-005-11",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry port name",
+          "example": "TURKU",
+          "row": 14,
+          "column": 3
+        },
+        {
+          "de": "DE-005-10",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry",
+          "example": "FI00 – FINLAND (Including Åland Islands)",
+          "row": 14,
+          "column": 4
+        },
+        {
+          "de": "DE-014-10",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Primary purpose of call",
+          "example": "17 – Loading cargo",
+          "row": 18,
+          "column": 2
+        },
+        {
+          "de": "DE-014-22",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Type of voyage",
+          "example": "V-01 – International",
+          "row": 28,
+          "column": 1
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Previous port calls in chronological order (most recent call first)",
+          "label": "Sequence number",
+          "example": "-1",
+          "row": 33,
+          "column": 1
+        },
+        {
+          "de": "DE-022-06",
+          "section": "Previous port calls in chronological order (most recent call first)",
+          "label": "Last port of call (5-character LOCODE)",
+          "example": "FIVAA",
+          "row": 33,
+          "column": 2
+        },
+        {
+          "de": "DE-023-01",
+          "section": "Previous port calls in chronological order (most recent call first)",
+          "label": "Previous port of call (5-character LOCODE)",
+          "example": "PLGDN",
+          "row": 37,
+          "column": 2
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 50,
+          "column": 1
+        },
+        {
+          "de": "DE-022-08",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Next port of call (5-character LOCODE)",
+          "example": "ZZUKN",
+          "row": 50,
+          "column": 2
+        },
+        {
+          "de": "DE-024-01",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Subsequent ports of call (5-character LOCODE)",
+          "example": "ZZUKN",
+          "row": 54,
+          "column": 2
+        },
+        {
+          "de": "DE-022-02",
+          "section": "Call Event (Received automatically on Nemo UI draft if given during port call creation)",
+          "label": "Date and time of arrival - estimated (dd.mm.yyyy hh:mm:ss)",
+          "example": "2026-08-20T06:00:00.000Z",
+          "row": 69,
+          "column": 1
+        },
+        {
+          "de": "DE-022-05",
+          "section": "Call Event (Received automatically on Nemo UI draft if given during port call creation)",
+          "label": "Date and time of departure - estimated (dd.mm.yyyy hh:mm:ss)",
+          "example": "2026-08-20T18:30:00.000Z",
+          "row": 69,
+          "column": 2
+        },
+        {
+          "de": "DE-014-09",
+          "section": "Call Event (Received automatically on Nemo UI draft if given during port call creation)",
+          "label": "Cruise Ship",
+          "example": "0 / No",
+          "row": 74,
+          "column": 1
+        },
+        {
+          "de": "DE-083-01",
+          "section": "Requested Pilotage Service",
+          "label": "Pilotage exemption",
+          "example": "0 / No",
+          "row": 79,
+          "column": 1
+        },
+        {
+          "de": "DE-083-02",
+          "section": "Requested Pilotage Service",
+          "label": "Pilotage exemption certificate number (10-character)",
+          "example": null,
+          "row": 79,
+          "column": 2
+        },
+        {
+          "de": "DE-014-16",
+          "section": "Cargo on board",
+          "label": "Cargo brief description",
+          "example": "Woodchips",
+          "row": 84,
+          "column": 1
+        },
+        {
+          "de": "DE-014-11",
+          "section": "Cargo on board",
+          "label": "Dangerous goods carrier",
+          "example": "0 / No",
+          "row": 84,
+          "column": 2
+        },
+        {
+          "de": "DE-034-03",
+          "section": "Persons on board",
+          "label": "Number of crew",
+          "example": "9",
+          "row": 89,
+          "column": 1
+        },
+        {
+          "de": "DE-034-02",
+          "section": "Persons on board",
+          "label": "Number of passengers",
+          "example": null,
+          "row": 89,
+          "column": 2
+        },
+        {
+          "de": "DE-034-04",
+          "section": "Persons on board",
+          "label": "Stowaways found",
+          "example": "0 / No",
+          "row": 89,
+          "column": 3
+        },
+        {
+          "de": "DE-034-01",
+          "section": "Persons on board",
+          "label": "Number of persons on board (Including crew and passengers)",
+          "example": "9",
+          "row": 89,
+          "column": 4
+        },
+        {
+          "de": "DE-012-08",
+          "section": "Master",
+          "label": "Master given name",
+          "example": "Mikko",
+          "row": 94,
+          "column": 1
+        },
+        {
+          "de": "DE-012-01",
+          "section": "Master",
+          "label": "Master family name",
+          "example": "Mallikas",
+          "row": 94,
+          "column": 2
+        },
+        {
+          "de": "DE-014-20",
+          "section": "Voyage information",
+          "label": "The vessel is in regular scheduled service",
+          "example": "0 / No",
+          "row": 99,
+          "column": 1
+        },
+        {
+          "de": "DE-014-21",
+          "section": "Voyage information",
+          "label": "Regular service identifier",
+          "example": null,
+          "row": 99,
+          "column": 2
+        },
+        {
+          "de": "DE-014-02",
+          "section": "Voyage information",
+          "label": "Voyage Number",
+          "example": null,
+          "row": 99,
+          "column": 3
+        },
+        {
+          "de": "DE-029-01",
+          "section": "Carrier Agent",
+          "label": "Agent identification number",
+          "example": "FI06695798",
+          "row": 104,
+          "column": 1
+        },
+        {
+          "de": "DE-029-02",
+          "section": "Carrier Agent",
+          "label": "Agency name",
+          "example": "Acmeship Oy",
+          "row": 104,
+          "column": 2
+        },
+        {
+          "de": "DE-029-07",
+          "section": "Carrier Agent",
+          "label": "Mobile number (specify country prefix)",
+          "example": "+358400468025",
+          "row": 104,
+          "column": 3
+        },
+        {
+          "de": "DE-029-08",
+          "section": "Carrier Agent",
+          "label": "Agent email",
+          "example": "operations@acmeship.example",
+          "row": 104,
+          "column": 4
+        }
+      ]
+    },
+    {
+      "sheet": "Pre-departure notification",
+      "code": "NOD",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Pre-departure notification",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-017-03",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Actual maximum draught (m)",
+          "example": null,
+          "row": 10,
+          "column": 1
+        },
+        {
+          "de": "DE-005-16",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship type",
+          "example": null,
+          "row": 10,
+          "column": 2
+        },
+        {
+          "de": "DE-008-13",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Vessel breadth (m)",
+          "example": null,
+          "row": 10,
+          "column": 3
+        },
+        {
+          "de": "DE-014-30",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Protruding parts description",
+          "example": null,
+          "row": 10,
+          "column": 4
+        },
+        {
+          "de": "DE-008-29",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship deadweight tonnage (t)",
+          "example": null,
+          "row": 10,
+          "column": 5
+        },
+        {
+          "de": "DE-008-25",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship length overall (m)",
+          "example": null,
+          "row": 10,
+          "column": 6
+        },
+        {
+          "de": "DE-008-27",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship gross tonnage (GT)",
+          "example": null,
+          "row": 10,
+          "column": 7
+        },
+        {
+          "de": "DE-008-28",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship net tonnage (NT)",
+          "example": null,
+          "row": 10,
+          "column": 8
+        },
+        {
+          "de": "DE-005-09",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship Flag state",
+          "example": null,
+          "row": 14,
+          "column": 1
+        },
+        {
+          "de": "DE-005-12",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry port (5-character LOCODE)",
+          "example": null,
+          "row": 14,
+          "column": 2
+        },
+        {
+          "de": "DE-005-11",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry port name",
+          "example": null,
+          "row": 14,
+          "column": 3
+        },
+        {
+          "de": "DE-005-10",
+          "section": "Ship information (add only if missing from Nemo Ship Database, NSD, or data has changed)",
+          "label": "Ship registry",
+          "example": null,
+          "row": 14,
+          "column": 4
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 19,
+          "column": 1
+        },
+        {
+          "de": "DE-022-08",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Next port of call (5-character LOCODE)",
+          "example": null,
+          "row": 19,
+          "column": 2
+        },
+        {
+          "de": "DE-022-14",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Itinerary subordinate port name",
+          "example": null,
+          "row": 19,
+          "column": 3
+        },
+        {
+          "de": "DE-024-01",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Subsequent ports of call (5-character LOCODE)",
+          "example": null,
+          "row": 23,
+          "column": 2
+        },
+        {
+          "de": "DE-022-14",
+          "section": "Next and subsequent port calls in chronological order (next port of call first)",
+          "label": "Itinerary subordinate port name",
+          "example": null,
+          "row": 23,
+          "column": 3
+        },
+        {
+          "de": "DE-022-05",
+          "section": "Call event (Received automatically on Nemo UI draft if given during Port call creation)",
+          "label": "Date and time of departure - estimated (dd.mm.yyyy hh:mm:ss)",
+          "example": null,
+          "row": 38,
+          "column": 1
+        },
+        {
+          "de": "DE-083-01",
+          "section": "Requested Pilotage Service",
+          "label": "Pilotage exemption",
+          "example": null,
+          "row": 43,
+          "column": 1
+        },
+        {
+          "de": "DE-083-02",
+          "section": "Requested Pilotage Service",
+          "label": "Pilotage exemption certificate number (10-character)",
+          "example": null,
+          "row": 43,
+          "column": 2
+        },
+        {
+          "de": "DE-014-16",
+          "section": "Cargo on board",
+          "label": "Cargo brief description",
+          "example": null,
+          "row": 48,
+          "column": 1
+        },
+        {
+          "de": "DE-014-11",
+          "section": "Cargo on board",
+          "label": "Dangerous goods carrier",
+          "example": null,
+          "row": 48,
+          "column": 2
+        },
+        {
+          "de": "DE-034-03",
+          "section": "Persons on board",
+          "label": "Number of crew",
+          "example": null,
+          "row": 53,
+          "column": 1
+        },
+        {
+          "de": "DE-034-02",
+          "section": "Persons on board",
+          "label": "Number of passengers",
+          "example": null,
+          "row": 53,
+          "column": 2
+        },
+        {
+          "de": "DE-034-01",
+          "section": "Persons on board",
+          "label": "Number of persons on board (Including crew and passengers)",
+          "example": null,
+          "row": 53,
+          "column": 3
+        },
+        {
+          "de": "DE-012-08",
+          "section": "Master",
+          "label": "Master given name",
+          "example": null,
+          "row": 58,
+          "column": 1
+        },
+        {
+          "de": "DE-012-01",
+          "section": "Master",
+          "label": "Master family name",
+          "example": null,
+          "row": 58,
+          "column": 2
+        },
+        {
+          "de": "DE-014-02",
+          "section": "Voyage information",
+          "label": "Voyage Number",
+          "example": null,
+          "row": 63,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "sheet": "Cruise ship itinerary",
+      "code": "ITI",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Cruise ship itinerary (NOA)",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-001-02",
+          "section": null,
+          "label": "Sequence number",
+          "example": "1",
+          "row": 5,
+          "column": 1
+        },
+        {
+          "de": "DE-025-01",
+          "section": null,
+          "label": "Cruise itinerary port (5-character LOCODE)",
+          "example": null,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "de": "DE-025-02",
+          "section": null,
+          "label": "Cruise itinerary date and time of arrival (dd.mm.yyyy hh:mm:ss)",
+          "example": null,
+          "row": 5,
+          "column": 3
+        },
+        {
+          "de": "DE-025-03",
+          "section": null,
+          "label": "Cruise itinerary date and time of departure (dd.mm.yyyy hh:mm:ss)",
+          "example": null,
+          "row": 5,
+          "column": 4
+        },
+        {
+          "de": "DE-025-04",
+          "section": null,
+          "label": "Cruise activity description",
+          "example": null,
+          "row": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "sheet": "Security notification",
+      "code": "SEC",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Security notification",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-014-08",
+          "section": null,
+          "label": "Security, other matters to report",
+          "example": null,
+          "row": 5,
+          "column": 1
+        },
+        {
+          "de": "DE-014-43",
+          "section": null,
+          "label": "Missing previous calls justification",
+          "example": null,
+          "row": 5,
+          "column": 2
+        },
+        {
+          "de": "DE-014-05",
+          "section": "Port facility",
+          "label": "Port facility (UN/LOCODE - facility identifier e.g. NLRTM-0406)",
+          "example": null,
+          "row": 10,
+          "column": 1
+        },
+        {
+          "de": "DE-005-18",
+          "section": "Ship information",
+          "label": "Ship current security level",
+          "example": "SL1 – Security level 1",
+          "row": 15,
+          "column": 1
+        },
+        {
+          "de": "DE-005-17",
+          "section": "Ship information",
+          "label": "Ship has a valid International Ship Security Certificate",
+          "example": "1 / Yes",
+          "row": 15,
+          "column": 2
+        },
+        {
+          "de": "DE-030-01",
+          "section": "ISSC Certificate",
+          "label": "Valid ISSC",
+          "example": "1 / Yes",
+          "row": 20,
+          "column": 1
+        },
+        {
+          "de": "DE-030-06",
+          "section": "ISSC Certificate",
+          "label": "ISSC expiry date (dd.mm.yyyy)",
+          "example": "2029-08-31T00:00:00.000Z",
+          "row": 20,
+          "column": 2
+        },
+        {
+          "de": "DE-030-07",
+          "section": "ISSC Certificate",
+          "label": "ISSC type",
+          "example": "FULL – Full",
+          "row": 20,
+          "column": 3
+        },
+        {
+          "de": "DE-030-05",
+          "section": "ISSC Certificate",
+          "label": "RSO Name",
+          "example": "Traficom",
+          "row": 20,
+          "column": 4
+        },
+        {
+          "de": "DE-030-03",
+          "section": "ISSC Certificate",
+          "label": "Reason why ship has no valid ISSC or interim ISSC",
+          "example": null,
+          "row": 20,
+          "column": 5
+        },
+        {
+          "de": "DE-030-02",
+          "section": "ISSC Certificate",
+          "label": "Reason why ship has no valid ISSC or interim ISSC",
+          "example": null,
+          "row": 20,
+          "column": 6
+        },
+        {
+          "de": "DE-031-07",
+          "section": "ISSC Certificate",
+          "label": "Company security officer given name",
+          "example": "Tapio",
+          "row": 24,
+          "column": 1
+        },
+        {
+          "de": "DE-031-01",
+          "section": "ISSC Certificate",
+          "label": "Company security officer family name",
+          "example": "Turvamies",
+          "row": 24,
+          "column": 2
+        },
+        {
+          "de": "DE-031-03",
+          "section": "ISSC Certificate",
+          "label": "Company security officer mobile number",
+          "example": "+358401234567",
+          "row": 24,
+          "column": 3
+        },
+        {
+          "de": "DE-031-04",
+          "section": "ISSC Certificate",
+          "label": "Company security officer email",
+          "example": "tapio.turvamies@acmeship.example",
+          "row": 24,
+          "column": 4
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Sequence number",
+          "example": "-1",
+          "row": 29,
+          "column": 1
+        },
+        {
+          "de": "DE-023-04",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Previous port facility call start date (dd.mm.yyyy)",
+          "example": null,
+          "row": 29,
+          "column": 2
+        },
+        {
+          "de": "DE-023-05",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Previous port facility call end date (dd.mm.yyyy)",
+          "example": null,
+          "row": 29,
+          "column": 3
+        },
+        {
+          "de": "DE-023-01",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Previous port of call (5-character LOCODE)",
+          "example": null,
+          "row": 29,
+          "column": 4
+        },
+        {
+          "de": "DE-023-02",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Previous port facility (UN/LOCODE - facility identifier e.g. NLRTM-0406)",
+          "example": null,
+          "row": 29,
+          "column": 5
+        },
+        {
+          "de": "DE-023-03",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Ship security level in previous port facility",
+          "example": null,
+          "row": 29,
+          "column": 6
+        },
+        {
+          "de": "DE-023-06",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Ship additional security measures",
+          "example": null,
+          "row": 29,
+          "column": 7
+        },
+        {
+          "de": "DE-023-07",
+          "section": "Itinerary Stop Event, in chronological order (most recent first) the last ten calls at port facilities.",
+          "label": "Ship additional security measures, description",
+          "example": null,
+          "row": 29,
+          "column": 8
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 43,
+          "column": 1
+        },
+        {
+          "de": "DE-028-05",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity start date (dd.mm.yyyy)",
+          "example": null,
+          "row": 43,
+          "column": 2
+        },
+        {
+          "de": "DE-028-06",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity end date (dd.mm.yyyy)",
+          "example": null,
+          "row": 43,
+          "column": 3
+        },
+        {
+          "de": "DE-028-04",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity location (5-character LOCODE)",
+          "example": null,
+          "row": 43,
+          "column": 4
+        },
+        {
+          "de": "DE-028-03",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity location name",
+          "example": null,
+          "row": 43,
+          "column": 5
+        },
+        {
+          "de": "DE-028-07",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity location, latitude (°) Degrees, between -90 and 90.",
+          "example": null,
+          "row": 43,
+          "column": 6
+        },
+        {
+          "de": "DE-028-08",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity location, longitude",
+          "example": null,
+          "row": 43,
+          "column": 7
+        },
+        {
+          "de": "DE-028-01",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity",
+          "example": null,
+          "row": 43,
+          "column": 8
+        },
+        {
+          "de": "DE-028-02",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship-to-ship activity description",
+          "example": null,
+          "row": 43,
+          "column": 9
+        },
+        {
+          "de": "DE-028-09",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship security measures",
+          "example": null,
+          "row": 43,
+          "column": 10
+        },
+        {
+          "de": "DE-028-10",
+          "section": "Ship-to-ship Event, in chronological order (most recent first), which were carried out during the last ten calls at port facilities listed above.",
+          "label": "Ship security measures description",
+          "example": null,
+          "row": 43,
+          "column": 11
+        }
+      ]
+    },
+    {
+      "sheet": "Waste notification",
+      "code": "WAS",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Advance notification for waste delivery to port reception facilities",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-068-03",
+          "section": null,
+          "label": "Waste last delivery date (dd.mm.yyyy)",
+          "example": "2026-08-16T00:00:00.000Z",
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-068-01",
+          "section": null,
+          "label": "Port of last waste delivery (5-character LOCODE)",
+          "example": "FIVAA",
+          "row": 4,
+          "column": 3
+        },
+        {
+          "de": "DE-068-02",
+          "section": null,
+          "label": "Port of next waste delivery (5-character LOCODE)",
+          "example": "FINLI",
+          "row": 4,
+          "column": 4
+        },
+        {
+          "de": "DE-001-02",
+          "section": null,
+          "label": "Sequence number",
+          "example": "1",
+          "row": 8,
+          "column": 1
+        },
+        {
+          "de": "DE-071-01",
+          "section": null,
+          "label": "Waste type (code)",
+          "example": "101",
+          "row": 8,
+          "column": 3
+        },
+        {
+          "de": "DE-071-02",
+          "section": null,
+          "label": "Waste description (when relevant)",
+          "example": null,
+          "row": 8,
+          "column": 4
+        },
+        {
+          "de": "DE-071-03",
+          "section": null,
+          "label": "Waste amount to be delivered volume (m³)",
+          "example": null,
+          "row": 8,
+          "column": 5
+        },
+        {
+          "de": "DE-071-04",
+          "section": null,
+          "label": "Waste maximum dedicated storage capacity (m³)",
+          "example": null,
+          "row": 8,
+          "column": 6
+        },
+        {
+          "de": "DE-071-05",
+          "section": null,
+          "label": "Waste amount retained volume (m³)",
+          "example": null,
+          "row": 8,
+          "column": 7
+        },
+        {
+          "de": "DE-071-06",
+          "section": null,
+          "label": "Port of delivery of remaining waste (5-character LOCODE, \"ZZUKN\" for an unknown port out of EU, \"XX888\" (where XX is a country code) for an unknown port in a specified country out of EU)",
+          "example": null,
+          "row": 8,
+          "column": 8
+        },
+        {
+          "de": "DE-071-07",
+          "section": null,
+          "label": "Waste estimated amount to be generated volume (m³)",
+          "example": null,
+          "row": 8,
+          "column": 9
+        }
+      ]
+    },
+    {
+      "sheet": "Waste delivery receipt",
+      "code": "WAR",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Waste delivery receipt",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Reported Transportation Waste Material",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 8,
+          "column": 1
+        },
+        {
+          "de": "DE-071-01",
+          "section": "Reported Transportation Waste Material",
+          "label": "Waste type (code)",
+          "example": "101",
+          "row": 8,
+          "column": 3
+        },
+        {
+          "de": "DE-071-02",
+          "section": "Reported Transportation Waste Material",
+          "label": "Waste description (when relevant)",
+          "example": null,
+          "row": 8,
+          "column": 4
+        },
+        {
+          "de": "DE-071-08",
+          "section": "Reported Transportation Waste Material",
+          "label": "Amount of waste received volume (m³)",
+          "example": null,
+          "row": 8,
+          "column": 5
+        },
+        {
+          "de": "DE-069-01",
+          "section": "Reported Transportation Waste Material",
+          "label": "Port reception facility provider name",
+          "example": null,
+          "row": 42,
+          "column": 1
+        },
+        {
+          "de": "DE-069-02",
+          "section": "Reported Transportation Waste Material",
+          "label": "Waste treatment facility provider name (if different from the port reception facility provider)",
+          "example": null,
+          "row": 46,
+          "column": 2
+        },
+        {
+          "de": "DE-069-05",
+          "section": "Waste delivery",
+          "label": "Actual waste delivery date and time, from (dd.mm.yyyy hh:mm:ss)",
+          "example": null,
+          "row": 57,
+          "column": 1
+        },
+        {
+          "de": "DE-069-06",
+          "section": "Waste delivery",
+          "label": "Actual waste delivery date and time, to (dd.mm.yyyy hh:mm:ss)",
+          "example": null,
+          "row": 57,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "sheet": "Crew list and crew's effects",
+      "code": "CRW",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Crew list and crew’s effects",
+      "hasContext": true,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Crew member information",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-035-02",
+          "section": "Crew member information",
+          "label": "Person family name",
+          "example": "Sailor",
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-035-03",
+          "section": "Crew member information",
+          "label": "Person given name",
+          "example": "Samu",
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-035-14",
+          "section": "Crew member information",
+          "label": "Crew member rank or rating",
+          "example": "10110 – Chief Mate, Chief Officer or First Officer, First Mate",
+          "row": 9,
+          "column": 4
+        },
+        {
+          "de": "DE-035-04",
+          "section": "Crew member information",
+          "label": "Person nationality",
+          "example": null,
+          "row": 9,
+          "column": 5
+        },
+        {
+          "de": "DE-035-05",
+          "section": "Crew member information",
+          "label": "Person date of birth (dd.mm.yyyy)",
+          "example": "1980-01-01T00:00:00.000Z",
+          "row": 9,
+          "column": 6
+        },
+        {
+          "de": "DE-035-06",
+          "section": "Crew member information",
+          "label": "Place of birth",
+          "example": "TURKU",
+          "row": 9,
+          "column": 7
+        },
+        {
+          "de": "DE-035-07",
+          "section": "Crew member information",
+          "label": "Country of birth",
+          "example": "FIN – Finland",
+          "row": 9,
+          "column": 8
+        },
+        {
+          "de": "DE-035-08",
+          "section": "Crew member information",
+          "label": "Person gender",
+          "example": "1 – Male",
+          "row": 9,
+          "column": 9
+        },
+        {
+          "de": "DE-035-16",
+          "section": "Crew member information",
+          "label": "Person identity or travel document type",
+          "example": "718 – Seaman’s book",
+          "row": 9,
+          "column": 10
+        },
+        {
+          "de": "DE-035-17",
+          "section": "Crew member information",
+          "label": "Person identity or travel document number",
+          "example": "1234567",
+          "row": 9,
+          "column": 11
+        },
+        {
+          "de": "DE-035-18",
+          "section": "Crew member information",
+          "label": "Person identity or travel document issuing nation",
+          "example": "FI – Finland",
+          "row": 9,
+          "column": 12
+        },
+        {
+          "de": "DE-035-22",
+          "section": "Crew member information",
+          "label": "Person identity or travel document expiry date (dd.mm.yyyy)",
+          "example": "2027-01-01T00:00:00.000Z",
+          "row": 9,
+          "column": 13
+        },
+        {
+          "de": "DE-039-09",
+          "section": "Crew member information",
+          "label": "Residence permit number",
+          "example": "1234567",
+          "row": 9,
+          "column": 14
+        },
+        {
+          "de": "DE-039-10",
+          "section": "Crew member information",
+          "label": "Person visa number",
+          "example": null,
+          "row": 9,
+          "column": 15
+        },
+        {
+          "de": "DE-036-02",
+          "section": "Crew member information",
+          "label": "Crew effects type",
+          "example": "CRE-004 – Cigarettes",
+          "row": 9,
+          "column": 16
+        },
+        {
+          "de": "DE-036-01",
+          "section": "Crew member information",
+          "label": "Crew effects description",
+          "example": null,
+          "row": 9,
+          "column": 17
+        },
+        {
+          "de": "DE-036-03",
+          "section": "Crew member information",
+          "label": "Crew effects onboard quantity",
+          "example": "10",
+          "row": 9,
+          "column": 18
+        }
+      ]
+    },
+    {
+      "sheet": "Passenger list",
+      "code": "PAX",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Passenger list",
+      "hasContext": true,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Passenger information",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-035-01",
+          "section": "Passenger information",
+          "label": "Person type",
+          "example": "FL – Passenger",
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-035-02",
+          "section": "Passenger information",
+          "label": "Person family name",
+          "example": "Matkustaja",
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-035-03",
+          "section": "Passenger information",
+          "label": "Person given name",
+          "example": "Maija",
+          "row": 9,
+          "column": 4
+        },
+        {
+          "de": "DE-035-04",
+          "section": "Passenger information",
+          "label": "Person nationality",
+          "example": "FIN – Finland",
+          "row": 9,
+          "column": 5
+        },
+        {
+          "de": "DE-035-05",
+          "section": "Passenger information",
+          "label": "Person date of birth (dd.mm.yyyy)",
+          "example": "1981-02-02T00:00:00.000Z",
+          "row": 9,
+          "column": 6
+        },
+        {
+          "de": "DE-035-06",
+          "section": "Passenger information",
+          "label": "Person place of birth name",
+          "example": "OULU",
+          "row": 9,
+          "column": 7
+        },
+        {
+          "de": "DE-035-07",
+          "section": "Passenger information",
+          "label": "Person country of birth",
+          "example": "FIN – Finland",
+          "row": 9,
+          "column": 8
+        },
+        {
+          "de": "DE-035-08",
+          "section": "Passenger information",
+          "label": "Person gender",
+          "example": "2 – Female",
+          "row": 9,
+          "column": 9
+        },
+        {
+          "de": "DE-035-09",
+          "section": "Passenger information",
+          "label": "Person port of embarkation (5-character LOCODE)",
+          "example": "FINLI",
+          "row": 9,
+          "column": 10
+        },
+        {
+          "de": "DE-035-11",
+          "section": "Passenger information",
+          "label": "Person port of disembarkation (5-character LOCODE)",
+          "example": "ZZUKN",
+          "row": 9,
+          "column": 11
+        },
+        {
+          "de": "DE-035-13",
+          "section": "Passenger information",
+          "label": "Person in transit",
+          "example": "1 / Yes",
+          "row": 9,
+          "column": 12
+        },
+        {
+          "de": "DE-035-16",
+          "section": "Passenger information",
+          "label": "Person identity or travel document type",
+          "example": "39 – Passport",
+          "row": 9,
+          "column": 13
+        },
+        {
+          "de": "DE-035-17",
+          "section": "Passenger information",
+          "label": "Person identity or travel document number",
+          "example": "1234567",
+          "row": 9,
+          "column": 14
+        },
+        {
+          "de": "DE-035-22",
+          "section": "Passenger information",
+          "label": "Person identity or travel document expiry date (dd.mm.yyyy)",
+          "example": "2029-01-01T00:00:00.000Z",
+          "row": 9,
+          "column": 15
+        },
+        {
+          "de": "DE-035-18",
+          "section": "Passenger information",
+          "label": "Person identity or travel document issuing nation",
+          "example": "FI – Finland",
+          "row": 9,
+          "column": 16
+        },
+        {
+          "de": "DE-039-09",
+          "section": "Passenger information",
+          "label": "Residence permit number",
+          "example": null,
+          "row": 9,
+          "column": 17
+        },
+        {
+          "de": "DE-039-10",
+          "section": "Passenger information",
+          "label": "Person visa number",
+          "example": null,
+          "row": 9,
+          "column": 18
+        },
+        {
+          "de": "DE-035-25",
+          "section": "Passenger information",
+          "label": "Person special care or assistance description",
+          "example": "N/A",
+          "row": 9,
+          "column": 19
+        },
+        {
+          "de": "DE-035-29",
+          "section": "Passenger information",
+          "label": "Person emergency contact number",
+          "example": "N/A",
+          "row": 9,
+          "column": 20
+        }
+      ]
+    },
+    {
+      "sheet": "Ship's stores",
+      "code": "STO",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Ship stores declaration",
+      "hasContext": true,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Onboard Inventory",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-067-02",
+          "section": "Onboard Inventory",
+          "label": "Ship stores article",
+          "example": "STO-001 – Alcoholic spirits",
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-067-01",
+          "section": "Onboard Inventory",
+          "label": "Ship stores article name",
+          "example": "Whiskey",
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-067-03",
+          "section": "Onboard Inventory",
+          "label": "Ship stores onboard quantity",
+          "example": "5",
+          "row": 9,
+          "column": 4
+        },
+        {
+          "de": "DE-001-01",
+          "section": "Onboard Inventory",
+          "label": "Quantity unit",
+          "example": "LTR / Litre",
+          "row": 9,
+          "column": 5
+        },
+        {
+          "de": "DE-067-04",
+          "section": "Onboard Inventory",
+          "label": "Ship stores location onboard description",
+          "example": "Stores locker",
+          "row": 9,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "sheet": "General cargo declaration",
+      "code": "CGO",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "General cargo declaration",
+      "hasContext": true,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-047-01",
+          "section": "Loading and unloading Event",
+          "label": "Port of loading (5-character LOCODE)",
+          "example": null,
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-047-04",
+          "section": "Loading and unloading Event",
+          "label": "Port of discharge (5-character LOCODE)",
+          "example": null,
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-045-01",
+          "section": "Associated Customs Manifest",
+          "label": "Manifest type",
+          "example": "EXPORT – Export",
+          "row": 14,
+          "column": 1
+        },
+        {
+          "de": "DE-048-01",
+          "section": "Included Consignment Items",
+          "label": "Cargo item number",
+          "example": "1",
+          "row": 19,
+          "column": 1
+        },
+        {
+          "de": "DE-051-22",
+          "section": "Included Consignment Items",
+          "label": "Transport equipment category",
+          "example": "AI / Vessel hold",
+          "row": 19,
+          "column": 2
+        },
+        {
+          "de": "DE-051-17",
+          "section": "Included Consignment Items",
+          "label": "Container size and type",
+          "example": null,
+          "row": 19,
+          "column": 3
+        },
+        {
+          "de": "DE-051-01",
+          "section": "Included Consignment Items",
+          "label": "Transport equipment identification number",
+          "example": null,
+          "row": 19,
+          "column": 4
+        },
+        {
+          "de": "DE-048-05",
+          "section": "Included Consignment Items",
+          "label": "Cargo item HS code (6 numbers)",
+          "example": "700100",
+          "row": 19,
+          "column": 5
+        },
+        {
+          "de": "DE-048-04",
+          "section": "Included Consignment Items",
+          "label": "Description of goods",
+          "example": "Glass Cullets",
+          "row": 19,
+          "column": 6
+        },
+        {
+          "de": "DE-048-09",
+          "section": "Included Consignment Items",
+          "label": "Cargo item number of packages",
+          "example": "1",
+          "row": 19,
+          "column": 7
+        },
+        {
+          "de": "DE-048-10",
+          "section": "Included Consignment Items",
+          "label": "Cargo item package type",
+          "example": null,
+          "row": 19,
+          "column": 8
+        },
+        {
+          "de": "DE-048-03",
+          "section": "Included Consignment Items",
+          "label": "Cargo item gross mass (kg)",
+          "example": "3000000",
+          "row": 19,
+          "column": 9
+        },
+        {
+          "de": "DE-045-17",
+          "section": "Cargo remaining on board",
+          "label": "Type of cargo",
+          "example": null,
+          "row": 36,
+          "column": 2
+        },
+        {
+          "de": "DE-045-26",
+          "section": "Cargo remaining on board",
+          "label": "Cargo quantity in transit",
+          "example": null,
+          "row": 36,
+          "column": 3
+        },
+        {
+          "de": "DE-045-27",
+          "section": "Cargo remaining on board",
+          "label": "Cargo weight remaining on board (kg)",
+          "example": null,
+          "row": 36,
+          "column": 4
+        }
+      ]
+    },
+    {
+      "sheet": "Maritime declaration of health",
+      "code": "MDH",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Maritime declaration of health",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-034-04",
+          "section": "Stowaway information",
+          "label": "Stowaways found",
+          "example": null,
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Stowaway information",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-042-04",
+          "section": "Stowaway information",
+          "label": "Port where the stowaway boarded (5-character LOCODE)",
+          "example": null,
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-033-01",
+          "section": "Ship information (sanitation Control Exemption/control Certificate)",
+          "label": "Valid ship sanitation control exemption or control certificate",
+          "example": "1 / Yes",
+          "row": 23,
+          "column": 1
+        },
+        {
+          "de": "DE-033-04",
+          "section": "Ship information (sanitation Control Exemption/control Certificate)",
+          "label": "Re-inspection required",
+          "example": "0 / No",
+          "row": 23,
+          "column": 2
+        },
+        {
+          "de": "DE-033-03",
+          "section": "Ship information (sanitation Control Exemption/control Certificate)",
+          "label": "Sanitation control certificate date of issue (dd.mm.yyyy)",
+          "example": "2026-01-01T00:00:00.000Z",
+          "row": 23,
+          "column": 3
+        },
+        {
+          "de": "DE-033-02",
+          "section": "Ship information (sanitation Control Exemption/control Certificate)",
+          "label": "Sanitation control certificate port of issue (5-character LOCODE)",
+          "example": "FINLI",
+          "row": 23,
+          "column": 4
+        },
+        {
+          "de": "DE-032-01",
+          "section": "Itinerary Route",
+          "label": "Ship visited infected area",
+          "example": "0 / No",
+          "row": 28,
+          "column": 1
+        },
+        {
+          "de": "DE-032-03",
+          "section": "Itinerary Route",
+          "label": "Date of ship visited infected area (dd.mm.yyyy)",
+          "example": null,
+          "row": 28,
+          "column": 2
+        },
+        {
+          "de": "DE-032-02",
+          "section": "Itinerary Route",
+          "label": "Port of call in affected area (5-character LOCODE)",
+          "example": null,
+          "row": 28,
+          "column": 3
+        },
+        {
+          "de": "DE-032-04",
+          "section": "Health Situation On Board",
+          "label": "Person died",
+          "example": "0 / No",
+          "row": 33,
+          "column": 1
+        },
+        {
+          "de": "DE-032-17",
+          "section": "Health Situation On Board",
+          "label": "Number of dead persons",
+          "example": null,
+          "row": 33,
+          "column": 2
+        },
+        {
+          "de": "DE-032-05",
+          "section": "Health Situation On Board",
+          "label": "Case of disease on board",
+          "example": null,
+          "row": 37,
+          "column": 1
+        },
+        {
+          "de": "DE-032-06",
+          "section": "Health Situation On Board",
+          "label": "Ill persons greater than expected",
+          "example": "0 / No",
+          "row": 41,
+          "column": 1
+        },
+        {
+          "de": "DE-032-12",
+          "section": "Health Situation On Board",
+          "label": "Number of ill persons",
+          "example": null,
+          "row": 41,
+          "column": 2
+        },
+        {
+          "de": "DE-032-07",
+          "section": "Health Situation On Board",
+          "label": "Ill persons currently on board",
+          "example": null,
+          "row": 45,
+          "column": 1
+        },
+        {
+          "de": "DE-032-08",
+          "section": "Health Situation On Board",
+          "label": "Medical practitioner was consulted",
+          "example": "1 / Yes",
+          "row": 49,
+          "column": 1
+        },
+        {
+          "de": "DE-032-09",
+          "section": "Health Situation On Board",
+          "label": "Infection on board",
+          "example": "0 / No",
+          "row": 53,
+          "column": 1
+        },
+        {
+          "de": "DE-032-10",
+          "section": "Health Situation On Board",
+          "label": "Sanitary measure applied on board",
+          "example": null,
+          "row": 57,
+          "column": 1
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Health Situation On Board",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 57,
+          "column": 2
+        },
+        {
+          "de": "DE-032-18",
+          "section": "Health Situation On Board",
+          "label": "Sanitary measures type",
+          "example": "NEV – Restrict entry of non-essential visitors",
+          "row": 57,
+          "column": 3
+        },
+        {
+          "de": "DE-032-13",
+          "section": "Health Situation On Board",
+          "label": "Sanitary measure description",
+          "example": null,
+          "row": 57,
+          "column": 4
+        },
+        {
+          "de": "DE-032-14",
+          "section": "Health Situation On Board",
+          "label": "Sanitary measure place",
+          "example": null,
+          "row": 57,
+          "column": 5
+        },
+        {
+          "de": "DE-032-15",
+          "section": "Health Situation On Board",
+          "label": "Sanitary measure date (dd.mm.yyyy)",
+          "example": "2026-08-19T00:00:00.000Z",
+          "row": 57,
+          "column": 6
+        },
+        {
+          "de": "DE-032-11",
+          "section": "Health Situation On Board",
+          "label": "Sick animal onboard",
+          "example": "0 / No",
+          "row": 71,
+          "column": 1
+        },
+        {
+          "de": "DE-001-02",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Sequence number",
+          "example": "1",
+          "row": 77,
+          "column": 1
+        },
+        {
+          "de": "DE-035-01",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person type",
+          "example": "FM – Crew member",
+          "row": 77,
+          "column": 2
+        },
+        {
+          "de": "DE-035-02",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person family name",
+          "example": "Sairas",
+          "row": 77,
+          "column": 3
+        },
+        {
+          "de": "DE-035-03",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person given name",
+          "example": "Sakari",
+          "row": 77,
+          "column": 4
+        },
+        {
+          "de": "DE-035-14",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Crew member rank or rating",
+          "example": "10140 – Deck Cadet / Apprentice",
+          "row": 77,
+          "column": 5
+        },
+        {
+          "de": "DE-035-05",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person date of birth (dd.mm.yyyy)",
+          "example": "2006-01-01T00:00:00.000Z",
+          "row": 77,
+          "column": 6
+        },
+        {
+          "de": "DE-035-08",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person gender",
+          "example": "9 – Not applicable",
+          "row": 77,
+          "column": 7
+        },
+        {
+          "de": "DE-035-04",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person nationality",
+          "example": "SWE – Sweden",
+          "row": 77,
+          "column": 8
+        },
+        {
+          "de": "DE-035-09",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person port of embarkation (5-character LOCODE)",
+          "example": "EEMUU",
+          "row": 77,
+          "column": 9
+        },
+        {
+          "de": "DE-035-10",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person embarkation date and time (dd.mm.yyyy hh:mm:ss)",
+          "example": "2026-07-20T00:00:00.000Z",
+          "row": 77,
+          "column": 10
+        },
+        {
+          "de": "DE-037-01",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Illness",
+          "example": "Flu",
+          "row": 77,
+          "column": 11
+        },
+        {
+          "de": "DE-037-02",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Symptoms onset date (dd.mm.yyyy)",
+          "example": "Cough",
+          "row": 77,
+          "column": 12
+        },
+        {
+          "de": "DE-037-03",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Health status reported",
+          "example": "0 / No",
+          "row": 77,
+          "column": 13
+        },
+        {
+          "de": "DE-037-04",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Health status",
+          "example": "I – Still ill",
+          "row": 77,
+          "column": 14
+        },
+        {
+          "de": "DE-037-05",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Case Disposition",
+          "example": "S – Still onboard",
+          "row": 77,
+          "column": 15
+        },
+        {
+          "de": "DE-037-06",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Location of evacuation (5-character LOCODE)",
+          "example": null,
+          "row": 77,
+          "column": 16
+        },
+        {
+          "de": "DE-037-07",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Location of evacuation name",
+          "example": null,
+          "row": 77,
+          "column": 17
+        },
+        {
+          "de": "DE-037-08",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Treatment",
+          "example": "Burana",
+          "row": 77,
+          "column": 18
+        },
+        {
+          "de": "DE-037-09",
+          "section": "Maritime declaration of health details (attachment)",
+          "label": "Person health details comments",
+          "example": null,
+          "row": 77,
+          "column": 19
+        }
+      ]
+    },
+    {
+      "sheet": "Fairway dues declaration",
+      "code": "DUE",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Fairway dues declaration",
+      "hasContext": false,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 1
+        },
+        {
+          "de": "DE-077-21",
+          "section": "Fairway Dues",
+          "label": "Declarant is a fairway due liable party",
+          "example": "1 / Yes",
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-077-03",
+          "section": "Fairway Dues",
+          "label": "Paying fairway dues in advance",
+          "example": "0 / No",
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-077-02",
+          "section": "Fairway Dues",
+          "label": "Reason for non-payment or reduction of fairway dues",
+          "example": null,
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-077-13",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner name",
+          "example": "Acmeship Oy",
+          "row": 14,
+          "column": 1
+        },
+        {
+          "de": "DE-077-11",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner identification number",
+          "example": "FI06695798",
+          "row": 14,
+          "column": 2
+        },
+        {
+          "de": "DE-077-12",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner additional identification number",
+          "example": null,
+          "row": 14,
+          "column": 3
+        },
+        {
+          "de": "DE-077-15",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner address street",
+          "example": "Eerikinkatu 26",
+          "row": 14,
+          "column": 4
+        },
+        {
+          "de": "DE-077-18",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner address postal code",
+          "example": "5-20100",
+          "row": 14,
+          "column": 5
+        },
+        {
+          "de": "DE-077-19",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner address city name",
+          "example": "Turku",
+          "row": 14,
+          "column": 6
+        },
+        {
+          "de": "DE-077-20",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner address country",
+          "example": "FI – Finland",
+          "row": 14,
+          "column": 7
+        },
+        {
+          "de": "DE-077-14",
+          "section": "Liable Party or shipowner",
+          "label": "Fairway due liable party or shipowner email address",
+          "example": "operations@acmeship.example",
+          "row": 14,
+          "column": 8
+        }
+      ]
+    },
+    {
+      "sheet": "Dangerous and polluting goods",
+      "code": "HZT",
+      "version": "2.0.1",
+      "country": "FI",
+      "title": "Dangerous and polluting goods declaration",
+      "hasContext": true,
+      "fields": [
+        {
+          "de": "DE-003-01",
+          "section": null,
+          "label": "Remarks",
+          "example": null,
+          "row": 4,
+          "column": 2
+        },
+        {
+          "de": "DE-046-02",
+          "section": null,
+          "label": "DPG list on board",
+          "example": null,
+          "row": 4,
+          "column": 3
+        },
+        {
+          "de": "DE-046-08",
+          "section": null,
+          "label": "Compliance with the Baltic Sea MOU",
+          "example": null,
+          "row": 4,
+          "column": 4
+        },
+        {
+          "de": "DE-046-01",
+          "section": null,
+          "label": "INF ship class",
+          "example": null,
+          "row": 4,
+          "column": 5
+        },
+        {
+          "de": "DE-046-03",
+          "section": "Dangerous Goods Contact Person from which detailed information on the polluting and dangerous cargo may be obtained",
+          "label": "DPG contact name",
+          "example": null,
+          "row": 9,
+          "column": 1
+        },
+        {
+          "de": "DE-046-04",
+          "section": "Dangerous Goods Contact Person from which detailed information on the polluting and dangerous cargo may be obtained",
+          "label": "DPG contact phone number",
+          "example": null,
+          "row": 9,
+          "column": 2
+        },
+        {
+          "de": "DE-046-05",
+          "section": "Dangerous Goods Contact Person from which detailed information on the polluting and dangerous cargo may be obtained",
+          "label": "DPG contact email",
+          "example": null,
+          "row": 9,
+          "column": 3
+        },
+        {
+          "de": "DE-048-01",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Cargo item number",
+          "example": "1",
+          "row": 14,
+          "column": 1
+        },
+        {
+          "de": "DE-051-02",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Position on board",
+          "example": null,
+          "row": 14,
+          "column": 2
+        },
+        {
+          "de": "DE-051-22",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Transport equipment category",
+          "example": null,
+          "row": 14,
+          "column": 3
+        },
+        {
+          "de": "DE-051-01",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Transport equipment identification number",
+          "example": null,
+          "row": 14,
+          "column": 4
+        },
+        {
+          "de": "DE-049-01",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods regulation (bulk / packaged cargo)",
+          "example": null,
+          "row": 14,
+          "column": 5
+        },
+        {
+          "de": "DE-049-03",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods UNDG number (only with IMDG regulation)",
+          "example": null,
+          "row": 14,
+          "column": 6
+        },
+        {
+          "de": "DE-049-04",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods proper shipping name (other than IMDG regulation)",
+          "example": null,
+          "row": 14,
+          "column": 7
+        },
+        {
+          "de": "DE-049-05",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods technical specifications",
+          "example": null,
+          "row": 14,
+          "column": 8
+        },
+        {
+          "de": "DE-049-02",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods hazard class",
+          "example": null,
+          "row": 14,
+          "column": 9
+        },
+        {
+          "de": "DE-049-06",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods packing group",
+          "example": null,
+          "row": 14,
+          "column": 10
+        },
+        {
+          "de": "DE-049-07",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods additional information",
+          "example": null,
+          "row": 14,
+          "column": 11
+        },
+        {
+          "de": "DE-049-08",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods marine pollution type",
+          "example": null,
+          "row": 14,
+          "column": 12
+        },
+        {
+          "de": "DE-049-34",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods flashpoint description",
+          "example": null,
+          "row": 14,
+          "column": 13
+        },
+        {
+          "de": "DE-049-09",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods flashpoint (°C)",
+          "example": null,
+          "row": 14,
+          "column": 14
+        },
+        {
+          "de": "DE-049-10",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Net mass",
+          "example": null,
+          "row": 14,
+          "column": 15
+        },
+        {
+          "de": "DE-049-15",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods number of packages (lkm)",
+          "example": null,
+          "row": 14,
+          "column": 16
+        },
+        {
+          "de": "DE-049-16",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods package type",
+          "example": null,
+          "row": 14,
+          "column": 17
+        },
+        {
+          "de": "DE-049-11",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods gross mass",
+          "example": null,
+          "row": 14,
+          "column": 18
+        },
+        {
+          "de": "DE-001-01",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods gross mass Unit (kg / t)",
+          "example": null,
+          "row": 14,
+          "column": 19
+        },
+        {
+          "de": "DE-049-12",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods volume",
+          "example": null,
+          "row": 14,
+          "column": 20
+        },
+        {
+          "de": "DE-001-01",
+          "section": "Included Consignment Items (dangerous and polluting goods) - Fill the orange fields if you have necessary details, otherwise you can use automation logic built on Nemo UI",
+          "label": "Dangerous goods gross mass (L / m³)",
+          "example": null,
+          "row": 14,
+          "column": 21
+        },
+        {
+          "de": "DE-047-01",
+          "section": "Loading and unloading Event",
+          "label": "Port of loading (5-character LOCODE)",
+          "example": null,
+          "row": 28,
+          "column": 1
+        },
+        {
+          "de": "DE-047-04",
+          "section": "Loading and unloading Event",
+          "label": "Port of discharge (5-character LOCODE)",
+          "example": null,
+          "row": 28,
+          "column": 2
+        },
+        {
+          "de": "DE-047-42",
+          "section": "Loading and unloading Event",
+          "label": "Cargo operation",
+          "example": null,
+          "row": 28,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "elements": {
+    "DE-001-01": {
+      "labels": [
+        "Quantity unit",
+        "Dangerous goods gross mass Unit (kg / t)",
+        "Dangerous goods gross mass (L / m³)"
+      ],
+      "formalities": [
+        "STO",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-001-02": {
+      "labels": [
+        "Sequence number"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD",
+        "ITI",
+        "SEC",
+        "WAS",
+        "WAR",
+        "CRW",
+        "PAX",
+        "STO",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-003-01": {
+      "labels": [
+        "Remarks"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD",
+        "WAS",
+        "WAR",
+        "CRW",
+        "PAX",
+        "STO",
+        "CGO",
+        "MDH",
+        "DUE",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-003-02": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "attachment_type"
+      ]
+    },
+    "DE-003-07": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "statement_type"
+      ]
+    },
+    "DE-004-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "un_edifact_3035"
+      ]
+    },
+    "DE-005-09": {
+      "labels": [
+        "Ship Flag state"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-005-10": {
+      "labels": [
+        "Ship registry"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": [
+        "annex_v_of_2009_42_ec"
+      ]
+    },
+    "DE-005-11": {
+      "labels": [
+        "Ship registry port name"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-005-12": {
+      "labels": [
+        "Ship registry port (5-character LOCODE)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-005-16": {
+      "labels": [
+        "Ship type"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": [
+        "un_ece_recommendation_28"
+      ]
+    },
+    "DE-005-17": {
+      "labels": [
+        "Ship has a valid International Ship Security Certificate"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-005-18": {
+      "labels": [
+        "Ship current security level"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0137"
+      ]
+    },
+    "DE-006-01": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "certificate_type"
+      ]
+    },
+    "DE-006-06": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "imo_compendium_IMO0314"
+      ]
+    },
+    "DE-006-07": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-006-08": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "certificate_issuer"
+      ]
+    },
+    "DE-007-06": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-007-14": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-007-21": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-007-26": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-007-32": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-008-13": {
+      "labels": [
+        "Vessel breadth (m)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-008-25": {
+      "labels": [
+        "Ship length overall (m)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-008-27": {
+      "labels": [
+        "Ship gross tonnage (GT)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-008-28": {
+      "labels": [
+        "Ship net tonnage (NT)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-008-29": {
+      "labels": [
+        "Ship deadweight tonnage (t)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-009-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "ice_class"
+      ]
+    },
+    "DE-012-01": {
+      "labels": [
+        "Master family name"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-012-08": {
+      "labels": [
+        "Master given name"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-014-02": {
+      "labels": [
+        "Voyage Number"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-014-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "mode_of_transport"
+      ]
+    },
+    "DE-014-05": {
+      "labels": [
+        "Port facility (UN/LOCODE - facility identifier e.g. NLRTM-0406)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-014-08": {
+      "labels": [
+        "Security, other matters to report"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-014-09": {
+      "labels": [
+        "Cruise Ship"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-014-10": {
+      "labels": [
+        "Primary purpose of call"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": [
+        "un_edifact_8025"
+      ]
+    },
+    "DE-014-11": {
+      "labels": [
+        "Dangerous goods carrier"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-014-16": {
+      "labels": [
+        "Cargo brief description"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-014-20": {
+      "labels": [
+        "The vessel is in regular scheduled service"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-014-21": {
+      "labels": [
+        "Regular service identifier"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-014-22": {
+      "labels": [
+        "Type of voyage"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": [
+        "voyage_type"
+      ]
+    },
+    "DE-014-30": {
+      "labels": [
+        "Protruding parts description"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-014-43": {
+      "labels": [
+        "Missing previous calls justification"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-017-03": {
+      "labels": [
+        "Actual maximum draught (m)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-019-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "mooring_type"
+      ]
+    },
+    "DE-019-04": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "ship_side"
+      ]
+    },
+    "DE-022-02": {
+      "labels": [
+        "Date and time of arrival - estimated (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-022-05": {
+      "labels": [
+        "Date and time of departure - estimated (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-022-06": {
+      "labels": [
+        "Last port of call (5-character LOCODE)"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-022-08": {
+      "labels": [
+        "Next port of call (5-character LOCODE)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-022-14": {
+      "labels": [
+        "Itinerary subordinate port name"
+      ],
+      "formalities": [
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-023-01": {
+      "labels": [
+        "Previous port of call (5-character LOCODE)"
+      ],
+      "formalities": [
+        "NOA",
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-023-02": {
+      "labels": [
+        "Previous port facility (UN/LOCODE - facility identifier e.g. NLRTM-0406)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-023-03": {
+      "labels": [
+        "Ship security level in previous port facility"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0149"
+      ]
+    },
+    "DE-023-04": {
+      "labels": [
+        "Previous port facility call start date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-023-05": {
+      "labels": [
+        "Previous port facility call end date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-023-06": {
+      "labels": [
+        "Ship additional security measures"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0133"
+      ]
+    },
+    "DE-023-07": {
+      "labels": [
+        "Ship additional security measures, description"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-024-01": {
+      "labels": [
+        "Subsequent ports of call (5-character LOCODE)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-025-01": {
+      "labels": [
+        "Cruise itinerary port (5-character LOCODE)"
+      ],
+      "formalities": [
+        "ITI"
+      ],
+      "codelists": []
+    },
+    "DE-025-02": {
+      "labels": [
+        "Cruise itinerary date and time of arrival (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "ITI"
+      ],
+      "codelists": []
+    },
+    "DE-025-03": {
+      "labels": [
+        "Cruise itinerary date and time of departure (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "ITI"
+      ],
+      "codelists": []
+    },
+    "DE-025-04": {
+      "labels": [
+        "Cruise activity description"
+      ],
+      "formalities": [
+        "ITI"
+      ],
+      "codelists": []
+    },
+    "DE-028-01": {
+      "labels": [
+        "Ship-to-ship activity"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "un_edifact_8025"
+      ]
+    },
+    "DE-028-02": {
+      "labels": [
+        "Ship-to-ship activity description"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-03": {
+      "labels": [
+        "Ship-to-ship activity location name"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-04": {
+      "labels": [
+        "Ship-to-ship activity location (5-character LOCODE)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-05": {
+      "labels": [
+        "Ship-to-ship activity start date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-06": {
+      "labels": [
+        "Ship-to-ship activity end date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-07": {
+      "labels": [
+        "Ship-to-ship activity location, latitude (°) Degrees, between -90 and 90."
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-08": {
+      "labels": [
+        "Ship-to-ship activity location, longitude"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-028-09": {
+      "labels": [
+        "Ship security measures"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0150"
+      ]
+    },
+    "DE-028-10": {
+      "labels": [
+        "Ship security measures description"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-029-01": {
+      "labels": [
+        "Agent identification number"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-029-02": {
+      "labels": [
+        "Agency name"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-029-07": {
+      "labels": [
+        "Mobile number (specify country prefix)"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-029-08": {
+      "labels": [
+        "Agent email"
+      ],
+      "formalities": [
+        "NOA"
+      ],
+      "codelists": []
+    },
+    "DE-029-13": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-030-01": {
+      "labels": [
+        "Valid ISSC"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-030-02": {
+      "labels": [
+        "Reason why ship has no valid ISSC or interim ISSC"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-030-03": {
+      "labels": [
+        "Reason why ship has no valid ISSC or interim ISSC"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0069"
+      ]
+    },
+    "DE-030-04": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-030-05": {
+      "labels": [
+        "RSO Name"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-030-06": {
+      "labels": [
+        "ISSC expiry date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-030-07": {
+      "labels": [
+        "ISSC type"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": [
+        "issc_type"
+      ]
+    },
+    "DE-031-01": {
+      "labels": [
+        "Company security officer family name"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-031-02": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "imo_compendium_IMO0043"
+      ]
+    },
+    "DE-031-03": {
+      "labels": [
+        "Company security officer mobile number"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-031-04": {
+      "labels": [
+        "Company security officer email"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-031-07": {
+      "labels": [
+        "Company security officer given name"
+      ],
+      "formalities": [
+        "SEC"
+      ],
+      "codelists": []
+    },
+    "DE-032-01": {
+      "labels": [
+        "Ship visited infected area"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-02": {
+      "labels": [
+        "Port of call in affected area (5-character LOCODE)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-03": {
+      "labels": [
+        "Date of ship visited infected area (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-04": {
+      "labels": [
+        "Person died"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-05": {
+      "labels": [
+        "Case of disease on board"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-06": {
+      "labels": [
+        "Ill persons greater than expected"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-07": {
+      "labels": [
+        "Ill persons currently on board"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-08": {
+      "labels": [
+        "Medical practitioner was consulted"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-09": {
+      "labels": [
+        "Infection on board"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-10": {
+      "labels": [
+        "Sanitary measure applied on board"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-11": {
+      "labels": [
+        "Sick animal onboard"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-12": {
+      "labels": [
+        "Number of ill persons"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-13": {
+      "labels": [
+        "Sanitary measure description"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-14": {
+      "labels": [
+        "Sanitary measure place"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-15": {
+      "labels": [
+        "Sanitary measure date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-17": {
+      "labels": [
+        "Number of dead persons"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-032-18": {
+      "labels": [
+        "Sanitary measures type"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0596"
+      ]
+    },
+    "DE-033-01": {
+      "labels": [
+        "Valid ship sanitation control exemption or control certificate"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-033-02": {
+      "labels": [
+        "Sanitation control certificate port of issue (5-character LOCODE)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-033-03": {
+      "labels": [
+        "Sanitation control certificate date of issue (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-033-04": {
+      "labels": [
+        "Re-inspection required"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-034-01": {
+      "labels": [
+        "Number of persons on board (Including crew and passengers)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-034-02": {
+      "labels": [
+        "Number of passengers"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-034-03": {
+      "labels": [
+        "Number of crew"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-034-04": {
+      "labels": [
+        "Stowaways found"
+      ],
+      "formalities": [
+        "NOA",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-01": {
+      "labels": [
+        "Person type"
+      ],
+      "formalities": [
+        "PAX",
+        "MDH"
+      ],
+      "codelists": [
+        "un_edifact_3035"
+      ]
+    },
+    "DE-035-02": {
+      "labels": [
+        "Person family name"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-03": {
+      "labels": [
+        "Person given name"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-04": {
+      "labels": [
+        "Person nationality"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX",
+        "MDH"
+      ],
+      "codelists": [
+        "iso3166_1_alpha_3_iso_iec_7501"
+      ]
+    },
+    "DE-035-05": {
+      "labels": [
+        "Person date of birth (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-06": {
+      "labels": [
+        "Place of birth",
+        "Person place of birth name"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-07": {
+      "labels": [
+        "Country of birth",
+        "Person country of birth"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": [
+        "iso3166_1_alpha_3_iso_3166_3"
+      ]
+    },
+    "DE-035-08": {
+      "labels": [
+        "Person gender"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX",
+        "MDH"
+      ],
+      "codelists": [
+        "un_edifact_3499"
+      ]
+    },
+    "DE-035-09": {
+      "labels": [
+        "Person port of embarkation (5-character LOCODE)"
+      ],
+      "formalities": [
+        "PAX",
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-10": {
+      "labels": [
+        "Person embarkation date and time (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-035-11": {
+      "labels": [
+        "Person port of disembarkation (5-character LOCODE)"
+      ],
+      "formalities": [
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-13": {
+      "labels": [
+        "Person in transit"
+      ],
+      "formalities": [
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-14": {
+      "labels": [
+        "Crew member rank or rating"
+      ],
+      "formalities": [
+        "CRW",
+        "MDH"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0043"
+      ]
+    },
+    "DE-035-16": {
+      "labels": [
+        "Person identity or travel document type"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": [
+        "un_edifact_1001"
+      ]
+    },
+    "DE-035-17": {
+      "labels": [
+        "Person identity or travel document number"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-18": {
+      "labels": [
+        "Person identity or travel document issuing nation"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-035-22": {
+      "labels": [
+        "Person identity or travel document expiry date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-25": {
+      "labels": [
+        "Person special care or assistance description"
+      ],
+      "formalities": [
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-29": {
+      "labels": [
+        "Person emergency contact number"
+      ],
+      "formalities": [
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-035-39": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-036-01": {
+      "labels": [
+        "Crew effects description"
+      ],
+      "formalities": [
+        "CRW"
+      ],
+      "codelists": []
+    },
+    "DE-036-02": {
+      "labels": [
+        "Crew effects type"
+      ],
+      "formalities": [
+        "CRW"
+      ],
+      "codelists": [
+        "crew_effects"
+      ]
+    },
+    "DE-036-03": {
+      "labels": [
+        "Crew effects onboard quantity"
+      ],
+      "formalities": [
+        "CRW"
+      ],
+      "codelists": []
+    },
+    "DE-037-01": {
+      "labels": [
+        "Illness"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-02": {
+      "labels": [
+        "Symptoms onset date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-03": {
+      "labels": [
+        "Health status reported"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-04": {
+      "labels": [
+        "Health status"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0223"
+      ]
+    },
+    "DE-037-05": {
+      "labels": [
+        "Case Disposition"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0224"
+      ]
+    },
+    "DE-037-06": {
+      "labels": [
+        "Location of evacuation (5-character LOCODE)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-07": {
+      "labels": [
+        "Location of evacuation name"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-08": {
+      "labels": [
+        "Treatment"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-037-09": {
+      "labels": [
+        "Person health details comments"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-039-04": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-039-05": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-039-09": {
+      "labels": [
+        "Residence permit number"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-039-10": {
+      "labels": [
+        "Person visa number"
+      ],
+      "formalities": [
+        "CRW",
+        "PAX"
+      ],
+      "codelists": []
+    },
+    "DE-039-11": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-042-04": {
+      "labels": [
+        "Port where the stowaway boarded (5-character LOCODE)"
+      ],
+      "formalities": [
+        "MDH"
+      ],
+      "codelists": []
+    },
+    "DE-045-01": {
+      "labels": [
+        "Manifest type"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": [
+        "manifest_type"
+      ]
+    },
+    "DE-045-17": {
+      "labels": [
+        "Type of cargo"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": [
+        "directive_2009_42_ec_annex_II_2"
+      ]
+    },
+    "DE-045-26": {
+      "labels": [
+        "Cargo quantity in transit"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": []
+    },
+    "DE-045-27": {
+      "labels": [
+        "Cargo weight remaining on board (kg)"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": []
+    },
+    "DE-045-32": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "directive_2009_42_ec_category6"
+      ]
+    },
+    "DE-046-01": {
+      "labels": [
+        "INF ship class"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "inf_ship_class"
+      ]
+    },
+    "DE-046-02": {
+      "labels": [
+        "DPG list on board"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-046-03": {
+      "labels": [
+        "DPG contact name"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-046-04": {
+      "labels": [
+        "DPG contact phone number"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-046-05": {
+      "labels": [
+        "DPG contact email"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-046-08": {
+      "labels": [
+        "Compliance with the Baltic Sea MOU"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-047-01": {
+      "labels": [
+        "Port of loading (5-character LOCODE)"
+      ],
+      "formalities": [
+        "CGO",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-047-04": {
+      "labels": [
+        "Port of discharge (5-character LOCODE)"
+      ],
+      "formalities": [
+        "CGO",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-047-24": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-047-26": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-047-42": {
+      "labels": [
+        "Cargo operation"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "cargo_operation"
+      ]
+    },
+    "DE-048-01": {
+      "labels": [
+        "Cargo item number"
+      ],
+      "formalities": [
+        "CGO",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-048-03": {
+      "labels": [
+        "Cargo item gross mass (kg)"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": []
+    },
+    "DE-048-04": {
+      "labels": [
+        "Description of goods"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": []
+    },
+    "DE-048-05": {
+      "labels": [
+        "Cargo item HS code (6 numbers)"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": [
+        "hs_cargo_item"
+      ]
+    },
+    "DE-048-09": {
+      "labels": [
+        "Cargo item number of packages"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": []
+    },
+    "DE-048-10": {
+      "labels": [
+        "Cargo item package type"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": [
+        "un_edifact_7065"
+      ]
+    },
+    "DE-049-01": {
+      "labels": [
+        "Dangerous goods regulation (bulk / packaged cargo)"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "un_edifact_8273"
+      ]
+    },
+    "DE-049-02": {
+      "labels": [
+        "Dangerous goods hazard class"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0049"
+      ]
+    },
+    "DE-049-03": {
+      "labels": [
+        "Dangerous goods UNDG number (only with IMDG regulation)"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-04": {
+      "labels": [
+        "Dangerous goods proper shipping name (other than IMDG regulation)"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-05": {
+      "labels": [
+        "Dangerous goods technical specifications"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-06": {
+      "labels": [
+        "Dangerous goods packing group"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "imdg_I_II_and_III"
+      ]
+    },
+    "DE-049-07": {
+      "labels": [
+        "Dangerous goods additional information"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-08": {
+      "labels": [
+        "Dangerous goods marine pollution type"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "imo_compendium_IMO0051"
+      ]
+    },
+    "DE-049-09": {
+      "labels": [
+        "Dangerous goods flashpoint (°C)"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-10": {
+      "labels": [
+        "Net mass"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-11": {
+      "labels": [
+        "Dangerous goods gross mass"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-12": {
+      "labels": [
+        "Dangerous goods volume"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-15": {
+      "labels": [
+        "Dangerous goods number of packages (lkm)"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-049-16": {
+      "labels": [
+        "Dangerous goods package type"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "un_edifact_7065"
+      ]
+    },
+    "DE-049-34": {
+      "labels": [
+        "Dangerous goods flashpoint description"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": [
+        "flashpoint_description"
+      ]
+    },
+    "DE-050-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "imo_compendium_IMO0049"
+      ]
+    },
+    "DE-050-04": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "imo_compendium_IMO0051"
+      ]
+    },
+    "DE-050-05": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "un_edifact_8273"
+      ]
+    },
+    "DE-051-01": {
+      "labels": [
+        "Transport equipment identification number"
+      ],
+      "formalities": [
+        "CGO",
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-051-02": {
+      "labels": [
+        "Position on board"
+      ],
+      "formalities": [
+        "HZT"
+      ],
+      "codelists": []
+    },
+    "DE-051-13": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "un_edifact_8155"
+      ]
+    },
+    "DE-051-17": {
+      "labels": [
+        "Container size and type"
+      ],
+      "formalities": [
+        "CGO"
+      ],
+      "codelists": [
+        "iso6346_size_and_type"
+      ]
+    },
+    "DE-051-21": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "un_edifact_8169"
+      ]
+    },
+    "DE-051-22": {
+      "labels": [
+        "Transport equipment category"
+      ],
+      "formalities": [
+        "CGO",
+        "HZT"
+      ],
+      "codelists": [
+        "un_edifact_8053_HZT"
+      ]
+    },
+    "DE-065-13": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-065-19": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-067-01": {
+      "labels": [
+        "Ship stores article name"
+      ],
+      "formalities": [
+        "STO"
+      ],
+      "codelists": []
+    },
+    "DE-067-02": {
+      "labels": [
+        "Ship stores article"
+      ],
+      "formalities": [
+        "STO"
+      ],
+      "codelists": [
+        "ship_stores_article"
+      ]
+    },
+    "DE-067-03": {
+      "labels": [
+        "Ship stores onboard quantity"
+      ],
+      "formalities": [
+        "STO"
+      ],
+      "codelists": []
+    },
+    "DE-067-04": {
+      "labels": [
+        "Ship stores location onboard description"
+      ],
+      "formalities": [
+        "STO"
+      ],
+      "codelists": []
+    },
+    "DE-068-01": {
+      "labels": [
+        "Port of last waste delivery (5-character LOCODE)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-068-02": {
+      "labels": [
+        "Port of next waste delivery (5-character LOCODE)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-068-03": {
+      "labels": [
+        "Waste last delivery date (dd.mm.yyyy)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-069-01": {
+      "labels": [
+        "Port reception facility provider name"
+      ],
+      "formalities": [
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-069-02": {
+      "labels": [
+        "Waste treatment facility provider name (if different from the port reception facility provider)"
+      ],
+      "formalities": [
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-069-05": {
+      "labels": [
+        "Actual waste delivery date and time, from (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-069-06": {
+      "labels": [
+        "Actual waste delivery date and time, to (dd.mm.yyyy hh:mm:ss)"
+      ],
+      "formalities": [
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-071-01": {
+      "labels": [
+        "Waste type (code)"
+      ],
+      "formalities": [
+        "WAS",
+        "WAR"
+      ],
+      "codelists": [
+        "waste_type"
+      ]
+    },
+    "DE-071-02": {
+      "labels": [
+        "Waste description (when relevant)"
+      ],
+      "formalities": [
+        "WAS",
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-071-03": {
+      "labels": [
+        "Waste amount to be delivered volume (m³)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-071-04": {
+      "labels": [
+        "Waste maximum dedicated storage capacity (m³)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-071-05": {
+      "labels": [
+        "Waste amount retained volume (m³)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-071-06": {
+      "labels": [
+        "Port of delivery of remaining waste (5-character LOCODE, \"ZZUKN\" for an unknown port out of EU, \"XX888\" (where XX is a country code) for an unknown port in a specified country out of EU)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-071-07": {
+      "labels": [
+        "Waste estimated amount to be generated volume (m³)"
+      ],
+      "formalities": [
+        "WAS"
+      ],
+      "codelists": []
+    },
+    "DE-071-08": {
+      "labels": [
+        "Amount of waste received volume (m³)"
+      ],
+      "formalities": [
+        "WAR"
+      ],
+      "codelists": []
+    },
+    "DE-075-03": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "un_edifact_8025"
+      ]
+    },
+    "DE-077-02": {
+      "labels": [
+        "Reason for non-payment or reduction of fairway dues"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": [
+        "no_fairway_dues_declaration"
+      ]
+    },
+    "DE-077-03": {
+      "labels": [
+        "Paying fairway dues in advance"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-11": {
+      "labels": [
+        "Fairway due liable party or shipowner identification number"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-12": {
+      "labels": [
+        "Fairway due liable party or shipowner additional identification number"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-13": {
+      "labels": [
+        "Fairway due liable party or shipowner name"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-14": {
+      "labels": [
+        "Fairway due liable party or shipowner email address"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-077-15": {
+      "labels": [
+        "Fairway due liable party or shipowner address street"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-18": {
+      "labels": [
+        "Fairway due liable party or shipowner address postal code"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-19": {
+      "labels": [
+        "Fairway due liable party or shipowner address city name"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-20": {
+      "labels": [
+        "Fairway due liable party or shipowner address country"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-077-21": {
+      "labels": [
+        "Declarant is a fairway due liable party"
+      ],
+      "formalities": [
+        "DUE"
+      ],
+      "codelists": []
+    },
+    "DE-079-08": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "iso3166_1_alpha_2_unedifact3207"
+      ]
+    },
+    "DE-082-02": {
+      "labels": [],
+      "formalities": [],
+      "codelists": [
+        "ship_side"
+      ]
+    },
+    "DE-083-01": {
+      "labels": [
+        "Pilotage exemption"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    },
+    "DE-083-02": {
+      "labels": [
+        "Pilotage exemption certificate number (10-character)"
+      ],
+      "formalities": [
+        "NOA",
+        "NOD"
+      ],
+      "codelists": []
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "un_edifact_3499",
+  "headerless": false,
+  "usedIn": [
+    "DE-035-08"
+  ],
+  "formalities": [
+    "CWA/D, PWA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "0",
+      "en": "Not known",
+      "fi": "Ei tiedossa",
+      "sv": "Inte känd"
+    },
+    {
+      "id": "1",
+      "en": "Male",
+      "fi": "Mies",
+      "sv": "Man"
+    },
+    {
+      "id": "2",
+      "en": "Female",
+      "fi": "Nainen",
+      "sv": "Kvinna"
+    },
+    {
+      "id": "9",
+      "en": "Not applicable",
+      "fi": "Ei sovellettavissa",
+      "sv": "Ej tillämpligt"
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "attachment_type",
+  "headerless": false,
+  "usedIn": [
+    "DE-003-02"
+  ],
+  "formalities": [
+    "NOA/D, CGA, HZA, SRV, CRT"
+  ],
+  "rules": [
+    "R-CGA-002",
+    "R-HZA-006",
+    "R-NOA-003",
+    "R-NOD-001",
+    "R-SRV-001"
+  ],
+  "entries": [
+    {
+      "id": "ATT-001",
+      "en": "Additional declarations required by the products tables",
+      "fi": "Tuotetaulukoissa vaaditut lisäilmoitukset",
+      "sv": "Ytterligare deklarationer som krävs enligt produkttabellerna"
+    },
+    {
+      "id": "ATT-002",
+      "en": "Additional documentation on railway wagons goods transport",
+      "fi": "Rautatievaunuissa tapahtuvia tavarakuljetuksia koskevat lisäasiakirjat",
+      "sv": "Ytterligare dokumentation om godstransport i järnvägsvagnar"
+    },
+    {
+      "id": "ATT-003",
+      "en": "Analysis certificates and related declarations of carried substances",
+      "fi": "Kuljetettuja aineita koskevat määritystodistukset ja niihin liittyvät ilmoitukset",
+      "sv": "Intyg om analyser och relaterade deklarationer av transporterade ämnen"
+    },
+    {
+      "id": "ATT-004",
+      "en": "Authorization for radioactive materials transport",
+      "fi": "Radioaktiivisten aineiden kuljetuslupa",
+      "sv": "Tillstånd för transport av radioaktiva ämnen"
+    },
+    {
+      "id": "ATT-005",
+      "en": "Authorization to embark",
+      "fi": "Lupa alukseen nousemiseen",
+      "sv": "Tillstånd att gå ombord"
+    },
+    {
+      "id": "ATT-006",
+      "en": "Boarding form of non-hazardous waste including list",
+      "fi": "Tavanomaisen jätteen lastauslomake, mukaan lukien jäteluettelo",
+      "sv": "Formulär för lastning av icke-farligt avfall, inklusive förteckning"
+    },
+    {
+      "id": "ATT-007",
+      "en": "Bunker delivery receipt",
+      "fi": "Polttoaineen toimituskuitti",
+      "sv": "Bunkerleveranskvittens"
+    },
+    {
+      "id": "ATT-008",
+      "en": "Cargo information form",
+      "fi": "Rahtitietolomake",
+      "sv": "Formulär för godsinformation"
+    },
+    {
+      "id": "ATT-009",
+      "en": "Carrier's declaration on radioactive materials",
+      "fi": "Rahdinkuljettajan ilmoitus radioaktiivisista aineista",
+      "sv": "Transportörens deklaration om radioaktiva material"
+    },
+    {
+      "id": "ATT-010",
+      "en": "CIPE Authorization",
+      "fi": "CIPE-valtuutus",
+      "sv": "CIPE-tillstånd"
+    },
+    {
+      "id": "ATT-011",
+      "en": "Cisterns residues exemption declaration",
+      "fi": "Säiliöjäämiä koskeva vapautusilmoitus",
+      "sv": "Deklaration om undantag från rester i cisterner"
+    },
+    {
+      "id": "ATT-012",
+      "en": "Clearance from terminal",
+      "fi": "Klarointi terminaalista",
+      "sv": "Klarering från terminal"
+    },
+    {
+      "id": "ATT-013",
+      "en": "Communication and receipt certificate for waste destinated to EU countries",
+      "fi": "EU-maihin suuntautuvan jätteen ilmoitus- ja vastaanottotodistus",
+      "sv": "Information och mottagningsbevis avseende avfall avsett för EU-länder"
+    },
+    {
+      "id": "ATT-014",
+      "en": "Communication of incoming waste and certificate of receipt",
+      "fi": "Saapuvan jätteen ilmoittaminen ja vastaanottotodistus",
+      "sv": "Information om inkommande avfall och mottagningsbevis"
+    },
+    {
+      "id": "ATT-015",
+      "en": "Consent to retain waste and the related washing /prewashing waters",
+      "fi": "Suostumus jätteen ja siihen liittyvien pesu-/esipesuvesien säilyttämiseen",
+      "sv": "Medgivande att behålla avfall och skölj-/försköljningsvatten ombord"
+    },
+    {
+      "id": "ATT-016",
+      "en": "Containers loader declaration",
+      "fi": "Konttien kuormaajan ilmoitus",
+      "sv": "Deklaration om lastning av containrar"
+    },
+    {
+      "id": "ATT-017",
+      "en": "Cyanide transport Police Authorization",
+      "fi": "Syanidikuljetuksen poliisivaltuutus",
+      "sv": "Tillstånd från polismyndigheten för transport av cyanid"
+    },
+    {
+      "id": "ATT-018",
+      "en": "Dangerous goods manifest or stowage plan",
+      "fi": "Vaarallisten aineiden tavaraluettelo tai lastaussuunnitelma",
+      "sv": "Manifest om farligt gods eller stuvningsplan"
+    },
+    {
+      "id": "ATT-019",
+      "en": "Solid bulk cargo density declaration",
+      "fi": "Kiinteän irtolastin tiheysilmoitus",
+      "sv": "Deklaration om solid bulklastdensitet"
+    },
+    {
+      "id": "ATT-020",
+      "en": "Harbour chemist visa",
+      "fi": "Satamakemistin lausunto",
+      "sv": "Hamnkemistens intyg"
+    },
+    {
+      "id": "ATT-021",
+      "en": "Holds security status certification",
+      "fi": "Ruumien turvallisuustaso todistus",
+      "sv": "Intyg om lastrums säkerhetsstatus"
+    },
+    {
+      "id": "ATT-022",
+      "en": "International trips accompanying documents and financial guarantee",
+      "fi": "Kansainvälisten matkojen saateasiakirjat ja rahavakuus",
+      "sv": "Följedokument och finansiell säkerhet för internationella resor"
+    },
+    {
+      "id": "ATT-023",
+      "en": "Loading and unloading plan",
+      "fi": "Lastaus- ja purkusuunnitelma",
+      "sv": "Lastnings- och lossningsplan"
+    },
+    {
+      "id": "ATT-024",
+      "en": "Manual referred to in rule 5.3.5 of Annex II to Marpol 73/78",
+      "fi": "Marpol 73/78 -yleissopimuksen liitteessä II olevassa 5.3.5 säännössä tarkoitettu käsikirja",
+      "sv": "Manual som hänvisas till i regel 5.3.5 i bilaga II till Marpol 73/78"
+    },
+    {
+      "id": "ATT-025",
+      "en": "Manufacturer statement on the goods to be loaded or unloaded",
+      "fi": "Valmistajan ilmoitus lastattavista tai purettavista tavaroista",
+      "sv": "Tillverkarens förklaring om varor som ska lastas eller lossas"
+    },
+    {
+      "id": "ATT-026",
+      "en": "Means used to carry explosive materials",
+      "fi": "Räjähdysaineiden kuljettamiseen käytettävät välineet",
+      "sv": "Transportsätt för explosiva ämnen"
+    },
+    {
+      "id": "ATT-027",
+      "en": "Means used to carry radioactive materials",
+      "fi": "Radioaktiivisten aineiden kuljetukseen käytettävät välineet",
+      "sv": "Transportsätt för radioaktiva material"
+    },
+    {
+      "id": "ATT-028",
+      "en": "Multimodal dangerous goods declaration",
+      "fi": "Multimodaalisten vaarallisten aineiden ilmoitus",
+      "sv": "Deklaration om multimodal transport av farligt gods"
+    },
+    {
+      "id": "ATT-029",
+      "en": "No impediment to goods unload",
+      "fi": "Ei estettä tavaran purkamiselle",
+      "sv": "Inget hinder för lossning av gods"
+    },
+    {
+      "id": "ATT-030",
+      "en": "Non-hazardous waste loading declaration",
+      "fi": "Tavanomaisen jätteen lastausilmoitus",
+      "sv": "Deklaration av lastning av icke-farligt avfall"
+    },
+    {
+      "id": "ATT-031",
+      "en": "Permission to disembark",
+      "fi": "Lupa poistua aluksesta",
+      "sv": "Tillstånd att gå i land"
+    },
+    {
+      "id": "ATT-032",
+      "en": "Person's photograph",
+      "fi": "Henkilön valokuva",
+      "sv": "Fotografi av personen"
+    },
+    {
+      "id": "ATT-033",
+      "en": "Pilot card",
+      "fi": "Luotsikortti",
+      "sv": "Lotskort"
+    },
+    {
+      "id": "ATT-034",
+      "en": "Road vehicles and rail cars loader declaration",
+      "fi": "Maantieajoneuvojen ja rautatievaunujen kuormaajan ilmoitus",
+      "sv": "Deklaration om lastning av vägfordon och järnvägsvagnar"
+    },
+    {
+      "id": "ATT-035",
+      "en": "Road vehicles registration certificate",
+      "fi": "Maantieajoneuvojen rekisteröintitodistus",
+      "sv": "Registreringsintyg för vägfordon"
+    },
+    {
+      "id": "ATT-036",
+      "en": "Safety checklist",
+      "fi": "Turvallisuustarkistuslista",
+      "sv": "Säkerhetschecklista"
+    },
+    {
+      "id": "ATT-037",
+      "en": "Ship certificate",
+      "fi": "Alustodistus",
+      "sv": "Fartygscertifikat"
+    },
+    {
+      "id": "ATT-038",
+      "en": "Side shell plan",
+      "fi": "Aluksen rungon rakennepiirustus",
+      "sv": "Bordläggningsritning för fartygets sidor"
+    },
+    {
+      "id": "ATT-039",
+      "en": "Suitability Attestation",
+      "fi": "Soveltuvuustodistus",
+      "sv": "Lämplighetsintyg"
+    },
+    {
+      "id": "ATT-040",
+      "en": "Suitability tanks statement",
+      "fi": "Soveltuvuussäiliöitä koskeva maininta",
+      "sv": "Förklaring om tankars lämplighet"
+    },
+    {
+      "id": "ATT-041",
+      "en": "Technical special standards compliance certification",
+      "fi": "Teknisten erityisstandardien vaatimustenmukaisuuden sertifiointi",
+      "sv": "Intyg om efterlevnad av särskilda tekniska standarder"
+    },
+    {
+      "id": "ATT-042",
+      "en": "Towage certificate",
+      "fi": "Hinaustodistus",
+      "sv": "Bogseringsintyg"
+    },
+    {
+      "id": "ATT-043",
+      "en": "Towage plan",
+      "fi": "Hinaussuunnitelma",
+      "sv": "Bogseringsplan"
+    },
+    {
+      "id": "ATT-044",
+      "en": "Towage recommendations",
+      "fi": "Hinaussuositukset",
+      "sv": "Bogseringsrekommendationer"
+    },
+    {
+      "id": "ATT-045",
+      "en": "Waste classification declaration",
+      "fi": "Jätteen luokitteluilmoitus",
+      "sv": "Deklaration om klassificering av avfall"
+    },
+    {
+      "id": "ATT-046",
+      "en": "Waste tracking documentation",
+      "fi": "Jätteenseuranta-asiakirjat",
+      "sv": "Dokumentation om spårning av avfall"
+    },
+    {
+      "id": "ATT-047",
+      "en": "NIL list",
+      "fi": "NIL-luettelo",
+      "sv": "NIL-förteckning"
+    },
+    {
+      "id": "ATT-048",
+      "en": "Technical data form for lightering of mineral oil",
+      "fi": "Mineraaliöljyn proomukuljetusten kevennyksen tekninen tietolomake",
+      "sv": "Tekniskt dataformulär för läktring av mineralolja"
+    },
+    {
+      "id": "ATT-049",
+      "en": "Technical data form for lightering of gas",
+      "fi": "Kaasun proomukuljetusten kevennyksen tekninen tietolomake",
+      "sv": "Tekniskt dataformulär för läktring av gas"
+    },
+    {
+      "id": "ATT-050",
+      "en": "Master declaration as per art. 21 – DM 3/5/1984",
+      "fi": "Päällikön ilmoitus asetuksen DM 3/5/1984 kohdan 21 mukaisesti",
+      "sv": "Befälhavarens deklaration enligt artikel 21 – DM 3/5/1984"
+    },
+    {
+      "id": "ATT-051",
+      "en": "Master declaration as per Italian DD 673/2007 - art. 22",
+      "fi": "Italian asetuksen DD 673/2007 mukainen päällikön ilmoitus – kohta 22",
+      "sv": "Befälhavarens deklaration enligt Italiens dekret 673/2007 – artikel 22"
+    },
+    {
+      "id": "ATT-052",
+      "en": "ICOF - GC (International Certificate of Fitness for the Carriage of Liquified Gases in Bulk)",
+      "fi": "ICOF – GC (kansainvälinen kelpoisuustodistus nesteytettyjen kaasujen kuljetukseen irtolastina)",
+      "sv": "ICOF-GC Internationellt certifikat om lämplighet för last med flytande gas i tank"
+    },
+    {
+      "id": "ATT-053",
+      "en": "Master declaration as per R.D. 30 march 1942, n. 327 -art.179",
+      "fi": "Päällikön ilmoitus – asetus R.D., 30.3.1942, nro 327, pykälä 179",
+      "sv": "Befälhavarens deklaration i enlighet med det kungliga dekretet av den 30 mars 1942, n. 327 - art. 179"
+    },
+    {
+      "id": "ATT-054",
+      "en": "Statement of compliance for the carriage of liquified gases in bulk (only for non - GC Code compliant italian ships)",
+      "fi": "Vaatimustenmukaisuusilmoitus nesteytettyjen kaasujen kuljettamisesta irtotavarana (koskee vain italialaisia aluksia, jotka eivät täytä GC-säännöstöä).",
+      "sv": "Försäkran om överensstämmelse för last med flytande gas i tank (endast för italienska fartyg som inte uppfyller GC-koden)"
+    },
+    {
+      "id": "ATT-055",
+      "en": "ICOF-CC (International Certificate of Fitness for the Carriage of Dangerous Chemicals in Bulk)",
+      "fi": "ICOF-CC (kansainvälinen todistus kelpoisuudesta vaarallisten kemikaalien kuljetukseen irtolastina)",
+      "sv": "ICOF-CC Internationellt certifikat om lämplighet för last med farliga kemikalier i tank (International Certificate of Fitness for the Carriage of Dangerous Chemicals in Bulk)"
+    },
+    {
+      "id": "ATT-056",
+      "en": "COF (Certificate of Fitness for the Carriage of Dangerous Chemicals in Bulk)",
+      "fi": "COF (kansainvälinen todistus kelpoisuudesta vaarallisten kemikaalien kuljetukseen irtolastina)",
+      "sv": "COF Certifikat om lämplighet för last med farliga kemikalier i tank (Certificate of Fitness for the Carriage of Dangerous Chemicals in Bulk)"
+    },
+    {
+      "id": "ATT-057",
+      "en": "Cargo inhibition certificate issued by the manufacturer, according to Reg. 17.8 IGC Code",
+      "fi": "Valmistajan antama lastin inhibiittoritodistus IGC-säännöstön säännön 17.8 mukaisesti",
+      "sv": "Intyg om lastinhibitor enligt IGC-kod regel 17.8"
+    },
+    {
+      "id": "ATT-058",
+      "en": "Gas Lightering emergency plan",
+      "fi": "Kaasun proomukuljetusten hätäsuunnitelma",
+      "sv": "Beredskapsplan för läktring av gas"
+    },
+    {
+      "id": "ATT-059",
+      "en": "Checklist for in-transit fumigation",
+      "fi": "Kauttakulkukaasutuksen tarkistuslista",
+      "sv": "Checklista för begasning under transitering"
+    },
+    {
+      "id": "ATT-060",
+      "en": "Fumigation certificate or in-transit fumigation certificate or fumigant application certificate",
+      "fi": "Kaasutustodistus tai kauttakulkuun liittyvä kaasutustodistus tai kaasutusaineen hakemustodistus",
+      "sv": "Begasningsintyg, intyg om begasning under transit eller intyg om användning av begasningsmedel"
+    }
+  ]
+}

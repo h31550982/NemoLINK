@@ -1,0 +1,4241 @@
+{
+  "source": "https://fintraffic-vts.github.io/mnsw/Data-Elements-required-in-Finland.html",
+  "note": "parsed from the published \"Data Elements required in Finland\" page — the authoritative FI profile (WHICH elements Finland wants, with conditions); status M/O and occurrence come from hub/config.json (the Excel matrices)",
+  "formalities": [
+    {
+      "code": "ATA",
+      "title": "ATA - Notification of actual arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-15",
+          "nameEn": "Call at anchorage indicator",
+          "nameFi": "Vierailu ankkuripaikassa",
+          "descriptionEn": "A yes/no indicator whether the call is at an anchorage within the jurisdiction of the port of call and with a ship/port interface.",
+          "descriptionFi": "Vierailu ankkuripaikassa",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-022-01",
+          "nameEn": "Date and time of arrival - actual",
+          "nameFi": "Saapumispäivä ja -aika – todellinen",
+          "descriptionEn": "The date and time at which the ship arrives at the port of arrival.",
+          "descriptionFi": "Saapumispäivä ja -aika – todellinen",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "ATD",
+      "title": "ATD - Notification of actual departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-04",
+          "nameEn": "Date and time of departure - actual",
+          "nameFi": "Lähtöpäivä ja -aika – todellinen",
+          "descriptionEn": "The date and time at which the ship departs from the port of departure.",
+          "descriptionFi": "Lähtöpäivä ja -aika – todellinen",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "CGA",
+      "title": "CGA - Cargo declaration at arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-045-01",
+          "nameEn": "Manifest type, coded",
+          "nameFi": "Tavaraluettelon tyyppi",
+          "descriptionEn": "A code representing the type of manifest.",
+          "descriptionFi": "Tavaraluettelon tyyppi",
+          "conditions": [],
+          "codeList": "Refer to code list Manifest type"
+        },
+        {
+          "de": "DE-045-17",
+          "nameEn": "Type of cargo, coded",
+          "nameFi": "Lastityyppi",
+          "descriptionEn": "The type of cargo in accordance with the nomenclature shown in Annex II to Directive 2009/42/EC (2-digit code).",
+          "descriptionFi": "Lastityyppi",
+          "conditions": [],
+          "codeList": "Refer to Directive 2009/42/EC, Annex II"
+        },
+        {
+          "de": "DE-045-26",
+          "nameEn": "Cargo quantity in transit",
+          "nameFi": "Alukseen jäävän jäljellä olevan lastin määrä",
+          "descriptionEn": "The total quantity of the referenced type of cargo remaining on board the ship at the port call.",
+          "descriptionFi": "Alukseen jäävän jäljellä olevan lastin määrä",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-045-27",
+          "nameEn": "Cargo weight in transit",
+          "nameFi": "Alukseen jäävän lastin paino",
+          "descriptionEn": "The total weight of the referenced type of cargo remaining on board the ship at the port call.",
+          "descriptionFi": "Alukseen jäävän lastin paino",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-047-01",
+          "nameEn": "Port of loading, coded",
+          "nameFi": "Lastaussatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Lastaussatama",
+          "conditions": [
+            "NR-CGA-009"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-04",
+          "nameEn": "Port of discharge, coded",
+          "nameFi": "Purkusatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Purkusatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-048-01",
+          "nameEn": "Cargo item number",
+          "nameFi": "Tavaraerän numero",
+          "descriptionEn": "The number of the item in relation to the total number of items contained in the declaration, the summary declaration, notification or proof of the customs status of Union goods, where there is more than one item of goods.",
+          "descriptionFi": "Tavaraerän numero",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-021",
+            "G-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-03",
+          "nameEn": "Cargo item gross mass",
+          "nameFi": "Tavaraerän bruttomassa",
+          "descriptionEn": "The combined weight or mass of the referenced packaged cargo and its packaging from the shipping data.",
+          "descriptionFi": "Tavaraerän bruttomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-04",
+          "nameEn": "Description of goods",
+          "nameFi": "Tavaran kuvaus",
+          "descriptionEn": "A textual description of the referenced cargo.",
+          "descriptionFi": "Tavaran kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-05",
+          "nameEn": "Cargo item HS code",
+          "nameFi": "Tavaralajikoodi (Tavaralaji)",
+          "descriptionEn": "The standardized, international commodity code from the Harmonized Commodity Description and Coding System (HS) for the cargo being reported. It corresponds to the first 6 digits on the Combined Nomenclature code.",
+          "descriptionFi": "Tavaralajikoodi (Tavaralaji)",
+          "conditions": [],
+          "codeList": "The international commodity code"
+        },
+        {
+          "de": "DE-048-09",
+          "nameEn": "Cargo item number of packages",
+          "nameFi": "Rahtitavaran lukumäärä",
+          "descriptionEn": "The total number of packages based on the smallest external packing unit. This is the number of individual items packaged in such a way that they cannot be divided without first undoing the packing, or the number of pieces, if unpackaged. This information shall not be provided where goods are in bulk.",
+          "descriptionFi": "Rahtitavaran lukumäärä",
+          "conditions": [
+            "R-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-10",
+          "nameEn": "Cargo item package type, coded",
+          "nameFi": "Rahtitavaran pakkauksen tyyppi",
+          "descriptionEn": "A code specifying the type of package used for the referenced cargo. This information relates to details of the packaging of the goods subject to the declaration or notification.",
+          "descriptionFi": "Rahtitavaran pakkauksen tyyppi",
+          "conditions": [],
+          "codeList": "Two-letter alphabetic code of annex V of UNECE Recommendation 21, UN/EDIFACT codes (7065)"
+        },
+        {
+          "de": "DE-051-01",
+          "nameEn": "Transport equipment identification number",
+          "nameFi": "Kuljetusvälineen tunnistenumero",
+          "descriptionEn": "Marks (letters and/or numbers) which identify the transport equipment (e.g. container, trailer, semi-trailer, swap body). For containers this shall be the identification code as defined in ISO 6346. For swap bodies and semi-trailers the ILU (Intermodal Loading Units) code as introduced by the European EN 13044 standard shall be used.",
+          "descriptionFi": "Kuljetusvälineen tunnistenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-17",
+          "nameEn": "Container size and type, coded",
+          "nameFi": "Kontin koko ja tyyppi",
+          "descriptionEn": "A code identifying the size and type of the container.",
+          "descriptionFi": "Kontin koko ja tyyppi",
+          "conditions": [],
+          "codeList": "ISO 6346 size and type code list (4-characters)"
+        },
+        {
+          "de": "DE-051-22",
+          "nameEn": "Transport equipment category, coded",
+          "nameFi": "Kuljetusvälineen luokka",
+          "descriptionEn": "A code identifying the category of the transport equipment.",
+          "descriptionFi": "Kuljetusvälineen luokka",
+          "conditions": [
+            "NG-CGA-002"
+          ],
+          "codeList": "UN/EDIFACT codes (8053)"
+        }
+      ]
+    },
+    {
+      "code": "CGD",
+      "title": "CGD - Cargo declaration at departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-045-01",
+          "nameEn": "Manifest type, coded",
+          "nameFi": "Tavaraluettelon tyyppi",
+          "descriptionEn": "A code representing the type of manifest.",
+          "descriptionFi": "Tavaraluettelon tyyppi",
+          "conditions": [],
+          "codeList": "Refer to code list Manifest type"
+        },
+        {
+          "de": "DE-047-01",
+          "nameEn": "Port of loading, coded",
+          "nameFi": "Lastaussatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Lastaussatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-04",
+          "nameEn": "Port of discharge, coded",
+          "nameFi": "Purkusatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Purkusatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-048-01",
+          "nameEn": "Cargo item number",
+          "nameFi": "Tavaraerän numero",
+          "descriptionEn": "The number of the item in relation to the total number of items contained in the declaration, the summary declaration, notification or proof of the customs status of Union goods, where there is more than one item of goods.",
+          "descriptionFi": "Tavaraerän numero",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-021",
+            "G-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-03",
+          "nameEn": "Cargo item gross mass",
+          "nameFi": "Tavaraerän bruttomassa",
+          "descriptionEn": "The combined weight or mass of the referenced packaged cargo and its packaging from the shipping data.",
+          "descriptionFi": "Tavaraerän bruttomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-04",
+          "nameEn": "Description of goods",
+          "nameFi": "Tavaran kuvaus",
+          "descriptionEn": "A textual description of the referenced cargo.",
+          "descriptionFi": "Tavaran kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-05",
+          "nameEn": "Cargo item HS code",
+          "nameFi": "Tavaralajikoodi (Tavaralaji)",
+          "descriptionEn": "The standardized, international commodity code from the Harmonized Commodity Description and Coding System (HS) for the cargo being reported. It corresponds to the first 6 digits on the Combined Nomenclature code.",
+          "descriptionFi": "Tavaralajikoodi (Tavaralaji)",
+          "conditions": [],
+          "codeList": "The international commodity code"
+        },
+        {
+          "de": "DE-048-09",
+          "nameEn": "Cargo item number of packages",
+          "nameFi": "Rahtitavaran lukumäärä",
+          "descriptionEn": "The total number of packages based on the smallest external packing unit. This is the number of individual items packaged in such a way that they cannot be divided without first undoing the packing, or the number of pieces, if unpackaged. This information shall not be provided where goods are in bulk.",
+          "descriptionFi": "Rahtitavaran lukumäärä",
+          "conditions": [
+            "R-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-048-10",
+          "nameEn": "Cargo item package type, coded",
+          "nameFi": "Rahtitavaran pakkauksen tyyppi",
+          "descriptionEn": "A code specifying the type of package used for the referenced cargo. This information relates to details of the packaging of the goods subject to the declaration or notification.",
+          "descriptionFi": "Rahtitavaran pakkauksen tyyppi",
+          "conditions": [],
+          "codeList": "Two-letter alphabetic code of annex V of UNECE Recommendation 21, UN/EDIFACT codes (7065)"
+        },
+        {
+          "de": "DE-051-01",
+          "nameEn": "Transport equipment identification number",
+          "nameFi": "Kuljetusvälineen tunnistenumero",
+          "descriptionEn": "Marks (letters and/or numbers) which identify the transport equipment (e.g. container, trailer, semi-trailer, swap body). For containers this shall be the identification code as defined in ISO 6346. For swap bodies and semi-trailers the ILU (Intermodal Loading Units) code as introduced by the European EN 13044 standard shall be used.",
+          "descriptionFi": "Kuljetusvälineen tunnistenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-17",
+          "nameEn": "Container size and type, coded",
+          "nameFi": "Kontin koko ja tyyppi",
+          "descriptionEn": "A code identifying the size and type of the container.",
+          "descriptionFi": "Kontin koko ja tyyppi",
+          "conditions": [],
+          "codeList": "ISO 6346 size and type code list (4-characters)"
+        },
+        {
+          "de": "DE-051-22",
+          "nameEn": "Transport equipment category, coded",
+          "nameFi": "Kuljetusvälineen luokka",
+          "descriptionEn": "A code identifying the category of the transport equipment.",
+          "descriptionFi": "Kuljetusvälineen luokka",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (8053)"
+        }
+      ]
+    },
+    {
+      "code": "CRT",
+      "title": "CRT - Ship certificates",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-003-02",
+          "nameEn": "Attachment type, coded",
+          "nameFi": "Liitetiedoston tyyppi",
+          "descriptionEn": "A code indicating the type of the attached document.",
+          "descriptionFi": "Liitetiedoston tyyppi",
+          "conditions": [
+            "R-CRT-002"
+          ],
+          "codeList": "Refer to code list Attachment type"
+        },
+        {
+          "de": "DE-003-03",
+          "nameEn": "Attachment description",
+          "nameFi": "Liitetiedoston kuvaus",
+          "descriptionEn": "Textual description of the attached document.",
+          "descriptionFi": "Liitetiedoston kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-003-05",
+          "nameEn": "Attachment file name",
+          "nameFi": "Liitetiedoston nimi",
+          "descriptionEn": "The file name of the attached document.",
+          "descriptionFi": "Liitetiedoston nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-006-01",
+          "nameEn": "Certificate type, coded",
+          "nameFi": "Todistuksen tyyppi",
+          "descriptionEn": "A code representing the type of certificate.",
+          "descriptionFi": "Todistuksen tyyppi",
+          "conditions": [],
+          "codeList": "Refer to code list Certificate type"
+        },
+        {
+          "de": "DE-006-04",
+          "nameEn": "Certificate description",
+          "nameFi": "Todistuksen kuvaus",
+          "descriptionEn": "A description of the certificate.",
+          "descriptionFi": "Todistuksen kuvaus",
+          "conditions": [
+            "C-CRT-005"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-006-06",
+          "nameEn": "Certificate issuer type, coded",
+          "nameFi": "Todistuksen myöntäjän tyyppi",
+          "descriptionEn": "A code representing the type of the organisation that issued the certificate.",
+          "descriptionFi": "Todistuksen myöntäjän tyyppi",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-006-07",
+          "nameEn": "Certificate issuer flag state, coded",
+          "nameFi": "Todistuksen myöntäjän lippuvaltio",
+          "descriptionEn": "A code identifying the country of the flag that issued the certificate.",
+          "descriptionFi": "Todistuksen myöntäjän lippuvaltio",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-006-08",
+          "nameEn": "Certificate issuer, coded",
+          "nameFi": "Todistuksen myöntäjä",
+          "descriptionEn": "A code representing the body or organization that issued the certificate (in case it is a Recognized Organization, Recognized Security Organization or Class).",
+          "descriptionFi": "Todistuksen myöntäjä",
+          "conditions": [
+            "C-CRT-002"
+          ],
+          "codeList": "Refer to code list Certificate issuer"
+        },
+        {
+          "de": "DE-006-09",
+          "nameEn": "Certificate issuer name",
+          "nameFi": "Todistuksen myöntäjän nimi",
+          "descriptionEn": "The name of the body or organization that issued the certificate (in case it is a notified body, an insurance company or other).",
+          "descriptionFi": "Todistuksen myöntäjän nimi",
+          "conditions": [
+            "C-CRT-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-006-10",
+          "nameEn": "Certificate issue date",
+          "nameFi": "Todistuksen myöntämispäivä",
+          "descriptionEn": "The date when the certificate was issued.",
+          "descriptionFi": "Todistuksen myöntämispäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-006-11",
+          "nameEn": "Certificate date of expiry",
+          "nameFi": "Todistuksen voimassaolon päättymispäivä",
+          "descriptionEn": "The expiration date displayed on the certificate.",
+          "descriptionFi": "Todistuksen voimassaolon päättymispäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "CWA",
+      "title": "CWA - Crew list at arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Henkilön sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Henkilön etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-04",
+          "nameEn": "Person nationality, coded",
+          "nameFi": "Henkilön kansalaisuus",
+          "descriptionEn": "The stated or factual country of citizenship shown on the referenced person’s identification document.",
+          "descriptionFi": "Henkilön kansalaisuus",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-3 codes including user-defined codes from ISO/IEC 7501-1 (for special machine-readable passports) meant for persons without a defined nationality, such as XXA, XXB, XXC and XXX"
+        },
+        {
+          "de": "DE-035-05",
+          "nameEn": "Person date of birth",
+          "nameFi": "Henkilön syntymäaika",
+          "descriptionEn": "The referenced person's date of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymäaika",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-06",
+          "nameEn": "Person place of birth name",
+          "nameFi": "Henkilön syntymäpaikan nimi",
+          "descriptionEn": "The name of the referenced person's place of birth as shown on the person's identity or travel document.",
+          "descriptionFi": "Henkilön syntymäpaikan nimi",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-07",
+          "nameEn": "Person country of birth, coded",
+          "nameFi": "Henkilön syntymämaa",
+          "descriptionEn": "The code representing the referenced person's country of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymämaa",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": "ISO 3166-1 alpha-3 codes, and ISO 3166-3 alpha-4 codes for formerly used names of countries"
+        },
+        {
+          "de": "DE-035-08",
+          "nameEn": "Person gender, coded",
+          "nameFi": "Henkilön sukupuoli",
+          "descriptionEn": "A code representing the gender of the referenced person.",
+          "descriptionFi": "Henkilön sukupuoli",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (3499)"
+        },
+        {
+          "de": "DE-035-14",
+          "nameEn": "Crew member rank or rating, coded",
+          "nameFi": "Miehistönjäsenen asema tai pätevyys",
+          "descriptionEn": "A code representing the referenced crew member's rank or rating on the ship.",
+          "descriptionFi": "Miehistönjäsenen asema tai pätevyys",
+          "conditions": [
+            "G-PXA-001"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-035-16",
+          "nameEn": "Person identity or travel document type, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "descriptionEn": "A code representing the type of the referenced person's presented identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "conditions": [
+            "R-GENERAL-007"
+          ],
+          "codeList": "UN/EDIFACT codes (1001)"
+        },
+        {
+          "de": "DE-035-17",
+          "nameEn": "Person identity or travel document number",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "descriptionEn": "The number assigned to the referenced person's identity or travel document by the issuing nation.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-18",
+          "nameEn": "Person identity or travel document issuing nation, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "descriptionEn": "A code representing the nation issuing the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-035-22",
+          "nameEn": "Person identity or travel document expiry date",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "descriptionEn": "The expiry date shown on the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-09",
+          "nameEn": "Residence permit number",
+          "nameFi": "Oleskeluluvan numero",
+          "descriptionEn": "The number of the referenced person's residence permit",
+          "descriptionFi": "Oleskeluluvan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-10",
+          "nameEn": "Person visa number",
+          "nameFi": "Henkilön viisuminumero",
+          "descriptionEn": "The number assigned to the referenced person's visa by the issuing nation.",
+          "descriptionFi": "Henkilön viisuminumero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "CWD",
+      "title": "CWD - Crew list at departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Henkilön sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Henkilön etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-04",
+          "nameEn": "Person nationality, coded",
+          "nameFi": "Henkilön kansalaisuus",
+          "descriptionEn": "The stated or factual country of citizenship shown on the referenced person’s identification document.",
+          "descriptionFi": "Henkilön kansalaisuus",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-3 codes including user-defined codes from ISO/IEC 7501-1 (for special machine-readable passports) meant for persons without a defined nationality, such as XXA, XXB, XXC and XXX"
+        },
+        {
+          "de": "DE-035-05",
+          "nameEn": "Person date of birth",
+          "nameFi": "Henkilön syntymäaika",
+          "descriptionEn": "The referenced person's date of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymäaika",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-06",
+          "nameEn": "Person place of birth name",
+          "nameFi": "Henkilön syntymäpaikan nimi",
+          "descriptionEn": "The name of the referenced person's place of birth as shown on the person's identity or travel document.",
+          "descriptionFi": "Henkilön syntymäpaikan nimi",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-07",
+          "nameEn": "Person country of birth, coded",
+          "nameFi": "Henkilön syntymämaa",
+          "descriptionEn": "The code representing the referenced person's country of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymämaa",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": "ISO 3166-1 alpha-3 codes, and ISO 3166-3 alpha-4 codes for formerly used names of countries"
+        },
+        {
+          "de": "DE-035-08",
+          "nameEn": "Person gender, coded",
+          "nameFi": "Henkilön sukupuoli",
+          "descriptionEn": "A code representing the gender of the referenced person.",
+          "descriptionFi": "Henkilön sukupuoli",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (3499)"
+        },
+        {
+          "de": "DE-035-14",
+          "nameEn": "Crew member rank or rating, coded",
+          "nameFi": "Miehistönjäsenen asema tai pätevyys",
+          "descriptionEn": "A code representing the referenced crew member's rank or rating on the ship.",
+          "descriptionFi": "Miehistönjäsenen asema tai pätevyys",
+          "conditions": [
+            "G-PXA-001"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-035-16",
+          "nameEn": "Person identity or travel document type, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "descriptionEn": "A code representing the type of the referenced person's presented identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "conditions": [
+            "R-GENERAL-007"
+          ],
+          "codeList": "UN/EDIFACT codes (1001)"
+        },
+        {
+          "de": "DE-035-17",
+          "nameEn": "Person identity or travel document number",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "descriptionEn": "The number assigned to the referenced person's identity or travel document by the issuing nation.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-18",
+          "nameEn": "Person identity or travel document issuing nation, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "descriptionEn": "A code representing the nation issuing the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-035-22",
+          "nameEn": "Person identity or travel document expiry date",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "descriptionEn": "The expiry date shown on the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-09",
+          "nameEn": "Residence permit number",
+          "nameFi": "Oleskeluluvan numero",
+          "descriptionEn": "The number of the referenced person's residence permit",
+          "descriptionFi": "Oleskeluluvan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-10",
+          "nameEn": "Person visa number",
+          "nameFi": "Henkilön viisuminumero",
+          "descriptionEn": "The number assigned to the referenced person's visa by the issuing nation.",
+          "descriptionFi": "Henkilön viisuminumero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "DUE",
+      "title": "DUE - Fairway and port dues declaration",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-02",
+          "nameEn": "No fairway dues declaration reason, coded",
+          "nameFi": "Syy väylämaksun maksamatta jättämiselle tai alennukselle",
+          "descriptionEn": "A code representing the reason why there is no fairway dues declaration submitted.",
+          "descriptionFi": "Syy väylämaksun maksamatta jättämiselle tai alennukselle",
+          "conditions": [],
+          "codeList": "Refer to code list No fairway dues declaration reason"
+        },
+        {
+          "de": "DE-077-03",
+          "nameEn": "Periodic fairway dues declaration indicator",
+          "nameFi": "Väylämaksun maksaminen etukäteen",
+          "descriptionEn": "A yes/no indicator whether this port call belongs to a periodic fairway dues declaration.",
+          "descriptionFi": "Väylämaksun maksaminen etukäteen",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-077-11",
+          "nameEn": "Fairway due liable party identification number",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän tunnistenumero",
+          "descriptionEn": "The EORI number of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän tunnistenumero",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-12",
+          "nameEn": "Fairway due liable party additional identification number",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän lisätunnistenumero",
+          "descriptionEn": "Other identification number of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän lisätunnistenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-13",
+          "nameEn": "Fairway due liable party name",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän nimi",
+          "descriptionEn": "The name of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän nimi",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-14",
+          "nameEn": "Fairway due liable party email address",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän sähköpostiosoite",
+          "descriptionEn": "The email address of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän sähköpostiosoite",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-15",
+          "nameEn": "Fairway due liable party address street",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän katuosoite",
+          "descriptionEn": "The street name of the address of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän katuosoite",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-18",
+          "nameEn": "Fairway due liable party address postal code",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen postinumero",
+          "descriptionEn": "The postal code of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen postinumero",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-19",
+          "nameEn": "Fairway due liable party address city name",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen postitoimipaikka",
+          "descriptionEn": "The city name of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen postitoimipaikka",
+          "conditions": [
+            "NR-DUE-667"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-077-20",
+          "nameEn": "Fairway due liable party address country, coded",
+          "nameFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen maa",
+          "descriptionEn": "A code identifying the address country of the party liable to pay the fairway dues.",
+          "descriptionFi": "Väylämaksuvelvollisen tai laivaisännän osoitteen maa",
+          "conditions": [
+            "NR-DUE-667",
+            "NR-DUE-665"
+          ],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-077-21",
+          "nameEn": "Fairway due liable party indicator",
+          "nameFi": "Ilmoittaja toimii väylämaksujen vastuullisena edustajana",
+          "descriptionEn": "A yes/no indicator whether the declarant is acting as a jointly liable representive for paying the farway dues.",
+          "descriptionFi": "Ilmoittaja toimii väylämaksujen vastuullisena edustajana",
+          "conditions": [
+            "NR-DUE-665"
+          ],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        }
+      ]
+    },
+    {
+      "code": "EFF",
+      "title": "EFF - Crew's effects declaration",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Miehistön jäsenen sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Miehistön jäsenen sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Miehistön jäsenen etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Miehistön jäsenen etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-14",
+          "nameEn": "Crew member rank or rating, coded",
+          "nameFi": "Miehistön jäsenen asema tai pätevyys",
+          "descriptionEn": "A code representing the referenced crew member's rank or rating on the ship.",
+          "descriptionFi": "Miehistön jäsenen asema tai pätevyys",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-036-01",
+          "nameEn": "Crew effects description",
+          "nameFi": "Omaisuuden kuvaus",
+          "descriptionEn": "A description of the type of the referenced crew's effects.",
+          "descriptionFi": "Omaisuuden kuvaus",
+          "conditions": [
+            "C-EFF-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-036-02",
+          "nameEn": "Crew effects description, coded",
+          "nameFi": "Omaisuuden tyyppi",
+          "descriptionEn": "A code representing the type of the referenced crew's effects.",
+          "descriptionFi": "Omaisuuden tyyppi",
+          "conditions": [],
+          "codeList": "Refer to code list Crew effect"
+        },
+        {
+          "de": "DE-036-03",
+          "nameEn": "Crew effects onboard quantity",
+          "nameFi": "Omaisuuden määrä aluksella",
+          "descriptionEn": "The quantity or count of the type of the referenced crew's effects.",
+          "descriptionFi": "Omaisuuden määrä aluksella",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-020"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "HZA",
+      "title": "HZA- Notification of hazardous materials (dangerous and polluting goods) on board at arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-01",
+          "nameEn": "INF ship class, coded",
+          "nameFi": "INF-alusluokka",
+          "descriptionEn": "Class of the ship needed for INF cargoes as defined in Regulation VII/14.2 / Code for the license of the vessel according to the INF Code. To be provided only if the ship carries class 7 cargo.",
+          "descriptionFi": "INF-alusluokka",
+          "conditions": [],
+          "codeList": "Refer to code list INF ship class"
+        },
+        {
+          "de": "DE-046-02",
+          "nameEn": "DPG list on board indicator",
+          "nameFi": "DPG-luettelo aluksella",
+          "descriptionEn": "A yes/no indicator whether a list or manifest or appropriate loading plan giving details of the dangerous or polluting goods carried and of their location on the ship is on board.",
+          "descriptionFi": "DPG-luettelo aluksella",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-046-03",
+          "nameEn": "DPG contact name",
+          "nameFi": "DPG-yhteyden nimi",
+          "descriptionEn": "The name of the organisation from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyden nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-04",
+          "nameEn": "DPG contact phone number",
+          "nameFi": "DPG-yhteyspuhelinnumero",
+          "descriptionEn": "The telephone number from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyspuhelinnumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-05",
+          "nameEn": "DPG contact email",
+          "nameFi": "DPG-yhteyssähköpostiosoite",
+          "descriptionEn": "the e-mail address from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyssähköpostiosoite",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-08",
+          "nameEn": "Baltic MOU indicator",
+          "nameFi": "Noudatetaan Itämeren MOU-sopimusta",
+          "descriptionEn": "A yes/no indicator whether the ship is reporting under the Memorandum of Understanding for the Transport of Dangerous Goods on Ro-Ro Ships in the Baltic Sea.",
+          "descriptionFi": "Noudatetaan Itämeren MOU-sopimusta",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-047-01",
+          "nameEn": "Port of loading, coded",
+          "nameFi": "Lastaussatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Lastaussatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-04",
+          "nameEn": "Port of discharge, coded",
+          "nameFi": "Purkusatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Purkusatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-42",
+          "nameEn": "Cargo operation, coded",
+          "nameFi": "Lastin käsittely",
+          "descriptionEn": "A code indicating whether the cargo will be loaded, unloaded or will remain on board (transit) at a location in the port.",
+          "descriptionFi": "Lastin käsittely",
+          "conditions": [
+            "R-HZA-005"
+          ],
+          "codeList": "Refer to code list Cargo operation"
+        },
+        {
+          "de": "DE-048-01",
+          "nameEn": "Cargo item number",
+          "nameFi": "Kuljetettavan aineen numero",
+          "descriptionEn": "The number of the item in relation to the total number of items contained in the declaration, the summary declaration, notification or proof of the customs status of Union goods, where there is more than one item of goods.",
+          "descriptionFi": "Kuljetettavan aineen numero",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-021",
+            "G-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-01",
+          "nameEn": "Dangerous goods regulation, coded",
+          "nameFi": "Vaarallista ainetta koskeva säännöstö (irtolasti / pakattu lasti)",
+          "descriptionEn": "A code specifying the applicable dangerous goods regulatory instrument, such as IMDG, IBC, IGC, IMSBC and MARPOL Annex I.",
+          "descriptionFi": "Vaarallista ainetta koskeva säännöstö (irtolasti / pakattu lasti)",
+          "conditions": [
+            "R-HZA-002"
+          ],
+          "codeList": "UN/EDIFACT code 8273"
+        },
+        {
+          "de": "DE-049-02",
+          "nameEn": "Dangerous goods hazard class, coded",
+          "nameFi": "Vaarallisen aineen vaaraluokka",
+          "descriptionEn": "The hazard class code of the referenced dangerous goods according to the specified regulation.",
+          "descriptionFi": "Vaarallisen aineen vaaraluokka",
+          "conditions": [
+            "C-HZA-003"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-049-03",
+          "nameEn": "Dangerous goods UNDG number, coded",
+          "nameFi": "Vaarallisen aineen UN-numero",
+          "descriptionEn": "The United Nations Dangerous Goods Identifier (UNDG) assigned by the UN Sub-Committee of Experts on the Transport of Dangerous Goods and shown in the IMO IMDG.",
+          "descriptionFi": "Vaarallisen aineen UN-numero",
+          "conditions": [
+            "C-HZA-001"
+          ],
+          "codeList": "Refer to the UNDG Code"
+        },
+        {
+          "de": "DE-049-04",
+          "nameEn": "Dangerous goods proper shipping name",
+          "nameFi": "Vaarallisten aineiden kuljetusnimi",
+          "descriptionEn": "The proper shipping name for goods under the IMDG Code, or the product name for goods under the IBC Code and IGC Code, or the bulk cargo shipping name for goods under the IMSBC Code, or the name of oil for goods under Annex I to the MARPOL Convention.",
+          "descriptionFi": "Vaarallisten aineiden kuljetusnimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-05",
+          "nameEn": "Dangerous goods technical specifications",
+          "nameFi": "Vaarallisen aineen tekniset tiedot",
+          "descriptionEn": "The recognized chemical or biological name or other name currently used for the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen tekniset tiedot",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-06",
+          "nameEn": "Dangerous goods packing group",
+          "nameFi": "Vaarallisen aineen pakkausryhmä",
+          "descriptionEn": "The packing group according to the UN Recommendations on the Transport of Dangerous Goods and IMO IMDG Code.",
+          "descriptionFi": "Vaarallisen aineen pakkausryhmä",
+          "conditions": [
+            "R-HZA-010"
+          ],
+          "codeList": "Code as defined in IMDG: \"I\", \"II\" and \"III\""
+        },
+        {
+          "de": "DE-049-07",
+          "nameEn": "Dangerous goods additional information",
+          "nameFi": "Vaarallisten aineiden lisätiedot",
+          "descriptionEn": "A statement of any other information relevant to the characteristics or hazards of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden lisätiedot",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-08",
+          "nameEn": "Dangerous goods marine pollution type, coded",
+          "nameFi": "Vaarallisten aineiden meren pilaantumistyyppi",
+          "descriptionEn": "A code representing the type of marine pollutant properties for the referenced dangerous goods from the IMO IMDG Code or IBC Code or MARPOL Convention.",
+          "descriptionFi": "Vaarallisten aineiden meren pilaantumistyyppi",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-049-09",
+          "nameEn": "Dangerous goods flashpoint",
+          "nameFi": "Vaarallisten aineiden leimahduspiste",
+          "descriptionEn": "The flashpoint of the referenced dangerous goods according to the IMO IMDG Code, expressed in degrees Celsius.",
+          "descriptionFi": "Vaarallisten aineiden leimahduspiste",
+          "conditions": [
+            "R-GENERAL-011",
+            "C-HZA-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-10",
+          "nameEn": "Dangerous goods net mass",
+          "nameFi": "Vaarallisen aineen nettomassa",
+          "descriptionEn": "The net mass of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen nettomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-036",
+            "C-HZA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-11",
+          "nameEn": "Dangerous goods gross mass",
+          "nameFi": "Vaarallisen aineen bruttomassa",
+          "descriptionEn": "The gross mass of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen bruttomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-036",
+            "C-HZA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-12",
+          "nameEn": "Dangerous goods volume",
+          "nameFi": "Vaarallisen aineen tilavuus",
+          "descriptionEn": "The volume of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen tilavuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-009"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-15",
+          "nameEn": "Dangerous goods number of packages",
+          "nameFi": "Vaarallisten aineiden pakkausten lukumäärä",
+          "descriptionEn": "The number of packages of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden pakkausten lukumäärä",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-16",
+          "nameEn": "Dangerous goods package type, coded",
+          "nameFi": "Vaarallisten aineiden pakkaustyyppi",
+          "descriptionEn": "A code representing the package type of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden pakkaustyyppi",
+          "conditions": [],
+          "codeList": "UN/ECE Recommendation 21 Annex VI (UN/EDIFACT Codes 7065)"
+        },
+        {
+          "de": "DE-049-34",
+          "nameEn": "Dangerous goods flashpoint description, coded",
+          "nameFi": "Vaarallisten aineiden leimahduspisteen kuvaus",
+          "descriptionEn": "A code describing the flashpoint of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden leimahduspisteen kuvaus",
+          "conditions": [],
+          "codeList": "Refer to code list Flashpoint description"
+        },
+        {
+          "de": "DE-051-01",
+          "nameEn": "Transport equipment identification number",
+          "nameFi": "Kuljetusvälineen tunnistenumero",
+          "descriptionEn": "Marks (letters and/or numbers) which identify the transport equipment (e.g. container, trailer, semi-trailer, swap body). For containers this shall be the identification code as defined in ISO 6346. For swap bodies and semi-trailers the ILU (Intermodal Loading Units) code as introduced by the European EN 13044 standard shall be used.",
+          "descriptionFi": "Kuljetusvälineen tunnistenumero",
+          "conditions": [
+            "C-HZA-009"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-02",
+          "nameEn": "Position on board",
+          "nameFi": "Sijainti aluksella",
+          "descriptionEn": "The position or place where the referenced transport equipment, cargo hold or tank is placed on board.",
+          "descriptionFi": "Sijainti aluksella",
+          "conditions": [
+            "C-HZA-010",
+            "G-HZA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-22",
+          "nameEn": "Transport equipment category, coded",
+          "nameFi": "Kuljetusvälineen luokka",
+          "descriptionEn": "A code identifying the category of the transport equipment.",
+          "descriptionFi": "Kuljetusvälineen luokka",
+          "conditions": [
+            "R-HZA-007"
+          ],
+          "codeList": "UN/EDIFACT codes (8053)"
+        }
+      ]
+    },
+    {
+      "code": "HZD",
+      "title": "HZD - Notification of hazardous materials (dangerous and polluting goods) on board at departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "A description of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-01",
+          "nameEn": "INF ship class, coded",
+          "nameFi": "INF-alusluokka",
+          "descriptionEn": "Class of the ship needed for INF cargoes as defined in Regulation VII/14.2 / Code for the license of the vessel according to the INF Code. To be provided only if the ship carries class 7 cargo.",
+          "descriptionFi": "INF-alusluokka",
+          "conditions": [],
+          "codeList": "Refer to code list INF ship class"
+        },
+        {
+          "de": "DE-046-02",
+          "nameEn": "DPG list on board indicator",
+          "nameFi": "DPG-luettelo aluksella",
+          "descriptionEn": "A yes/no indicator whether a list or manifest or appropriate loading plan giving details of the dangerous or polluting goods carried and of their location on the ship is on board.",
+          "descriptionFi": "DPG-luettelo aluksella",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-046-03",
+          "nameEn": "DPG contact name",
+          "nameFi": "DPG-yhteyden nimi",
+          "descriptionEn": "The name of the organisation from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyden nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-04",
+          "nameEn": "DPG contact phone number",
+          "nameFi": "DPG-yhteyspuhelinnumero",
+          "descriptionEn": "The telephone number from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyspuhelinnumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-05",
+          "nameEn": "DPG contact email",
+          "nameFi": "DPG-yhteyssähköpostiosoite",
+          "descriptionEn": "the e-mail address from which detailed information on the polluting and dangerous cargo may be obtained.",
+          "descriptionFi": "DPG-yhteyssähköpostiosoite",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-046-08",
+          "nameEn": "Baltic MOU indicator",
+          "nameFi": "Noudatetaan Itämeren MOU-sopimusta",
+          "descriptionEn": "A yes/no indicator whether the ship is reporting under the Memorandum of Understanding for the Transport of Dangerous Goods on Ro-Ro Ships in the Baltic Sea.",
+          "descriptionFi": "Noudatetaan Itämeren MOU-sopimusta",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-047-01",
+          "nameEn": "Port of loading, coded",
+          "nameFi": "Lastaussatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Lastaussatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-04",
+          "nameEn": "Port of discharge, coded",
+          "nameFi": "Purkusatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Purkusatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-42",
+          "nameEn": "Cargo operation, coded",
+          "nameFi": "Lastin käsittely",
+          "descriptionEn": "A code indicating whether the cargo will be loaded, unloaded or will remain on board (transit) at a location in the port.",
+          "descriptionFi": "Lastin käsittely",
+          "conditions": [
+            "R-HZD-001"
+          ],
+          "codeList": "Refer to code list Cargo operation"
+        },
+        {
+          "de": "DE-048-01",
+          "nameEn": "Cargo item number",
+          "nameFi": "Kuljetettavan aineen numero",
+          "descriptionEn": "The number of the item in relation to the total number of items contained in the declaration, the summary declaration, notification or proof of the customs status of Union goods, where there is more than one item of goods.",
+          "descriptionFi": "Kuljetettavan aineen numero",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-021",
+            "G-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-01",
+          "nameEn": "Dangerous goods regulation, coded",
+          "nameFi": "Vaarallista ainetta koskeva säännöstö (irtolasti / pakattu lasti)",
+          "descriptionEn": "A code specifying the applicable dangerous goods regulatory instrument, such as IMDG, IBC, IGC, IMSBC and MARPOL Annex I.",
+          "descriptionFi": "Vaarallista ainetta koskeva säännöstö (irtolasti / pakattu lasti)",
+          "conditions": [
+            "R-HZA-002"
+          ],
+          "codeList": "UN/EDIFACT code 8273"
+        },
+        {
+          "de": "DE-049-02",
+          "nameEn": "Dangerous goods hazard class, coded",
+          "nameFi": "Vaarallisen aineen vaaraluokka",
+          "descriptionEn": "The hazard class code of the referenced dangerous goods according to the specified regulation.",
+          "descriptionFi": "Vaarallisen aineen vaaraluokka",
+          "conditions": [
+            "C-HZA-003"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-049-03",
+          "nameEn": "Dangerous goods UNDG number, coded",
+          "nameFi": "Vaarallisen aineen UN-numero",
+          "descriptionEn": "The United Nations Dangerous Goods Identifier (UNDG) assigned by the UN Sub-Committee of Experts on the Transport of Dangerous Goods and shown in the IMO IMDG.",
+          "descriptionFi": "Vaarallisen aineen UN-numero",
+          "conditions": [
+            "C-HZA-001"
+          ],
+          "codeList": "Refer to the UNDG Code"
+        },
+        {
+          "de": "DE-049-04",
+          "nameEn": "Dangerous goods proper shipping name",
+          "nameFi": "Vaarallisten aineiden kuljetusnimi",
+          "descriptionEn": "The proper shipping name for goods under the IMDG Code, or the product name for goods under the IBC Code and IGC Code, or the bulk cargo shipping name for goods under the IMSBC Code, or the name of oil for goods under Annex I to the MARPOL Convention.",
+          "descriptionFi": "Vaarallisten aineiden kuljetusnimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-05",
+          "nameEn": "Dangerous goods technical specifications",
+          "nameFi": "Vaarallisen aineen tekniset tiedot",
+          "descriptionEn": "The recognized chemical or biological name or other name currently used for the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen tekniset tiedot",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-06",
+          "nameEn": "Dangerous goods packing group",
+          "nameFi": "Vaarallisen aineen pakkausryhmä",
+          "descriptionEn": "The packing group according to the UN Recommendations on the Transport of Dangerous Goods and IMO IMDG Code.",
+          "descriptionFi": "Vaarallisen aineen pakkausryhmä",
+          "conditions": [
+            "R-HZA-010"
+          ],
+          "codeList": "Code as defined in IMDG: \"I\", \"II\" and \"III\""
+        },
+        {
+          "de": "DE-049-07",
+          "nameEn": "Dangerous goods additional information",
+          "nameFi": "Vaarallisten aineiden lisätiedot",
+          "descriptionEn": "A statement of any other information relevant to the characteristics or hazards of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden lisätiedot",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-08",
+          "nameEn": "Dangerous goods marine pollution type, coded",
+          "nameFi": "Vaarallisten aineiden meren pilaantumistyyppi",
+          "descriptionEn": "A code representing the type of marine pollutant properties for the referenced dangerous goods from the IMO IMDG Code or IBC Code or MARPOL Convention.",
+          "descriptionFi": "Vaarallisten aineiden meren pilaantumistyyppi",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-049-09",
+          "nameEn": "Dangerous goods flashpoint",
+          "nameFi": "Vaarallisten aineiden leimahduspiste",
+          "descriptionEn": "The flashpoint of the referenced dangerous goods according to the IMO IMDG Code, expressed in degrees Celsius.",
+          "descriptionFi": "Vaarallisten aineiden leimahduspiste",
+          "conditions": [
+            "R-GENERAL-011",
+            "C-HZA-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-10",
+          "nameEn": "Dangerous goods net mass",
+          "nameFi": "Vaarallisen aineen nettomassa",
+          "descriptionEn": "The net mass of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen nettomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-036",
+            "C-HZA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-11",
+          "nameEn": "Dangerous goods gross mass",
+          "nameFi": "Vaarallisen aineen bruttomassa",
+          "descriptionEn": "The gross mass of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen bruttomassa",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-036",
+            "C-HZA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-12",
+          "nameEn": "Dangerous goods volume",
+          "nameFi": "Vaarallisen aineen tilavuus",
+          "descriptionEn": "The volume of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisen aineen tilavuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-009"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-15",
+          "nameEn": "Dangerous goods number of packages",
+          "nameFi": "Vaarallisten aineiden pakkausten lukumäärä",
+          "descriptionEn": "The number of packages of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden pakkausten lukumäärä",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-049-16",
+          "nameEn": "Dangerous goods package type, coded",
+          "nameFi": "Vaarallisten aineiden pakkaustyyppi",
+          "descriptionEn": "A code representing the package type of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden pakkaustyyppi",
+          "conditions": [],
+          "codeList": "UN/ECE Recommendation 21 Annex VI (UN/EDIFACT Codes 7065)"
+        },
+        {
+          "de": "DE-049-34",
+          "nameEn": "Dangerous goods flashpoint description, coded",
+          "nameFi": "Vaarallisten aineiden leimahduspisteen kuvaus",
+          "descriptionEn": "A code describing the flashpoint of the referenced dangerous goods.",
+          "descriptionFi": "Vaarallisten aineiden leimahduspisteen kuvaus",
+          "conditions": [],
+          "codeList": "Refer to code list Flashpoint description"
+        },
+        {
+          "de": "DE-051-01",
+          "nameEn": "Transport equipment identification number",
+          "nameFi": "Kuljetusvälineen tunnistenumero",
+          "descriptionEn": "Marks (letters and/or numbers) which identify the transport equipment (e.g. container, trailer, semi-trailer, swap body). For containers this shall be the identification code as defined in ISO 6346. For swap bodies and semi-trailers the ILU (Intermodal Loading Units) code as introduced by the European EN 13044 standard shall be used.",
+          "descriptionFi": "Kuljetusvälineen tunnistenumero",
+          "conditions": [
+            "C-HZA-009"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-02",
+          "nameEn": "Position on board",
+          "nameFi": "Sijainti aluksella",
+          "descriptionEn": "The position or place where the referenced transport equipment, cargo hold or tank is placed on board.",
+          "descriptionFi": "Sijainti aluksella",
+          "conditions": [
+            "C-HZA-010",
+            "G-HZA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-051-22",
+          "nameEn": "Transport equipment category, coded",
+          "nameFi": "Kuljetusvälineen tyyppi",
+          "descriptionEn": "A code identifying the category of the transport equipment.",
+          "descriptionFi": "Kuljetusvälineen tyyppi",
+          "conditions": [
+            "R-HZA-007"
+          ],
+          "codeList": "UN/EDIFACT codes (8053)"
+        }
+      ]
+    },
+    {
+      "code": "MDD",
+      "title": "MDD - Maritime declaration of health details",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-01",
+          "nameEn": "Person type, coded",
+          "nameFi": "Henkilön tyyppi",
+          "descriptionEn": "A code representing the type of the person on board the ship, such as master, crew member or passenger.",
+          "descriptionFi": "Henkilön tyyppi",
+          "conditions": [
+            "R-MDD-001"
+          ],
+          "codeList": "UN/EDIFACT codes (3035)"
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Henkilön sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Henkilön etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-04",
+          "nameEn": "Person nationality, coded",
+          "nameFi": "Henkilön kansalaisuus",
+          "descriptionEn": "The stated or factual country of citizenship shown on the referenced person’s identification document.",
+          "descriptionFi": "Henkilön kansalaisuus",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-3 codes including user-defined codes from ISO/IEC 7501-1 (for special machine-readable passports) meant for persons without a defined nationality, such as XXA, XXB, XXC and XXX"
+        },
+        {
+          "de": "DE-035-05",
+          "nameEn": "Person date of birth",
+          "nameFi": "Henkilön syntymäaika",
+          "descriptionEn": "The referenced person's date of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymäaika",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-08",
+          "nameEn": "Person gender, coded",
+          "nameFi": "Henkilön sukupuoli",
+          "descriptionEn": "A code representing the gender of the referenced person.",
+          "descriptionFi": "Henkilön sukupuoli",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (3499)"
+        },
+        {
+          "de": "DE-035-09",
+          "nameEn": "Person port of embarkation, coded",
+          "nameFi": "Henkilön alukseen nousun satama",
+          "descriptionEn": "A code representing the port from which the referenced person embarked the ship.",
+          "descriptionFi": "Henkilön alukseen nousun satama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-035-10",
+          "nameEn": "Person embarkation date and time",
+          "nameFi": "Henkilön alukseen nousun päivämäärä ja kellonaika",
+          "descriptionEn": "Date and time when the person embarked the ship by invitation or boarded without invitation.",
+          "descriptionFi": "Henkilön alukseen nousun päivämäärä ja kellonaika",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-14",
+          "nameEn": "Crew member rank or rating, coded",
+          "nameFi": "Miehistön jäsenen asema tai pätevyys",
+          "descriptionEn": "A code representing the referenced crew member's rank or rating on the ship.",
+          "descriptionFi": "Miehistön jäsenen asema tai pätevyys",
+          "conditions": [
+            "C-MDH-007"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-037-01",
+          "nameEn": "Illness",
+          "nameFi": "Sairaus",
+          "descriptionEn": "Nature of illness.",
+          "descriptionFi": "Sairaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-037-02",
+          "nameEn": "Symptoms onset date",
+          "nameFi": "Oireiden alkamisajankohta",
+          "descriptionEn": "Date of onset of symptoms.",
+          "descriptionFi": "Oireiden alkamisajankohta",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-037-03",
+          "nameEn": "Health status reported indicator",
+          "nameFi": "Terveydentilasta on raportoitu",
+          "descriptionEn": "A yes/no indicator whether the health status of the referenced person was reported to a port medical officer.",
+          "descriptionFi": "Terveydentilasta on raportoitu",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-037-04",
+          "nameEn": "Health status, coded",
+          "nameFi": "Terveydentila",
+          "descriptionEn": "A code indicating whether the person recovered, is still ill or died.",
+          "descriptionFi": "Terveydentila",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-037-05",
+          "nameEn": "Case Disposition, coded",
+          "nameFi": "Tapahtuman jatkokäsittely",
+          "descriptionEn": "A code indicating if the person is still on board, was evacuated, or was buried at sea.",
+          "descriptionFi": "Tapahtuman jatkokäsittely",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-037-06",
+          "nameEn": "Location of evacuation, coded",
+          "nameFi": "Evakuointipaikka",
+          "descriptionEn": "The code of port or airport to which the person was evacuated.",
+          "descriptionFi": "Evakuointipaikka",
+          "conditions": [
+            "C-MDH-008"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-037-07",
+          "nameEn": "Location of evacuation name",
+          "nameFi": "Evakuointipaikan nimi",
+          "descriptionEn": "The name of the port or airport where the person was evacuated.",
+          "descriptionFi": "Evakuointipaikan nimi",
+          "conditions": [
+            "C-MDH-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-037-08",
+          "nameEn": "Treatment",
+          "nameFi": "Hoito",
+          "descriptionEn": "A description of the drugs, medicines or other treatment given to patient.",
+          "descriptionFi": "Hoito",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-037-09",
+          "nameEn": "Person health details comments",
+          "nameFi": "Kuvaus henkilön terveydentilasta",
+          "descriptionEn": "Comments on the specific case in the Maritime Declaration of Health's attachment.",
+          "descriptionFi": "Kuvaus henkilön terveydentilasta",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "MDH",
+      "title": "MDH - Maritime declaration of health",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-01",
+          "nameEn": "Visited affected area indicator",
+          "nameFi": "Alus on vieraillut epidemia-alueella",
+          "descriptionEn": "A yes/no indicator whether ship visited an infected area identified by the World Health Organization",
+          "descriptionFi": "Alus on vieraillut epidemia-alueella",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-02",
+          "nameEn": "Port of call in affected area, coded",
+          "nameFi": "Käyntisatama epidemia-alueella",
+          "descriptionEn": "If the ship visited an infected area identified by WHO, the port of call in that infected area.",
+          "descriptionFi": "Käyntisatama epidemia-alueella",
+          "conditions": [
+            "C-MDH-002"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-032-03",
+          "nameEn": "Date of call in affected area",
+          "nameFi": "Päivä, jolloin alus vieraili epidemia-alueella",
+          "descriptionEn": "If the ship visited an infected area identified by WHO, the date of the call in that infected area.",
+          "descriptionFi": "Päivä, jolloin alus vieraili epidemia-alueella",
+          "conditions": [
+            "R-GENERAL-006",
+            "C-MDH-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-04",
+          "nameEn": "Person died indicator",
+          "nameFi": "Henkilön kuolema",
+          "descriptionEn": "A yes/no indicator whether any person died on board during the voyage otherwise than as a result of accident.",
+          "descriptionFi": "Henkilön kuolema",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-05",
+          "nameEn": "Disease on board indicator",
+          "nameFi": "Tautitapaus aluksella",
+          "descriptionEn": "A yes/no indicator whether there is, or has been during the international voyage, any case of disease which you suspect to be of an infectious nature. In the absence of a surgeon, the master should regard the following symptoms as grounds for suspecting the existence of a disease of an infectious nature: (a) fever, persisting for several days or accompanied by (i) prostration; (ii) decreased consciousness; (iii) glandular swelling; (iv) jaundice; (v) cough or shortness of breath; (vi) unusual bleeding; or (vii) paralysis. (b) with or without fever: (i) any acute skin rash or eruption; (ii) severe vomiting (other than sea sickness); (iii) severe diarrhoea; or (iv) recurrent convulsions.",
+          "descriptionFi": "Tautitapaus aluksella",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-06",
+          "nameEn": "Ill persons greater than expected indicator",
+          "nameFi": "Odotettua enemmän sairaita henkilöitä",
+          "descriptionEn": "A yes/no indicator whether the total number of ill persons during the voyage has been greater than normal/expected.",
+          "descriptionFi": "Odotettua enemmän sairaita henkilöitä",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-07",
+          "nameEn": "Ill persons now indicator",
+          "nameFi": "Aluksella on parhaillaan sairaita henkilöitä",
+          "descriptionEn": "A yes/no indicator whether there is any ill person on board now.",
+          "descriptionFi": "Aluksella on parhaillaan sairaita henkilöitä",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-08",
+          "nameEn": "Medical practitioner consulted indicator",
+          "nameFi": "Lääkäri on antanut arvion",
+          "descriptionEn": "A yes/no indicator whether a medical practitioner was consulted",
+          "descriptionFi": "Lääkäri on antanut arvion",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-09",
+          "nameEn": "Infection condition on board indicator",
+          "nameFi": "Tartunta aluksella",
+          "descriptionEn": "A yes/no indicator whether the declarant is aware of any condition on board which may lead to infection or spread of disease.",
+          "descriptionFi": "Tartunta aluksella",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-10",
+          "nameEn": "Sanitary measure applied indicator",
+          "nameFi": "Aluksella toteutettu sanitaatiotoimenpide",
+          "descriptionEn": "A yes/no indicator whether any sanitary measure (e.g. quarantine, isolation, disinfection or decontamination) has been applied on board.",
+          "descriptionFi": "Aluksella toteutettu sanitaatiotoimenpide",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-11",
+          "nameEn": "Sick animal indicator",
+          "nameFi": "Aluksella on sairas eläin",
+          "descriptionEn": "A yes/no indicator whether there is a sick animal or pet on board.",
+          "descriptionFi": "Aluksella on sairas eläin",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-032-12",
+          "nameEn": "Number of ill persons",
+          "nameFi": "Sairaiden määrä",
+          "descriptionEn": "Number of ill persons during the voyage.",
+          "descriptionFi": "Sairaiden määrä",
+          "conditions": [
+            "C-MDH-005"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-13",
+          "nameEn": "Sanitary measure description",
+          "nameFi": "Sanitaatiotoimenpiteen kuvaus",
+          "descriptionEn": "A description on the applied sanitary measure.",
+          "descriptionFi": "Sanitaatiotoimenpiteen kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-14",
+          "nameEn": "Sanitary measure place",
+          "nameFi": "Sanitaatiotoimenpiteen paikka",
+          "descriptionEn": "The place of the applied sanitary measure.",
+          "descriptionFi": "Sanitaatiotoimenpiteen paikka",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-15",
+          "nameEn": "Sanitary measure date",
+          "nameFi": "Sanitaatiotoimenpiteen päivämäärä",
+          "descriptionEn": "The date of the applied sanitary measure.",
+          "descriptionFi": "Sanitaatiotoimenpiteen päivämäärä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-17",
+          "nameEn": "Number of dead persons",
+          "nameFi": "Kuolleiden määrä",
+          "descriptionEn": "Number of persons that died on board during the voyage otherwise than as a result of accident",
+          "descriptionFi": "Kuolleiden määrä",
+          "conditions": [
+            "C-MDH-005"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-032-18",
+          "nameEn": "Sanitary measures type, coded",
+          "nameFi": "Sanitaatiotoimenpiteen tyyppi",
+          "descriptionEn": "A code representing the applied sanitary measure.",
+          "descriptionFi": "Sanitaatiotoimenpiteen tyyppi",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-033-01",
+          "nameEn": "Valid ship sanitation control exemption or control certificate, indicator",
+          "nameFi": "Voimassa oleva aluksen sanitaatiotarkastusta koskeva vapautus tai tarkastustodistus",
+          "descriptionEn": "A yes/no indicator whether the ship has a valid Ship Sanitation Control Exemption or Control Certificate on board.",
+          "descriptionFi": "Voimassa oleva aluksen sanitaatiotarkastusta koskeva vapautus tai tarkastustodistus",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-033-02",
+          "nameEn": "Sanitation control certificate port of issue, coded",
+          "nameFi": "Satama, jossa sanitaatiotarkastusta koskeva vapautus myönnettiin",
+          "descriptionEn": "A code identifying the location where the Sanitation Control Exemption or Control Certificate was issued.",
+          "descriptionFi": "Satama, jossa sanitaatiotarkastusta koskeva vapautus myönnettiin",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-033-03",
+          "nameEn": "Sanitation control certificate date of issue",
+          "nameFi": "Päivä, jolloin sanitaatiotarkastusta koskeva vapautus myönnettiin",
+          "descriptionEn": "The date when the Sanitation Control Exemption or Control Certificate was issued.",
+          "descriptionFi": "Päivä, jolloin sanitaatiotarkastusta koskeva vapautus myönnettiin",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-033-04",
+          "nameEn": "Re-inspection required indicator",
+          "nameFi": "Uudelleentarkastus vaadittu",
+          "descriptionEn": "A yes/no indicator whether re-inspection is required.",
+          "descriptionFi": "Uudelleentarkastus vaadittu",
+          "conditions": [
+            "C-MDH-001"
+          ],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-034-04",
+          "nameEn": "Stowaways found indicator",
+          "nameFi": "Salamatkustajia löydetty",
+          "descriptionEn": "A yes/no indicator whether any stowaways have been found on board.",
+          "descriptionFi": "Salamatkustajia löydetty",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-042-04",
+          "nameEn": "Stowaway port of boarding, coded",
+          "nameFi": "Satama, jossa salamatkustaja nousi alukseen",
+          "descriptionEn": "A code identifying the port at which the referenced stowaway boarded the ship.",
+          "descriptionFi": "Satama, jossa salamatkustaja nousi alukseen",
+          "conditions": [
+            "G-MDH-002"
+          ],
+          "codeList": "UN/LOCODE"
+        }
+      ]
+    },
+    {
+      "code": "MTS",
+      "title": "MTS - Maritime transport statistics",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-06",
+          "nameEn": "Number of non-cruise passengers",
+          "nameFi": "Matkustajien lukumäärä, pois lukien risteilymatkustajat",
+          "descriptionEn": "The number of passengers, excluding cruise passengers (sea passengers making a sea journey on a cruise ship).",
+          "descriptionFi": "Matkustajien lukumäärä, pois lukien risteilymatkustajat",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-07",
+          "nameEn": "Number of cruise passengers",
+          "nameFi": "Risteilymatkustajien määrä",
+          "descriptionEn": "The number of sea passengers making a sea journey on a cruise ship.",
+          "descriptionFi": "Risteilymatkustajien määrä",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-08",
+          "nameEn": "Number of cruise excursion passengers",
+          "nameFi": "Risteilyn maissa käyneiden matkustajien määrä",
+          "descriptionEn": "The number of cruise passengers on a short visit to a tourist attraction associated with a port while retaining a cabin on board.",
+          "descriptionFi": "Risteilyn maissa käyneiden matkustajien määrä",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-045-17",
+          "nameEn": "Type of cargo, coded",
+          "nameFi": "Lastityyppi",
+          "descriptionEn": "The type of cargo in accordance with the nomenclature shown in Annex II to Directive 2009/42/EC (2-digit code).",
+          "descriptionFi": "Lastityyppi",
+          "conditions": [],
+          "codeList": "Refer to Directive 2009/42/EC, Annex II"
+        },
+        {
+          "de": "DE-045-18",
+          "nameEn": "Number of units loaded",
+          "nameFi": "Lastattujen yksiköiden lukumäärä",
+          "descriptionEn": "The total number of units of the referenced type of cargo loaded at the port of call.",
+          "descriptionFi": "Lastattujen yksiköiden lukumäärä",
+          "conditions": [
+            "C-MTS-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-045-19",
+          "nameEn": "Number of units unloaded",
+          "nameFi": "Purettujen yksiköiden lukumäärä",
+          "descriptionEn": "The total number of units of the referenced type of cargo unloaded at the port of call.",
+          "descriptionFi": "Purettujen yksiköiden lukumäärä",
+          "conditions": [
+            "C-MTS-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-047-01",
+          "nameEn": "Port of loading, coded",
+          "nameFi": "Lähtösatama",
+          "descriptionEn": "A code representing the port where the cargo was loaded on board the ship. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are loaded onto the means of transport being used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Lähtösatama",
+          "conditions": [
+            "C-MTS-004",
+            "G-MTS-001"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-047-04",
+          "nameEn": "Port of discharge, coded",
+          "nameFi": "Määräsatama",
+          "descriptionEn": "A code identifying the port of discharge for the referenced cargo. CUSTOMS: Identification of the seaport, airport, freight terminal, rail station or other place at which the goods are unloaded from the means of transport having been used for their carriage, including the country where it is located. Where available, coded information shall be provided for the identification of the location. In case there is no UN/LOCODE available for the location concerned, the country code shall be followed by the name of the place, with the maximum level of precision available.",
+          "descriptionFi": "Määräsatama",
+          "conditions": [
+            "C-MTS-005",
+            "G-MTS-001"
+          ],
+          "codeList": "UN/LOCODE"
+        }
+      ]
+    },
+    {
+      "code": "NOA",
+      "title": "NOA - Notice of pre arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-003-07",
+          "nameEn": "Declarant statement, coded",
+          "nameFi": "Vahvista saapumisilmoitus",
+          "descriptionEn": "A code indicating a specific statement from the declarant.",
+          "descriptionFi": "Vahvista saapumisilmoitus",
+          "conditions": [
+            "NR-NOA-108",
+            "NG-NOA-108"
+          ],
+          "codeList": "Refer to code list Statement type"
+        },
+        {
+          "de": "DE-005-09",
+          "nameEn": "Ship Flag state, coded",
+          "nameFi": "Aluksen lippuvaltio",
+          "descriptionEn": "The code representing the nationality of the ship shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen lippuvaltio",
+          "conditions": [
+            "NR-NOA-110"
+          ],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-005-10",
+          "nameEn": "Ship registry, coded",
+          "nameFi": "Alusrekisteri",
+          "descriptionEn": "The Flag's register where the ship is registered",
+          "descriptionFi": "Alusrekisteri",
+          "conditions": [
+            "NR-NOA-110"
+          ],
+          "codeList": "Refer to Annex V to Directive 2009/42/EC"
+        },
+        {
+          "de": "DE-005-11",
+          "nameEn": "Ship registry port name",
+          "nameFi": "Aluksen rekisterisataman nimi",
+          "descriptionEn": "The name and country for the Port of Registry shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen rekisterisataman nimi",
+          "conditions": [
+            "C-NOA-002",
+            "G-GENERAL-007"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-12",
+          "nameEn": "Ship registry port, coded",
+          "nameFi": "Aluksen rekisterisatama",
+          "descriptionEn": "A code representing the port of registry shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen rekisterisatama",
+          "conditions": [
+            "C-NOA-002"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-005-16",
+          "nameEn": "Ship type, coded",
+          "nameFi": "Alustyyppi",
+          "descriptionEn": "The type of the ship shown on the ship's documents (e.g. IMO certificates).",
+          "descriptionFi": "Alustyyppi",
+          "conditions": [
+            "NR-NOA-120",
+            "R-NOA-006"
+          ],
+          "codeList": "UN/ECE Recommendation 28"
+        },
+        {
+          "de": "DE-008-13",
+          "nameEn": "Vessel breadth",
+          "nameFi": "Aluksen leveys",
+          "descriptionEn": "The longest breadth of the vessel in meters.",
+          "descriptionFi": "Aluksen leveys",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015",
+            "NR-NOA-122"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-25",
+          "nameEn": "Ship length overall",
+          "nameFi": "Aluksen kokonaispituus",
+          "descriptionEn": "The distance between the forward most and after most parts of the ship expressed in meters.",
+          "descriptionFi": "Aluksen kokonaispituus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015",
+            "NR-NOA-122"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-27",
+          "nameEn": "Ship gross tonnage",
+          "nameFi": "Aluksen bruttovetoisuus",
+          "descriptionEn": "The gross tonnage shown on the ship's International Tonnage Certificate or other document issued by the Flag State or Recognized Organization.",
+          "descriptionFi": "Aluksen bruttovetoisuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-029",
+            "NR-NOA-119"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-28",
+          "nameEn": "Ship net tonnage",
+          "nameFi": "Aluksen nettovetoisuus",
+          "descriptionEn": "The net tonnage shown on the ship's International Tonnage Certificate or other document issued by the Flag State or Recognized Organization.",
+          "descriptionFi": "Aluksen nettovetoisuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-030",
+            "NR-NOA-106"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-29",
+          "nameEn": "Ship deadweight tonnage",
+          "nameFi": "Aluksen kantavuus",
+          "descriptionEn": "The ship's deadweight tonnage expressed in metric tons.",
+          "descriptionFi": "Aluksen kantavuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-014",
+            "NR-NOA-119"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-012-01",
+          "nameEn": "Master family name",
+          "nameFi": "Aluksen päällikön sukunimi",
+          "descriptionEn": "The family name of the person in charge of the ship.",
+          "descriptionFi": "Aluksen päällikön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-012-08",
+          "nameEn": "Master given name",
+          "nameFi": "Aluksen päällikön etunimi",
+          "descriptionEn": "The given name of the person in charge of the ship.",
+          "descriptionFi": "Aluksen päällikön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-02",
+          "nameEn": "Voyage number",
+          "nameFi": "Varustamon sisäinen viitenumero",
+          "descriptionEn": "The operator-assigned reference code for the ship's voyage.",
+          "descriptionFi": "Varustamon sisäinen viitenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-03",
+          "nameEn": "Mode of transport at the border",
+          "nameFi": "Kuljetusmuoto rajalla",
+          "descriptionEn": "A code indicating the mode of transport corresponding to the active means of transport in which the goods are expected to enter the customs territory of the Union.",
+          "descriptionFi": "Kuljetusmuoto rajalla",
+          "conditions": [],
+          "codeList": "Always set to 1 (Maritime Transport)"
+        },
+        {
+          "de": "DE-014-09",
+          "nameEn": "Cruise ship indicator",
+          "nameFi": "Risteilyalus",
+          "descriptionEn": "A yes/no indicator whether the ship is a passenger ship intended to provide passengers with a full tourist experience. All passengers have cabins. Facilities for entertainment aboard are included. Ships operating normal ferry services are excluded, even if some passengers treat the service as a cruise. In addition, cargo-carrying vessels able to carry a very limited number of passengers with their own cabins are also excluded. Ships intended solely for day excursions are also excluded.",
+          "descriptionFi": "Risteilyalus",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-014-10",
+          "nameEn": "Primary purpose of call, coded",
+          "nameFi": "Satamakäynnin syy",
+          "descriptionEn": "A code representing the primary reason for the ship to enter the referenced port.",
+          "descriptionFi": "Satamakäynnin syy",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (8025)"
+        },
+        {
+          "de": "DE-014-11",
+          "nameEn": "Dangerous goods carrier indicator",
+          "nameFi": "Aluksella vaarallisia ja ympäristöä pilaavia aineita",
+          "descriptionEn": "A yes/no indicator whether the ship is carrying any dangerous goods.",
+          "descriptionFi": "Aluksella vaarallisia ja ympäristöä pilaavia aineita",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-014-16",
+          "nameEn": "Cargo brief description",
+          "nameFi": "Ennakkotieto purettavasta lastista",
+          "descriptionEn": "A description of the type of cargo carried on the ship in general terms.",
+          "descriptionFi": "Ennakkotieto purettavasta lastista",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-20",
+          "nameEn": "Regular service indicator",
+          "nameFi": "Alus on säännöllisessä reittiliikenteessä",
+          "descriptionEn": "A yes/no indicator whether the ship is operating in a regular service which includes the port of call.",
+          "descriptionFi": "Alus on säännöllisessä reittiliikenteessä",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-014-21",
+          "nameEn": "Regular service identifier",
+          "nameFi": "Säännöllisen liikenteen tunniste",
+          "descriptionEn": "The identification number of the regular service.",
+          "descriptionFi": "Säännöllisen liikenteen tunniste",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-22",
+          "nameEn": "Type of voyage, coded",
+          "nameFi": "Matkatyyppi",
+          "descriptionEn": "A code representing the type of voyage on the way to the port of call.",
+          "descriptionFi": "Matkatyyppi",
+          "conditions": [
+            "NR-NOA-121"
+          ],
+          "codeList": "Refer to code list Voyage type"
+        },
+        {
+          "de": "DE-014-30",
+          "nameEn": "Protruding parts description",
+          "nameFi": "Aluksen ulkonevien osien kuvaus",
+          "descriptionEn": "The description of objects protruding beyond the extreme dimensions of the ship.",
+          "descriptionFi": "Aluksen ulkonevien osien kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-015-01",
+          "nameEn": "Expected port area identification text",
+          "nameFi": "Odotettu satamanosa",
+          "descriptionEn": "The identification of the port area to which the ship is heading.",
+          "descriptionFi": "Odotettu satamanosa",
+          "conditions": [
+            "NR-NOA-115"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-015-04",
+          "nameEn": "Expected first location",
+          "nameFi": "Odotettu ensimmäinen sijainti",
+          "descriptionEn": "The name of the first berth, terminal, station or anchorage that the ship intends to visit in the referenced port.",
+          "descriptionFi": "Odotettu ensimmäinen sijainti",
+          "conditions": [
+            "NR-NOA-107"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-017-03",
+          "nameEn": "Actual maximum draught",
+          "nameFi": "Aluksen operatiivinen syväys (tulosyväys)",
+          "descriptionEn": "The actual vertical distance between the waterline and the bottom of the hull of the ship at her maximum part in meters.",
+          "descriptionFi": "Aluksen operatiivinen syväys (tulosyväys)",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-02",
+          "nameEn": "Date and time of arrival - estimated",
+          "nameFi": "Saapumispäivä ja -aika – arvioitu",
+          "descriptionEn": "The date and time at which the ship is estimated to arrive at the port of arrival.",
+          "descriptionFi": "Saapumispäivä ja -aika – arvioitu",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-05",
+          "nameEn": "Date and time of departure - estimated",
+          "nameFi": "Lähtöpäivä ja -aika – arvioitu",
+          "descriptionEn": "The date and time at which the ship is estimated to depart from the port of departure.",
+          "descriptionFi": "Lähtöpäivä ja -aika – arvioitu",
+          "conditions": [
+            "R-GENERAL-001",
+            "R-NOA-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-06",
+          "nameEn": "Last port of call, coded Next port of call, coded Previous port of call, coded Subsequent port of call, coded",
+          "nameFi": "Viimeisin käyntisatama Seuraava käyntisatama Edellinen käyntisatama Myöhempi käyntisatama",
+          "descriptionEn": "A code representing the port immediately previous to the port of arrival. A code representing the port immediately subsequent to the port of departure. A code representing a previous port of call. A code representing a subsequent port of call.",
+          "descriptionFi": "Viimeisin käyntisatama Seuraava käyntisatama Edellinen käyntisatama Myöhempi käyntisatama",
+          "conditions": [
+            "R-GENERAL-003",
+            "G-GENERAL-003",
+            "NR-NOA-116",
+            "G-NOA-004"
+          ],
+          "codeList": "UN/LOCODE UN/LOCODE UN/LOCODE UN/LOCODE"
+        },
+        {
+          "de": "DE-025-01",
+          "nameEn": "Cruise itinerary port, coded",
+          "nameFi": "Risteilyn matkasuunnitelman satama",
+          "descriptionEn": "A code representing a port in the cruise itinerary (applicable to cruise ships)",
+          "descriptionFi": "Risteilyn matkasuunnitelman satama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-025-02",
+          "nameEn": "Cruise itinerary date and time of arrival",
+          "nameFi": "Risteilyn matkasuunnitelman saapumispäivä ja -aika",
+          "descriptionEn": "The date and time of arrival at the port according to the cruise itinerary (applicable to cruise ships)",
+          "descriptionFi": "Risteilyn matkasuunnitelman saapumispäivä ja -aika",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-025-03",
+          "nameEn": "Cruise itinerary date and time of departure",
+          "nameFi": "Risteilyn matkasuunnitelman lähtöpäivä ja -aika",
+          "descriptionEn": "The date and time of departure from the port according to the cruise itinerary.",
+          "descriptionFi": "Risteilyn matkasuunnitelman lähtöpäivä ja -aika",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-025-04",
+          "nameEn": "Cruise activity description",
+          "nameFi": "Risteilyreitin kuvaus",
+          "descriptionEn": "A description of the touristic activity which takes place at the referred cruise itinerary port.",
+          "descriptionFi": "Risteilyreitin kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-029-01",
+          "nameEn": "Agent identification number",
+          "nameFi": "Agentuurin tunnistenumero",
+          "descriptionEn": "The recognized identification number used by the ship’s agent at the port of call.",
+          "descriptionFi": "Agentuurin tunnistenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-029-02",
+          "nameEn": "Agency name",
+          "nameFi": "Agentuurin nimi",
+          "descriptionEn": "The name of the agency at the port of call.",
+          "descriptionFi": "Agentuurin nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-029-07",
+          "nameEn": "Agent mobile number",
+          "nameFi": "Agentuurin matkapuhelinnumero",
+          "descriptionEn": "The mobile number for the referenced agent at port (with international prefix code).",
+          "descriptionFi": "Agentuurin matkapuhelinnumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-029-08",
+          "nameEn": "Agent email",
+          "nameFi": "Agentuurin sähköpostiosoite",
+          "descriptionEn": "The email address for the referenced agent at port.",
+          "descriptionFi": "Agentuurin sähköpostiosoite",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-01",
+          "nameEn": "Number of persons on board",
+          "nameFi": "Aluksella olevien henkilöiden määrä",
+          "descriptionEn": "The total number of persons on board the ship including crew and passengers.",
+          "descriptionFi": "Aluksella olevien henkilöiden määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "NR-NOA-118"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-02",
+          "nameEn": "Number of passengers",
+          "nameFi": "Matkustajien määrä",
+          "descriptionEn": "The count of persons on board the ship who are passengers as defined by SOLAS.",
+          "descriptionFi": "Matkustajien määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "G-NOA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-03",
+          "nameEn": "Number of crew",
+          "nameFi": "Miehistön määrä",
+          "descriptionEn": "The count of persons actually employed for duties on board during the voyage in the working or service of the ship and included in the crew list.",
+          "descriptionFi": "Miehistön määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "NR-NOA-117",
+            "G-NOA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-04",
+          "nameEn": "Stowaways found indicator",
+          "nameFi": "Salamatkustajia löydetty",
+          "descriptionEn": "A yes/no indicator whether any stowaways have been found on board.",
+          "descriptionFi": "Salamatkustajia löydetty",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-083-01",
+          "nameEn": "Pilotage exemption indicator",
+          "nameFi": "Luotsinkäyttövelvollisuuden vapautus",
+          "descriptionEn": "A yes/no indicator whether the vessel is exempt from pilotage in the movement.",
+          "descriptionFi": "Luotsinkäyttövelvollisuuden vapautus",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-083-02",
+          "nameEn": "Pilotage exemption certificate number",
+          "nameFi": "Luotsinkäyttövelvollisuuden vapautuksen numero",
+          "descriptionEn": "The Pilot Exemption Certificate (PEC) number.",
+          "descriptionFi": "Luotsinkäyttövelvollisuuden vapautuksen numero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "NOD",
+      "title": "NOD - Notice of pre departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-003-07",
+          "nameEn": "Declarant statement, coded",
+          "nameFi": "Vahvista lähtöilmoitus",
+          "descriptionEn": "A code indicating a specific statement from the declarant.",
+          "descriptionFi": "Vahvista lähtöilmoitus",
+          "conditions": [
+            "NR-NOD-108",
+            "NG-NOD-108"
+          ],
+          "codeList": "Refer to code list Statement type"
+        },
+        {
+          "de": "DE-005-09",
+          "nameEn": "Ship Flag state, coded",
+          "nameFi": "Aluksen lippuvaltio",
+          "descriptionEn": "The code representing the nationality of the ship shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen lippuvaltio",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-005-10",
+          "nameEn": "Ship registry, coded",
+          "nameFi": "Alusrekisteri",
+          "descriptionEn": "The Flag's register where the ship is registered",
+          "descriptionFi": "Alusrekisteri",
+          "conditions": [],
+          "codeList": "Refer to Annex V to Directive 2009/42/EC"
+        },
+        {
+          "de": "DE-005-11",
+          "nameEn": "Ship registry port name",
+          "nameFi": "Aluksen rekisterisataman nimi",
+          "descriptionEn": "The name and country for the Port of Registry shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen rekisterisataman nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-12",
+          "nameEn": "Ship registry port, coded",
+          "nameFi": "Aluksen rekisterisatama",
+          "descriptionEn": "A code representing the port of registry shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen rekisterisatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-005-16",
+          "nameEn": "Ship type, coded",
+          "nameFi": "Alustyyppi",
+          "descriptionEn": "The type of the ship shown on the ship's documents (e.g. IMO certificates).",
+          "descriptionFi": "Alustyyppi",
+          "conditions": [
+            "R-NOA-006"
+          ],
+          "codeList": "UN/ECE Recommendation 28"
+        },
+        {
+          "de": "DE-008-13",
+          "nameEn": "Vessel breadth",
+          "nameFi": "Aluksen leveys",
+          "descriptionEn": "The longest breadth of the vessel in meters.",
+          "descriptionFi": "Aluksen leveys",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-25",
+          "nameEn": "Ship length overall",
+          "nameFi": "Aluksen kokonaispituus",
+          "descriptionEn": "The distance between the forward most and after most parts of the ship expressed in meters.",
+          "descriptionFi": "Aluksen kokonaispituus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-27",
+          "nameEn": "Ship gross tonnage",
+          "nameFi": "Aluksen bruttovetoisuus",
+          "descriptionEn": "The gross tonnage shown on the ship's International Tonnage Certificate or other document issued by the Flag State or Recognized Organization.",
+          "descriptionFi": "Aluksen bruttovetoisuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-029"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-28",
+          "nameEn": "Ship net tonnage",
+          "nameFi": "Aluksen nettovetoisuus",
+          "descriptionEn": "The net tonnage shown on the ship's International Tonnage Certificate or other document issued by the Flag State or Recognized Organization.",
+          "descriptionFi": "Aluksen nettovetoisuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-030"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-008-29",
+          "nameEn": "Ship deadweight tonnage",
+          "nameFi": "Aluksen kantavuus",
+          "descriptionEn": "The ship's deadweight tonnage expressed in metric tons.",
+          "descriptionFi": "Aluksen kantavuus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-014"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-012-01",
+          "nameEn": "Master family name",
+          "nameFi": "Aluksen päällikön sukunimi",
+          "descriptionEn": "The family name of the person in charge of the ship.",
+          "descriptionFi": "Aluksen päällikön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-012-08",
+          "nameEn": "Master given name",
+          "nameFi": "Aluksen päällikön etunimi",
+          "descriptionEn": "The given name of the person in charge of the ship.",
+          "descriptionFi": "Aluksen päällikön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-02",
+          "nameEn": "Voyage number",
+          "nameFi": "Varustamon sisäinen viitenumero",
+          "descriptionEn": "The operator-assigned reference code for the ship's voyage.",
+          "descriptionFi": "Varustamon sisäinen viitenumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-11",
+          "nameEn": "Dangerous goods carrier indicator",
+          "nameFi": "Aluksella vaarallisia ja ympäristöä pilaavia aineita",
+          "descriptionEn": "A yes/no indicator whether the ship is carrying any dangerous goods.",
+          "descriptionFi": "Aluksella vaarallisia ja ympäristöä pilaavia aineita",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-014-16",
+          "nameEn": "Cargo brief description",
+          "nameFi": "Ennakkotieto purettavasta lastista",
+          "descriptionEn": "A description of the type of cargo carried on the ship in general terms.",
+          "descriptionFi": "Ennakkotieto purettavasta lastista",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-30",
+          "nameEn": "Protruding parts description",
+          "nameFi": "Aluksen ulkonevien osien kuvaus",
+          "descriptionEn": "The description of objects protruding beyond the extreme dimensions of the ship.",
+          "descriptionFi": "Aluksen ulkonevien osien kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-017-03",
+          "nameEn": "Actual maximum draught",
+          "nameFi": "Aluksen operatiivinen syväys (lähtösyväys)",
+          "descriptionEn": "The actual vertical distance between the waterline and the bottom of the hull of the ship at her maximum part in meters.",
+          "descriptionFi": "Aluksen operatiivinen syväys (lähtösyväys)",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-015"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-05",
+          "nameEn": "Date and time of departure - estimated",
+          "nameFi": "Lähtöpäivä ja -aika – arvioitu",
+          "descriptionEn": "The date and time at which the ship is estimated to depart from the port of departure.",
+          "descriptionFi": "Lähtöpäivä ja -aika – arvioitu",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-022-08",
+          "nameEn": "Next port of call, coded Subsequent port of call, coded",
+          "nameFi": "Seuraava käyntisatama Myöhempi käyntisatama",
+          "descriptionEn": "A code representing the port immediately subsequent to the port of departure. A code representing a subsequent port of call.",
+          "descriptionFi": "Seuraava käyntisatama Myöhempi käyntisatama",
+          "conditions": [
+            "R-GENERAL-003",
+            "G-GENERAL-003"
+          ],
+          "codeList": "UN/LOCODE UN/LOCODE"
+        },
+        {
+          "de": "DE-022-14",
+          "nameEn": "Itinerary subordinate port name",
+          "nameFi": "Aluksen reitillä olevan sataman nimi",
+          "descriptionEn": "The name of a port in the ship's itinerary corresponding to the reported UN/LOCODE.",
+          "descriptionFi": "Aluksen reitillä olevan sataman nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-01",
+          "nameEn": "Number of persons on board",
+          "nameFi": "Aluksella olevien henkilöiden määrä",
+          "descriptionEn": "The total number of persons on board the ship including crew and passengers.",
+          "descriptionFi": "Aluksella olevien henkilöiden määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "NR-NOD-118"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-02",
+          "nameEn": "Number of passengers",
+          "nameFi": "Matkustajien määrä",
+          "descriptionEn": "The count of persons on board the ship who are passengers as defined by SOLAS.",
+          "descriptionFi": "Matkustajien määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "G-NOD-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-034-03",
+          "nameEn": "Number of crew",
+          "nameFi": "Miehistön määrä",
+          "descriptionEn": "The count of persons actually employed for duties on board during the voyage in the working or service of the ship and included in the crew list.",
+          "descriptionFi": "Miehistön määrä",
+          "conditions": [
+            "R-GENERAL-002",
+            "NR-NOD-117"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-083-01",
+          "nameEn": "Pilotage exemption indicator",
+          "nameFi": "Luotsinkäyttövelvollisuuden vapautus",
+          "descriptionEn": "A yes/no indicator whether the vessel is exempt from pilotage in the movement.",
+          "descriptionFi": "Luotsinkäyttövelvollisuuden vapautus",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-083-02",
+          "nameEn": "Pilotage exemption certificate number",
+          "nameFi": "Luotsinkäyttövelvollisuuden vapautuksen numero",
+          "descriptionEn": "The Pilot Exemption Certificate (PEC) number.",
+          "descriptionFi": "Luotsinkäyttövelvollisuuden vapautuksen numero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "PXA",
+      "title": "PXA - Passenger list at arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-01",
+          "nameEn": "Person type, coded",
+          "nameFi": "Henkilön tyyppi",
+          "descriptionEn": "A code representing the type of the person on board the ship, such as master, crew member or passenger.",
+          "descriptionFi": "Henkilön tyyppi",
+          "conditions": [
+            "R-PXA-002"
+          ],
+          "codeList": "UN/EDIFACT codes (3035)"
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Henkilön sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Henkilön etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-04",
+          "nameEn": "Person nationality, coded",
+          "nameFi": "Henkilön kansalaisuus",
+          "descriptionEn": "The stated or factual country of citizenship shown on the referenced person’s identification document.",
+          "descriptionFi": "Henkilön kansalaisuus",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-3 codes including user-defined codes from ISO/IEC 7501-1 (for special machine-readable passports) meant for persons without a defined nationality, such as XXA, XXB, XXC and XXX"
+        },
+        {
+          "de": "DE-035-05",
+          "nameEn": "Person date of birth",
+          "nameFi": "Henkilön syntymäaika",
+          "descriptionEn": "The referenced person's date of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymäaika",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-06",
+          "nameEn": "Person place of birth name",
+          "nameFi": "Henkilön syntymäpaikan nimi",
+          "descriptionEn": "The name of the referenced person's place of birth as shown on the person's identity or travel document.",
+          "descriptionFi": "Henkilön syntymäpaikan nimi",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-07",
+          "nameEn": "Person country of birth, coded",
+          "nameFi": "Henkilön syntymämaa",
+          "descriptionEn": "The code representing the referenced person's country of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymämaa",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": "ISO 3166-1 alpha-3 codes, and ISO 3166-3 alpha-4 codes for formerly used names of countries"
+        },
+        {
+          "de": "DE-035-08",
+          "nameEn": "Person gender, coded",
+          "nameFi": "Henkilön sukupuoli",
+          "descriptionEn": "A code representing the gender of the referenced person.",
+          "descriptionFi": "Henkilön sukupuoli",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (3499)"
+        },
+        {
+          "de": "DE-035-09",
+          "nameEn": "Person port of embarkation, coded",
+          "nameFi": "Henkilön lähtösatama",
+          "descriptionEn": "A code representing the port from which the referenced person embarked the ship.",
+          "descriptionFi": "Henkilön lähtösatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-035-11",
+          "nameEn": "Person port of disembarkation, coded",
+          "nameFi": "Henkilön maihin nousun satama",
+          "descriptionEn": "A code representing the port from which the referenced person plans to disembark the ship.",
+          "descriptionFi": "Henkilön maihin nousun satama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-035-13",
+          "nameEn": "Person in transit indicator",
+          "nameFi": "Kauttakulkumatkustaja",
+          "descriptionEn": "A yes/no indicator whether the referenced person is in transit to a foreign country.",
+          "descriptionFi": "Kauttakulkumatkustaja",
+          "conditions": [
+            "G-PXA-001"
+          ],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-035-16",
+          "nameEn": "Person identity or travel document type, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "descriptionEn": "A code representing the type of the referenced person's presented identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "conditions": [
+            "R-GENERAL-007"
+          ],
+          "codeList": "UN/EDIFACT codes (1001)"
+        },
+        {
+          "de": "DE-035-17",
+          "nameEn": "Person identity or travel document number",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "descriptionEn": "The number assigned to the referenced person's identity or travel document by the issuing nation.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-18",
+          "nameEn": "Person identity or travel document issuing nation, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "descriptionEn": "A code representing the nation issuing the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-035-22",
+          "nameEn": "Person identity or travel document expiry date",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "descriptionEn": "The expiry date shown on the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-25",
+          "nameEn": "Person special care or assistance description",
+          "nameFi": "Henkilön erityisen hoidon tai avun kuvaus",
+          "descriptionEn": "Description of special care or assistance that the referenced person needs in case of emergency, when volunteered by the person.",
+          "descriptionFi": "Henkilön erityisen hoidon tai avun kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-29",
+          "nameEn": "Person emergency contact number",
+          "nameFi": "Henkilön hätäyhteystiedon numero",
+          "descriptionEn": "Contact number in case of an emergency with the referenced person, when volunteered by the person.",
+          "descriptionFi": "Henkilön hätäyhteystiedon numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-09",
+          "nameEn": "Residence permit number",
+          "nameFi": "Oleskeluluvan numero",
+          "descriptionEn": "The number of the referenced person's residence permit",
+          "descriptionFi": "Oleskeluluvan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-10",
+          "nameEn": "Person visa number",
+          "nameFi": "Henkilön viisuminumero",
+          "descriptionEn": "The number assigned to the referenced person's visa by the issuing nation.",
+          "descriptionFi": "Henkilön viisuminumero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "PXD",
+      "title": "PXD - Passenger list at departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-01",
+          "nameEn": "Person type, coded",
+          "nameFi": "Henkilön tyyppi",
+          "descriptionEn": "A code representing the type of the person on board the ship, such as master, crew member or passenger.",
+          "descriptionFi": "Henkilön tyyppi",
+          "conditions": [
+            "R-PXA-002"
+          ],
+          "codeList": "UN/EDIFACT codes (3035)"
+        },
+        {
+          "de": "DE-035-02",
+          "nameEn": "Person family name",
+          "nameFi": "Henkilön sukunimi",
+          "descriptionEn": "Family name or surname of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-03",
+          "nameEn": "Person given name",
+          "nameFi": "Henkilön etunimi",
+          "descriptionEn": "Given name or first name of the referenced person as in the passport or valid identification document.",
+          "descriptionFi": "Henkilön etunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-04",
+          "nameEn": "Person nationality, coded",
+          "nameFi": "Henkilön kansalaisuus",
+          "descriptionEn": "The stated or factual country of citizenship shown on the referenced person’s identification document.",
+          "descriptionFi": "Henkilön kansalaisuus",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-3 codes including user-defined codes from ISO/IEC 7501-1 (for special machine-readable passports) meant for persons without a defined nationality, such as XXA, XXB, XXC and XXX"
+        },
+        {
+          "de": "DE-035-05",
+          "nameEn": "Person date of birth",
+          "nameFi": "Henkilön syntymäaika",
+          "descriptionEn": "The referenced person's date of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymäaika",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-06",
+          "nameEn": "Person place of birth name",
+          "nameFi": "Henkilön syntymäpaikan nimi",
+          "descriptionEn": "The name of the referenced person's place of birth as shown on the person's identity or travel document.",
+          "descriptionFi": "Henkilön syntymäpaikan nimi",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-07",
+          "nameEn": "Person country of birth, coded",
+          "nameFi": "Henkilön syntymämaa",
+          "descriptionEn": "The code representing the referenced person's country of birth as shown on the person's identity document.",
+          "descriptionFi": "Henkilön syntymämaa",
+          "conditions": [
+            "G-PXA-001",
+            "G-PXA-004"
+          ],
+          "codeList": "ISO 3166-1 alpha-3 codes, and ISO 3166-3 alpha-4 codes for formerly used names of countries"
+        },
+        {
+          "de": "DE-035-08",
+          "nameEn": "Person gender, coded",
+          "nameFi": "Henkilön sukupuoli",
+          "descriptionEn": "A code representing the gender of the referenced person.",
+          "descriptionFi": "Henkilön sukupuoli",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (3499)"
+        },
+        {
+          "de": "DE-035-09",
+          "nameEn": "Person port of embarkation, coded",
+          "nameFi": "Henkilön lähtösatama",
+          "descriptionEn": "A code representing the port from which the referenced person embarked the ship.",
+          "descriptionFi": "Henkilön lähtösatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-035-11",
+          "nameEn": "Person port of disembarkation, coded",
+          "nameFi": "Henkilön maihinnoususatama",
+          "descriptionEn": "A code representing the port from which the referenced person plans to disembark the ship.",
+          "descriptionFi": "Henkilön maihinnoususatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-035-13",
+          "nameEn": "Person in transit indicator",
+          "nameFi": "Kauttakulkumatkustaja",
+          "descriptionEn": "A yes/no indicator whether the referenced person is in transit to a foreign country.",
+          "descriptionFi": "Kauttakulkumatkustaja",
+          "conditions": [
+            "G-PXA-001"
+          ],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-035-16",
+          "nameEn": "Person identity or travel document type, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "descriptionEn": "A code representing the type of the referenced person's presented identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan tyyppi",
+          "conditions": [
+            "R-GENERAL-007"
+          ],
+          "codeList": "UN/EDIFACT codes (1001)"
+        },
+        {
+          "de": "DE-035-17",
+          "nameEn": "Person identity or travel document number",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "descriptionEn": "The number assigned to the referenced person's identity or travel document by the issuing nation.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-18",
+          "nameEn": "Person identity or travel document issuing nation, coded",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "descriptionEn": "A code representing the nation issuing the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan myöntänyt maa",
+          "conditions": [],
+          "codeList": "ISO 3166-1 alpha-2 code (UN/EDIFACT codes 3207)"
+        },
+        {
+          "de": "DE-035-22",
+          "nameEn": "Person identity or travel document expiry date",
+          "nameFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "descriptionEn": "The expiry date shown on the referenced person's identity or travel document.",
+          "descriptionFi": "Henkilöllisyys- tai matkustusasiakirjan viimeinen voimassaolopäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-25",
+          "nameEn": "Person special care or assistance description",
+          "nameFi": "Henkilön erityisen hoidon tai avun kuvaus",
+          "descriptionEn": "Description of special care or assistance that the referenced person needs in case of emergency, when volunteered by the person.",
+          "descriptionFi": "Henkilön erityisen hoidon tai avun kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-035-29",
+          "nameEn": "Person emergency contact number",
+          "nameFi": "Henkilön hätäyhteystiedon numero",
+          "descriptionEn": "Contact number in case of an emergency with the referenced person, when volunteered by the person.",
+          "descriptionFi": "Henkilön hätäyhteystiedon numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-09",
+          "nameEn": "Residence permit number",
+          "nameFi": "Oleskeluluvan numero",
+          "descriptionEn": "The number of the referenced person's residence permit",
+          "descriptionFi": "Oleskeluluvan numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-039-10",
+          "nameEn": "Person visa number",
+          "nameFi": "Henkilön viisuminumero",
+          "descriptionEn": "The number assigned to the referenced person's visa by the issuing nation.",
+          "descriptionFi": "Henkilön viisuminumero",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "SEC",
+      "title": "SEC - Notification of security information",
+      "elements": [
+        {
+          "de": "DE-005-17",
+          "nameEn": "Security plan approval",
+          "nameFi": "Aluksella on voimassa oleva turvatodistus",
+          "descriptionEn": "A yes/no whether the ship is provided with an approved security plan on board.",
+          "descriptionFi": "Aluksella on voimassa oleva turvatodistus",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-005-18",
+          "nameEn": "Ship current security level, coded",
+          "nameFi": "Aluksen nykyinen turvataso",
+          "descriptionEn": "A code representing the security level of the ship in the port of arrival as defined by the ISPS Code.",
+          "descriptionFi": "Aluksen nykyinen turvataso",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-014-05",
+          "nameEn": "Port facility, coded",
+          "nameFi": "Satamarakenne",
+          "descriptionEn": "A code representing the port facility at the port of call.",
+          "descriptionFi": "Satamarakenne",
+          "conditions": [
+            "NR-SEC-001"
+          ],
+          "codeList": "UN/LOCODE - facility identifier (e.g. NLRTM-0406)"
+        },
+        {
+          "de": "DE-014-08",
+          "nameEn": "Security, other matters to report",
+          "nameFi": "Turvallisuus, muut ilmoitettavat asiat",
+          "descriptionEn": "An explanation of any other security-related matters to report.",
+          "descriptionFi": "Turvallisuus, muut ilmoitettavat asiat",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-43",
+          "nameEn": "Missing previous calls justification",
+          "nameFi": "Aiempien käyntien puuttumisen perustelu",
+          "descriptionEn": "The reason why the list of last ten calls at port facilities is not reported.",
+          "descriptionFi": "Aiempien käyntien puuttumisen perustelu",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-023-01",
+          "nameEn": "Previous port of call, coded",
+          "nameFi": "Edellinen satama",
+          "descriptionEn": "A code representing a previous port of call.",
+          "descriptionFi": "Edellinen satama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-023-02",
+          "nameEn": "Previous port facility, coded",
+          "nameFi": "Edellinen satamarakenne",
+          "descriptionEn": "A code representing a previous port facility called at during a previous port call.",
+          "descriptionFi": "Edellinen satamarakenne",
+          "conditions": [],
+          "codeList": "UN/LOCODE - facility identifier (e.g. NLRTM-0406)"
+        },
+        {
+          "de": "DE-023-03",
+          "nameEn": "Ship security level in previous port facility, coded",
+          "nameFi": "Aluksen turvataso edellisellä satamarakenteella",
+          "descriptionEn": "A code representing the security level of the ship in a previous port facility as defined by the ISPS Code.",
+          "descriptionFi": "Aluksen turvataso edellisellä satamarakenteella",
+          "conditions": [],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-023-04",
+          "nameEn": "Previous port facility call start date",
+          "nameFi": "Edellisen satamakäynnin alkamispäivä",
+          "descriptionEn": "The start date of a previous port facility call.",
+          "descriptionFi": "Edellisen satamakäynnin alkamispäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-023-05",
+          "nameEn": "Previous port facility call end date",
+          "nameFi": "Edellisen satamakäynnin päättymispäivä",
+          "descriptionEn": "The end date of a previous port facility call.",
+          "descriptionFi": "Edellisen satamakäynnin päättymispäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-023-06",
+          "nameEn": "Ship additional security measures, coded",
+          "nameFi": "Aluksen lisäturvatoimet",
+          "descriptionEn": "A code representing the special or additional security measures applied in lieu of those in the security plan.",
+          "descriptionFi": "Aluksen lisäturvatoimet",
+          "conditions": [
+            "C-SEC-008"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-023-07",
+          "nameEn": "Ship additional security measures, description",
+          "nameFi": "Aluksen lisäturvatoimet, kuvaus",
+          "descriptionEn": "A description of special or additional security measures applied in lieu of those in the security plan.",
+          "descriptionFi": "Aluksen lisäturvatoimet, kuvaus",
+          "conditions": [
+            "C-SEC-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-01",
+          "nameEn": "Ship-to-ship activity, coded",
+          "nameFi": "Alusten välinen toiminta",
+          "descriptionEn": "A code representing the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välinen toiminta",
+          "conditions": [],
+          "codeList": "UN/EDIFACT codes (8025)"
+        },
+        {
+          "de": "DE-028-02",
+          "nameEn": "Ship-to-ship activity description",
+          "nameFi": "Alusten välinen toiminta, kuvaus",
+          "descriptionEn": "A description of the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välinen toiminta, kuvaus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-03",
+          "nameEn": "Ship-to-ship activity location name",
+          "nameFi": "Alusten välisen toiminnan sijainnin nimi",
+          "descriptionEn": "The name and country of the location where the ship-to-ship activity has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välisen toiminnan sijainnin nimi",
+          "conditions": [
+            "C-SEC-005"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-04",
+          "nameEn": "Ship-to-ship activity location, coded",
+          "nameFi": "Alusten välisen toiminnan sijainti",
+          "descriptionEn": "A code representing the location of the ship-to-ship activity which has been carried out during the period of the last 10 calls.",
+          "descriptionFi": "Alusten välisen toiminnan sijainti",
+          "conditions": [
+            "C-SEC-005"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-028-05",
+          "nameEn": "Ship-to-ship activity start date",
+          "nameFi": "Alusten välisen toiminnan aloituspäivä",
+          "descriptionEn": "The start date of the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välisen toiminnan aloituspäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-06",
+          "nameEn": "Ship-to-ship activity end date",
+          "nameFi": "Alusten välisen toiminnan päättymispäivä",
+          "descriptionEn": "The end date of the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välisen toiminnan päättymispäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-07",
+          "nameEn": "Ship-to-ship activity location, latitude",
+          "nameFi": "Alusten välisen toiminnan sijainti, leveysaste",
+          "descriptionEn": "The latitude (geographical coordinate) of the location of the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välisen toiminnan sijainti, leveysaste",
+          "conditions": [
+            "R-GENERAL-017",
+            "G-GENERAL-005",
+            "G-SEC-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-08",
+          "nameEn": "Ship-to-ship activity location, longitude",
+          "nameFi": "Alusten välisen toiminnan sijainti, pituusaste",
+          "descriptionEn": "The longitude (geographical coordinate) of the location of the ship-to-ship activity which has been carried out during the period of the last ten calls.",
+          "descriptionFi": "Alusten välisen toiminnan sijainti, pituusaste",
+          "conditions": [
+            "R-GENERAL-017",
+            "G-GENERAL-006",
+            "G-SEC-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-028-09",
+          "nameEn": "Ship security measures, coded",
+          "nameFi": "Aluksen turvatoimet",
+          "descriptionEn": "A code representing the security measures taken by the ship during the referenced ship-to-ship activity, in lieu of the ship security procedures.",
+          "descriptionFi": "Aluksen turvatoimet",
+          "conditions": [
+            "C-SEC-008"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-028-10",
+          "nameEn": "Ship security measures description",
+          "nameFi": "Aluksen turvatoimien kuvaus",
+          "descriptionEn": "A description of the security measures taken by the ship during the referenced ship-to-ship activity, in lieu of the ship security procedures.",
+          "descriptionFi": "Aluksen turvatoimien kuvaus",
+          "conditions": [
+            "C-SEC-008"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-030-01",
+          "nameEn": "Valid ISSC",
+          "nameFi": "Voimassa oleva Turvatodistus (ISSC)-tunniste",
+          "descriptionEn": "A yes/no whether the ship has a valid Interim International Ship Security Certificate or valid International Ship Security Certificate.",
+          "descriptionFi": "Voimassa oleva Turvatodistus (ISSC)-tunniste",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-030-02",
+          "nameEn": "Reason why ship has no valid ISSC or interim ISSC",
+          "nameFi": "Kuvaus, miksi aluksella ei ole voimassa olevaa Turvatodistusta (ISSC) tai väliaikaista turvatodistusta (interim ISSC)",
+          "descriptionEn": "The explanation of why the ship is not provided with a valid ISSC or a valid interim ISSC.",
+          "descriptionFi": "Kuvaus, miksi aluksella ei ole voimassa olevaa Turvatodistusta (ISSC) tai väliaikaista turvatodistusta (interim ISSC)",
+          "conditions": [
+            "C-SEC-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-030-03",
+          "nameEn": "Reason why ship has no valid ISSC or interim ISSC, coded",
+          "nameFi": "Syy, miksi aluksella ei ole voimassa olevaa Turvatodistusta (ISSC) tai väliaikaista turvatodistusta (interim ISSC)",
+          "descriptionEn": "A coded explanation of why the ship is not provided with a valid ISSC or a valid interim ISSC.",
+          "descriptionFi": "Syy, miksi aluksella ei ole voimassa olevaa Turvatodistusta (ISSC) tai väliaikaista turvatodistusta (interim ISSC)",
+          "conditions": [
+            "C-SEC-001"
+          ],
+          "codeList": "Refer to IMO Compendium"
+        },
+        {
+          "de": "DE-030-05",
+          "nameEn": "RSO Name",
+          "nameFi": "Turvatodistuksen (ISSC) myöntäjäorganisaatio",
+          "descriptionEn": "The name of the Recognized Security Organization that issued the ISSC or Interim ISSC.",
+          "descriptionFi": "Turvatodistuksen (ISSC) myöntäjäorganisaatio",
+          "conditions": [
+            "C-SEC-007"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-030-06",
+          "nameEn": "ISSC expiry date",
+          "nameFi": "Turvatodistuksen (ISSC) viimeinen voimassaolopäivä",
+          "descriptionEn": "The expiry date shown on the ISSC or Interim ISSC.",
+          "descriptionFi": "Turvatodistuksen (ISSC) viimeinen voimassaolopäivä",
+          "conditions": [
+            "R-GENERAL-006",
+            "C-SEC-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-030-07",
+          "nameEn": "ISSC type, coded",
+          "nameFi": "Turvatodistuksen (ISSC) tyyppi",
+          "descriptionEn": "A code indicating if the ship is provided with an International Ship Security Certificate or an Interim International Ship Security Certificate",
+          "descriptionFi": "Turvatodistuksen (ISSC) tyyppi",
+          "conditions": [
+            "C-SEC-002"
+          ],
+          "codeList": "Refer to code list ISSC type"
+        },
+        {
+          "de": "DE-031-01",
+          "nameEn": "Company security officer family name",
+          "nameFi": "Yhtiön turvapäällikön sukunimi",
+          "descriptionEn": "The family name of the company security officer shown in the ship security plan.",
+          "descriptionFi": "Yhtiön turvapäällikön sukunimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-031-03",
+          "nameEn": "Company security officer mobile number",
+          "nameFi": "Yhtiön turvapäällikön puhelinnumero",
+          "descriptionEn": "The contact mobile number for the company security officer shown in the ship security plan. Include the international prefix number.",
+          "descriptionFi": "Yhtiön turvapäällikön puhelinnumero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-031-04",
+          "nameEn": "Company security officer email",
+          "nameFi": "Yhtiön turvapäällikön sähköposti",
+          "descriptionEn": "The contact email address for the company security officer shown in the ship security plan.",
+          "descriptionFi": "Yhtiön turvapäällikön sähköposti",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-031-07",
+          "nameEn": "Company security officer given name",
+          "nameFi": "Yhtiön turvapäällikön etunimi",
+          "descriptionEn": "The given name of the company security officer shown in the ship security plan.",
+          "descriptionFi": "Yhtiön turvapäällikön etunimi",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "SHP",
+      "title": "SHP - Ship information",
+      "elements": [
+        {
+          "de": "DE-007-10",
+          "nameEn": "Registered owner name",
+          "nameFi": "Rekisteröidyn omistajan nimi",
+          "descriptionEn": "The name of the ship's registered owner.",
+          "descriptionFi": "Rekisteröidyn omistajan nimi",
+          "conditions": [
+            "NR-SHP-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-007-16",
+          "nameEn": "Lessee name",
+          "nameFi": "Vuokralleottajan nimi",
+          "descriptionEn": "The name of lessee of the ship if operating under a lease.",
+          "descriptionFi": "Vuokralleottajan nimi",
+          "conditions": [
+            "NR-SHP-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-009-03",
+          "nameEn": "ICE class, coded",
+          "nameFi": "Jääluokka",
+          "descriptionEn": "A code representing the ICE class according to the Finnish-Swedish notation which applies to vessels intended for service in icy waters with everything from light ice conditions to ice breaking and ramming.",
+          "descriptionFi": "Jääluokka",
+          "conditions": [],
+          "codeList": "Refer to code list ICE class"
+        },
+        {
+          "de": "DE-009-04",
+          "nameEn": "Build date",
+          "nameFi": "Rakennuspäivä",
+          "descriptionEn": "The date of the building of the ship.",
+          "descriptionFi": "Rakennuspäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-009-05",
+          "nameEn": "Keel laying date",
+          "nameFi": "Kölinlaskun päivä",
+          "descriptionEn": "The keel laying date of the ship.",
+          "descriptionFi": "Kölinlaskun päivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-009-17",
+          "nameEn": "Inert gas system indicator",
+          "nameFi": "Alukseen on asennettu suojakaasujärjestelmä",
+          "descriptionEn": "A yes/no indicator whether the ship is fitted with an inert gas system.",
+          "descriptionFi": "Alukseen on asennettu suojakaasujärjestelmä",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-010-06",
+          "nameEn": "Main engine power",
+          "nameFi": "Päämoottorin teho",
+          "descriptionEn": "The main engine's power in kilowatt.",
+          "descriptionFi": "Päämoottorin teho",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-024"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-010-22",
+          "nameEn": "Ship operational speed",
+          "nameFi": "Aluksen toimintanopeus",
+          "descriptionEn": "The operational service speed of the ship in knots.",
+          "descriptionFi": "Aluksen toimintanopeus",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-027"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "SID",
+      "title": "SID - Ship identifiers notification",
+      "elements": [
+        {
+          "de": "DE-005-01",
+          "nameEn": "Ship name",
+          "nameFi": "Aluksen nimi",
+          "descriptionEn": "The ship’s name as shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen nimi",
+          "conditions": [
+            "NR-SID-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-02",
+          "nameEn": "Ship has IMO number indicator",
+          "nameFi": "Aluksella on IMO-numero",
+          "descriptionEn": "A yes/no indicator whether the ship has an IMO number",
+          "descriptionFi": "Aluksella on IMO-numero",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-005-03",
+          "nameEn": "Ship IMO number",
+          "nameFi": "Aluksen IMO-numero",
+          "descriptionEn": "The ship identification number as shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen IMO-numero",
+          "conditions": [
+            "C-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-04",
+          "nameEn": "MMSI number",
+          "nameFi": "MMSI-numero",
+          "descriptionEn": "The identifier used by maritime digital selective calling (DSC), automatic identification systems (AIS) and certain other equipment to uniquely identify the ship.",
+          "descriptionFi": "MMSI-numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-05",
+          "nameEn": "Ship call sign",
+          "nameFi": "Aluksen kutsutunnus",
+          "descriptionEn": "The ship’s identification used primarily for radio communications as shown on the ship's documents (e.g. IMO certificates).",
+          "descriptionFi": "Aluksen kutsutunnus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-08",
+          "nameEn": "Other ship identifier",
+          "nameFi": "Muu aluksen tunniste",
+          "descriptionEn": "Additional numbers or letters that may be used to identify the ship, as an alternative or in addition to the Ship call sign, the MMSI number, the IMO number, the ENI number or the CFR number.",
+          "descriptionFi": "Muu aluksen tunniste",
+          "conditions": [
+            "C-GENERAL-002"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "SSA",
+      "title": "SSA - Ship to ship activity declaration",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-054-02",
+          "nameEn": "Transshipment ship name",
+          "nameFi": "Jälleenlaivausaluksen nimi",
+          "descriptionEn": "The name of the ship or barge that will receive the transshipment of cargo.",
+          "descriptionFi": "Jälleenlaivausaluksen nimi",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "STA",
+      "title": "STA - Declaration of stores on board at arrival",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-01",
+          "nameEn": "Ship stores article name",
+          "nameFi": "Aluksen varastotavaran nimi",
+          "descriptionEn": "A description of the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavaran nimi",
+          "conditions": [
+            "C-STA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-02",
+          "nameEn": "Ship stores article, coded",
+          "nameFi": "Aluksen varastotavara",
+          "descriptionEn": "A code representing the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavara",
+          "conditions": [],
+          "codeList": "Refer to code list Ship stores article"
+        },
+        {
+          "de": "DE-067-03",
+          "nameEn": "Ship stores onboard quantity",
+          "nameFi": "Aluksen varastotavaran määrä aluksella",
+          "descriptionEn": "The number, count or amount of the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavaran määrä aluksella",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-020",
+            "R-STA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-04",
+          "nameEn": "Ship stores location onboard description",
+          "nameFi": "Aluksen varastotavaran sijainti aluksella",
+          "descriptionEn": "A description of the location on the ship of the referenced stores article.",
+          "descriptionFi": "Aluksen varastotavaran sijainti aluksella",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "STD",
+      "title": "STD - Declaration of stores on board at departure",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-01",
+          "nameEn": "Ship stores article name",
+          "nameFi": "Aluksen varastotavaran nimi",
+          "descriptionEn": "A description of the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavaran nimi",
+          "conditions": [
+            "C-STA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-02",
+          "nameEn": "Ship stores article, coded",
+          "nameFi": "Aluksen varastotavara",
+          "descriptionEn": "A code representing the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavara",
+          "conditions": [],
+          "codeList": "Refer to code list Ship stores article"
+        },
+        {
+          "de": "DE-067-03",
+          "nameEn": "Ship stores onboard quantity",
+          "nameFi": "Aluksen varastotavaran määrä aluksella",
+          "descriptionEn": "The number, count or amount of the referenced ship stores article.",
+          "descriptionFi": "Aluksen varastotavaran määrä aluksella",
+          "conditions": [
+            "R-GENERAL-002",
+            "R-GENERAL-020",
+            "R-STA-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-067-04",
+          "nameEn": "Ship stores location onboard description",
+          "nameFi": "Aluksen varastotavaran sijainti aluksella",
+          "descriptionEn": "A description of the location on the ship of the referenced stores article.",
+          "descriptionFi": "Aluksen varastotavaran sijainti aluksella",
+          "conditions": [],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "VID",
+      "title": "VID - Request for Visit ID",
+      "elements": [
+        {
+          "de": "DE-005-01",
+          "nameEn": "Ship name",
+          "nameFi": "Aluksen nimi",
+          "descriptionEn": "The ship’s name as shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-02",
+          "nameEn": "Ship has IMO number indicator",
+          "nameFi": "Aluksella on IMO-numero",
+          "descriptionEn": "A yes/no indicator whether the ship has an IMO number",
+          "descriptionFi": "Aluksella on IMO-numero",
+          "conditions": [],
+          "codeList": "yes/no indicator (1=yes, 0=no)"
+        },
+        {
+          "de": "DE-005-03",
+          "nameEn": "Ship IMO number",
+          "nameFi": "Aluksen IMO-numero",
+          "descriptionEn": "The ship identification number as shown on the ship's documents (e.g. IMO certificates)",
+          "descriptionFi": "Aluksen IMO-numero",
+          "conditions": [
+            "C-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-04",
+          "nameEn": "MMSI number",
+          "nameFi": "MMSI-numero",
+          "descriptionEn": "The identifier used by maritime digital selective calling (DSC), automatic identification systems (AIS) and certain other equipment to uniquely identify the ship.",
+          "descriptionFi": "MMSI-numero",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-05",
+          "nameEn": "Ship call sign",
+          "nameFi": "Aluksen radiokutsutunnus",
+          "descriptionEn": "The ship’s identification used primarily for radio communications as shown on the ship's documents (e.g. IMO certificates).",
+          "descriptionFi": "Aluksen radiokutsutunnus",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-005-08",
+          "nameEn": "Other ship identifier",
+          "nameFi": "Muu aluksen tunniste",
+          "descriptionEn": "Additional numbers or letters that may be used to identify the ship, as an alternative or in addition to the Ship call sign, the MMSI number, the IMO number, the ENI number or the CFR number.",
+          "descriptionFi": "Muu aluksen tunniste",
+          "conditions": [
+            "C-GENERAL-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-04",
+          "nameEn": "Port of call, coded",
+          "nameFi": "Käyntisatama",
+          "descriptionEn": "The code representing the port where the ship calls.",
+          "descriptionFi": "Käyntisatama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-022-02",
+          "nameEn": "Date and time of arrival - estimated",
+          "nameFi": "Saapumispäivä ja -aika – arvioitu",
+          "descriptionEn": "The date and time at which the ship is estimated to arrive at the port of arrival.",
+          "descriptionFi": "Saapumispäivä ja -aika – arvioitu",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "WAR",
+      "title": "WAR - Waste delivery receipt",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-014-06",
+          "nameEn": "Location in port",
+          "nameFi": "Sijainti satamassa",
+          "descriptionEn": "The name of the berth, terminal or station where the ship is located in the port of call.",
+          "descriptionFi": "Sijainti satamassa",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-069-01",
+          "nameEn": "Port reception facility provider name",
+          "nameFi": "Sataman vastaanottolaitteiden toimittajan nimi",
+          "descriptionEn": "The name of the port reception facility provider.",
+          "descriptionFi": "Sataman vastaanottolaitteiden toimittajan nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-069-02",
+          "nameEn": "Waste treatment facility provider name",
+          "nameFi": "Jätteenkäsittelylaitteiden toimittajan nimi",
+          "descriptionEn": "The name of the treatment facility provider, if different from the port reception facility provider.",
+          "descriptionFi": "Jätteenkäsittelylaitteiden toimittajan nimi",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-069-05",
+          "nameEn": "Actual waste delivery date and time, from",
+          "nameFi": "Jätteen todellinen toimituspäivä ja -aika, alkaen",
+          "descriptionEn": "The date and time when the waste delivery started.",
+          "descriptionFi": "Jätteen todellinen toimituspäivä ja -aika, alkaen",
+          "conditions": [
+            "R-GENERAL-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-069-06",
+          "nameEn": "Actual waste delivery date and time, to",
+          "nameFi": "Jätteen todellinen toimituspäivä ja -aika, päättyen",
+          "descriptionEn": "The date and time when the waste delivery was completed.",
+          "descriptionFi": "Jätteen todellinen toimituspäivä ja -aika, päättyen",
+          "conditions": [
+            "R-GENERAL-001",
+            "R-GENERAL-039"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-01",
+          "nameEn": "Waste type, coded",
+          "nameFi": "Jätetyyppi",
+          "descriptionEn": "A code representing the type of waste being delivered.",
+          "descriptionFi": "Jätetyyppi",
+          "conditions": [
+            "G-WAS-003"
+          ],
+          "codeList": "Refer to code list Waste type"
+        },
+        {
+          "de": "DE-071-02",
+          "nameEn": "Waste description",
+          "nameFi": "Jätteen kuvaus",
+          "descriptionEn": "Description of the waste being delivered.",
+          "descriptionFi": "Jätteen kuvaus",
+          "conditions": [
+            "C-WAS-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-08",
+          "nameEn": "Amount of waste received volume",
+          "nameFi": "Vastaanotetun jätteen määrä",
+          "descriptionEn": "The volume of waste received in cubic meters.",
+          "descriptionFi": "Vastaanotetun jätteen määrä",
+          "conditions": [
+            "R-GENERAL-004",
+            "R-GENERAL-022",
+            "G-WAR-001"
+          ],
+          "codeList": null
+        }
+      ]
+    },
+    {
+      "code": "WAS",
+      "title": "WAS - Advance notification for waste delivery to port reception facilities",
+      "elements": [
+        {
+          "de": "DE-003-01",
+          "nameEn": "Remark",
+          "nameFi": "Lisätietoa ilmoituksesta",
+          "descriptionEn": "Statement of any other information relevant to the ship arrival, stay or departure.",
+          "descriptionFi": "Lisätietoa ilmoituksesta",
+          "conditions": [],
+          "codeList": null
+        },
+        {
+          "de": "DE-068-01",
+          "nameEn": "Port of last waste delivery, coded",
+          "nameFi": "Jätteen edellisen toimituksen satama",
+          "descriptionEn": "The code representing the last port where waste of any type was delivered.",
+          "descriptionFi": "Jätteen edellisen toimituksen satama",
+          "conditions": [],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-068-02",
+          "nameEn": "Port of next waste delivery, coded",
+          "nameFi": "Jätteen seuraavan toimituksen satama",
+          "descriptionEn": "The code representing the next port where the ship plans to deliver waste of any type.",
+          "descriptionFi": "Jätteen seuraavan toimituksen satama",
+          "conditions": [
+            "G-WAS-004"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-068-03",
+          "nameEn": "Waste last delivery date",
+          "nameFi": "Jätteen viimeinen toimituspäivä",
+          "descriptionEn": "The last date when waste of any type was delivered.",
+          "descriptionFi": "Jätteen viimeinen toimituspäivä",
+          "conditions": [
+            "R-GENERAL-006"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-01",
+          "nameEn": "Waste type, coded",
+          "nameFi": "Jätetyyppi",
+          "descriptionEn": "A code representing the type of waste being delivered.",
+          "descriptionFi": "Jätetyyppi",
+          "conditions": [
+            "G-WAS-003"
+          ],
+          "codeList": "Refer to code list Waste type"
+        },
+        {
+          "de": "DE-071-02",
+          "nameEn": "Waste description",
+          "nameFi": "Jätteen kuvaus",
+          "descriptionEn": "Description of the waste being delivered.",
+          "descriptionFi": "Jätteen kuvaus",
+          "conditions": [
+            "C-WAS-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-03",
+          "nameEn": "Waste amount to be delivered volume",
+          "nameFi": "Toimitettavan jätteen määrä",
+          "descriptionEn": "The volume of waste the ship plans to deliver in cubic meters.",
+          "descriptionFi": "Toimitettavan jätteen määrä",
+          "conditions": [
+            "R-GENERAL-004",
+            "R-GENERAL-022",
+            "G-WAS-001"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-04",
+          "nameEn": "Waste maximum dedicated storage capacity",
+          "nameFi": "Jätteen enimmäisvarastointikapasiteetti",
+          "descriptionEn": "Maximum dedicated storage capacity for this type of waste in cubic meters.",
+          "descriptionFi": "Jätteen enimmäisvarastointikapasiteetti",
+          "conditions": [
+            "R-GENERAL-004",
+            "R-GENERAL-022"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-05",
+          "nameEn": "Waste amount retained volume",
+          "nameFi": "Säilytetyn jätteen määrä",
+          "descriptionEn": "The volume of waste that the ship plans to retain on board in cubic meters.",
+          "descriptionFi": "Säilytetyn jätteen määrä",
+          "conditions": [
+            "R-GENERAL-004",
+            "R-GENERAL-022",
+            "G-WAS-002"
+          ],
+          "codeList": null
+        },
+        {
+          "de": "DE-071-06",
+          "nameEn": "Port of delivery of remaining waste, coded",
+          "nameFi": "Säilytettävän jätteen toimitussatama",
+          "descriptionEn": "A code identifying the port where the ship intends to deliver the remaining waste.",
+          "descriptionFi": "Säilytettävän jätteen toimitussatama",
+          "conditions": [
+            "G-WAS-004"
+          ],
+          "codeList": "UN/LOCODE"
+        },
+        {
+          "de": "DE-071-07",
+          "nameEn": "Waste estimated amount to be generated volume",
+          "nameFi": "Arvioitu syntyvän jätteen määrä",
+          "descriptionEn": "The estimated volume of waste to be generated between the notification and the next port of call, in cubic meters.",
+          "descriptionFi": "Arvioitu syntyvän jätteen määrä",
+          "conditions": [
+            "R-GENERAL-004",
+            "R-GENERAL-022"
+          ],
+          "codeList": null
+        }
+      ]
+    }
+  ]
+}

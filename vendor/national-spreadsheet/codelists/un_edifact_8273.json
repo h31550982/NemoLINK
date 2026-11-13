@@ -1,0 +1,53 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "un_edifact_8273",
+  "headerless": false,
+  "usedIn": [
+    "DE-049-01",
+    "DE-050-05"
+  ],
+  "formalities": [
+    "HZA/D"
+  ],
+  "rules": [
+    "R-HZA-002"
+  ],
+  "entries": [
+    {
+      "id": "ADY",
+      "en": "IBC Code (bulk)",
+      "fi": "IBC-säännöstö (irtolasti)",
+      "sv": "IBC-kod (bulk)"
+    },
+    {
+      "id": "ADZ",
+      "en": "IGC Code (bulk)",
+      "fi": "IGC-säännöstö (irtolasti)",
+      "sv": "IGC-kod (bulk)"
+    },
+    {
+      "id": "AEA",
+      "en": "IMSBC Code (bulk)",
+      "fi": "IMSBC-säännöstö (irtolasti)",
+      "sv": "IMSBC-kod (bulk)"
+    },
+    {
+      "id": "AEB",
+      "en": "MARPOL Annex I (bulk)",
+      "fi": "MARPOL-yleissopimuksen liite I (irtolasti)",
+      "sv": "MARPOL Bilaga I (bulk)"
+    },
+    {
+      "id": "IMD",
+      "en": "IMO IMDG code (packaged)",
+      "fi": "IMDG-säännöstö (pakattu)",
+      "sv": "IMDG-kod (förpackad)"
+    }
+  ]
+}

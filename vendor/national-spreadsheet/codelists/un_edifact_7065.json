@@ -1,0 +1,2468 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "un_edifact_7065",
+  "headerless": false,
+  "usedIn": [
+    "DE-048-10",
+    "DE-049-16"
+  ],
+  "formalities": [
+    "CGA/D",
+    "HZA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "DR",
+      "en": "Drum",
+      "fi": "Tynnyri",
+      "sv": "Trumma",
+      "national": true
+    },
+    {
+      "id": "3A",
+      "en": "Jerrican",
+      "fi": "Kannu",
+      "sv": "Kanna",
+      "national": true
+    },
+    {
+      "id": "BG",
+      "en": "Bag",
+      "fi": "Säkki",
+      "sv": "Påse",
+      "national": true
+    },
+    {
+      "id": "BX",
+      "en": "Box",
+      "fi": "Laatikko",
+      "sv": "Låda",
+      "national": true
+    },
+    {
+      "id": "6H",
+      "en": "Composite packaging",
+      "fi": "Yhdistelmäpakkaus",
+      "sv": "Kombinationsförpackning",
+      "national": true
+    },
+    {
+      "id": "CQ",
+      "en": "Cartridge",
+      "fi": "Patruuna",
+      "sv": "Patron",
+      "national": true
+    },
+    {
+      "id": "AE",
+      "en": "Aerosol",
+      "fi": "Aerosoli",
+      "sv": "Aerosol",
+      "national": true
+    },
+    {
+      "id": "WA",
+      "en": "Intermediate bulk container",
+      "fi": "IBC-pakkaus",
+      "sv": "IBC packning",
+      "national": true
+    },
+    {
+      "id": "GB",
+      "en": "Gas, bottle, cylinder or receptacle",
+      "fi": "Kaasu, pullo, sylinteri tai säiliö",
+      "sv": "Gas, flaska, cylinder eller behållare",
+      "national": true
+    },
+    {
+      "id": "BE",
+      "en": "Bundle",
+      "fi": "Nippu tai paketti",
+      "sv": "Bunt eller paket",
+      "national": true
+    },
+    {
+      "id": "1A",
+      "en": "Drum, steel",
+      "fi": "Tynnyri, teräs",
+      "sv": "Fat, stål"
+    },
+    {
+      "id": "1B",
+      "en": "Drum, aluminium",
+      "fi": "Tynnyri, alumiini",
+      "sv": "Fat, aluminium"
+    },
+    {
+      "id": "1D",
+      "en": "Drum, plywood",
+      "fi": "Tynnyri, vaneri",
+      "sv": "Fat, plywood"
+    },
+    {
+      "id": "1F",
+      "en": "Container, flexible",
+      "fi": "Joustava säiliö",
+      "sv": "Behållare, flexibel"
+    },
+    {
+      "id": "1G",
+      "en": "Drum, fibre",
+      "fi": "Tynnyri, kuitu",
+      "sv": "Fat, fiber"
+    },
+    {
+      "id": "1W",
+      "en": "Drum, wooden",
+      "fi": "Tynnyri, puinen",
+      "sv": "Fat, trä"
+    },
+    {
+      "id": "2C",
+      "en": "Barrel, wooden",
+      "fi": "Puutynnyri",
+      "sv": "Tunna, trä"
+    },
+    {
+      "id": "3H",
+      "en": "Jerrican, plastic",
+      "fi": "Kanisteri, muovi",
+      "sv": "Dunk, plast"
+    },
+    {
+      "id": "43",
+      "en": "Bag, super bulk",
+      "fi": "Suursäkki",
+      "sv": "Storsäck"
+    },
+    {
+      "id": "44",
+      "en": "Bag, polybag",
+      "fi": "Muovipussi",
+      "sv": "Plastpåse"
+    },
+    {
+      "id": "4A",
+      "en": "Box, steel",
+      "fi": "Laatikko, teräs",
+      "sv": "Låda, stål"
+    },
+    {
+      "id": "4B",
+      "en": "Box, aluminium",
+      "fi": "Laatikko, alumiini",
+      "sv": "Låda, aluminium"
+    },
+    {
+      "id": "4C",
+      "en": "Box, natural wood",
+      "fi": "Laatikko, massiivipuu",
+      "sv": "Låda, massivt trä"
+    },
+    {
+      "id": "4D",
+      "en": "Box, plywood",
+      "fi": "Laatikko, vaneri",
+      "sv": "Låda, plywood"
+    },
+    {
+      "id": "4F",
+      "en": "Box, reconstituted wood",
+      "fi": "Laatikko, puukuitulevy",
+      "sv": "Låda, träfibermaterial"
+    },
+    {
+      "id": "4G",
+      "en": "Box, fibreboard",
+      "fi": "Laatikko, kuitulevy",
+      "sv": "Låda, fiberplatta"
+    },
+    {
+      "id": "4H",
+      "en": "Box, plastic",
+      "fi": "Laatikko, muovi",
+      "sv": "Låda, plast"
+    },
+    {
+      "id": "5H",
+      "en": "Bag, woven plastic",
+      "fi": "Säkki, kudottu muovi",
+      "sv": "Säck, vävd plast"
+    },
+    {
+      "id": "5L",
+      "en": "Bag, textile",
+      "fi": "Säkki, tekstiili",
+      "sv": "Säck, textil"
+    },
+    {
+      "id": "5M",
+      "en": "Bag, paper",
+      "fi": "Pussisäkki, paperi",
+      "sv": "Säck, papper"
+    },
+    {
+      "id": "6P",
+      "en": "Composite packaging, glass receptacle",
+      "fi": "Yhdistelmäpakkaus, lasiastia",
+      "sv": "Sammanställd förpackning, glasbehållare"
+    },
+    {
+      "id": "7A",
+      "en": "Case, car",
+      "fi": "Kotelo, auto",
+      "sv": "Låda/fodral, bil"
+    },
+    {
+      "id": "7B",
+      "en": "Case, wooden",
+      "fi": "Kotelo, puinen",
+      "sv": "Låda/fodral, trä"
+    },
+    {
+      "id": "8A",
+      "en": "Pallet, wooden",
+      "fi": "Kuormalava, puinen",
+      "sv": "Pall, trä"
+    },
+    {
+      "id": "8B",
+      "en": "Crate, wooden",
+      "fi": "Kori-/ritilälaatikko, puinen",
+      "sv": "Lår, trä"
+    },
+    {
+      "id": "8C",
+      "en": "Bundle, wooden",
+      "fi": "Puu­nipppu",
+      "sv": "Knippe, trä"
+    },
+    {
+      "id": "AA",
+      "en": "Intermediate bulk container, rigid plastic",
+      "fi": "IBC-säiliö, jäykkä muovi",
+      "sv": "IBC-behållare, styv plast"
+    },
+    {
+      "id": "AB",
+      "en": "Receptacle, fibre",
+      "fi": "Astia, kuitu",
+      "sv": "Behållare, fiber"
+    },
+    {
+      "id": "AC",
+      "en": "Receptacle, paper",
+      "fi": "Astia, paperi",
+      "sv": "Behållare, papper"
+    },
+    {
+      "id": "AD",
+      "en": "Receptacle, wooden",
+      "fi": "Astia, puinen",
+      "sv": "Behållare, trä"
+    },
+    {
+      "id": "AF",
+      "en": "Pallet, modular, collars 80cms * 60cms",
+      "fi": "Kuormalava, reunukset 80×60 cm",
+      "sv": "Pall, kragar 80×60 cm"
+    },
+    {
+      "id": "AG",
+      "en": "Pallet, shrinkwrapped",
+      "fi": "Kuormalava, kutistekalvo",
+      "sv": "Pall, krympfilmad"
+    },
+    {
+      "id": "AH",
+      "en": "Pallet, 100cms * 110cms",
+      "fi": "Kuormalava 100×110 cm",
+      "sv": "Pall 100×110 cm"
+    },
+    {
+      "id": "AI",
+      "en": "Clamshell",
+      "fi": "Simpukkakotelo (clamshell)",
+      "sv": "Snäppförpackning (clamshell)"
+    },
+    {
+      "id": "AJ",
+      "en": "Cone",
+      "fi": "Kartio",
+      "sv": "Kon"
+    },
+    {
+      "id": "AL",
+      "en": "Ball",
+      "fi": "Pallo",
+      "sv": "Kula"
+    },
+    {
+      "id": "AM",
+      "en": "Ampoule, non-protected",
+      "fi": "Ampulli, suojaamaton",
+      "sv": "Ampull, oskyddad"
+    },
+    {
+      "id": "AP",
+      "en": "Ampoule, protected",
+      "fi": "Ampulli, suojattu",
+      "sv": "Ampull, skyddad"
+    },
+    {
+      "id": "AT",
+      "en": "Atomizer",
+      "fi": "Sumutin",
+      "sv": "Atomizer/sprayer"
+    },
+    {
+      "id": "AV",
+      "en": "Capsule",
+      "fi": "Kapseli",
+      "sv": "Kapsel"
+    },
+    {
+      "id": "B4",
+      "en": "Belt",
+      "fi": "Hihna",
+      "sv": "Rem"
+    },
+    {
+      "id": "BA",
+      "en": "Barrel",
+      "fi": "Tynnyri",
+      "sv": "Tunna"
+    },
+    {
+      "id": "BB",
+      "en": "Bobbin",
+      "fi": "Kela",
+      "sv": "Spole"
+    },
+    {
+      "id": "BC",
+      "en": "Bottlecrate / bottlerack",
+      "fi": "Pullokori / -teline",
+      "sv": "Flaskback / flaskställ"
+    },
+    {
+      "id": "BD",
+      "en": "Board",
+      "fi": "Levy",
+      "sv": "Skiva"
+    },
+    {
+      "id": "BF",
+      "en": "Balloon, non-protected",
+      "fi": "Pallo, suojaamaton",
+      "sv": "Ballong, oskyddad"
+    },
+    {
+      "id": "BH",
+      "en": "Bunch",
+      "fi": "Nippu",
+      "sv": "Knippe"
+    },
+    {
+      "id": "BI",
+      "en": "Bin",
+      "fi": "Astia",
+      "sv": "Kärl/behållare"
+    },
+    {
+      "id": "BJ",
+      "en": "Bucket",
+      "fi": "Ämpäri",
+      "sv": "Hink"
+    },
+    {
+      "id": "BK",
+      "en": "Basket",
+      "fi": "Kori",
+      "sv": "Korg"
+    },
+    {
+      "id": "BL",
+      "en": "Bale, compressed",
+      "fi": "Paali, puristettu",
+      "sv": "Bal, pressad"
+    },
+    {
+      "id": "BM",
+      "en": "Basin",
+      "fi": "Vati",
+      "sv": "Balja"
+    },
+    {
+      "id": "BN",
+      "en": "Bale, non-compressed",
+      "fi": "Paali, puristamaton",
+      "sv": "Bal, opressad"
+    },
+    {
+      "id": "BO",
+      "en": "Bottle, non-protected, cylindrical",
+      "fi": "Pullo, suojaamaton, sylinteri",
+      "sv": "Flaska, oskyddad, cylindrisk"
+    },
+    {
+      "id": "BP",
+      "en": "Balloon, protected",
+      "fi": "Pallo, suojattu",
+      "sv": "Ballong, skyddad"
+    },
+    {
+      "id": "BQ",
+      "en": "Bottle, protected cylindrical",
+      "fi": "Pullo, suojattu, sylinteri",
+      "sv": "Flaska, skyddad, cylindrisk"
+    },
+    {
+      "id": "BR",
+      "en": "Bar",
+      "fi": "Tanko",
+      "sv": "Stång"
+    },
+    {
+      "id": "BS",
+      "en": "Bottle, non-protected, bulbous",
+      "fi": "Pullo, suojaamaton, pullomainen",
+      "sv": "Flaska, oskyddad, bukig"
+    },
+    {
+      "id": "BT",
+      "en": "Bolt",
+      "fi": "Pultti",
+      "sv": "Bult"
+    },
+    {
+      "id": "BU",
+      "en": "Butt",
+      "fi": "Puolitynnyri (butti)",
+      "sv": "Halvtunna (butt)"
+    },
+    {
+      "id": "BV",
+      "en": "Bottle, protected bulbous",
+      "fi": "Pullo, suojattu, pullomainen",
+      "sv": "Flaska, skyddad, bukig"
+    },
+    {
+      "id": "BW",
+      "en": "Box, for liquids",
+      "fi": "Laatikko nesteille",
+      "sv": "Låda för vätskor"
+    },
+    {
+      "id": "BY",
+      "en": "Board, in bundle/bunch/truss",
+      "fi": "Levyt, nipussa",
+      "sv": "Skivor, i bunt/knippe"
+    },
+    {
+      "id": "BZ",
+      "en": "Bars, in bundle/bunch/truss",
+      "fi": "Tangot, nipussa",
+      "sv": "Stänger, i bunt/knippe"
+    },
+    {
+      "id": "CA",
+      "en": "Can, rectangular",
+      "fi": "Kannu, suorakulmainen",
+      "sv": "Burk, rektangulär"
+    },
+    {
+      "id": "CB",
+      "en": "Crate, beer",
+      "fi": "Oluen laatikko",
+      "sv": "Öllåda"
+    },
+    {
+      "id": "CC",
+      "en": "Churn",
+      "fi": "Maitotonkka / astia",
+      "sv": "Mjölkkanna"
+    },
+    {
+      "id": "CD",
+      "en": "Can, with handle and spout",
+      "fi": "Kannu, kahvalla ja nokalla",
+      "sv": "Kanna med handtag och pip"
+    },
+    {
+      "id": "CE",
+      "en": "Creel",
+      "fi": "Kantokori (esim. kalastusastia)",
+      "sv": "Bärkorg / fiskkorg"
+    },
+    {
+      "id": "CF",
+      "en": "Coffer",
+      "fi": "Arkku",
+      "sv": "Kista"
+    },
+    {
+      "id": "CG",
+      "en": "Cage",
+      "fi": "Häkkilaatikko",
+      "sv": "Bur / ställning"
+    },
+    {
+      "id": "CH",
+      "en": "Chest",
+      "fi": "Arkku / kirstu",
+      "sv": "Kista"
+    },
+    {
+      "id": "CI",
+      "en": "Canister",
+      "fi": "Kanisteri",
+      "sv": "Dunk / kanister"
+    },
+    {
+      "id": "CJ",
+      "en": "Coffin",
+      "fi": "Arkku (hautaan)",
+      "sv": "Kista (begravningskista)"
+    },
+    {
+      "id": "CK",
+      "en": "Cask",
+      "fi": "Tynnyri",
+      "sv": "Tunna"
+    },
+    {
+      "id": "CL",
+      "en": "Coil",
+      "fi": "Kela / rulla",
+      "sv": "Spole / rulle"
+    },
+    {
+      "id": "CM",
+      "en": "Card",
+      "fi": "Kortti",
+      "sv": "Kort"
+    },
+    {
+      "id": "CN",
+      "en": "Container, not otherwise specified as transport equipment",
+      "fi": "Kontti (muu kuin kuljetusvälineenä määritelty)",
+      "sv": "Behållare (ej specificerad som transportutrustning)"
+    },
+    {
+      "id": "CO",
+      "en": "Carboy, non-protected",
+      "fi": "Karboy, suojaamaton",
+      "sv": "Damejeanne, oskyddad"
+    },
+    {
+      "id": "CP",
+      "en": "Carboy, protected",
+      "fi": "Karboy, suojattu",
+      "sv": "Damejeanne, skyddad"
+    },
+    {
+      "id": "CR",
+      "en": "Crate",
+      "fi": "Kori / laatikko",
+      "sv": "Lår / korg"
+    },
+    {
+      "id": "CS",
+      "en": "Case",
+      "fi": "Kotelo / laatikko",
+      "sv": "Låda / fodral"
+    },
+    {
+      "id": "CT",
+      "en": "Carton",
+      "fi": "Kartonki / pahvilaatikko",
+      "sv": "Kartong / pappkartong"
+    },
+    {
+      "id": "CU",
+      "en": "Cup",
+      "fi": "Kuppi",
+      "sv": "Kopp"
+    },
+    {
+      "id": "CV",
+      "en": "Cover",
+      "fi": "Kansi",
+      "sv": "Lock / täckning"
+    },
+    {
+      "id": "CW",
+      "en": "Cage, roll",
+      "fi": "Rullahäkki",
+      "sv": "Rullbur"
+    },
+    {
+      "id": "CX",
+      "en": "Can, cylindrical",
+      "fi": "Sylinterimäinen kannu",
+      "sv": "Cylindrisk burk"
+    },
+    {
+      "id": "CY",
+      "en": "Cylinder",
+      "fi": "Sylinteri",
+      "sv": "Cylinder"
+    },
+    {
+      "id": "CZ",
+      "en": "Canvas",
+      "fi": "Kangas / pressukangas",
+      "sv": "Duk / presenning"
+    },
+    {
+      "id": "DA",
+      "en": "Crate, multiple layer, plastic",
+      "fi": "Monikerroksinen muovilaatikko",
+      "sv": "Flerskiktslåda, plast"
+    },
+    {
+      "id": "DB",
+      "en": "Crate, multiple layer, wooden",
+      "fi": "Monikerroksinen puulaatikko",
+      "sv": "Flerskiktslåda, trä"
+    },
+    {
+      "id": "DC",
+      "en": "Crate, multiple layer, cardboard",
+      "fi": "Monikerroksinen pahvilaatikko",
+      "sv": "Flerskiktslåda, kartong"
+    },
+    {
+      "id": "DG",
+      "en": "Cage, Commonwealth Handling Equipment Pool (CHEP)",
+      "fi": "CHEP-häkki",
+      "sv": "CHEP-bur"
+    },
+    {
+      "id": "DH",
+      "en": "Box, Commonwealth Handling Equipment Pool (CHEP), Eurobox",
+      "fi": "CHEP-laatikko, Eurobox",
+      "sv": "CHEP-låda, Eurobox"
+    },
+    {
+      "id": "DI",
+      "en": "Drum, iron",
+      "fi": "Rautatynnyri",
+      "sv": "Järnfat"
+    },
+    {
+      "id": "DJ",
+      "en": "Demijohn, non-protected",
+      "fi": "Damejeanne, suojaamaton",
+      "sv": "Damejeanne, oskyddad"
+    },
+    {
+      "id": "DK",
+      "en": "Crate, bulk, cardboard",
+      "fi": "Irtotavaran pahvilaatikko",
+      "sv": "Bulk-låda, kartong"
+    },
+    {
+      "id": "DL",
+      "en": "Crate, bulk, plastic",
+      "fi": "Irtotavaran muovilaatikko",
+      "sv": "Bulk-låda, plast"
+    },
+    {
+      "id": "DM",
+      "en": "Crate, bulk, wooden",
+      "fi": "Irtotavaran puulaatikko",
+      "sv": "Bulk-låda, trä"
+    },
+    {
+      "id": "DN",
+      "en": "Dispenser",
+      "fi": "Annostelija",
+      "sv": "Dispenser / doseringsanordning"
+    },
+    {
+      "id": "DP",
+      "en": "Demijohn, protected",
+      "fi": "Damejeanne, suojattu",
+      "sv": "Damejeanne, skyddad"
+    },
+    {
+      "id": "DS",
+      "en": "Tray, one layer no cover, plastic",
+      "fi": "Yhden kerroksen muovitarjotin ilman kantta",
+      "sv": "Enlagers plastbricka utan lock"
+    },
+    {
+      "id": "DT",
+      "en": "Tray, one layer no cover, wooden",
+      "fi": "Yhden kerroksen puutarjotin ilman kantta",
+      "sv": "Enlagers träbricka utan lock"
+    },
+    {
+      "id": "DU",
+      "en": "Tray, one layer no cover, polystyrene",
+      "fi": "Yhden kerroksen polystyreenitarjotin ilman kantta",
+      "sv": "Enlagers polystyrenbricka utan lock"
+    },
+    {
+      "id": "DV",
+      "en": "Tray, one layer no cover, cardboard",
+      "fi": "Yhden kerroksen pahvitarjotin ilman kantta",
+      "sv": "Enlagers kartongbricka utan lock"
+    },
+    {
+      "id": "DW",
+      "en": "Tray, two layers no cover, plastic tray",
+      "fi": "Kaksikerroksinen muovitarjotin ilman kantta",
+      "sv": "Tvålagers plastbricka utan lock"
+    },
+    {
+      "id": "DX",
+      "en": "Tray, two layers no cover, wooden",
+      "fi": "Kaksikerroksinen puutarjotin ilman kantta",
+      "sv": "Tvålagers träbricka utan lock"
+    },
+    {
+      "id": "DY",
+      "en": "Tray, two layers no cover, cardboard",
+      "fi": "Kaksikerroksinen pahvitarjotin ilman kantta",
+      "sv": "Tvålagers kartongbricka utan lock"
+    },
+    {
+      "id": "EC",
+      "en": "Bag, plastic",
+      "fi": "Muovipussi",
+      "sv": "Plastpåse"
+    },
+    {
+      "id": "ED",
+      "en": "Case, with pallet base",
+      "fi": "Kuormalavapohjainen kotelo",
+      "sv": "Låda med pallbas"
+    },
+    {
+      "id": "EE",
+      "en": "Case, with pallet base, wooden",
+      "fi": "Kuormalavapohjainen puukotelo",
+      "sv": "Låda med pallbas, trä"
+    },
+    {
+      "id": "EF",
+      "en": "Case, with pallet base, cardboard",
+      "fi": "Kuormalavapohjainen pahvikotelo",
+      "sv": "Låda med pallbas, kartong"
+    },
+    {
+      "id": "EG",
+      "en": "Case, with pallet base, plastic",
+      "fi": "Kuormalavapohjainen muovikotelo",
+      "sv": "Låda med pallbas, plast"
+    },
+    {
+      "id": "EH",
+      "en": "Case, with pallet base, metal",
+      "fi": "Kuormalavapohjainen metallikotelo",
+      "sv": "Låda med pallbas, metall"
+    },
+    {
+      "id": "EI",
+      "en": "Case, isothermic",
+      "fi": "Lämpöeristetty kotelo",
+      "sv": "Isoterm låda"
+    },
+    {
+      "id": "EN",
+      "en": "Envelope",
+      "fi": "Kirjekuori",
+      "sv": "Kuvert"
+    },
+    {
+      "id": "FB",
+      "en": "Flexibag",
+      "fi": "Joustosäkki (flexibag)",
+      "sv": "Flexibag (flexisäck)"
+    },
+    {
+      "id": "FC",
+      "en": "Crate, fruit",
+      "fi": "Hedelmälaatikko",
+      "sv": "Fruktlåda"
+    },
+    {
+      "id": "FD",
+      "en": "Crate, framed",
+      "fi": "Kehyslaatikko",
+      "sv": "Ramförsedd låda"
+    },
+    {
+      "id": "FE",
+      "en": "Flexitank",
+      "fi": "Joustosäiliö (flexitankki)",
+      "sv": "Flexitank (flexitank)"
+    },
+    {
+      "id": "FI",
+      "en": "Firkin",
+      "fi": "Puolitynnyri (firkin)",
+      "sv": "Halvtunna (firkin)"
+    },
+    {
+      "id": "FL",
+      "en": "Flask",
+      "fi": "Pullo / kolvi",
+      "sv": "Flaska / kolv"
+    },
+    {
+      "id": "FO",
+      "en": "Footlocker",
+      "fi": "Varustearkku",
+      "sv": "Resekista / låda"
+    },
+    {
+      "id": "FP",
+      "en": "Filmpack",
+      "fi": "Filmipakkaus",
+      "sv": "Filmpaket"
+    },
+    {
+      "id": "FR",
+      "en": "Frame",
+      "fi": "Kehys",
+      "sv": "Ram"
+    },
+    {
+      "id": "FT",
+      "en": "Foodtainer",
+      "fi": "Elintarvikeastia",
+      "sv": "Matbehållare"
+    },
+    {
+      "id": "FW",
+      "en": "Cart, flatbed",
+      "fi": "Tasovaunu",
+      "sv": "Flakvagn"
+    },
+    {
+      "id": "FX",
+      "en": "Bag, flexible container",
+      "fi": "Joustava säkkikontti",
+      "sv": "Flexibel säckbehållare"
+    },
+    {
+      "id": "GI",
+      "en": "Girder",
+      "fi": "Palkki",
+      "sv": "Balk"
+    },
+    {
+      "id": "GL",
+      "en": "Container, gallon",
+      "fi": "Gallonakontti",
+      "sv": "Gallonbehållare"
+    },
+    {
+      "id": "GR",
+      "en": "Receptacle, glass",
+      "fi": "Lasisäiliö",
+      "sv": "Glasbehållare"
+    },
+    {
+      "id": "GU",
+      "en": "Tray, containing horizontally stacked flat items",
+      "fi": "Tarjotin, jossa vaakasuuntaiset litteät tuotteet",
+      "sv": "Bricka med horisontellt staplade platta föremål"
+    },
+    {
+      "id": "GY",
+      "en": "Bag, gunny",
+      "fi": "Juuttisäkki",
+      "sv": "Jutesäck"
+    },
+    {
+      "id": "GZ",
+      "en": "Girders, in bundle/bunch/truss",
+      "fi": "Palkit, nipussa",
+      "sv": "Balkar, i bunt/knippe"
+    },
+    {
+      "id": "HA",
+      "en": "Basket, with handle, plastic",
+      "fi": "Muovikori, kahvallinen",
+      "sv": "Plastkorg med handtag"
+    },
+    {
+      "id": "HB",
+      "en": "Basket, with handle, wooden",
+      "fi": "Puukori, kahvallinen",
+      "sv": "Träkorg med handtag"
+    },
+    {
+      "id": "HC",
+      "en": "Basket, with handle, cardboard",
+      "fi": "Pahvikori, kahvallinen",
+      "sv": "Kartongkorg med handtag"
+    },
+    {
+      "id": "HG",
+      "en": "Hogshead",
+      "fi": "Suuritynnyri (hogshead)",
+      "sv": "Stor tunna (hogshead)"
+    },
+    {
+      "id": "HN",
+      "en": "Hanger",
+      "fi": "Ripustin / vaateripustin",
+      "sv": "Galge / hängare"
+    },
+    {
+      "id": "HR",
+      "en": "Hamper",
+      "fi": "Iso kori / pyykkikori",
+      "sv": "Korg / korg med lock"
+    },
+    {
+      "id": "IA",
+      "en": "Package, display, wooden",
+      "fi": "Näyttöpakkaus, puu",
+      "sv": "Exponeringsförpackning, trä"
+    },
+    {
+      "id": "IB",
+      "en": "Package, display, cardboard",
+      "fi": "Näyttöpakkaus, pahvi",
+      "sv": "Exponeringsförpackning, kartong"
+    },
+    {
+      "id": "IC",
+      "en": "Package, display, plastic",
+      "fi": "Näyttöpakkaus, muovi",
+      "sv": "Exponeringsförpackning, plast"
+    },
+    {
+      "id": "ID",
+      "en": "Package, display, metal",
+      "fi": "Näyttöpakkaus, metalli",
+      "sv": "Exponeringsförpackning, metall"
+    },
+    {
+      "id": "IE",
+      "en": "Package, show",
+      "fi": "Näyttelypakkaus",
+      "sv": "Utställningsförpackning"
+    },
+    {
+      "id": "IF",
+      "en": "Package, flow",
+      "fi": "Virtauspakkaus",
+      "sv": "Flödesförpackning"
+    },
+    {
+      "id": "IG",
+      "en": "Package, paper wrapped",
+      "fi": "Paperikääre",
+      "sv": "Pappersinslagen förpackning"
+    },
+    {
+      "id": "IH",
+      "en": "Drum, plastic",
+      "fi": "Tynnyri, muovi",
+      "sv": "Fat, plast"
+    },
+    {
+      "id": "IK",
+      "en": "Package, cardboard, with bottle grip-holes",
+      "fi": "Pahvipakkaus, jossa pullon ottoaukot",
+      "sv": "Kartongförpackning med flaskgrepp"
+    },
+    {
+      "id": "IL",
+      "en": "Tray, rigid, lidded stackable (CEN TS 14482:2002)",
+      "fi": "Jäykkä pinottava tarjotin kannella (CEN TS 14482:2002)",
+      "sv": "Styv stapelbar bricka med lock (CEN TS 14482:2002)"
+    },
+    {
+      "id": "IN",
+      "en": "Ingot",
+      "fi": "Harkko",
+      "sv": "Tacka"
+    },
+    {
+      "id": "IZ",
+      "en": "Ingots, in bundle/bunch/truss",
+      "fi": "Harkot, nipussa",
+      "sv": "Täckor, i bunt/knippe"
+    },
+    {
+      "id": "JB",
+      "en": "Bag, jumbo",
+      "fi": "Suursäkki",
+      "sv": "Storsäck"
+    },
+    {
+      "id": "JC",
+      "en": "Jerrican, rectangular",
+      "fi": "Kanisteri, suorakulmainen",
+      "sv": "Dunk, rektangulär"
+    },
+    {
+      "id": "JG",
+      "en": "Jug",
+      "fi": "Kannu",
+      "sv": "Kanna"
+    },
+    {
+      "id": "JR",
+      "en": "Jar",
+      "fi": "Purkki",
+      "sv": "Burk"
+    },
+    {
+      "id": "JT",
+      "en": "Jutebag",
+      "fi": "Juuttisäkki",
+      "sv": "Jutesäck"
+    },
+    {
+      "id": "JY",
+      "en": "Jerrican, cylindrical",
+      "fi": "Kanisteri, sylinterimäinen",
+      "sv": "Dunk, cylindrisk"
+    },
+    {
+      "id": "KG",
+      "en": "Keg",
+      "fi": "Pieni tynnyri / oluttynnyri",
+      "sv": "Fat / ölfat"
+    },
+    {
+      "id": "KI",
+      "en": "Kit",
+      "fi": "Sarja / paketti",
+      "sv": "Sats / kit"
+    },
+    {
+      "id": "LE",
+      "en": "Luggage",
+      "fi": "Matkatavara",
+      "sv": "Resgods / bagage"
+    },
+    {
+      "id": "LG",
+      "en": "Log",
+      "fi": "Puu / tukki",
+      "sv": "Stock / timmer"
+    },
+    {
+      "id": "LT",
+      "en": "Lot",
+      "fi": "Erä / erillinen erä",
+      "sv": "Parti / sats"
+    },
+    {
+      "id": "LU",
+      "en": "Lug",
+      "fi": "Kahva / tartuntakohta",
+      "sv": "Handtag / grepp"
+    },
+    {
+      "id": "LV",
+      "en": "Liftvan",
+      "fi": "Siirtolaatikko / kuljetusarkku",
+      "sv": "Flyttlåda / transportlåda"
+    },
+    {
+      "id": "LZ",
+      "en": "Logs, in bundle/bunch/truss",
+      "fi": "Tukit, nipussa",
+      "sv": "Stockar, i bunt/knippe"
+    },
+    {
+      "id": "MA",
+      "en": "Crate, metal",
+      "fi": "Metallilaatikko",
+      "sv": "Metallåda"
+    },
+    {
+      "id": "MB",
+      "en": "Bag, multiply",
+      "fi": "Monikerroksinen säkki",
+      "sv": "Flerskiktssäck"
+    },
+    {
+      "id": "MC",
+      "en": "Crate, milk",
+      "fi": "Maitolaatikko",
+      "sv": "Mjölklåda"
+    },
+    {
+      "id": "ME",
+      "en": "Container, metal",
+      "fi": "Metallikontti",
+      "sv": "Metallbehållare"
+    },
+    {
+      "id": "MR",
+      "en": "Receptacle, metal",
+      "fi": "Metalliastia",
+      "sv": "Metallbehållare"
+    },
+    {
+      "id": "MS",
+      "en": "Sack, multi-wall",
+      "fi": "Moniseinäinen säkki",
+      "sv": "Flerskiktssäck"
+    },
+    {
+      "id": "MT",
+      "en": "Mat",
+      "fi": "Matto / alusta",
+      "sv": "Matta / underlag"
+    },
+    {
+      "id": "MW",
+      "en": "Receptacle, plastic wrapped",
+      "fi": "Muovikalvolla päällystetty astia",
+      "sv": "Plastinlindad behållare"
+    },
+    {
+      "id": "MX",
+      "en": "Matchbox",
+      "fi": "Tulitikkuaski",
+      "sv": "Tändsticksask"
+    },
+    {
+      "id": "NA",
+      "en": "Not available",
+      "fi": "Ei saatavilla",
+      "sv": "Ej tillgänglig"
+    },
+    {
+      "id": "NE",
+      "en": "Unpacked or unpackaged",
+      "fi": "Pakkaamaton",
+      "sv": "Oförpackad"
+    },
+    {
+      "id": "NF",
+      "en": "Unpacked or unpackaged, single unit",
+      "fi": "Pakkaamaton yksikkö",
+      "sv": "Oförpackad enhet"
+    },
+    {
+      "id": "NG",
+      "en": "Unpacked or unpackaged, multiple units",
+      "fi": "Pakkaamattomat useat yksiköt",
+      "sv": "Oförpackade flera enheter"
+    },
+    {
+      "id": "NS",
+      "en": "Nest",
+      "fi": "Pino / sisäkkäinen sarja",
+      "sv": "Näs / stapel"
+    },
+    {
+      "id": "NT",
+      "en": "Net",
+      "fi": "Verkko",
+      "sv": "Nät"
+    },
+    {
+      "id": "NU",
+      "en": "Net, tube, plastic",
+      "fi": "Muovinen verkkoputki",
+      "sv": "Nät, rörformad, plast"
+    },
+    {
+      "id": "NV",
+      "en": "Net, tube, textile",
+      "fi": "Tekstiiliverkkoputki",
+      "sv": "Nät, rörformad, textil"
+    },
+    {
+      "id": "OA",
+      "en": "Pallet, CHEP 40 cm x 60 cm",
+      "fi": "CHEP-kuormalava 40×60 cm",
+      "sv": "CHEP-pall 40×60 cm"
+    },
+    {
+      "id": "OB",
+      "en": "Pallet, CHEP 80 cm x 120 cm",
+      "fi": "CHEP-kuormalava 80×120 cm",
+      "sv": "CHEP-pall 80×120 cm"
+    },
+    {
+      "id": "OC",
+      "en": "Pallet, CHEP 100 cm x 120 cm",
+      "fi": "CHEP-kuormalava 100×120 cm",
+      "sv": "CHEP-pall 100×120 cm"
+    },
+    {
+      "id": "OD",
+      "en": "Pallet, AS 4068-1993",
+      "fi": "Kuormalava, AS 4068-1993",
+      "sv": "Pall, AS 4068-1993"
+    },
+    {
+      "id": "OE",
+      "en": "Pallet, ISO T11",
+      "fi": "ISO T11 -kuormalava",
+      "sv": "ISO T11-pall"
+    },
+    {
+      "id": "OF",
+      "en": "Platform, unspecified weight or dimension",
+      "fi": "Alusta, paino tai koko määrittelemätön",
+      "sv": "Plattform, vikt eller dimension ej angiven"
+    },
+    {
+      "id": "OK",
+      "en": "Block",
+      "fi": "Lohko",
+      "sv": "Block"
+    },
+    {
+      "id": "OT",
+      "en": "Octabin",
+      "fi": "Kahdeksankulmainen suurpakkaus (octabin)",
+      "sv": "Oktabin (åttakantig storsäck)"
+    },
+    {
+      "id": "OU",
+      "en": "Container, outer",
+      "fi": "Ulkokontti",
+      "sv": "Yttre behållare"
+    },
+    {
+      "id": "OG",
+      "en": "Pallet ISO 0 - 1/2 EURO Pallet",
+      "fi": "ISO 0 - ½ EUR -kuormalava",
+      "sv": "ISO 0 - ½ EUR-pall"
+    },
+    {
+      "id": "OH",
+      "en": "Pallet ISO 1 - 1/1 EURO Pallet",
+      "fi": "ISO 1 - täysi EUR -kuormalava",
+      "sv": "ISO 1 - hel EUR-pall"
+    },
+    {
+      "id": "OI",
+      "en": "Pallet ISO 2 – 2/1 EURO Pallet",
+      "fi": "ISO 2 - kaksinkertainen EUR -kuormalava",
+      "sv": "ISO 2 - dubbel EUR-pall"
+    },
+    {
+      "id": "OJ",
+      "en": "1/4 EURO Pallet",
+      "fi": "¼ EUR-kuormalava",
+      "sv": "¼ EUR-pall"
+    },
+    {
+      "id": "OL",
+      "en": "1/8 EURO Pallet",
+      "fi": "⅛ EUR-kuormalava",
+      "sv": "⅛ EUR-pall"
+    },
+    {
+      "id": "OM",
+      "en": "Synthetic pallet ISO 1",
+      "fi": "Synteettinen ISO 1 -kuormalava",
+      "sv": "Syntetisk ISO 1-pall"
+    },
+    {
+      "id": "ON",
+      "en": "Synthetic pallet ISO 2",
+      "fi": "Synteettinen ISO 2 -kuormalava",
+      "sv": "Syntetisk ISO 2-pall"
+    },
+    {
+      "id": "OP",
+      "en": "Wholesaler pallet",
+      "fi": "Tukkukuormalava",
+      "sv": "Grossistpall"
+    },
+    {
+      "id": "OQ",
+      "en": "Pallet 80 X 100 cm",
+      "fi": "Kuormalava 80×100 cm",
+      "sv": "Pall 80×100 cm"
+    },
+    {
+      "id": "OR",
+      "en": "Pallet 60 X 100 cm",
+      "fi": "Kuormalava 60×100 cm",
+      "sv": "Pall 60×100 cm"
+    },
+    {
+      "id": "OS",
+      "en": "Oneway pallet",
+      "fi": "Kertakäyttökuormalava",
+      "sv": "Engångspall"
+    },
+    {
+      "id": "OV",
+      "en": "Returnable pallet",
+      "fi": "Palautuskuormalava",
+      "sv": "Returpall"
+    },
+    {
+      "id": "OW",
+      "en": "Large bag, pallet sized",
+      "fi": "Suuri säkki, lavakokoinen",
+      "sv": "Stor säck, pallstorlek"
+    },
+    {
+      "id": "OX",
+      "en": "A wheeled pallet with raised rim (81 x 67 x 135)",
+      "fi": "Pyörillä varustettu reunallinen lava (81×67×135)",
+      "sv": "Hjulpall med kant (81×67×135)"
+    },
+    {
+      "id": "OY",
+      "en": "A Wheeled pallet with raised rim (81 x 72 x 135)",
+      "fi": "Pyörillä varustettu reunallinen lava (81×72×135)",
+      "sv": "Hjulpall med kant (81×72×135)"
+    },
+    {
+      "id": "OZ",
+      "en": "Wheeled pallet with raised rim (81 x 60 x 16)",
+      "fi": "Pyörillä varustettu reunallinen lava (81×60×16)",
+      "sv": "Hjulpall med kant (81×60×16)"
+    },
+    {
+      "id": "O1",
+      "en": "Two sided cage on wheels with fixing strap",
+      "fi": "Kaksipuolinen häkki pyörillä, kiinnityshihna",
+      "sv": "Tvåsidig bur på hjul med spännband"
+    },
+    {
+      "id": "O2",
+      "en": "Trolley",
+      "fi": "Kärry / vaunu",
+      "sv": "Vagn"
+    },
+    {
+      "id": "O3",
+      "en": "Oneway pallet ISO 0 - 1/2 EURO Pallet",
+      "fi": "Kertakäyttökuormalava ISO 0 - ½ EUR",
+      "sv": "Engångspall ISO 0 - ½ EUR"
+    },
+    {
+      "id": "O4",
+      "en": "Oneway pallet ISO 1 - 1/1 EURO Pallet",
+      "fi": "Kertakäyttökuormalava ISO 1 - 1 EUR",
+      "sv": "Engångspall ISO 1 - 1 EUR"
+    },
+    {
+      "id": "O5",
+      "en": "Oneway pallet ISO 2 - 2/1 EURO Pallet",
+      "fi": "Kertakäyttökuormalava ISO 2 - 2 EUR",
+      "sv": "Engångspall ISO 2 - 2 EUR"
+    },
+    {
+      "id": "O6",
+      "en": "Pallet with exceptional dimensions",
+      "fi": "Epästandardimittainen kuormalava",
+      "sv": "Pall med avvikande dimensioner"
+    },
+    {
+      "id": "O7",
+      "en": "Wooden pallet 40 cm x 80 cm",
+      "fi": "Puinen kuormalava 40×80 cm",
+      "sv": "Träpall 40×80 cm"
+    },
+    {
+      "id": "O8",
+      "en": "Plastic pallet SRS 60 cm x 80 cm",
+      "fi": "Muovinen SRS-kuormalava 60×80 cm",
+      "sv": "Plastpall SRS 60×80 cm"
+    },
+    {
+      "id": "O9",
+      "en": "Plastic pallet SRS 80 cm x 120 cm",
+      "fi": "Muovinen SRS-kuormalava 80×120 cm",
+      "sv": "Plastpall SRS 80×120 cm"
+    },
+    {
+      "id": "P1",
+      "en": "CHEP pallet 60 cm x 80 cm",
+      "fi": "CHEP-kuormalava 60×80 cm",
+      "sv": "CHEP-pall 60×80 cm"
+    },
+    {
+      "id": "P3",
+      "en": "LPR pallet 60 cm x 80 cm",
+      "fi": "LPR-kuormalava 60×80 cm",
+      "sv": "LPR-pall 60×80 cm"
+    },
+    {
+      "id": "P4",
+      "en": "LPR pallet 80 cm x 120 cm",
+      "fi": "LPR-kuormalava 80×120 cm",
+      "sv": "LPR-pall 80×120 cm"
+    },
+    {
+      "id": "P2",
+      "en": "Pan",
+      "fi": "Pannu",
+      "sv": "Panna"
+    },
+    {
+      "id": "PA",
+      "en": "Packet",
+      "fi": "Pakkaus",
+      "sv": "Paket"
+    },
+    {
+      "id": "PB",
+      "en": "Pallet, box Combined open-ended box and pallet",
+      "fi": "Kuormalava-laatikko, avoin yhdistelmä",
+      "sv": "Kombinerad öppen låda och pall"
+    },
+    {
+      "id": "PC",
+      "en": "Parcel",
+      "fi": "Paketti",
+      "sv": "Paket / försändelse"
+    },
+    {
+      "id": "PD",
+      "en": "Pallet, modular, collars 80cms * 100cms",
+      "fi": "Kuormalava, reunukset 80×100 cm",
+      "sv": "Pall, kragar 80×100 cm"
+    },
+    {
+      "id": "PE",
+      "en": "Pallet, modular, collars 80cms * 120cms",
+      "fi": "Kuormalava, reunukset 80×120 cm",
+      "sv": "Pall, kragar 80×120 cm"
+    },
+    {
+      "id": "PF",
+      "en": "Pen",
+      "fi": "Kynä",
+      "sv": "Penna"
+    },
+    {
+      "id": "PG",
+      "en": "Plate",
+      "fi": "Levy / lautanen",
+      "sv": "Skiva / tallrik"
+    },
+    {
+      "id": "PH",
+      "en": "Pitcher",
+      "fi": "Kannu",
+      "sv": "Kanna"
+    },
+    {
+      "id": "PI",
+      "en": "Pipe",
+      "fi": "Putki",
+      "sv": "Rör"
+    },
+    {
+      "id": "PJ",
+      "en": "Punnet",
+      "fi": "Pieni rasia / kori",
+      "sv": "Liten låda / korg"
+    },
+    {
+      "id": "PK",
+      "en": "Package",
+      "fi": "Pakkaus",
+      "sv": "Förpackning"
+    },
+    {
+      "id": "PL",
+      "en": "Pail",
+      "fi": "Sanko",
+      "sv": "Hink"
+    },
+    {
+      "id": "PN",
+      "en": "Plank",
+      "fi": "Lauta",
+      "sv": "Planka"
+    },
+    {
+      "id": "PO",
+      "en": "Pouch",
+      "fi": "Pussi",
+      "sv": "Påse"
+    },
+    {
+      "id": "PP",
+      "en": "Piece",
+      "fi": "Kappale",
+      "sv": "Stycke"
+    },
+    {
+      "id": "PR",
+      "en": "Receptacle, plastic",
+      "fi": "Astia, muovi",
+      "sv": "Behållare, plast"
+    },
+    {
+      "id": "PT",
+      "en": "Pot",
+      "fi": "Ruukku / purkki",
+      "sv": "Kruka / burk"
+    },
+    {
+      "id": "PU",
+      "en": "Tray",
+      "fi": "Tarjotin",
+      "sv": "Bricka"
+    },
+    {
+      "id": "PV",
+      "en": "Pipes, in bundle/bunch/truss",
+      "fi": "Putket, nipussa",
+      "sv": "Rör, i bunt/knippe"
+    },
+    {
+      "id": "PX",
+      "en": "Pallet",
+      "fi": "Kuormalava",
+      "sv": "Pall"
+    },
+    {
+      "id": "PY",
+      "en": "Plates, in bundle/bunch/truss",
+      "fi": "Levyt, nipussa",
+      "sv": "Skivor, i bunt/knippe"
+    },
+    {
+      "id": "PZ",
+      "en": "Planks, in bundle/bunch/truss",
+      "fi": "Laudat, nipussa",
+      "sv": "Brädor, i bunt/knippe"
+    },
+    {
+      "id": "QA",
+      "en": "Drum, steel, non-removable head",
+      "fi": "Tynnyri, teräs, ei irrotettavaa kantta",
+      "sv": "Fat, stål, ej avtagbart lock"
+    },
+    {
+      "id": "QB",
+      "en": "Drum, steel, removable head",
+      "fi": "Tynnyri, teräs, irrotettava kansi",
+      "sv": "Fat, stål, avtagbart lock"
+    },
+    {
+      "id": "QC",
+      "en": "Drum, aluminium, non-removable head",
+      "fi": "Tynnyri, alumiini, ei irrotettavaa kantta",
+      "sv": "Fat, aluminium, ej avtagbart lock"
+    },
+    {
+      "id": "QD",
+      "en": "Drum, aluminium, removable head",
+      "fi": "Tynnyri, alumiini, irrotettava kansi",
+      "sv": "Fat, aluminium, avtagbart lock"
+    },
+    {
+      "id": "QF",
+      "en": "Drum, plastic, non-removable head",
+      "fi": "Tynnyri, muovi, ei irrotettavaa kantta",
+      "sv": "Fat, plast, ej avtagbart lock"
+    },
+    {
+      "id": "QG",
+      "en": "Drum, plastic, removable head",
+      "fi": "Tynnyri, muovi, irrotettava kansi",
+      "sv": "Fat, plast, avtagbart lock"
+    },
+    {
+      "id": "QH",
+      "en": "Barrel, wooden, bung type",
+      "fi": "Puutynnyri, tulppakansi",
+      "sv": "Trätunna, bungtyp"
+    },
+    {
+      "id": "QJ",
+      "en": "Barrel, wooden, removable head",
+      "fi": "Puutynnyri, irrotettava kansi",
+      "sv": "Trätunna, avtagbart lock"
+    },
+    {
+      "id": "QK",
+      "en": "Jerrican, steel, non-removable head",
+      "fi": "Kanisteri, teräs, ei irrotettavaa kantta",
+      "sv": "Dunk, stål, ej avtagbart lock"
+    },
+    {
+      "id": "QL",
+      "en": "Jerrican, steel, removable head",
+      "fi": "Kanisteri, teräs, irrotettava kansi",
+      "sv": "Dunk, stål, avtagbart lock"
+    },
+    {
+      "id": "QM",
+      "en": "Jerrican, plastic, non-removable head",
+      "fi": "Kanisteri, muovi, ei irrotettavaa kantta",
+      "sv": "Dunk, plast, ej avtagbart lock"
+    },
+    {
+      "id": "QN",
+      "en": "Jerrican, plastic, removable head",
+      "fi": "Kanisteri, muovi, irrotettava kansi",
+      "sv": "Dunk, plast, avtagbart lock"
+    },
+    {
+      "id": "QP",
+      "en": "Box, wooden, natural wood, ordinary",
+      "fi": "Puulaatikko, tavallinen",
+      "sv": "Låda av trä, vanlig"
+    },
+    {
+      "id": "QQ",
+      "en": "Box, wooden, natural wood, with sift proof walls",
+      "fi": "Puulaatikko, tiiviit seinät",
+      "sv": "Låda av trä med siktäta väggar"
+    },
+    {
+      "id": "QR",
+      "en": "Box, plastic, expanded",
+      "fi": "Laatikko, muovi, vaahto",
+      "sv": "Låda, plast, expanderad"
+    },
+    {
+      "id": "QS",
+      "en": "Box, plastic, solid",
+      "fi": "Laatikko, muovi, kiinteä",
+      "sv": "Låda, plast, solid"
+    },
+    {
+      "id": "RD",
+      "en": "Rod",
+      "fi": "Tanko",
+      "sv": "Stång"
+    },
+    {
+      "id": "RG",
+      "en": "Ring",
+      "fi": "Rengas",
+      "sv": "Ring"
+    },
+    {
+      "id": "RJ",
+      "en": "Rack, clothing hanger",
+      "fi": "Vaateripustinteline",
+      "sv": "Klädhängarställ"
+    },
+    {
+      "id": "RK",
+      "en": "Rack",
+      "fi": "Teline",
+      "sv": "Ställ"
+    },
+    {
+      "id": "RL",
+      "en": "Reel",
+      "fi": "Kela / rulla",
+      "sv": "Rulle / spole"
+    },
+    {
+      "id": "RO",
+      "en": "Roll",
+      "fi": "Rulla",
+      "sv": "Rulle"
+    },
+    {
+      "id": "RT",
+      "en": "Rednet",
+      "fi": "Verkko / verkkopeite",
+      "sv": "Nätöverdrag"
+    },
+    {
+      "id": "RZ",
+      "en": "Rods, in bundle/bunch/truss",
+      "fi": "Tangot, nipussa",
+      "sv": "Stänger, i bunt/knippe"
+    },
+    {
+      "id": "SA",
+      "en": "Sack",
+      "fi": "Säkki",
+      "sv": "Säck"
+    },
+    {
+      "id": "SB",
+      "en": "Slab",
+      "fi": "Levy / laatta",
+      "sv": "Skiva / platta"
+    },
+    {
+      "id": "SC",
+      "en": "Crate, shallow",
+      "fi": "Matalalaitainen laatikko",
+      "sv": "Låg låda"
+    },
+    {
+      "id": "SD",
+      "en": "Spindle",
+      "fi": "Käämi / kara",
+      "sv": "Spindel / spole"
+    },
+    {
+      "id": "SE",
+      "en": "Sea-chest",
+      "fi": "Merenkulkuastia / vesikotelointi",
+      "sv": "Sjövattenlåda"
+    },
+    {
+      "id": "SH",
+      "en": "Sachet",
+      "fi": "Pieni pussi / annospussi",
+      "sv": "Påse / portionspåse"
+    },
+    {
+      "id": "SI",
+      "en": "Skid",
+      "fi": "Lavetti / kuljetusalusta",
+      "sv": "Lastsläde / skid"
+    },
+    {
+      "id": "SK",
+      "en": "Case, skeleton",
+      "fi": "Avolaatikko / tukikehys",
+      "sv": "Skelettlåda / ram"
+    },
+    {
+      "id": "SL",
+      "en": "Slipsheet",
+      "fi": "Liukualusta / välipahvi",
+      "sv": "Glidark / mellanlägg"
+    },
+    {
+      "id": "SM",
+      "en": "Sheetmetal",
+      "fi": "Ohutlevy",
+      "sv": "Plåt / metallskiva"
+    },
+    {
+      "id": "SO",
+      "en": "Spool",
+      "fi": "Kela",
+      "sv": "Spole"
+    },
+    {
+      "id": "SP",
+      "en": "Sheet, plastic wrapping",
+      "fi": "Muovikalvo",
+      "sv": "Plastfilm / omslag"
+    },
+    {
+      "id": "SS",
+      "en": "Case, steel",
+      "fi": "Kotelo, teräs",
+      "sv": "Låda, stål"
+    },
+    {
+      "id": "ST",
+      "en": "Sheet",
+      "fi": "Levy / arkki",
+      "sv": "Ark / skiva"
+    },
+    {
+      "id": "SU",
+      "en": "Suitcase",
+      "fi": "Matkalaukku",
+      "sv": "Resväska"
+    },
+    {
+      "id": "SV",
+      "en": "Envelope, steel",
+      "fi": "Teräskuori",
+      "sv": "Stålkuvert / hölje"
+    },
+    {
+      "id": "SW",
+      "en": "Shrinkwrapped",
+      "fi": "Kutistekalvolla päällystetty",
+      "sv": "Krympfilmad"
+    },
+    {
+      "id": "SX",
+      "en": "Set",
+      "fi": "Sarja / setti",
+      "sv": "Sats / set"
+    },
+    {
+      "id": "SY",
+      "en": "Sleeve",
+      "fi": "Suojus / holkki",
+      "sv": "Hylsa / skyddshylsa"
+    },
+    {
+      "id": "SZ",
+      "en": "Sheets, in bundle/bunch/truss",
+      "fi": "Arkit, nipussa",
+      "sv": "Ark, i bunt/knippe"
+    },
+    {
+      "id": "T1",
+      "en": "Tablet",
+      "fi": "Tabletti / levy",
+      "sv": "Tablett / platta"
+    },
+    {
+      "id": "TB",
+      "en": "Tub",
+      "fi": "Astia / amme",
+      "sv": "Balja / kar"
+    },
+    {
+      "id": "TC",
+      "en": "Tea-chest",
+      "fi": "Teearkku",
+      "sv": "Teakista"
+    },
+    {
+      "id": "TD",
+      "en": "Tube, collapsible",
+      "fi": "Puristettava tuubi",
+      "sv": "Sammantryckbar tub"
+    },
+    {
+      "id": "TE",
+      "en": "Tyre",
+      "fi": "Rengas",
+      "sv": "Däck"
+    },
+    {
+      "id": "TG",
+      "en": "Tank container, generic",
+      "fi": "Tankkikontti, yleinen",
+      "sv": "Tankcontainer, allmän"
+    },
+    {
+      "id": "TI",
+      "en": "Tierce",
+      "fi": "Tynnyri (tierce)",
+      "sv": "Tunna (tierce)"
+    },
+    {
+      "id": "TK",
+      "en": "Tank, rectangular",
+      "fi": "Säiliö, suorakulmainen",
+      "sv": "Tank, rektangulär"
+    },
+    {
+      "id": "TL",
+      "en": "Tub, with lid",
+      "fi": "Astia, kannellinen",
+      "sv": "Balja med lock"
+    },
+    {
+      "id": "TN",
+      "en": "Tin",
+      "fi": "Peltiastia / purkki",
+      "sv": "Plåtburk"
+    },
+    {
+      "id": "TO",
+      "en": "Tun",
+      "fi": "Suuri tynnyri",
+      "sv": "Stor tunna"
+    },
+    {
+      "id": "TR",
+      "en": "Trunk",
+      "fi": "Matka-arkku",
+      "sv": "Reskista"
+    },
+    {
+      "id": "TS",
+      "en": "Truss",
+      "fi": "Tukirakenne / niputettu",
+      "sv": "Fackverk / bunt"
+    },
+    {
+      "id": "TT",
+      "en": "Bag, tote",
+      "fi": "Kantopussi / kassi",
+      "sv": "Bärkasse / totebag"
+    },
+    {
+      "id": "TU",
+      "en": "Tube",
+      "fi": "Putki / tuubi",
+      "sv": "Rör / tub"
+    },
+    {
+      "id": "TV",
+      "en": "Tube, with nozzle",
+      "fi": "Suutinputki",
+      "sv": "Tub med munstycke"
+    },
+    {
+      "id": "TW",
+      "en": "Pallet, triwall",
+      "fi": "Kolmikerroskuormalava",
+      "sv": "Trippelväggspall"
+    },
+    {
+      "id": "TY",
+      "en": "Tank, cylindrical",
+      "fi": "Säiliö, sylinterimäinen",
+      "sv": "Tank, cylindrisk"
+    },
+    {
+      "id": "TZ",
+      "en": "Tubes, in bundle/bunch/truss",
+      "fi": "Putket, nipussa",
+      "sv": "Rör, i bunt/knippe"
+    },
+    {
+      "id": "UC",
+      "en": "Uncaged",
+      "fi": "Ilman suojaavaa häkkiä",
+      "sv": "Utan bur / oskyddad"
+    },
+    {
+      "id": "UN",
+      "en": "Unit",
+      "fi": "Yksikkö",
+      "sv": "Enhet"
+    },
+    {
+      "id": "VA",
+      "en": "Vat",
+      "fi": "Sammio / säiliö",
+      "sv": "Kar / fat"
+    },
+    {
+      "id": "VG",
+      "en": "Bulk, gas (at 1031 mbar and 15°C)",
+      "fi": "Irtokaasu (1031 mbar, 15 °C)",
+      "sv": "Bulk, gas (vid 1031 mbar och 15 °C)"
+    },
+    {
+      "id": "VI",
+      "en": "Vial",
+      "fi": "Ampulli / pieni pullo",
+      "sv": "Ampull / liten flaska"
+    },
+    {
+      "id": "VK",
+      "en": "Vanpack",
+      "fi": "Pakettiautokuorma",
+      "sv": "Skåpbilslast"
+    },
+    {
+      "id": "VL",
+      "en": "Bulk, liquid",
+      "fi": "Irtolasti, neste",
+      "sv": "Bulk, vätska"
+    },
+    {
+      "id": "VO",
+      "en": "Bulk, solid, large particles (“nodules”)",
+      "fi": "Irtolasti, suuret rakeet",
+      "sv": "Bulk, fast, stora partiklar (“noduler”)"
+    },
+    {
+      "id": "VP",
+      "en": "Vacuum-packed",
+      "fi": "Tyhjiöpakattu",
+      "sv": "Vakuumförpackad"
+    },
+    {
+      "id": "VQ",
+      "en": "Bulk, liquefied gas (at abnormal temperature/pressure)",
+      "fi": "Irtolasti, nesteytetty kaasu (poikkeava lämpötila/paine)",
+      "sv": "Bulk, flytande gas (vid avvikande temp./tryck)"
+    },
+    {
+      "id": "VN",
+      "en": "Vehicle",
+      "fi": "Ajoneuvo",
+      "sv": "Fordon"
+    },
+    {
+      "id": "VR",
+      "en": "Bulk, solid, granular particles (“grains”)",
+      "fi": "Irtolasti, rakeinen",
+      "sv": "Bulk, fast, granulerad (“korn”)"
+    },
+    {
+      "id": "VS",
+      "en": "Bulk, scrap metal",
+      "fi": "Irtoromumetalli",
+      "sv": "Bulk, skrotmetall"
+    },
+    {
+      "id": "VY",
+      "en": "Bulk, solid, fine particles (“powders”)",
+      "fi": "Irtolasti, hienojakoinen (jauhe)",
+      "sv": "Bulk, fast, finpartiklar (“pulver”)"
+    },
+    {
+      "id": "WB",
+      "en": "Wickerbottle",
+      "fi": "Punottu pullo / rottinkipullo",
+      "sv": "Flaska, flätad / rottingflaska"
+    },
+    {
+      "id": "WC",
+      "en": "Intermediate bulk container, steel",
+      "fi": "IBC-säiliö, teräs",
+      "sv": "IBC-behållare, stål"
+    },
+    {
+      "id": "WD",
+      "en": "Intermediate bulk container, aluminium",
+      "fi": "IBC-säiliö, alumiini",
+      "sv": "IBC-behållare, aluminium"
+    },
+    {
+      "id": "WF",
+      "en": "Intermediate bulk container, metal",
+      "fi": "IBC-säiliö, metalli",
+      "sv": "IBC-behållare, metall"
+    },
+    {
+      "id": "WG",
+      "en": "Intermediate bulk container, steel, pressurised > 10 kpa",
+      "fi": "IBC, teräs, paineistettu >10 kPa",
+      "sv": "IBC, stål, trycksatt >10 kPa"
+    },
+    {
+      "id": "WH",
+      "en": "Intermediate bulk container, aluminium, pressurised > 10 kpa",
+      "fi": "IBC, alumiini, paineistettu >10 kPa",
+      "sv": "IBC, aluminium, trycksatt >10 kPa"
+    },
+    {
+      "id": "WJ",
+      "en": "Intermediate bulk container, metal, pressure 10 kpa",
+      "fi": "IBC, metalli, paine 10 kPa",
+      "sv": "IBC, metall, tryck 10 kPa"
+    },
+    {
+      "id": "WK",
+      "en": "Intermediate bulk container, steel, liquid",
+      "fi": "IBC, teräs, neste",
+      "sv": "IBC, stål, vätska"
+    },
+    {
+      "id": "WL",
+      "en": "Intermediate bulk container, aluminium, liquid",
+      "fi": "IBC, alumiini, neste",
+      "sv": "IBC, aluminium, vätska"
+    },
+    {
+      "id": "WM",
+      "en": "Intermediate bulk container, metal, liquid",
+      "fi": "IBC, metalli, neste",
+      "sv": "IBC, metall, vätska"
+    },
+    {
+      "id": "WN",
+      "en": "Intermediate bulk container, woven plastic, without coat/liner",
+      "fi": "IBC, kudottu muovi, ilman pinnoitetta/sisävuorta",
+      "sv": "IBC, vävd plast, utan beläggning/foder"
+    },
+    {
+      "id": "WP",
+      "en": "Intermediate bulk container, woven plastic, coated",
+      "fi": "IBC, kudottu muovi, pinnoitettu",
+      "sv": "IBC, vävd plast, belagd"
+    },
+    {
+      "id": "WQ",
+      "en": "Intermediate bulk container, woven plastic, with liner",
+      "fi": "IBC, kudottu muovi, sisävuorilla",
+      "sv": "IBC, vävd plast, med innerfoder"
+    },
+    {
+      "id": "WR",
+      "en": "Intermediate bulk container, woven plastic, coated and liner",
+      "fi": "IBC, kudottu muovi, pinnoite ja sisävuori",
+      "sv": "IBC, vävd plast, belagd och fodrad"
+    },
+    {
+      "id": "WS",
+      "en": "Intermediate bulk container, plastic film",
+      "fi": "IBC, muovikalvo",
+      "sv": "IBC, plastfilm"
+    },
+    {
+      "id": "WT",
+      "en": "Intermediate bulk container, textile with out coat/liner",
+      "fi": "IBC, tekstiili ilman pinnoitetta/sisävuorta",
+      "sv": "IBC, textil utan beläggning/foder"
+    },
+    {
+      "id": "WU",
+      "en": "Intermediate bulk container, natural wood, with inner liner",
+      "fi": "IBC, puu, sisävuorilla",
+      "sv": "IBC, trä, med innerfoder"
+    },
+    {
+      "id": "WV",
+      "en": "Intermediate bulk container, textile, coated",
+      "fi": "IBC, tekstiili, pinnoitettu",
+      "sv": "IBC, textil, belagd"
+    },
+    {
+      "id": "WW",
+      "en": "Intermediate bulk container, textile, with liner",
+      "fi": "IBC, tekstiili, sisävuorilla",
+      "sv": "IBC, textil, med foder"
+    },
+    {
+      "id": "WX",
+      "en": "Intermediate bulk container, textile, coated and liner",
+      "fi": "IBC, tekstiili, pinnoitettu ja vuorattu",
+      "sv": "IBC, textil, belagd och fodrad"
+    },
+    {
+      "id": "WY",
+      "en": "Intermediate bulk container, plywood, with inner liner",
+      "fi": "IBC, vaneri, sisävuorilla",
+      "sv": "IBC, plywood, med innerfoder"
+    },
+    {
+      "id": "WZ",
+      "en": "Intermediate bulk container, reconstituted wood, with inner liner",
+      "fi": "IBC, puukuitulevy, sisävuorilla",
+      "sv": "IBC, träfibermaterial, med innerfoder"
+    },
+    {
+      "id": "XA",
+      "en": "Bag, woven plastic, without inner coat/liner",
+      "fi": "Kudottu muovisäkki, ilman sisäpinnoitetta/vuorta",
+      "sv": "Vävd plastsäck utan innerbeläggning/foder"
+    },
+    {
+      "id": "XB",
+      "en": "Bag, woven plastic, sift proof",
+      "fi": "Kudottu muovisäkki, tiivis",
+      "sv": "Vävd plastsäck, siktät"
+    },
+    {
+      "id": "XC",
+      "en": "Bag, woven plastic, water resistant",
+      "fi": "Kudottu muovisäkki, vedenkestävä",
+      "sv": "Vävd plastsäck, vattenbeständig"
+    },
+    {
+      "id": "XD",
+      "en": "Bag, plastics film",
+      "fi": "Muovikalvosäkki",
+      "sv": "Plastsäck, film"
+    },
+    {
+      "id": "XF",
+      "en": "Bag, textile, without inner coat/liner",
+      "fi": "Tekstiilisäkki, ilman sisäpinnoitetta/vuorta",
+      "sv": "Textilsäck utan innerbeläggning/foder"
+    },
+    {
+      "id": "XG",
+      "en": "Bag, textile, sift proof",
+      "fi": "Tekstiilisäkki, tiivis",
+      "sv": "Textilsäck, siktät"
+    },
+    {
+      "id": "XH",
+      "en": "Bag, textile, water resistant",
+      "fi": "Tekstiilisäkki, vedenkestävä",
+      "sv": "Textilsäck, vattenbeständig"
+    },
+    {
+      "id": "XJ",
+      "en": "Bag, paper, multi-wall",
+      "fi": "Monikerroksinen paperisäkki",
+      "sv": "Flerlagers papperssäck"
+    },
+    {
+      "id": "XK",
+      "en": "Bag, paper, multi-wall, water resistant",
+      "fi": "Monikerroksinen paperisäkki, vedenkestävä",
+      "sv": "Flerlagers papperssäck, vattenbeständig"
+    },
+    {
+      "id": "YA",
+      "en": "Composite packaging, plastic receptacle in steel drum",
+      "fi": "Yhdistelmäpakkaus, muoviastia terästynnyrissä",
+      "sv": "Sammanställd förpackning, plastbehållare i stålfat"
+    },
+    {
+      "id": "YB",
+      "en": "Composite packaging, plastic receptacle in steel crate box",
+      "fi": "Yhdistelmäpakkaus, muoviastia teräslaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i stållåda"
+    },
+    {
+      "id": "YC",
+      "en": "Composite packaging, plastic receptacle in aluminium drum",
+      "fi": "Yhdistelmäpakkaus, muoviastia alumiinitynnyrissä",
+      "sv": "Sammanställd förpackning, plastbehållare i aluminiumfat"
+    },
+    {
+      "id": "YD",
+      "en": "Composite packaging, plastic receptacle in aluminium crate",
+      "fi": "Yhdistelmäpakkaus, muoviastia alumiinilaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i aluminiumlåda"
+    },
+    {
+      "id": "YF",
+      "en": "Composite packaging, plastic receptacle in wooden box",
+      "fi": "Yhdistelmäpakkaus, muoviastia puulaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i trälåda"
+    },
+    {
+      "id": "YG",
+      "en": "Composite packaging, plastic receptacle in plywood drum",
+      "fi": "Yhdistelmäpakkaus, muoviastia vaneritunussa",
+      "sv": "Sammanställd förpackning, plastbehållare i plywoodfat"
+    },
+    {
+      "id": "YH",
+      "en": "Composite packaging, plastic receptacle in plywood box",
+      "fi": "Yhdistelmäpakkaus, muoviastia vanerilaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i plywoodlåda"
+    },
+    {
+      "id": "YJ",
+      "en": "Composite packaging, plastic receptacle in fibre drum",
+      "fi": "Yhdistelmäpakkaus, muoviastia kuitutynnyrissä",
+      "sv": "Sammanställd förpackning, plastbehållare i fiberfat"
+    },
+    {
+      "id": "YK",
+      "en": "Composite packaging, plastic receptacle in fibreboard box",
+      "fi": "Yhdistelmäpakkaus, muoviastia kuitulevylaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i fiberlåd"
+    },
+    {
+      "id": "YL",
+      "en": "Composite packaging, plastic receptacle in plastic drum",
+      "fi": "Yhdistelmäpakkaus, muoviastia muovitunussa",
+      "sv": "Sammanställd förpackning, plastbehållare i plastfat"
+    },
+    {
+      "id": "YM",
+      "en": "Composite packaging, plastic receptacle in solid plastic box",
+      "fi": "Yhdistelmäpakkaus, muoviastia kiinteässä muovilaatikossa",
+      "sv": "Sammanställd förpackning, plastbehållare i solid plastlåda"
+    },
+    {
+      "id": "YN",
+      "en": "Composite packaging, glass receptacle in steel drum",
+      "fi": "Yhdistelmäpakkaus, lasiastia terästynnyrissä",
+      "sv": "Sammanställd förpackning, glasbehållare i stålfat"
+    },
+    {
+      "id": "YP",
+      "en": "Composite packaging, glass receptacle in steel crate box",
+      "fi": "Yhdistelmäpakkaus, lasiastia teräslaatikossa",
+      "sv": "Sammanställd förpackning, glasbehållare i stållåda"
+    },
+    {
+      "id": "YQ",
+      "en": "Composite packaging, glass receptacle in aluminium drum",
+      "fi": "Yhdistelmäpakkaus, lasiastia alumiinitynnyrissä",
+      "sv": "Sammanställd förpackning, glasbehållare i aluminiumfat"
+    },
+    {
+      "id": "YR",
+      "en": "Composite packaging, glass receptacle in aluminium crate",
+      "fi": "Yhdistelmäpakkaus, lasiastia alumiinilaatikossa",
+      "sv": "Sammanställd förpackning, glasbehållare i aluminiumlåda"
+    },
+    {
+      "id": "YS",
+      "en": "Composite packaging, glass receptacle in wooden box",
+      "fi": "Yhdistelmäpakkaus, lasiastia puulaatikossa",
+      "sv": "Sammanställd förpackning, glasbehållare i trälåda"
+    },
+    {
+      "id": "YT",
+      "en": "Composite packaging, glass receptacle in plywood drum",
+      "fi": "Yhdistelmäpakkaus, lasiastia vaneritunussa",
+      "sv": "Sammanställd förpackning, glasbehållare i plywoodfat"
+    },
+    {
+      "id": "YV",
+      "en": "Composite packaging, glass receptacle in wickerwork hamper",
+      "fi": "Yhdistelmäpakkaus, lasiastia punotussa korissa",
+      "sv": "Sammanställd förpackning, glasbehållare i flätad korg"
+    },
+    {
+      "id": "YW",
+      "en": "Composite packaging, glass receptacle in fibre drum",
+      "fi": "Yhdistelmäpakkaus, lasiastia kuitutynnyrissä",
+      "sv": "Sammanställd förpackning, glasbehållare i fiberfat"
+    },
+    {
+      "id": "YX",
+      "en": "Composite packaging, glass receptacle in fibreboard box",
+      "fi": "Yhdistelmäpakkaus, lasiastia kuitulevylaatikossa",
+      "sv": "Sammanställd förpackning, glasbehållare i fiberlåd"
+    },
+    {
+      "id": "YY",
+      "en": "Composite packaging, glass receptacle in expandable plastic pack",
+      "fi": "Yhdistelmäpakkaus, lasiastia laajennettavassa muovipakkauksessa",
+      "sv": "Sammanställd förpackning, glasbehållare i expanderbar plastförpackning"
+    },
+    {
+      "id": "YZ",
+      "en": "Composite packaging, glass receptacle in solid plastic pack",
+      "fi": "Yhdistelmäpakkaus, lasiastia kiinteässä muovipakkauksessa",
+      "sv": "Sammanställd förpackning, glasbehållare i solid plastförpackning"
+    },
+    {
+      "id": "ZA",
+      "en": "Intermediate bulk container, paper, multi-wall",
+      "fi": "IBC, paperi, monikerroksinen",
+      "sv": "IBC, papper, flerskikt"
+    },
+    {
+      "id": "ZB",
+      "en": "Bag, large",
+      "fi": "Suuri säkki",
+      "sv": "Stor säck"
+    },
+    {
+      "id": "ZC",
+      "en": "Intermediate bulk container, paper, multi-wall, water resistant",
+      "fi": "IBC, paperi, monikerroksinen, vedenkestävä",
+      "sv": "IBC, papper, flerskikt, vattenbeständig"
+    },
+    {
+      "id": "ZD",
+      "en": "Intermediate bulk container, rigid plastic, with structural equipment, solids",
+      "fi": "IBC, jäykkä muovi, tukivarustein, kiinteät aineet",
+      "sv": "IBC, styv plast, med stödutrustning, fasta ämnen"
+    },
+    {
+      "id": "ZF",
+      "en": "Intermediate bulk container, rigid plastic, freestanding, solids",
+      "fi": "IBC, jäykkä muovi, vapaasti seisova, kiinteät aineet",
+      "sv": "IBC, styv plast, fristående, fasta ämnen"
+    },
+    {
+      "id": "ZG",
+      "en": "Intermediate bulk container, rigid plastic, with structural equipment, pressurised",
+      "fi": "IBC, jäykkä muovi, tukivarustein, paineistettu",
+      "sv": "IBC, styv plast, med stödutrustning, trycksatt"
+    },
+    {
+      "id": "ZH",
+      "en": "Intermediate bulk container, rigid plastic, freestanding, pressurised",
+      "fi": "IBC, jäykkä muovi, vapaasti seisova, paineistettu",
+      "sv": "IBC, styv plast, fristående, trycksatt"
+    },
+    {
+      "id": "ZJ",
+      "en": "Intermediate bulk container, rigid plastic, with structural equipment, liquids",
+      "fi": "IBC, jäykkä muovi, tukivarustein, nesteet",
+      "sv": "IBC, styv plast, med stödutrustning, vätskor"
+    },
+    {
+      "id": "ZK",
+      "en": "Intermediate bulk container, rigid plastic, freestanding, liquids",
+      "fi": "IBC, jäykkä muovi, vapaasti seisova, nesteet",
+      "sv": "IBC, styv plast, fristående, vätskor"
+    },
+    {
+      "id": "ZL",
+      "en": "Intermediate bulk container, composite, rigid plastic, solids",
+      "fi": "Yhdistelmä-IBC, jäykkä muovi, kiinteät aineet",
+      "sv": "Sammanställd IBC, styv plast, fasta ämnen"
+    },
+    {
+      "id": "ZM",
+      "en": "Intermediate bulk container, composite, flexible plastic, solids",
+      "fi": "Yhdistelmä-IBC, joustava muovi, kiinteät aineet",
+      "sv": "Sammanställd IBC, flexibel plast, fasta ämnen"
+    },
+    {
+      "id": "ZN",
+      "en": "Intermediate bulk container, composite, rigid plastic, pressurised",
+      "fi": "Yhdistelmä-IBC, jäykkä muovi, paineistettu",
+      "sv": "Sammanställd IBC, styv plast, trycksatt"
+    },
+    {
+      "id": "ZP",
+      "en": "Intermediate bulk container, composite, flexible plastic, pressurised",
+      "fi": "Yhdistelmä-IBC, joustava muovi, paineistettu",
+      "sv": "Sammanställd IBC, flexibel plast, trycksatt"
+    },
+    {
+      "id": "ZQ",
+      "en": "Intermediate bulk container, composite, rigid plastic, liquids",
+      "fi": "Yhdistelmä-IBC, jäykkä muovi, nesteet",
+      "sv": "Sammanställd IBC, styv plast, vätskor"
+    },
+    {
+      "id": "ZR",
+      "en": "Intermediate bulk container, composite, flexible plastic, liquids",
+      "fi": "Yhdistelmä-IBC, joustava muovi, nesteet",
+      "sv": "Sammanställd IBC, flexibel plast, vätskor"
+    },
+    {
+      "id": "ZS",
+      "en": "Intermediate bulk container, composite",
+      "fi": "Yhdistelmä-IBC",
+      "sv": "Sammanställd IBC"
+    },
+    {
+      "id": "ZT",
+      "en": "Intermediate bulk container, fibreboard",
+      "fi": "IBC, kuitulevy",
+      "sv": "IBC, fiberplatta"
+    },
+    {
+      "id": "ZU",
+      "en": "Intermediate bulk container, flexible",
+      "fi": "IBC, joustava",
+      "sv": "IBC, flexibel"
+    },
+    {
+      "id": "ZV",
+      "en": "Intermediate bulk container, metal, other than steel",
+      "fi": "IBC, metalli (muu kuin teräs)",
+      "sv": "IBC, metall (annan än stål)"
+    },
+    {
+      "id": "ZW",
+      "en": "Intermediate bulk container, natural wood",
+      "fi": "IBC, massiivipuu",
+      "sv": "IBC, massivt trä"
+    },
+    {
+      "id": "ZX",
+      "en": "Intermediate bulk container, plywood",
+      "fi": "IBC, vaneri",
+      "sv": "IBC, plywood"
+    },
+    {
+      "id": "ZY",
+      "en": "Intermediate bulk container, reconstituted wood",
+      "fi": "IBC, puukuitulevy",
+      "sv": "IBC, träfibermaterial"
+    },
+    {
+      "id": "ZZ",
+      "en": "Mutually defined",
+      "fi": "Määritelty erikseen",
+      "sv": "Ömsesidigt definierad"
+    }
+  ]
+}

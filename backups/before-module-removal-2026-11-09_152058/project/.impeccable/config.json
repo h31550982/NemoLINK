@@ -1,0 +1,32 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "app/src/pages/HomePage.vue"
+        ],
+        "createdAt": "2026-11-02T20:26:04.204Z",
+        "reason": "NemoLINK style guide p. 13 (cited in the .call-table comment): overview table is white, radius 10, with a 4px group-colour bar on top; predates this session"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/src/pages/HomePage.vue"
+        ],
+        "createdAt": "2026-11-06T15:46:52.909Z",
+        "reason": "Figma 444:6963 specifies the Blue/800 left bar on the Blue/150 .sched-next panel; intentional design system treatment, not an AI artefact"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-06T15:51:04.201Z",
+        "reason": "Inter is used only for the 8px brand wordmark under the logo (guide p. 6); it is a deliberate brand choice, not a body font selection"
+      }
+    ]
+  }
+}

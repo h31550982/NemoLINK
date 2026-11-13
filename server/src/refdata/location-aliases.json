@@ -1,0 +1,187 @@
+{
+  "version": "1.0.0",
+  "spec": "docs/specs/0056-locode-aliases.md",
+  "source": {
+    "audit": "integrations/opsDesk/schema/locode-audit.md",
+    "authority": "https://fintraffic-vts.github.io/mnsw/location/locations.json (hub/EMSA mirror, spec 0027) + GISIS Maritime Security facility export (spec 0053)",
+    "curatedOn": "2026-09-03",
+    "note": "Ours, not vendored. Every row states the evidence for its mapping; a row without evidence is a guess and does not belong here. relation decides what the door may do: not_a_code / port_area_of / renamed may substitute, confusable_with never does."
+  },
+  "aliases": [
+    {
+      "givenCode": "FIMTY",
+      "givenName": "Mäntyluoto",
+      "relation": "port_area_of",
+      "currentCode": "FIPOR",
+      "note": "Mäntyluoto is a port area of Pori (FIPOR)",
+      "evidence": "FIMTY carries no port areas, berths or facilities; FIPOR has area 'MÄNTYLUOTO' with facility FIPOR-0001 and 15 berths"
+    },
+    {
+      "givenCode": "FITHK",
+      "givenName": "Tahkoluoto",
+      "relation": "port_area_of",
+      "currentCode": "FIPOR",
+      "note": "Tahkoluoto is a port area of Pori (FIPOR)",
+      "evidence": "FIPOR area 'TAHKOLUOTO', facility FIPOR-0002; the deep harbour is 0.4 km from the place"
+    },
+    {
+      "givenCode": "FIVSS",
+      "givenName": "Vuosaari",
+      "relation": "port_area_of",
+      "currentCode": "FIHEL",
+      "note": "Vuosaari is a port area of Helsinki (FIHEL)",
+      "evidence": "FIHEL areas 'Vuosaaren satama' and 'Vuosaari, telakka'; facility FIHEL-0030 'Vuosaari Berth A' 0.4 km away"
+    },
+    {
+      "givenCode": "FISUL",
+      "givenName": "Sunila",
+      "relation": "port_area_of",
+      "currentCode": "FIKTK",
+      "note": "Sunila is a port area of Kotka (FIKTK)",
+      "evidence": "FIKTK areas 'SUNILA, SATAMA OY' and 'SUNILA, SUNILA OY'; facility FIKTK-0007 'HaminaKotka Sunila' 0.5 km away"
+    },
+    {
+      "givenCode": "FIAJO",
+      "givenName": "Ajos",
+      "relation": "port_area_of",
+      "currentCode": "FIKEM",
+      "note": "Ajos is a port area of Kemi (FIKEM)",
+      "evidence": "FIKEM area 'Ajos' with facility FIKEM-0001, 1.1 km away"
+    },
+    {
+      "givenCode": "FIMUS",
+      "givenName": "Mustola",
+      "relation": "port_area_of",
+      "currentCode": "FILPP",
+      "note": "Mustola is a port area of Lappeenranta (FILPP), on the Saimaa Canal",
+      "evidence": "FILPP area 'Mustola' with facility FILPP-0002 'Lappeenranta Mustola (Saimaa Canal)', 0.9 km away"
+    },
+    {
+      "givenCode": "FIKVH",
+      "givenName": "Koverhar",
+      "relation": "port_area_of",
+      "currentCode": "FIHKO",
+      "note": "Koverhar is a port area of Hanko (FIHKO)",
+      "evidence": "FIHKO area 'KOVERHAR' with facility FIHKO-0002; FIHKO-0020 is named 'Hanko Koverhar'"
+    },
+    {
+      "givenCode": "FIWAS",
+      "givenName": "Vasklot (Vaskiluoto)",
+      "relation": "port_area_of",
+      "currentCode": "FIVAA",
+      "note": "Vaskiluoto is Vaasa's harbour island (FIVAA)",
+      "evidence": "FIWAS carries nothing; facility FIVAA-0001 'Vaasa Vaskiluoto' sits 0.3 km away"
+    },
+    {
+      "givenCode": "FIVKO",
+      "givenName": "Valkom (Valko)",
+      "relation": "port_area_of",
+      "currentCode": "FILOV",
+      "note": "Valko is Loviisa's harbour (FILOV)",
+      "evidence": "FILOV area 'Valko' with facility FILOV-0001, 0.6 km away"
+    },
+    {
+      "givenCode": "FIROY",
+      "givenName": "Röyttä",
+      "relation": "port_area_of",
+      "currentCode": "FITOR",
+      "note": "Röyttä is Tornio's harbour (FITOR)",
+      "evidence": "FIROY carries nothing; facility FITOR-0001 'Tornio Röyttä' sits 1.3 km away"
+    },
+    {
+      "givenCode": "FIPUH",
+      "givenName": "Puhos",
+      "relation": "port_area_of",
+      "currentCode": "FIKTQ",
+      "note": "Puhos harbour belongs to Kitee (FIKTQ)",
+      "evidence": "FIPUH carries nothing; facility FIKTQ-0001 'Kitee / Puhoksen satama' sits 0.3 km away"
+    },
+    {
+      "givenCode": "FIYXP",
+      "givenName": "Yxpila (Ykspihlaja)",
+      "relation": "port_area_of",
+      "currentCode": "FIKOK",
+      "note": "Ykspihlaja is Kokkola's cargo harbour (FIKOK)",
+      "evidence": "FIYXP carries nothing; facility FIKOK-0003 'Kokkola Chemical and General Port' sits 0.9 km away"
+    },
+    {
+      "givenCode": "FIRTR",
+      "givenName": "Rautaruukki",
+      "relation": "port_area_of",
+      "currentCode": null,
+      "note": "Rautaruukki is a port area of both Raahe (FIRAA) and Lappohja (FILAP) — say which works is meant",
+      "evidence": "hub areas 'Rautaruukki' under FIRAA (FIRAA-0002) and under FILAP (FILAP-0001)",
+      "data": { "ambiguous": ["FIRAA", "FILAP"] }
+    },
+    {
+      "givenCode": "FIMTL",
+      "givenName": "Mäntyluoto",
+      "relation": "not_a_code",
+      "currentCode": "FIPOR",
+      "note": "FIMTL is not a UN/LOCODE; Mäntyluoto is a port area of Pori (FIPOR)",
+      "evidence": "absent from the 115,532-locode world set; seen in opsDesk as the call port of live Finnish port calls"
+    },
+    {
+      "givenCode": "FIVSO",
+      "givenName": "Veitsiluoto",
+      "relation": "not_a_code",
+      "currentCode": "FIVEI",
+      "note": "FIVSO is not a UN/LOCODE; Veitsiluoto is FIVEI",
+      "evidence": "absent from the world set; FIVEI 'Veitsiluoto' is operating (area Kemi/Veitsiluoto, facility FIVEI-0001)"
+    },
+    {
+      "givenCode": "FIRPI",
+      "givenName": "Reposaari",
+      "relation": "not_a_code",
+      "currentCode": "FIREP",
+      "note": "FIRPI is not a UN/LOCODE; Reposaari is FIREP",
+      "evidence": "absent from the world set; FIREP 'Reposaari' exists. Reposaari is not an ISPS port, so it keeps its own code rather than folding into Pori (user decision 2026-09-03)"
+    },
+    {
+      "givenCode": "FILLU",
+      "givenName": "Lapaluoto",
+      "relation": "not_a_code",
+      "currentCode": "FIRAA",
+      "note": "FILLU is not a UN/LOCODE; Lapaluoto is a port area of Raahe (FIRAA)",
+      "evidence": "absent from the world set; FIRAA area 'Lapaluoto' with facility FIRAA-0001, 0.8 km away"
+    },
+    {
+      "givenName": "Raasepori",
+      "relation": "renamed",
+      "currentCode": "FITAI",
+      "note": "Raasepori's port is Tammisaari (Ekenäs) — FITAI. The 2009 municipal merger renamed the municipality; the port kept its name, so the code stands under the old one",
+      "evidence": "FITAI 'Tammisaari (Ekenas)' with port-area facility FITAI-0001; the place sits at 59.979N 23.432E, Ekenäs town"
+    },
+    {
+      "givenName": "Porvoo Inner Anchorage",
+      "relation": "port_area_of",
+      "currentCode": "FISKV",
+      "note": "The Porvoo anchorages belong to Sköldvik / Kilpilahti (FISKV), not to the town of Porvoo (FIPRV)",
+      "evidence": "FISKV areas 'Inner Anchor place' and 'Outer Anchor place' plus facilities FISKV-0006/0007/0008, 3.8 km from the inner anchorage; FIPRV has no facilities at all"
+    },
+    {
+      "givenName": "Porvoo Outer Anchorage",
+      "relation": "port_area_of",
+      "currentCode": "FISKV",
+      "note": "The Porvoo anchorages belong to Sköldvik / Kilpilahti (FISKV), not to the town of Porvoo (FIPRV)",
+      "evidence": "FISKV area 'Outer Anchor place'; FIPRV 'Porvoo (Borgå)' publishes only 'Ankkurissa' and 'Ei Tiedossa' and no facilities"
+    },
+    {
+      "givenCode": "FIYPA",
+      "givenName": "Ypäjä",
+      "relation": "confusable_with",
+      "currentCode": "FIKOK",
+      "note": "FIYPA is Ypäjä, an inland municipality with no harbour. If Yxpila — Kokkola's cargo harbour — was meant, that is FIKOK",
+      "evidence": "seen in opsDesk on the row named 'Yxpila', whose coordinates are 0.9 km from facility FIKOK-0003"
+    },
+    {
+      "givenCode": "FILPA",
+      "givenName": "Lapua (Lappo)",
+      "relation": "confusable_with",
+      "currentCode": null,
+      "note": "FILPA is Lapua, an inland town. If the Åland island Lappo was meant, it has no UN/LOCODE of its own — Brändö (FIBRA) is its parent municipality",
+      "evidence": "seen in opsDesk on a row in the Åland archipelago cluster, 44 km from the nearest ISPS facility (Långnäs)",
+      "data": { "suggest": ["FIBRA"] }
+    }
+  ]
+}

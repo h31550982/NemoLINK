@@ -1,0 +1,142 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "statement_type",
+  "headerless": false,
+  "usedIn": [
+    "DE-003-07"
+  ],
+  "formalities": [
+    "CGA/D",
+    "HZA/D",
+    "NOA",
+    "NOD"
+  ],
+  "rules": [
+    "NR-NOA-108",
+    "NR-NOD-108"
+  ],
+  "entries": [
+    {
+      "id": "ST-FI-01",
+      "en": "Confirmation of arrival notification as per art.3 of Regulation 3/2018 issued by Finnish Customs",
+      "fi": "Tullin antaman määräyksen 3/2018 kohdan 3 mukainen saapumisilmoituksen vahvistus",
+      "sv": "Bekräftelse av ankomstanmälan enligt artikel 3 i föreskrift 3/2018 utfärdad av Tullen i Finland",
+      "national": true
+    },
+    {
+      "id": "ST-FI-02",
+      "en": "Confirmation of departure notification as per art.4 of Regulation 3/2018 issued by Finnish Customs",
+      "fi": "Tullin antaman määräyksen 3/2018 kohdan 4 mukainen lähtöilmoituksen vahvistus",
+      "sv": "Bekräftelse av avfärdsanmälan enligt artikel 4 i föreskrift 3/2018 utfärdad av Tullen i Finland",
+      "national": true
+    },
+    {
+      "id": "ST-IT-01",
+      "en": "Statement as per Art. 3 of Italian Law No. 135 of April 4, 1977",
+      "fi": "4. huhtikuuta 1977 annetun Italian lain nro 135 pykälän 3 mukainen ilmoitus",
+      "sv": "Förklaring enligt artikel 3 i italiensk lag nr 135 av den 4 april 1977"
+    },
+    {
+      "id": "ST-IT-02",
+      "en": "Statement as per Art. 3 of Italian Law No. 135 of April 4, 1977",
+      "fi": "4. huhtikuuta 1977 annetun Italian lain nro 135 pykälän 3 mukainen ilmoitus",
+      "sv": "Förklaring enligt artikel 3 i italiensk lag nr 135 av den 4 april 1977"
+    },
+    {
+      "id": "ST-IT-03",
+      "en": "Statement as per Italian DD 673/2007 Annex II",
+      "fi": "Italian asetuksen DD 673/2007 liitteen II mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga II Italiens dekret 673/2007"
+    },
+    {
+      "id": "ST-IT-04",
+      "en": "Statement as per Annexes 3, 6 and 7 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 liitteiden 3, 6 ja 7 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilagorna 3, 6 och 7 till Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-05",
+      "en": "Statement as per Annex 3 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 liitteen 3 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga 3 till Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-06",
+      "en": "Statement as per Annex 3 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 liitteen 3 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga 3 till Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-07",
+      "en": "Statement as per art 6.11 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 pykälän 6.11 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med artikel 6.11 i Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-08",
+      "en": "Statement as per Annexes 3 and 7 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 liitteiden 3 ja 7 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilagorna 3 och 7 till Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-09",
+      "en": "Statement as per Annex 6 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 liitteen 6 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga 6 till Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-10",
+      "en": "Statement as per point 10.1.4 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 kohdan 10.1.4 mukainen lausunto",
+      "sv": "Förklaring i enlighet med punkt 10.1.4 i Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-11",
+      "en": "Statement as per point 6.10.1 of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 kohdan 6.10.1 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med punkt 6.10.1 i Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-12",
+      "en": "Statement as per point 6.10.f of Italian DD 303/2014",
+      "fi": "Italian asetuksen DD 303/2014 kohdan 6.10.f mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med punkt 6.10.f i Italiens dekret 303/2014"
+    },
+    {
+      "id": "ST-IT-13",
+      "en": "Statement as per Annex 5 of Italian DD 1340/2010",
+      "fi": "Italian asetuksen DD 1340/2010 liitteen 5 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga 5 till Italiens dekret 1340/2010"
+    },
+    {
+      "id": "ST-IT-14",
+      "en": "Statement as per Annex II of Italian DD 673/2007",
+      "fi": "Italian asetuksen DD 673/2007 liitteen II mukainen lausunto",
+      "sv": "Förklaring i enlighet med bilaga II till Italiens dekret 673/2007"
+    },
+    {
+      "id": "ST-IT-15",
+      "en": "Statement as per MARICOGECAP Circular 41/2022, Annex 1",
+      "fi": "MARICOGECAP Circular 41/2022 liitteen 1 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga I till MARICOGECAP Circular 41/2022"
+    },
+    {
+      "id": "ST-IT-16",
+      "en": "Statement as per MARICOGECAP Circular 41/2022, Annex 1",
+      "fi": "MARICOGECAP Circular 41/2022 liitteen 1 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga I till MARICOGECAP Circular 41/2022"
+    },
+    {
+      "id": "ST-IT-17",
+      "en": "Statement as per MARICOGECAP Circular 41/2022, Annex 1",
+      "fi": "MARICOGECAP Circular 41/2022 liitteen 1 mukainen ilmoitus",
+      "sv": "Förklaring i enlighet med bilaga I till MARICOGECAP Circular 41/2022"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "manifest_type",
+  "headerless": false,
+  "usedIn": [
+    "DE-045-01"
+  ],
+  "formalities": [
+    "CGA/D"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "CONTAINER",
+      "en": "Container",
+      "fi": "Kontti",
+      "sv": "Container"
+    },
+    {
+      "id": "EXPORT",
+      "en": "Export",
+      "fi": "Vienti",
+      "sv": "Export"
+    },
+    {
+      "id": "IMPORT",
+      "en": "Import",
+      "fi": "Tuonti",
+      "sv": "Import"
+    },
+    {
+      "id": "TRANSIT",
+      "en": "Transit",
+      "fi": "Kauttakulku",
+      "sv": "Transitering"
+    }
+  ]
+}

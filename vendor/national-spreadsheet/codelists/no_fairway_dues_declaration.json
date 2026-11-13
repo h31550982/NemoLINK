@@ -1,0 +1,86 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "no_fairway_dues_declaration",
+  "headerless": false,
+  "usedIn": [
+    "DE-077-02"
+  ],
+  "formalities": [
+    "DUE"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "FAD-01",
+      "en": "Bunkering or loading/unloading within the same port area",
+      "fi": "Bunkraus tai lastaus/purku samalla satama-alueella",
+      "sv": "Bunkring eller lastning"
+    },
+    {
+      "id": "FAD-02",
+      "en": "Crew change",
+      "fi": "Miehistön vaihto",
+      "sv": "Besättningsbyte"
+    },
+    {
+      "id": "FAD-03",
+      "en": "Damaged cargo",
+      "fi": "Vaurioitunut lasti",
+      "sv": "Skadad last"
+    },
+    {
+      "id": "FAD-04",
+      "en": "No loading/unloading cargo or passengers",
+      "fi": "Ei lastin tai matkustajien lastausta/purkua",
+      "sv": "Ingen lastning/lossning av gods, ingen påstigning/avstigning av passagerare"
+    },
+    {
+      "id": "FAD-05",
+      "en": "Only loading/unloading empty containers belonging to vessel's operator or owner",
+      "fi": "Ainoastaan aluksen toiminnanharjoittajalle tai omistajalle kuuluvien tyhjien konttien lastaaminen/purkaminen",
+      "sv": "Endast tomma containrar som tillhör fartygets operatör eller ägare lastas/lossas"
+    },
+    {
+      "id": "FAD-06",
+      "en": "Other reason",
+      "fi": "Muu syy",
+      "sv": "Annan orsak"
+    },
+    {
+      "id": "FAD-07",
+      "en": "Research/training vessel",
+      "fi": "Tutkimus-/koulutusalus",
+      "sv": "Forsknings-/övningsfartyg"
+    },
+    {
+      "id": "FAD-08",
+      "en": "Ship supplies",
+      "fi": "Laivatarvikkeet",
+      "sv": "Fartygsförnödenheter"
+    },
+    {
+      "id": "FAD-09",
+      "en": "Shipyard/dock/repairing",
+      "fi": "Telakka/korjaus",
+      "sv": "Varv/docka/reparation"
+    },
+    {
+      "id": "FAD-10",
+      "en": "Towage",
+      "fi": "Hinaus",
+      "sv": "Bogsering"
+    },
+    {
+      "id": "FAD-11",
+      "en": "Working vessel with direct connection to shipping",
+      "fi": "Työalus, jolla on suora yhteys laivaukseen",
+      "sv": "Arbetsfartyg med direkt koppling till sjöfart"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0150",
+  "headerless": false,
+  "usedIn": [
+    "DE-028-09"
+  ],
+  "formalities": [
+    "SEC"
+  ],
+  "rules": [
+    "C-SEC-008"
+  ],
+  "entries": [
+    {
+      "id": "101",
+      "en": "Ensure the performance of all security duties",
+      "fi": "Kaikkien turvallisuuteen liittyvien tehtävien suorittamisen varmistaminen",
+      "sv": "Säkerställande av att alla säkerhetsrelaterade uppgifter utförs"
+    },
+    {
+      "id": "102",
+      "en": "Monitor restricted areas to ensure that only authorized personnel have access",
+      "fi": "Rajoitetuille alueille pääsyn varmistaminen vain kulkuvallisille henkilöille",
+      "sv": "Säkerställande av att endast behöriga personer får tillträde till begränsade områden"
+    },
+    {
+      "id": "103",
+      "en": "Control access to port facility and ships",
+      "fi": "Satama-alueelle ja aluksiin pääsyn kontrollointi",
+      "sv": "Kontroll av tillträde till hamnområdet och till fartyg"
+    },
+    {
+      "id": "104",
+      "en": "Monitor the port facility, including berthing areas and areas surrounding the ship",
+      "fi": "Satama-alueen valvonta, mukaan lukien alusten kiinnityspaikat ja alusta ympäröivät alueet",
+      "sv": "Övervakning av hamnområdet, inklusive fartygens förtöjningsplatser och områdena runt fartygen"
+    },
+    {
+      "id": "105",
+      "en": "Handle cargo and unaccompanied baggage",
+      "fi": "Lastin ja ilman omistajaa olevien matkatavaroiden käsittely",
+      "sv": "Hantering av last och herrelöst bagage"
+    },
+    {
+      "id": "106",
+      "en": "Monitor the delivery of ships stores",
+      "fi": "Aluksen tarvikkeiden toimitusten valvonta",
+      "sv": "Kontroll av leveranser av fartygsproviant och förnödenheter"
+    },
+    {
+      "id": "107",
+      "en": "Control the embarkation of persons and their effects",
+      "fi": "Alukseen nousevien henkilöiden ja heidän mukanaan tuomien tavaroiden valvonta",
+      "sv": "Kontroll av personer som går ombord och deras medförda föremål"
+    },
+    {
+      "id": "108",
+      "en": "Ensure that security communications are readily available between the ship and the port facility",
+      "fi": "Aluksen ja sataman välillä olevan turvayhteyden olemassaolon varmistaminen",
+      "sv": "Säkerställande av att en säkerhetslänk mellan fartyget och hamnanläggningen upprätthålls"
+    }
+  ]
+}

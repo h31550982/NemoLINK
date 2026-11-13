@@ -1,0 +1,977 @@
+// app global css — the palette lives here once, as CSS custom properties.
+// Component styles reference tokens, never hex literals. Palette and type
+// follow the Figma variables (NemoLINK file, frames "Colors (Variables)"
+// 266:5251 and "Text Styles" 266:5757, 2026-11-02), which replace the PDF
+// guide v1.0. Only these colours go on screen unless the user asks.
+// The older --nl-* names stay so every screen re-skins from here; each one
+// now points at the Figma colour with the same role.
+
+:root {
+  // Shared page edges. Physical safe-area sides also work after device rotation.
+  --nl-page-max-width: 1272px;
+  --nl-page-gutter: 16px;
+  --nl-page-padding-left: calc(var(--nl-page-gutter) + env(safe-area-inset-left, 0px));
+  --nl-page-padding-right: calc(var(--nl-page-gutter) + env(safe-area-inset-right, 0px));
+  --nl-header-height: 66px;
+  --nl-header-safe-height: calc(var(--nl-header-height) + env(safe-area-inset-top, 0px));
+
+  // ---- Figma variables, named as in Figma (Blue/100 → --blue-100) ----
+  --blue-100: #ffffff; // the base surface; text and icons on saturated fills
+  --blue-150: #f0f4fc; // cells and items that have been sent to NEMO
+  --blue-200: #fafafc; // subtle fill inside white: table header rows, action bars
+  --blue-300: #f3f4f8; // tint for a selected or important area inside white
+  --blue-350: #eeeff1; // front page ground behind its lists and cards
+  --blue-400: #e0e1e6; // ground behind white cards, lists and pop-ups
+  --blue-500: #e9eaec; // lightest stroke: between rows of the same kind
+  --blue-600: #d5d6dd; // structural stroke: outer borders, header dividers
+  --blue-700: #a8abbd; // form field stroke; controls in their off state
+  --blue-800: #363add; // the brand blue: actionable, active, NemoLINK data
+  // Progress pills from the user's Figma component set 587:8885.
+  --nl-progress-active-fill: rgba(91, 93, 184, 0.2);
+  --nl-progress-neutral-fill: #dbdbdb;
+  --nl-progress-neutral-text: #3f3f3f;
+  --accent-100: #e003ac; // external source marker (small dots only)
+  --red-100: #f8edee; // background of error and overdue alerts
+  --red-200: #ca2b3d; // the fix button; error form headings; solid error marks
+  --red-300: #803034; // alert headline; short error status text
+  --red-400: #552023; // explanatory text in an alert, on red-100 only
+  --orange-100: #f9f6ea; // background of a field whose required value is missing
+  --orange-200: #ffdb4c; // pending status pill fill (text orange-500)
+  --orange-300: #ecc209; // solid "missing" marks, e.g. a field's accent bar
+  --orange-500: #544608; // text in a missing field and in orange pills
+  --green-100: #f2f8f6; // success banner background
+  --green-200: #1c7353; // the main green: done, departed, success
+  --green-300: #10412f; // success banner body text, on green-100
+  --green-400: #062318; // success banner headline, on green-100
+  --text-300: #0f0f2a; // headings
+  --text-200: #383649; // body text
+  --text-100: #545162; // tertiary: column headers, labels, placeholders, meta
+
+  // ---- guide roles (kept names; components use these) ----
+  --nl-g-blue: var(--blue-800);
+  --nl-g-ink: var(--text-300); // titles, labels, values
+  --nl-g-body: var(--text-200); // reading text
+  --nl-g-secondary: var(--text-100); // meta text
+  --nl-g-white: var(--blue-100); // content surface
+  --nl-g-subtle: var(--blue-200); // step down inside white
+  --nl-g-base: var(--blue-300); // highlight tint inside white
+  --nl-g-line-base: var(--blue-600); // header dividers, outer frames
+  --nl-g-line-white: var(--blue-600); // structure inside content
+  --nl-g-line-row: var(--blue-500); // between rows of the same kind
+  --nl-g-field-line: var(--blue-700); // marks controls
+  --nl-g-green: var(--green-200);
+  --nl-g-success-fill: var(--green-100);
+  --nl-g-success-text: var(--green-400);
+  --nl-g-success-body: var(--green-300);
+  --nl-g-yellow: var(--orange-200); // pending pill fill
+  --nl-g-on-yellow: var(--orange-500);
+  --nl-g-red: var(--red-200);
+  --nl-g-warn-fill: var(--red-100);
+  --nl-g-warn-title: var(--red-300);
+  --nl-g-warn-text: var(--red-400);
+  --nl-g-external: var(--accent-100);
+  --nl-g-to-nemo: var(--blue-150);
+  // Not in the design system (user 2026-11-03): the column-head row of the
+  // lists (CREW MEMBERS, FAMILY NAME…), the Ship forms files card head and
+  // its All-details-off banner
+  --nl-g-head-surface: #f4f4f6;
+
+  // ---- the house names, by role ----
+  --nl-slate: var(--nl-g-ink); // titles
+  --nl-navy-deep: var(--nl-g-ink);
+  --nl-primary: var(--nl-g-blue);
+  --nl-teal: var(--nl-g-blue); // interactive = blue (guide principle 2)
+  --nl-teal-dark: var(--nl-g-blue);
+  --nl-teal-bg: var(--blue-300); // a selected or highlighted area
+  // Solid "needs attention / missing" marks: bars, dots, outlines
+  --nl-amber: var(--orange-300);
+  // Warnings and close deadlines are urgency: the red alert pair
+  --nl-amber-bg: var(--nl-g-warn-fill);
+  --nl-amber-text: var(--nl-g-warn-title);
+  --nl-amber-ink: var(--orange-500); // text on an orange fill
+  // A required value is missing (Figma: orange-100 / 300 / 500)
+  --nl-missing-bg: var(--orange-100);
+  --nl-missing-bar: var(--orange-300);
+  --nl-missing-text: var(--orange-500);
+  --nl-red: var(--nl-g-red);
+  --nl-red-bg: var(--nl-g-warn-fill);
+  --nl-red-text: var(--red-300); // short error status text
+  --nl-green: var(--nl-g-green);
+  --nl-green-bg: var(--nl-g-success-fill);
+  --nl-green-text: var(--nl-g-green);
+  --nl-blue: var(--nl-g-blue);
+  --nl-blue-bg: var(--blue-300); // a selected or highlighted area
+  --nl-blue-text: var(--nl-g-blue);
+  --nl-slate-fill: var(--nl-g-secondary); // moored
+  --nl-on-fill: var(--nl-g-white);
+  // The ground behind white content; the front page sets its own lighter
+  // one (--nl-ground-front) through MainLayout
+  --nl-ground: var(--blue-400);
+  --nl-ground-front: var(--blue-350); // #EEEFF1 under the cards, as the search field (user 2026-11-02)
+  --nl-card: var(--nl-g-white);
+  --nl-ink: var(--nl-g-body);
+  --nl-ink-2: var(--nl-g-secondary);
+  --nl-ink-3: var(--nl-g-secondary);
+  --nl-line: var(--nl-g-line-white);
+  --nl-line-row: var(--nl-g-line-row);
+  --nl-line-2: var(--nl-g-field-line);
+  --nl-field-line: var(--nl-g-field-line);
+  --nl-gray-bg: var(--nl-g-base);
+  --nl-band: var(--nl-g-subtle);
+  --nl-ground-dim: var(--blue-400); // focus mode: the ground behind an open row (spec 0054)
+  --nl-shadow-lift: none; // flat: no shadows (guide p. 10)
+  // Provenance: the dot colour names the source everywhere (guide p. 4, 13)
+  --nl-src-ext: var(--nl-g-external);
+  --nl-src-nl: var(--nl-g-blue);
+  --nl-src-nl-bg: var(--blue-300);
+  --nl-src-nl-line: var(--nl-g-field-line);
+  --nl-nemo: var(--nl-g-blue); // "In NEMO" pill, To NEMO bar
+  --nl-nemo-bg: var(--nl-g-to-nemo);
+  --nl-nemo-line: var(--nl-g-blue);
+  // The overview table's columns (guide p. 13–14: Vessel 300 · Port & route
+  // 250 · ETA 170 · ETD 170 · Reports), as shares so they shrink together;
+  // the header row and every call row use the same template
+  --nl-call-cols: minmax(0, 300fr) minmax(0, 250fr) minmax(0, 170fr) minmax(0, 170fr) minmax(0, 238fr);
+  // The New port call card and the Set schedule card share one size
+  // (user 2026-11-03): 960 × 765 (Figma 440:6767), shorter only when the
+  // window is — Quasar keeps a dialog 24px from the window's edges
+  --nl-large-card-width: 960px;
+  --nl-large-card-height: min(765px, calc(100dvh - 48px));
+  // List rows with a label and status pill: match "What goes to NEMO"
+  // on mobile/tablet (up to 1023px). Let wrapped content grow beyond this.
+  --nl-row-mobile-min-height: 58px;
+  // Reports headline / Desktop / updated, supplied Figma component 647:11090.
+  --nl-report-headline-content-gap: 20px;
+  // Report heading and content start on the page's side padding, on the same
+  // edge as the logo and the port call overview (user 2026-11-12; was 28px).
+  --nl-report-content-inset: 0px;
+  --nl-report-navigation-inset: 25px;
+}
+
+@media (max-width: 599.98px) {
+  :root { --nl-page-gutter: 20px; }
+}
+
+html {
+  scroll-padding-block-start: calc(var(--nl-header-safe-height) + 16px);
+}
+
+body {
+  background: var(--nl-ground);
+  color: var(--nl-ink);
+  font-weight: 500; // Medium reads; there is no Regular (guide p. 6)
+  // Body text/14, the default text style: auto line height, +1%
+  font-size: 14px;
+  line-height: normal;
+  letter-spacing: 0.14px;
+  transition: background-color 0.18s ease;
+}
+
+// Focus mode (spec 0054, law 16): while a row is open the ground behind it
+// darkens, so the open card and its white fields carry the eye. The layout
+// paints the ground (.page-ground), so the class on <body> reaches through.
+body.nl-focus,
+body.nl-focus .page-ground {
+  background: var(--nl-ground-dim);
+}
+.page-ground {
+  transition: background-color 0.18s ease;
+}
+
+// Brand classes so templates can say color="tealdark" (Quasar composes
+// text-/bg- classes from the color prop).
+.text-tealdark {
+  color: var(--nl-teal-dark) !important;
+}
+.bg-tealdark {
+  background: var(--nl-teal-dark) !important;
+}
+
+// Blue means action (guide principle 2): text buttons and spinners too.
+.q-btn--flat.text-primary {
+  color: var(--nl-primary) !important;
+}
+.q-spinner.text-primary {
+  color: var(--nl-primary) !important;
+}
+
+// Type scale (Figma "Text Styles" 266:5757): Instrument Sans, Medium 500
+// and SemiBold 600 only. "auto" is Figma's 100% line height (normal).
+//   Display/58  58/24   SB  0.58px   front page heading only
+//   Heading/32  32/37   SB  0.32px   exception: when 26 or 22 is too small
+//   Heading/26  26/auto SB  0.26px   modal / pop-up card title, one per modal
+//   Heading/22  22/auto SB  0.22px   detail view or full-page card title
+//   Heading/20  20/21   SB  4px      UPPERCASE list section label (Upcoming)
+//   Heading/14  14/auto SB  0.14px   labels, names in lists, button labels
+//   Heading/12  12/16   SB  0.6px    UPPERCASE table column headers
+//   Body/16     16/auto M   0.16px   large body, e.g. a prominent search
+//   Body/14     14/auto M   0.14px   the default text style
+//   Body/12     12/16   M   0        codes, timestamps, sources, metadata
+// Quasar's sizes are set in quasar.variables.scss; weights below.
+.text-weight-semibold,
+.text-weight-bold,
+.text-bold,
+b,
+strong,
+.q-tab__label,
+.q-table th,
+.q-table__title,
+.q-dialog__title,
+.q-date__header-title-label {
+  font-weight: 600;
+}
+.text-weight-regular,
+.text-weight-light,
+.text-weight-thin,
+.q-time__header {
+  font-weight: 500; // no Regular or Light in the guide
+}
+.q-notification__caption {
+  font-size: 12px; // 0.9em
+}
+.nl-display-58 { font-size: 58px; line-height: 24px; font-weight: 600; letter-spacing: 0.58px; }
+.nl-heading-32,
+.text-h4 { font-size: 32px; line-height: 37px; font-weight: 600; letter-spacing: 0.32px; }
+.nl-heading-26 { font-size: 26px; line-height: normal; font-weight: 600; letter-spacing: 0.26px; }
+.nl-heading-22,
+.text-h5 { font-size: 22px; line-height: normal; font-weight: 600; letter-spacing: 0.22px; }
+.nl-heading-20,
+.text-h6 {
+  font-size: 20px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.nl-heading-14,
+.text-subtitle1,
+.text-subtitle2 { font-size: 14px; line-height: normal; font-weight: 600; letter-spacing: 0.14px; }
+.nl-heading-12,
+.text-overline {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.nl-body-16,
+.text-body1 { font-size: 16px; line-height: normal; letter-spacing: 0.16px; }
+.nl-body-14,
+.text-body2 { font-size: 14px; line-height: normal; letter-spacing: 0.14px; }
+.nl-body-12,
+.text-caption { font-size: 12px; line-height: 16px; letter-spacing: 0; }
+
+// Tables (guide p. 6, 13): cells in body colour, never black; headers in
+// the overline style, secondary colour (clean-up list #4)
+.q-table {
+  color: var(--nl-g-body);
+}
+.q-table thead th {
+  color: var(--nl-g-secondary);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.q-table thead tr,
+.q-table thead th {
+  background: var(--nl-g-subtle);
+}
+.q-table--bordered,
+.q-table__card {
+  border-color: var(--nl-g-line-white);
+}
+.q-table tbody td {
+  border-color: var(--nl-g-line-row); // rows of the same kind: the lightest stroke
+}
+.q-item {
+  color: var(--nl-g-body);
+}
+.q-item__label--caption {
+  color: var(--nl-g-secondary);
+}
+.q-tab {
+  color: var(--nl-g-body);
+}
+
+// Corners by element size (guide p. 9): buttons 8, small controls 6,
+// round icon buttons keep their circle.
+.q-btn:not(.q-btn--round) {
+  border-radius: 8px;
+}
+.q-btn {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+// Outlined buttons: 1.5px field line, ink text (the secondary action)
+.q-btn--outline:not([class*='text-negative']):not([class*='text-positive']):before {
+  border: 1.5px solid var(--nl-g-field-line);
+}
+.q-btn--outline.text-primary {
+  color: var(--nl-g-ink) !important;
+}
+.q-btn--outline.text-primary:before {
+  border-color: var(--nl-g-field-line);
+}
+
+// Flat (guide p. 10): no shadows, gradients, blur — depth is surface colour
+// and thin lines. Cards, menus and dialogs get a hairline instead.
+.q-card,
+.q-card--bordered,
+.q-menu,
+.q-header--elevated,
+.q-footer--elevated,
+.q-btn--standard,
+.q-btn--push {
+  box-shadow: none !important;
+}
+.q-card--bordered {
+  border-color: var(--nl-g-line-white);
+}
+.q-card {
+  border-radius: 10px;
+}
+.q-menu {
+  border: 1px solid var(--nl-g-line-white);
+  border-radius: 8px;
+}
+// Every pop-up sits over the page on a darkened, see-through backdrop —
+// never an opaque one (user 2026-11-04): the guide's ink at 40%
+.q-dialog__backdrop {
+  background: rgba(15, 15, 42, 0.4);
+}
+.q-dialog .q-card {
+  border-radius: 12px;
+}
+
+// Form fields (guide p. 11): 1.5px field line, radius 6; focus 2px blue;
+// error 2px red with the value in red. Filled looks like default.
+.q-field--outlined .q-field__control {
+  border-radius: 6px;
+}
+/* Every field's box: 1px Blue/700 (Figma dropdown components 557:7884,
+   user 2026-11-06 — all form fields alike) */
+.q-field--outlined .q-field__control:before {
+  border: 1px solid var(--blue-700);
+}
+.q-field--outlined:hover .q-field__control:before {
+  border-color: var(--nl-g-secondary);
+}
+.q-field--outlined.q-field--highlighted .q-field__control:after {
+  border-width: 2px;
+  border-color: var(--nl-g-blue);
+}
+.q-field--outlined.q-field--error .q-field__control:after {
+  border-width: 2px;
+  border-color: var(--nl-g-red);
+}
+.q-field--error .q-field__native,
+.q-field--error .q-field__input {
+  color: var(--nl-g-red);
+}
+// What is written or chosen in a field: Text/200 (user 2026-11-05)
+.q-field__native,
+.q-field__input,
+.q-field__prefix,
+.q-field__suffix {
+  color: var(--nl-g-body);
+  font-weight: 500;
+  letter-spacing: 0.14px;
+}
+.q-field__native::placeholder,
+.q-field__input::placeholder {
+  color: var(--nl-g-secondary);
+  opacity: 1;
+}
+.q-field__bottom {
+  color: var(--nl-g-body);
+  font-size: 12px;
+}
+.q-field--error .q-field__bottom {
+  color: var(--nl-g-red);
+  font-weight: 600;
+}
+.q-field__label {
+  color: var(--nl-g-secondary);
+}
+
+// Switch (Figma "Switch" 256:1960, every q-toggle, any size): a 40×24 pill,
+// #A8ABBD off and #363ADD on, a flat 18px white knob 3px in; the label
+// (14/20 Medium ink) sits 10px to its left (left-label)
+.q-toggle .q-toggle__inner {
+  width: 40px;
+  min-width: 40px;
+  height: 24px;
+  padding: 0;
+  color: var(--nl-g-blue);
+}
+.q-toggle .q-toggle__track {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  border-radius: 12px;
+  background: var(--nl-g-field-line);
+  opacity: 1;
+  transition: background-color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.q-toggle .q-toggle__inner--truthy .q-toggle__track {
+  background: var(--nl-g-blue);
+  opacity: 1;
+}
+.q-toggle .q-toggle__inner .q-toggle__thumb {
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+}
+.q-toggle .q-toggle__inner--truthy .q-toggle__thumb {
+  left: 19px;
+}
+.q-toggle .q-toggle__inner .q-toggle__thumb:after {
+  background: #fff;
+  box-shadow: none;
+}
+// No Material hover bubble; the keyboard gets the guide's 2px blue focus ring
+.q-toggle:not(.disabled) .q-toggle__thumb:before {
+  display: none;
+}
+.q-toggle:focus-visible .q-toggle__track {
+  outline: 2px solid var(--nl-g-blue);
+  outline-offset: 2px;
+}
+.q-toggle .q-toggle__label {
+  padding: 0 0 0 10px;
+}
+.q-toggle.reverse .q-toggle__label {
+  padding: 0 10px 0 0;
+}
+.q-toggle .q-toggle__label {
+  color: var(--nl-g-ink);
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 500;
+}
+
+// Every dropdown list (user 2026-11-05; App.vue measures the room): never
+// taller than the room below its field, so it opens downwards and scrolls
+// inside when it is long. A select's list is the menu holding a listbox.
+.q-menu:has([role='listbox']),
+.q-menu.nl-field-menu {
+  max-height: min(65vh, var(--nl-menu-room, 65vh));
+}
+
+// ---- Dropdowns (Figma 557:7884, user 2026-11-06) -------------------------
+// The closed field's chevron: 24px keyboard_arrow_down in Text/200; it turns
+// up while the list is open (Quasar), the box then 2px Blue/800 (focus)
+.q-select__dropdown-icon {
+  font-size: 24px !important;
+  color: var(--text-200);
+}
+// The open list: 8px under its field, as wide as it (Quasar fits the menu
+// to the field, so it follows every breakpoint), 1px Blue/700, radius 6
+.q-menu:has([role='listbox']),
+.q-menu.nl-field-menu {
+  margin-top: 8px;
+  background: var(--nl-g-white, #fff);
+  border: 1px solid var(--blue-700);
+  border-radius: 6px;
+}
+// "dropdown field / not selected": 48px, 14px in, Medium 14 Text/300,
+// a Blue/500 line under each row but the last; long names end in …
+.q-menu [role='option'].q-item {
+  min-height: 48px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--blue-500);
+  color: var(--text-300);
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 500;
+  letter-spacing: 0.14px;
+}
+.q-menu [role='option'].q-item:last-child {
+  border-bottom: none;
+}
+.q-menu [role='option'].q-item .q-item__section--main {
+  min-width: 0;
+}
+.q-menu [role='option'].q-item .q-item__section--main,
+.q-menu [role='option'].q-item .q-item__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// "dropdown field / often used": SemiBold — at most 3 at the top of a list
+.q-menu [role='option'].q-item.nl-dd-often {
+  font-weight: 600;
+}
+// "dropdown field / selected": Blue/150, a 3px Blue/800 bar on the left,
+// SemiBold Blue/800
+.q-menu [role='option'].q-item.q-item--active {
+  background: var(--blue-150);
+  box-shadow: inset 3px 0 0 var(--blue-800);
+  color: var(--blue-800);
+  font-weight: 600;
+}
+
+// Close (guide p. 7, 11): the ink text button, underlined, 44px target —
+// top right of every dialog and form card
+.nl-close-link {
+  flex: none;
+  min-height: 44px;
+  padding: 0 4px;
+  border: none;
+  background: none;
+  color: var(--nl-g-ink);
+  font: inherit;
+  font-size: 14px; // a button label: Heading/14
+  line-height: normal;
+  letter-spacing: 0.14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.nl-close-link:focus-visible {
+  outline: 2px solid var(--nl-g-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// No tooltips on a phone (user 2026-11-06): there is no hover to ask for one,
+// and a long press should not answer with a box the thumb then covers
+@media (max-width: 599.98px) {
+  .q-tooltip {
+    display: none !important;
+  }
+}
+
+// Close (guide p. 7, 11): the 24px X, top right of every dialog and form card
+.nl-close-x {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--nl-g-ink);
+  cursor: pointer;
+}
+.nl-close-x .q-icon {
+  font-size: 24px;
+}
+// The 44px touch target without the X itself growing
+.nl-close-x::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
+.nl-close-x:focus-visible {
+  outline: 2px solid var(--nl-g-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Icons never carry an underline. Underline a separate text label instead.
+a:has(.q-icon), a:has(svg), a:has(img),
+button:has(.q-icon), button:has(svg), button:has(img) {
+  text-decoration: none !important;
+}
+.q-icon, a svg, a img, button svg, button img {
+  text-decoration: none !important;
+}
+
+// Links (guide p. 7): underline means link — blue for actions on this page,
+// body colour for content links.
+.nl-action-link,
+.nl-content-link {
+  font: inherit;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.nl-action-link {
+  color: var(--nl-g-blue);
+}
+.nl-content-link {
+  color: var(--nl-g-body);
+}
+.nl-action-link:focus-visible,
+.nl-content-link:focus-visible {
+  outline: 2px solid var(--nl-g-blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// Mobile (spec 0018): card action rows wrap on narrow screens instead of
+// overflowing (e.g. Users tab: resend-welcome + revoke side by side).
+.q-card__actions {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+// Panel/tab section title — concept §7 card-title idiom:
+// 12px, 600, letterspaced uppercase, with the house divider.
+.tab-title {
+  text-transform: uppercase;
+  letter-spacing: 0.6px; // overline (guide p. 6)
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--nl-ink-2);
+  border-bottom: 1px solid var(--nl-g-line-base);
+  padding-bottom: 6px;
+}
+
+// Empty states teach (docs/07 law 8) — the concept's dashed teach-card.
+.teach-card {
+  border-radius: 10px;
+  background: var(--nl-card);
+  color: var(--nl-ink);
+  text-align: center;
+  font-size: 14px;
+  line-height: normal;
+  padding: 24px 34px;
+}
+
+// Data is read in columns (concept §7): tabular numerals on all table
+// cells; .tnum for value/time spans elsewhere.
+td,
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+// Dialog section cards (spec 0044, reference: user screenshot 2026-08-23):
+// a sectioned HouseDialog groups its fields into white cards with quiet
+// titles on the tinted body ground.
+.dlg-section {
+  background: #fff;
+  border: 1px solid var(--nl-line);
+  border-radius: 10px;
+  padding: 16px 16px 12px;
+  margin-bottom: 12px;
+}
+.dlg-section:last-child {
+  margin-bottom: 0;
+}
+.dlg-section__title {
+  color: var(--nl-slate);
+  font-weight: 600;
+  font-size: 16px; // subheading 16/21
+  line-height: 21px;
+  margin-bottom: 12px;
+}
+// A field's name above the field, not inside it
+.dlg-field-label {
+  display: block;
+  color: var(--nl-slate);
+  font-size: 14px; // Heading/14: label, SemiBold, ink
+  line-height: normal;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.dlg-field-hint {
+  color: var(--nl-ink);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+// House pickers (spec 0044): the calendar/clock keeps its intended size
+// inside the popup, and the action row stays visible even when the popup
+// has to scroll on short screens (sticky within the menu scroller).
+.house-picker {
+  width: 300px !important;
+  max-width: 94vw;
+}
+.house-picker .q-date__actions,
+.house-picker .q-time__actions {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid var(--nl-line);
+  z-index: 1;
+}
+
+// ---- Provenance in the four-column ledgers (2026-10-06, option A) ----------
+// External · NEMOLink · To NEMO each keep one colour; the To NEMO cell is a
+// lavender lane with a violet rule, like NEMO's own cards, and says where its
+// value came from with a dot in that source's colour. Colour never alone:
+// every mark sits beside words (WCAG 1.4.1). Amber stays for problems.
+
+// Column heads: a small circle in the source's colour before the words —
+// pink = external, blue = NEMOLink and To NEMO (Figma 488:3904)
+.prov-head::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: 1px;
+  background: currentColor;
+}
+.prov-head--ext::before { background: var(--nl-src-ext); }
+.prov-head--nl::before { background: var(--nl-src-nl); }
+.prov-head--nemo { color: var(--nl-nemo) !important; font-weight: 600; }
+.prov-head--nemo::before { background: var(--nl-nemo); }
+
+// The To NEMO lane: fills its row cell top to bottom (the rows pad 6px)
+.prov-lane {
+  align-self: stretch;
+  margin-block: -6px;
+  padding: 6px 8px 6px 10px;
+  background: var(--nl-nemo-bg);
+  box-shadow: inset 3px 0 0 var(--nl-nemo);
+}
+.prov-head.prov-lane { margin-block: -6px; padding-block: 6px; }
+// Inside rows that carry no padding of their own
+.prov-lane--flat { margin-block: 0; padding-block: 2px; }
+.prov-value { font-weight: 600; color: var(--nl-ink); }
+
+// Where the sent value came from
+.prov-from {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--nl-ink-2);
+}
+.prov-from::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--nl-src-ext);
+}
+.prov-from--nl::before { background: var(--nl-src-nl); }
+.prov-from--none::before { display: none; }
+
+// An external value an override replaces
+.prov-replaced {
+  text-decoration: line-through;
+  text-decoration-color: var(--nl-src-ext);
+  color: var(--nl-ink-3);
+}
+
+// A required value with nothing to send: "Missing" where the value would be,
+// the note under it, the lane in the missing-field colours (Figma orange)
+.prov-lane--missing {
+  background: var(--nl-missing-bg);
+  box-shadow: inset 3px 0 0 var(--nl-missing-bar);
+}
+.prov-missing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--nl-missing-text);
+}
+.prov-note {
+  font-size: 12px;
+  color: var(--nl-missing-text);
+}
+
+// The override field: quiet (dashed) while empty, teal once it holds a value
+.prov-quiet .q-field__control:before {
+  border-style: dashed;
+  border-color: var(--nl-line-2);
+}
+.prov-set .q-field__control {
+  background: var(--nl-src-nl-bg);
+  box-shadow: inset 3px 0 0 var(--nl-src-nl);
+}
+.prov-set .q-field__control:before {
+  border-color: var(--nl-src-nl-line);
+}
+.prov-set .q-field__native,
+.prov-set .q-field__input {
+  font-weight: 600;
+}
+
+// Quasar's greys are the guide's neutrals (quasar.variables.scss). The few
+// component defaults Quasar hard-codes get guide colours here.
+// Checkbox and radio when off: the field line that marks every control
+.q-checkbox__inner--falsy,
+.q-radio__inner--falsy {
+  color: var(--nl-g-field-line);
+}
+// A plain chip: base fill, body text
+.q-chip {
+  background: var(--nl-g-base);
+  color: var(--nl-g-body);
+}
+.q-chip:not(.q-chip--colored) .q-chip__icon {
+  color: var(--nl-g-secondary);
+}
+// Hover and focus wash: guide ink, not Quasar's black
+.q-focus-helper:before {
+  background: var(--nl-g-ink);
+}
+// An orange-200 fill takes orange-500 text, also in notifications and banners
+.bg-warning.text-dark,
+.bg-accent.text-dark {
+  color: var(--nl-g-on-yellow) !important;
+}
+
+// Icons inside form fields (clear, date, time, search, select arrow): the
+// secondary ink instead of Quasar's rgba(0,0,0,.54) / grey shades. Icons that
+// carry a semantic colour of their own (negative, primary…) keep it.
+.q-field__marginal {
+  color: var(--nl-ink-2);
+}
+body .q-field__marginal .q-icon[class*='text-grey'] {
+  color: var(--nl-ink-2) !important;
+}
+// The clear (✕) button at full strength, not Quasar's 0.6 fade.
+.q-field__marginal .q-field__focusable-action {
+  opacity: 1;
+}
+
+// ---- Style guide v1.0 kept on purpose (user 2026-11-02) --------------------
+// The opened port call card and the pop-ups behind "Review forms" (Ship
+// forms and its table entry dialog, class nl-v1) look exactly as they did
+// before the Figma-token change. Every token is restated here with its old
+// value (derived ones too: a var() resolves where it is declared), plus the
+// few type and component rules that changed. Remove a selector from this
+// list to move that part onto the Figma tokens.
+.call-wrap--open,
+.nl-v1 {
+  // ---- guide palette v1.0, as it was ----
+  --nl-g-blue: #363add; // primary blue: action & progress
+  --nl-g-ink: #0f0f2a; // titles, labels, values
+  --nl-g-body: #383649; // reading text
+  --nl-g-secondary: #464351; // meta text
+  --nl-g-white: #ffffff; // content surface
+  --nl-g-subtle: #fafafc; // step down inside white
+  --nl-g-base: #f3f4f8; // page base
+  --nl-g-line-base: #e0e1e6; // frames the app
+  --nl-g-line-white: #d5d6dd; // divides content
+  --nl-g-field-line: #a8abbd; // marks controls
+  --nl-g-green: #1c7353;
+  --nl-g-success-fill: #f2f8f6;
+  --nl-g-success-text: #062318;
+  --nl-g-yellow: #f9db59;
+  --nl-g-on-yellow: #2b281e;
+  --nl-g-red: #ca2b3d;
+  --nl-g-warn-fill: #f9eced;
+  --nl-g-warn-title: #803034;
+  --nl-g-warn-text: #552023;
+  --nl-g-external: #e003ac;
+  --nl-g-to-nemo: rgba(234, 240, 250, 0.7); // #EAF0FA at 70%, the only transparency
+
+  // ---- the house names, by role ----
+  --nl-slate: var(--nl-g-ink); // titles
+  --nl-navy-deep: var(--nl-g-ink);
+  --nl-primary: var(--nl-g-blue);
+  --nl-teal: var(--nl-g-blue); // interactive = blue (guide principle 2)
+  --nl-teal-dark: var(--nl-g-blue);
+  --nl-teal-bg: var(--nl-g-to-nemo);
+  --nl-amber: var(--nl-g-yellow);
+  // Warnings and close deadlines take the deadline-warning pair
+  --nl-amber-bg: var(--nl-g-warn-fill);
+  --nl-amber-text: var(--nl-g-warn-title);
+  --nl-amber-ink: var(--nl-g-on-yellow); // text on a yellow fill
+  --nl-red: var(--nl-g-red);
+  --nl-red-bg: var(--nl-g-warn-fill);
+  --nl-red-text: var(--nl-g-red);
+  --nl-green: var(--nl-g-green);
+  --nl-green-bg: var(--nl-g-success-fill);
+  --nl-green-text: var(--nl-g-green);
+  --nl-blue: var(--nl-g-blue);
+  --nl-blue-bg: var(--nl-g-to-nemo);
+  --nl-blue-text: var(--nl-g-blue);
+  --nl-slate-fill: var(--nl-g-secondary); // moored
+  --nl-on-fill: var(--nl-g-white);
+  --nl-ground: var(--nl-g-base);
+  --nl-card: var(--nl-g-white);
+  --nl-ink: var(--nl-g-body);
+  --nl-ink-2: var(--nl-g-secondary);
+  --nl-ink-3: var(--nl-g-secondary);
+  --nl-line: var(--nl-g-line-white);
+  --nl-line-2: var(--nl-g-field-line);
+  --nl-field-line: var(--nl-g-field-line);
+  --nl-gray-bg: var(--nl-g-base);
+  --nl-band: var(--nl-g-subtle);
+  --nl-ground-dim: var(--nl-g-line-base); // focus mode: the ground behind an open row (spec 0054)
+  --nl-shadow-lift: none; // flat: no shadows (guide p. 10)
+  // Provenance: the dot colour names the source everywhere (guide p. 4, 13)
+  --nl-src-ext: var(--nl-g-external);
+  --nl-src-nl: var(--nl-g-blue);
+  --nl-src-nl-bg: var(--nl-g-to-nemo);
+  --nl-src-nl-line: var(--nl-g-field-line);
+  --nl-nemo: var(--nl-g-blue); // "In NEMO" pill, To NEMO bar
+  --nl-nemo-bg: var(--nl-g-to-nemo);
+  --nl-nemo-line: var(--nl-g-blue);
+  // Names added with the Figma tokens, at their v1.0 meaning
+  --nl-g-line-row: var(--nl-g-line-white);
+  --nl-line-row: var(--nl-line);
+  --nl-missing-bg: var(--nl-red-bg);
+  --nl-missing-bar: var(--nl-red);
+  --nl-missing-text: var(--nl-red-text);
+  --q-accent: #f9db59;
+  --q-warning: #f9db59;
+  // Body 14/20, no tracking
+  line-height: 20px;
+  letter-spacing: 0;
+}
+:is(.call-wrap--open, .nl-v1) {
+  .text-grey,
+  .text-grey-5,
+  .text-grey-6,
+  .text-grey-7,
+  .text-grey-8,
+  .text-grey-9,
+  .text-grey-14 {
+    color: #464351 !important;
+  }
+  .text-subtitle1 { font-size: 16px; line-height: 21px; font-weight: 600; letter-spacing: 0; }
+  .text-subtitle2 { font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; }
+  .text-body1 { font-size: 16px; line-height: 21px; letter-spacing: 0; }
+  .text-body2 { font-size: 14px; line-height: 20px; letter-spacing: 0; }
+  .dlg-field-label,
+  .q-toggle .q-toggle__label,
+  .teach-card {
+    line-height: 20px;
+  }
+  .nl-close-link {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+  // HouseDialog: 22/30 −1% title (doubled class beats the component's
+  // scoped rules whatever the load order). Footer buttons are 14px like
+  // every call to action (user 2026-11-02)
+  .house-dialog .house-dialog__title {
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+  }
+  .house-dialog .house-dialog__subtitle {
+    line-height: 20px;
+  }
+}
+
+// Phones (user 2026-11-06): 16px only as SemiBold in a heading. Body text,
+// links and controls drop to 14px; the components' own 16px rules sit in
+// their files under the same breakpoint
+@media (max-width: 599.98px) {
+  .nl-body-16,
+  .text-body1,
+  :is(.call-wrap--open, .nl-v1) .text-body1 {
+    font-size: 14px;
+    letter-spacing: 0.14px;
+  }
+  .nl-close-link,
+  :is(.call-wrap--open, .nl-v1) .nl-close-link {
+    font-size: 14px;
+  }
+}
+
+// Missing-data states are informational StatusPill components (user redesign).

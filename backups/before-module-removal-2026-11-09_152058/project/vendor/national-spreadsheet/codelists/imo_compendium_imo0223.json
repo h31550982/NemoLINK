@@ -1,0 +1,38 @@
+{
+  "source": {
+    "file": "NationalSpreadsheetV2.0.1 kommenteilla.xlsx",
+    "sha256": "0568654393e870c3b659934e4b221b556d8f243ebbab7b6b7c1e0347d9610043",
+    "templateVersion": "2.0.1",
+    "country": "FI",
+    "generator": "tools/spreadsheet-parser (docs/specs/0001)"
+  },
+  "sheet": "imo_compendium_IMO0223",
+  "headerless": false,
+  "usedIn": [
+    "DE-037-04"
+  ],
+  "formalities": [
+    "MDD"
+  ],
+  "rules": [],
+  "entries": [
+    {
+      "id": "R",
+      "en": "Recovered",
+      "fi": "Parantunut",
+      "sv": "Tillfrisknad"
+    },
+    {
+      "id": "I",
+      "en": "Still ill",
+      "fi": "Edelleen sairas",
+      "sv": "Fortfarande sjuk"
+    },
+    {
+      "id": "D",
+      "en": "Deceased",
+      "fi": "Kuollut",
+      "sv": "Avliden"
+    }
+  ]
+}
